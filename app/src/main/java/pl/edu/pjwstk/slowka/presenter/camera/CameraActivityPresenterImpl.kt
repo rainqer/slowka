@@ -16,10 +16,10 @@ class CameraActivityPresenterImpl constructor(val cameraActivityModel: CameraAct
     private lateinit var cameraActivityView: CameraActivityView
     private lateinit var activity: Activity
 
-    override fun attach(cameraActivityView: CameraActivityView,
+    override fun attach(activityView: CameraActivityView,
                         activity: Activity,
                         savedInstanceState: Bundle?) {
-        this.cameraActivityView = cameraActivityView
+        this.cameraActivityView = activityView
         this.activity = activity
         cameraActivityView.setupCameraPreviewRatio(Ratio.FOUR_TO_THREE)
     }

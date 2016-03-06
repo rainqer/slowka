@@ -14,7 +14,7 @@ import pl.edu.pjwstk.slowka.R
 
 abstract class SlowkaActivity <T>: AppCompatActivity() {
 
-    private val toolbar: Toolbar by bindView(R.id.toolbar)
+    protected val toolbar: Toolbar by bindView(R.id.toolbar)
     protected abstract val activityPresenter: ActivityPresenter<T>
 
     internal fun setContentViewWithToolbar(layoutResID: Int) {

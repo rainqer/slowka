@@ -9,20 +9,20 @@ import pl.edu.pjwstk.presenter.ActivityPresenter
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.dagger.camera.CameraActivityComponent
 import pl.edu.pjwstk.slowka.dagger.camera.CameraActivityComponentAssembler
-import pl.edu.pjwstk.slowka.model.camera.CameraActivityModel
-import pl.edu.pjwstk.slowka.model.camera.CameraAdapter
-import pl.edu.pjwstk.slowka.presenter.camera.CameraActivityPresenterImpl
+import pl.edu.pjwstk.slowka.presenter.camera.CameraActivityPresenter
 import pl.edu.pjwstk.slowka.presenter.camera.Ratio
 import pl.edu.pjwstk.slowka.ui.SlowkaActivity
 import pl.touk.id_scanner.dagger.HasComponent
+import javax.inject.Inject
 
 class CameraActivity : SlowkaActivity<CameraActivityView>(), CameraActivityView ,
         HasComponent<CameraActivityComponent?> {
 
+    @Inject
+    protected lateinit var presenter: CameraActivityPresenter
     override var component: CameraActivityComponent? = null
     override val activityPresenter: ActivityPresenter<CameraActivityView>
         get() = presenter
-    private lateinit var presenter: CameraActivityPresenterImpl
 
     private val cameraContainer: FrameLayout by bindView(R.id.cameraContainer)
     private var cameraView: CameraView? = null;
@@ -31,7 +31,6 @@ class CameraActivity : SlowkaActivity<CameraActivityView>(), CameraActivityView 
         super.onCreate(savedInstanceState)
         setContentViewWithToolbar(R.layout.activity_words_camera_view)
         setDaggerComponent(CameraActivityComponentAssembler.assemble(application))
-        presenter = CameraActivityPresenterImpl(CameraActivityModel(CameraAdapter()));
     }
 
     private fun setDaggerComponent(component: CameraActivityComponent) {
