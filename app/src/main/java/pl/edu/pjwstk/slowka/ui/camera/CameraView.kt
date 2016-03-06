@@ -3,11 +3,11 @@ package pl.edu.pjwstk.slowka.ui.camera
 import android.content.Context
 import android.view.SurfaceHolder
 import android.view.SurfaceView
-import pl.edu.pjwstk.slowka.presenter.camera.CameraActivityPresenter
+import pl.edu.pjwstk.slowka.presenter.camera.CameraActivityPresenterImpl
 
 class CameraView : SurfaceView, SurfaceHolder.Callback {
 
-    val cameraActivityPresenter: CameraActivityPresenter
+    val cameraActivityPresenter: CameraActivityPresenterImpl
 
     override fun surfaceCreated(holder: SurfaceHolder) {
         cameraActivityPresenter.cameraSurfaceReady(holder)
@@ -21,7 +21,7 @@ class CameraView : SurfaceView, SurfaceHolder.Callback {
         holder.removeCallback(this)
     }
 
-    constructor(context: Context, presenter: CameraActivityPresenter) : super(context) {
+    constructor(context: Context, presenter: CameraActivityPresenterImpl) : super(context) {
         this.cameraActivityPresenter = presenter
         holder.addCallback(this)
         holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS)

@@ -38,6 +38,8 @@ android {
 
 dependencies {
     compile appcompat
+    compile dagger
+    compile googleAnalytics
     compile kotlin
     compile kotterknife
     compile retrofit
@@ -45,7 +47,7 @@ dependencies {
     compile rxjavaAndroid
     compile rxjavaAsyncUtils
     compile supportDesign
-    compile googleAnalytics
+    compile timber
 
     // during compilation only
     apt daggerCompiler

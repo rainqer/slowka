@@ -1,29 +1,42 @@
 package pl.edu.pjwstk.slowka.ui.camera
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.FrameLayout
 import butterknife.bindView
 import pl.edu.pjwstk.presenter.ActivityPresenter
 import pl.edu.pjwstk.slowka.R
-import pl.edu.pjwstk.slowka.model.camera.CameraActivityModelImpl
+import pl.edu.pjwstk.slowka.dagger.camera.CameraActivityComponent
+import pl.edu.pjwstk.slowka.dagger.camera.CameraActivityComponentAssembler
+import pl.edu.pjwstk.slowka.model.camera.CameraActivityModel
 import pl.edu.pjwstk.slowka.model.camera.CameraAdapter
-import pl.edu.pjwstk.slowka.presenter.camera.CameraActivityPresenter
+import pl.edu.pjwstk.slowka.presenter.camera.CameraActivityPresenterImpl
 import pl.edu.pjwstk.slowka.presenter.camera.Ratio
 import pl.edu.pjwstk.slowka.ui.SlowkaActivity
+import pl.touk.id_scanner.dagger.HasComponent
 
-class CameraActivity : SlowkaActivity<CameraActivityView>(), CameraActivityView {
+class CameraActivity : SlowkaActivity<CameraActivityView>(), CameraActivityView ,
+        HasComponent<CameraActivityComponent?> {
 
-    protected lateinit var presenter: CameraActivityPresenter
+    override var component: CameraActivityComponent? = null
     override val activityPresenter: ActivityPresenter<CameraActivityView>
         get() = presenter
-    protected val cameraContainer: FrameLayout by bindView(R.id.cameraContainer)
+    private lateinit var presenter: CameraActivityPresenterImpl
 
-    protected var cameraView: CameraView? = null;
+    private val cameraContainer: FrameLayout by bindView(R.id.cameraContainer)
+    private var cameraView: CameraView? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentViewWithToolbar(R.layout.activity_words_camera_view)
-        presenter = CameraActivityPresenter(CameraActivityModelImpl(CameraAdapter()));
+        setDaggerComponent(CameraActivityComponentAssembler.assemble(application))
+        presenter = CameraActivityPresenterImpl(CameraActivityModel(CameraAdapter()));
+    }
+
+    private fun setDaggerComponent(component: CameraActivityComponent) {
+        this.component = component
+        this.component?.inject(this)
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -62,5 +75,11 @@ class CameraActivity : SlowkaActivity<CameraActivityView>(), CameraActivityView 
                                             grantResults: IntArray) {
 
         presenter.onRequestPermissionsResult(requestCode, grantResults)
+    }
+
+    companion object {
+        fun createIntent(context: Context): Intent {
+            return Intent(context, CameraActivity::class.java)
+        }
     }
 }

@@ -1,19 +1,17 @@
 package pl.edu.pjwstk.slowka.model.camera
 
 import android.view.SurfaceHolder
-import pl.edu.pjwstk.slowka.presenter.camera.CameraActivityPresenter
+import pl.edu.pjwstk.slowka.presenter.camera.CameraActivityPresenterImpl
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import rx.subscriptions.Subscriptions
 
-class CameraActivityModelImpl
-    constructor(val cameraAdapter: CameraAdapter) {
+class CameraActivityModel constructor(val cameraAdapter: CameraAdapter) {
 
     protected var cameraFrameSubscription = Subscriptions.unsubscribed()
+    private lateinit var cameraActivityPresenter: CameraActivityPresenterImpl
 
-    private lateinit var cameraActivityPresenter: CameraActivityPresenter
-
-    fun startProcessingPreview(cameraActivityPresenter: CameraActivityPresenter) {
+    fun startProcessingPreview(cameraActivityPresenter: CameraActivityPresenterImpl) {
         this.cameraActivityPresenter = cameraActivityPresenter
         observeFrames(cameraAdapter.start())
     }

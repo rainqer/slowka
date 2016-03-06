@@ -9,7 +9,7 @@ import android.view.SurfaceHolder
 import pl.edu.pjwstk.slowka.presenter.camera.Ratio
 import rx.Observable
 
-public open class CameraAdapter constructor() {
+class CameraAdapter constructor() {
 
     companion object {
         private val ROTATION_DEGREE = 90
@@ -36,7 +36,7 @@ public open class CameraAdapter constructor() {
         get() = cameraHandle?:throw AssertionError("Camera was not initialized correctly")
     private var cameraHandle: Camera? = null
 
-    open fun start(): Observable<ByteArray> {
+    fun start(): Observable<ByteArray> {
         if (!initialized) {
             initCamera()
         }
@@ -62,7 +62,7 @@ public open class CameraAdapter constructor() {
         initialized = true
     }
 
-    open fun stop() {
+    fun stop() {
         if (active) {
             active = false
             isFlashActive = false
@@ -78,7 +78,7 @@ public open class CameraAdapter constructor() {
         cameraHandle = null
     }
 
-    open fun setupSurface(surfaceHolder: SurfaceHolder) {
+    fun setupSurface(surfaceHolder: SurfaceHolder) {
         camera.setPreviewDisplay(surfaceHolder)
     }
 
@@ -92,11 +92,11 @@ public open class CameraAdapter constructor() {
         camera.parameters = params
     }
 
-    open public fun hasFlash(): Boolean {
+    fun hasFlash(): Boolean {
         return context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)
     }
 
-    public fun toggleFlash() {
+    fun toggleFlash() {
         isFlashActive = !isFlashActive
         if (isFlashActive) {
             setFlashModeIfCameraStillAvailable(FLASH_ON)
@@ -134,7 +134,7 @@ public open class CameraAdapter constructor() {
         params.setPictureSize(selected.width, selected.height)
     }
 
-    open fun autoFocusOnTargetAndRepeat() {
+    fun autoFocusOnTargetAndRepeat() {
         camera.autoFocus { wasSuccessful, camera ->
             if (wasSuccessful) {
                 ++focusedCountInRow
