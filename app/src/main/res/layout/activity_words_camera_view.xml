@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 
-    <include layout="@layout/m_component_toolbar"/>
+    <include layout="@layout/application_toolbar"/>
 
     <FrameLayout
         android:layout_below="@+id/toolbar"
