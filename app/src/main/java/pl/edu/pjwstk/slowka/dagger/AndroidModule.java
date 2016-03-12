@@ -5,7 +5,7 @@ import android.content.Context;
 import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
-import pl.touk.id_scanner.SlowkaApplication;
+import pl.edu.pjwstk.slowka.SlowkaApplication;
 
 @Module
 public class AndroidModule {

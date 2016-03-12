@@ -3,6 +3,7 @@ package pl.edu.pjwstk.slowka.presenter.camera
 import android.Manifest
 import android.app.Activity
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.view.SurfaceHolder
@@ -25,7 +26,8 @@ class CameraActivityPresenterImpl constructor(val cameraActivityModel: CameraAct
     }
 
     override fun resume() {
-        if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB
+                && ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED) {
             activity.requestPermissions(arrayOf(Manifest.permission.CAMERA), CAMERA_REQUEST_PERMISSION)
         } else {
             startCameraComponents()

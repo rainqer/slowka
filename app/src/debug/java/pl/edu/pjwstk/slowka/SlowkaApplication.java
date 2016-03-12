@@ -1,6 +1,5 @@
-package pl.touk.id_scanner;
+package pl.edu.pjwstk.slowka;
 
-import pl.edu.pjwstk.slowka.BaseApplication;
 import timber.log.Timber;
 
 public class SlowkaApplication extends BaseApplication {

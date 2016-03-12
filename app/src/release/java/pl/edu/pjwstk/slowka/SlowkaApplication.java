@@ -1,7 +1,5 @@
-package pl.touk.id_scanner;
+package pl.edu.pjwstk.slowka;
 
-import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
 public class SlowkaApplication extends BaseApplication {

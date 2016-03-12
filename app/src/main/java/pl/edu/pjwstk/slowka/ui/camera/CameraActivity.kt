@@ -7,12 +7,12 @@ import android.widget.FrameLayout
 import butterknife.bindView
 import pl.edu.pjwstk.presenter.ActivityPresenter
 import pl.edu.pjwstk.slowka.R
+import pl.edu.pjwstk.slowka.dagger.HasComponent
 import pl.edu.pjwstk.slowka.dagger.camera.CameraActivityComponent
 import pl.edu.pjwstk.slowka.dagger.camera.CameraActivityComponentAssembler
 import pl.edu.pjwstk.slowka.presenter.camera.CameraActivityPresenter
 import pl.edu.pjwstk.slowka.presenter.camera.Ratio
 import pl.edu.pjwstk.slowka.ui.SlowkaActivity
-import pl.touk.id_scanner.dagger.HasComponent
 import javax.inject.Inject
 
 class CameraActivity : SlowkaActivity<CameraActivityView>(), CameraActivityView ,

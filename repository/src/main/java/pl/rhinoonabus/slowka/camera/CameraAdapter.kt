@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.slowka.model.camera
+package pl.rhinoonabus.slowka.camera
 
 import android.content.Context
 import android.content.pm.PackageManager
@@ -6,10 +6,14 @@ import android.graphics.Rect
 import android.hardware.Camera
 import android.os.Handler
 import android.view.SurfaceHolder
-import pl.edu.pjwstk.slowka.presenter.camera.Ratio
+import pl.rhinoonabus.slowka.hardware.Previewer
 import rx.Observable
+import javax.inject.Inject
 
-class CameraAdapter constructor() {
+class CameraAdapter : Previewer {
+
+    @Inject
+    constructor()
 
     companion object {
         private val ROTATION_DEGREE = 90
@@ -26,7 +30,7 @@ class CameraAdapter constructor() {
     
     private val isFocusedOnTarget: Boolean
         get() = focusedCountInRow >= MIN_AUTO_FOCUS_COUNT
-    private var cameraSizeRect: Rect = Rect(0,0,0,0)
+    private var cameraSizeRect: Rect = Rect(0, 0, 0, 0)
     private var isFlashActive = false
     private var focusedCountInRow: Int = 0
     private var active = false
@@ -58,7 +62,7 @@ class CameraAdapter constructor() {
 
     private fun initCamera() {
         cameraHandle = Camera.open()
-        configure(Ratio.FOUR_TO_THREE)
+        configure(CameraRatio.FOUR_TO_THREE)
         initialized = true
     }
 
@@ -78,11 +82,12 @@ class CameraAdapter constructor() {
         cameraHandle = null
     }
 
-    fun setupSurface(surfaceHolder: SurfaceHolder) {
+    fun previewOn(surfaceHolder: SurfaceHolder) {
         camera.setPreviewDisplay(surfaceHolder)
+        autoFocusOnTargetAndRepeat()
     }
 
-    private fun configure(ratio: Ratio) {
+    private fun configure(ratio: CameraRatio) {
         val params = camera.parameters
         configPreviewRatioAndSize(params, ratio)
         configPictureRatioAndSize(params, ratio)
@@ -124,17 +129,17 @@ class CameraAdapter constructor() {
         camera.setDisplayOrientation(ROTATION_DEGREE)
     }
 
-    private fun configPreviewRatioAndSize(params: Camera.Parameters, ratio: Ratio) {
+    private fun configPreviewRatioAndSize(params: Camera.Parameters, ratio: CameraRatio) {
         val selected = ratio.extractFourByThreeSize(camera.parameters?.supportedPreviewSizes)
         params.setPreviewSize(selected.width, selected.height)
     }
 
-    private fun configPictureRatioAndSize(params: Camera.Parameters, ratio: Ratio) {
+    private fun configPictureRatioAndSize(params: Camera.Parameters, ratio: CameraRatio) {
         val selected = ratio.extractFourByThreeSize(camera.parameters?.supportedPictureSizes)
         params.setPictureSize(selected.width, selected.height)
     }
 
-    fun autoFocusOnTargetAndRepeat() {
+    private fun autoFocusOnTargetAndRepeat() {
         camera.autoFocus { wasSuccessful, camera ->
             if (wasSuccessful) {
                 ++focusedCountInRow

@@ -3,8 +3,8 @@ package pl.edu.pjwstk.slowka.dagger;
 import android.app.Activity;
 import android.app.Application;
 import android.support.annotation.NonNull;
-import pl.touk.id_scanner.SlowkaApplication;
-import pl.touk.id_scanner.dagger.HasComponent;
+
+import pl.edu.pjwstk.slowka.SlowkaApplication;
 
 public class Components {
 

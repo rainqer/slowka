@@ -32,14 +32,15 @@ ext {
     butterknife = 'com.jakewharton:butterknife:7.0.1'
     dagger = 'com.google.dagger:dagger:2.0'
     daggerCompiler = 'com.google.dagger:dagger-compiler:2.0'
+    googleAnalytics =  'com.google.android.gms:play-services-analytics:8.1.0'
     javaxAnnotations = 'javax.annotation:jsr250-api:1.0'
     kotlin = "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     kotterknife = 'com.jakewharton:kotterknife:0.1.0-SNAPSHOT'
+    multidex = 'com.android.support:multidex:1.0.0'
     retrofit = 'com.squareup.retrofit:retrofit:1.9.0'
     rxjava = 'io.reactivex:rxjava:1.0.15'
     rxjavaAndroid = 'io.reactivex:rxandroid:1.0.1'
     rxjavaAsyncUtils = 'io.reactivex:rxjava-async-util:0.21.0'
     supportDesign = 'com.android.support:design:22.2.0'
-    googleAnalytics =  'com.google.android.gms:play-services-analytics:8.1.0'
     timber = 'com.jakewharton.timber:timber:2.7.1'
 }

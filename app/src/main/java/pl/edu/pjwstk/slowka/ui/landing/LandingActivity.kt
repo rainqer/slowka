@@ -10,12 +10,12 @@ import android.view.Menu
 import butterknife.bindView
 import pl.edu.pjwstk.presenter.ActivityPresenter
 import pl.edu.pjwstk.slowka.R
+import pl.edu.pjwstk.slowka.dagger.HasComponent
 import pl.edu.pjwstk.slowka.dagger.landing.LandingActivityComponent
 import pl.edu.pjwstk.slowka.dagger.landing.LandingActivityComponentAssembler
 import pl.edu.pjwstk.slowka.presenter.landing.LandingActivityPresenter
 import pl.edu.pjwstk.slowka.ui.SlowkaActivity
 import pl.edu.pjwstk.slowka.ui.camera.CameraActivity
-import pl.touk.id_scanner.dagger.HasComponent
 import javax.inject.Inject
 
 class LandingActivity : SlowkaActivity<LandingActivityView>(),
