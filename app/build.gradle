@@ -27,7 +27,6 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
-        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -46,8 +45,6 @@ android {
 
 dependencies {
 
-    compile project (':domain')
-    compile project (':repository')
     compile appcompat
     compile dagger
     compile googleAnalytics
@@ -59,7 +56,6 @@ dependencies {
     compile rxjavaAsyncUtils
     compile supportDesign
     compile timber
-    compile multidex
 
     // during compilation only
     apt daggerCompiler
