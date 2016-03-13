@@ -1,10 +1,9 @@
 package pl.edu.pjwstk.domain.hardware
 
 import pl.edu.pjwstk.domain.UseCase
-import rx.Observable
 import javax.inject.Inject
 
-class LaunchCameraUseCase : UseCase<Observable<ByteArray>> {
+class LaunchCameraUseCase : UseCase<Unit> {
 
     private val cameraRepository: CameraRepository
 
@@ -13,9 +12,7 @@ class LaunchCameraUseCase : UseCase<Observable<ByteArray>> {
         this.cameraRepository = cameraRepository
     }
 
-    override fun perform() : Observable<Observable<ByteArray>> {
-        return Observable.fromCallable {
-            cameraRepository.observeFrames()
-        }
+    override fun perform() {
+        return cameraRepository.startCapturingCameraFrames()
     }
 }

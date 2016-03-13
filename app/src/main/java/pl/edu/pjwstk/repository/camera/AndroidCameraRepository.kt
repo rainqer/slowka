@@ -2,24 +2,39 @@ package pl.edu.pjwstk.repository.camera
 
 import android.view.SurfaceHolder
 import pl.edu.pjwstk.domain.hardware.CameraRepository
-import rx.Observable
+import rx.android.schedulers.AndroidSchedulers
+import rx.subscriptions.Subscriptions
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class AndroidCameraRepository : CameraRepository {
-    val cameraAdapter: CameraAdapter
+
+    private val cameraAdapter: CameraAdapter
+    private var currentFrame : ByteArray? = null
+    private var cameraFrameSubscription = Subscriptions.unsubscribed()
 
     @Inject
     constructor(cameraAdapter: CameraAdapter) {
         this.cameraAdapter = cameraAdapter
     }
 
-    override fun observeFrames(): Observable<ByteArray> {
-        return cameraAdapter.start()
+    override fun startCapturingCameraFrames() {
+        cameraFrameSubscription.unsubscribe()
+        cameraFrameSubscription = cameraAdapter.start()
+                .onBackpressureLatest()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { frame ->
+                    currentFrame = frame
+                }
+    }
+
+    override fun getCurrentFrame() : ByteArray? {
+        return currentFrame
     }
 
     override fun stop() {
+        cameraFrameSubscription.unsubscribe()
         cameraAdapter.stop()
     }
 
