@@ -30,6 +30,8 @@ class CameraAdapter {
     private val isFocusedOnTarget: Boolean
         get() = focusedCountInRow >= MIN_AUTO_FOCUS_COUNT
     private var cameraSizeRect: Rect = Rect(0, 0, 0, 0)
+    val cameraDimensions: Rect
+        get() = cameraSizeRect
     private var isFlashActive = false
     private var focusedCountInRow: Int = 0
     private var active = false

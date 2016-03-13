@@ -1,6 +1,7 @@
 package pl.edu.pjwstk.repository.camera
 
 import android.view.SurfaceHolder
+import pl.edu.pjwstk.domain.hardware.CameraFrame
 import pl.edu.pjwstk.domain.hardware.CameraRepository
 import rx.android.schedulers.AndroidSchedulers
 import rx.subscriptions.Subscriptions
@@ -29,8 +30,8 @@ class AndroidCameraRepository : CameraRepository {
                 }
     }
 
-    override fun getCurrentFrame() : ByteArray? {
-        return currentFrame
+    override fun getCurrentFrame() : CameraFrame {
+        return CameraFrame(currentFrame?:ByteArray(0), cameraAdapter.cameraDimensions)
     }
 
     override fun stop() {

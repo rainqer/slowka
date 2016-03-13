@@ -5,7 +5,7 @@ import android.view.SurfaceHolder
 interface CameraRepository {
 
     fun startCapturingCameraFrames()
-    fun getCurrentFrame() : ByteArray?
+    fun getCurrentFrame() : CameraFrame
     fun stop()
     fun previewCameraOnto(holder: SurfaceHolder)
 }

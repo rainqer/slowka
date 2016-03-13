@@ -12,7 +12,7 @@ import javax.inject.Inject
 class CameraActivityModel @Inject constructor(
         val launchCameraUseCase: LaunchCameraUseCase,
         val stopCameraUseCase: StopCameraUseCase,
-        val obtainPreviewerUseCase: PreviewCameraUseCase) {
+        val previewerCameraUseCase: PreviewCameraUseCase) {
 
     private lateinit var cameraActivityPresenter: CameraActivityPresenterImpl
 
@@ -26,7 +26,7 @@ class CameraActivityModel @Inject constructor(
     }
 
     fun cameraSurfaceReady(holder: SurfaceHolder) {
-        obtainPreviewerUseCase.previewOnto(holder).performAsync()
+        previewerCameraUseCase.previewOnto(holder).performAsync()
     }
 
     fun cameraSurfaceRefresh() {
