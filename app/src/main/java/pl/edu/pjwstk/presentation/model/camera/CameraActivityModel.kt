@@ -1,18 +1,21 @@
 package pl.edu.pjwstk.presentation.model.camera
 
 import android.view.SurfaceHolder
+import pl.edu.pjwstk.domain.file.SaveCurrentCameraFrameUseCase
 import pl.edu.pjwstk.domain.hardware.PreviewCameraUseCase
 import pl.edu.pjwstk.domain.hardware.LaunchCameraUseCase
 import pl.edu.pjwstk.domain.hardware.StopCameraUseCase
 import pl.edu.pjwstk.presentation.dagger.camera.CameraActivityScope
 import pl.edu.pjwstk.presentation.presenter.camera.CameraActivityPresenterImpl
+import rx.schedulers.Schedulers
 import javax.inject.Inject
 
 @CameraActivityScope
 class CameraActivityModel @Inject constructor(
         val launchCameraUseCase: LaunchCameraUseCase,
         val stopCameraUseCase: StopCameraUseCase,
-        val previewerCameraUseCase: PreviewCameraUseCase) {
+        val previewerCameraUseCase: PreviewCameraUseCase,
+        val saveCurrentCameraFrameUseCase: SaveCurrentCameraFrameUseCase) {
 
     private lateinit var cameraActivityPresenter: CameraActivityPresenterImpl
 
@@ -31,5 +34,11 @@ class CameraActivityModel @Inject constructor(
 
     fun cameraSurfaceRefresh() {
         launchCameraUseCase.performAsync()
+    }
+
+    fun saveCurrentCameraFrameToFile() {
+        saveCurrentCameraFrameUseCase.performAndObserve(Schedulers.io()).subscribe { file ->
+            cameraActivityPresenter.onCameraFramedSaved(file)
+        }
     }
 }

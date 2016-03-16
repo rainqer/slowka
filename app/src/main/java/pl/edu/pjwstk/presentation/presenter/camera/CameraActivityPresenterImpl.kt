@@ -7,8 +7,10 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.view.SurfaceHolder
+import android.widget.Toast
 import pl.edu.pjwstk.presentation.model.camera.CameraActivityModel
 import pl.edu.pjwstk.presentation.ui.camera.CameraActivityView
+import java.io.File
 
 class CameraActivityPresenterImpl constructor(val cameraActivityModel: CameraActivityModel)
         : CameraActivityPresenter {
@@ -44,6 +46,14 @@ class CameraActivityPresenterImpl constructor(val cameraActivityModel: CameraAct
 
     override fun cameraSurfaceRefresh() {
         cameraActivityModel.cameraSurfaceRefresh()
+    }
+
+    override fun cameraButtonClicked() {
+        cameraActivityModel.saveCurrentCameraFrameToFile()
+    }
+
+    override fun onCameraFramedSaved(file: File) {
+        Toast.makeText(activity, file.absolutePath, Toast.LENGTH_LONG).show()
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray) {

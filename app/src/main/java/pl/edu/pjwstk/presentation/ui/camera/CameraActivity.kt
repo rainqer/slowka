@@ -3,6 +3,7 @@ package pl.edu.pjwstk.presentation.ui.camera
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.widget.FrameLayout
 import butterknife.bindView
 import pl.edu.pjwstk.presenter.ActivityPresenter
@@ -25,6 +26,7 @@ class CameraActivity : SlowkaActivity<CameraActivityView>(), CameraActivityView 
         get() = presenter
 
     private val cameraContainer: FrameLayout by bindView(R.id.cameraContainer)
+    private val cameraButton: FloatingActionButton by bindView(R.id.fab)
     private var cameraView: CameraView? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +43,13 @@ class CameraActivity : SlowkaActivity<CameraActivityView>(), CameraActivityView 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         attachPresenter(this, this, savedInstanceState)
+        setupButtons()
+    }
+
+    private fun setupButtons() {
+        cameraButton.setOnClickListener { view ->
+            presenter.cameraButtonClicked()
+        }
     }
 
     override fun setupCameraPreviewRatio(ratio: Ratio) {

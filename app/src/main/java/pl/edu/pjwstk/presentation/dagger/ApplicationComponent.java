@@ -3,6 +3,7 @@ package pl.edu.pjwstk.presentation.dagger;
 import android.content.Context;
 import javax.inject.Singleton;
 import dagger.Component;
+import pl.edu.pjwstk.domain.file.FileRepository;
 import pl.edu.pjwstk.domain.hardware.CameraRepository;
 
 @Singleton
@@ -15,4 +16,5 @@ import pl.edu.pjwstk.domain.hardware.CameraRepository;
 public interface ApplicationComponent {
         Context providesContext();
         CameraRepository providesCameraRepository();
+        FileRepository providesFileRepository();
 }
