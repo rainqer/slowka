@@ -12,7 +12,7 @@ class GetNamesForObjectInImageUseCase : UseCase<Array<String>> {
     @Inject
     constructor(namesForObjectInImageRepository: NamesForObjectInImageRepository) : this(namesForObjectInImageRepository, null)
 
-    constructor(namesForObjectInImageRepository: NamesForObjectInImageRepository, file: File) {
+    constructor(namesForObjectInImageRepository: NamesForObjectInImageRepository, file: File?) {
         this.namesForObjectInImageRepository = namesForObjectInImageRepository
         this.file = file
     }
@@ -25,6 +25,6 @@ class GetNamesForObjectInImageUseCase : UseCase<Array<String>> {
         if (file == null) {
             throw AssertionError("Preview must be performed on non null surface holder")
         }
-        return namesForObjectInImageRepository.getNamesFor()
+        return namesForObjectInImageRepository.getNamesFor(file)
     }
 }

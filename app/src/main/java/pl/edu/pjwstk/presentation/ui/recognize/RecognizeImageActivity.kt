@@ -9,9 +9,9 @@ import pl.edu.pjwstk.R
 import pl.edu.pjwstk.presentation.dagger.HasComponent
 import pl.edu.pjwstk.presentation.dagger.recognize.RecognizeImageActivityComponent
 import pl.edu.pjwstk.presentation.dagger.recognize.RecognizeImageActivityComponentAssembler
+import pl.edu.pjwstk.presentation.presenter.ActivityPresenter
 import pl.edu.pjwstk.presentation.presenter.recognize.RecognizeImageActivityPresenter
 import pl.edu.pjwstk.presentation.ui.SlowkaActivity
-import pl.edu.pjwstk.presenter.ActivityPresenter
 import java.io.File
 import javax.inject.Inject
 
@@ -23,8 +23,6 @@ class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(), Rec
     override var component: RecognizeImageActivityComponent? = null
     override val activityPresenter: ActivityPresenter<RecognizeImageActivityView>
         get() = presenter
-
-    private lateinit var file : File
 
     private val fileNameView: TextView by bindView(R.id.fileName)
 
@@ -42,7 +40,6 @@ class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(), Rec
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         attachPresenter(this, this, savedInstanceState)
-        fileNameView.text = file.absolutePath
     }
 
     companion object {
