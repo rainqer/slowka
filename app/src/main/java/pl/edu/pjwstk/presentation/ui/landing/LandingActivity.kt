@@ -8,7 +8,7 @@ import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
 import butterknife.bindView
-import pl.edu.pjwstk.presenter.ActivityPresenter
+import pl.edu.pjwstk.presentation.presenter.ActivityPresenter
 import pl.edu.pjwstk.R
 import pl.edu.pjwstk.presentation.dagger.HasComponent
 import pl.edu.pjwstk.presentation.dagger.landing.LandingActivityComponent

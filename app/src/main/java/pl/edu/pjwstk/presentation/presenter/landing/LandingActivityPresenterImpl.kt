@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import pl.edu.pjwstk.presentation.ui.landing.LandingActivityView
 
-class LandingActivityPresenterImpl : LandingActivityPresenter {
+class LandingActivityPresenterImpl : LandingActivityPresenter() {
 
     private lateinit var landingActivityView: LandingActivityView
     private lateinit var activity: Activity

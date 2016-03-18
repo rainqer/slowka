@@ -5,8 +5,10 @@ import dagger.Module;
 import dagger.Provides;
 import pl.edu.pjwstk.domain.file.FileRepository;
 import pl.edu.pjwstk.domain.hardware.CameraRepository;
+import pl.edu.pjwstk.domain.information.NamesForObjectInImageRepository;
 import pl.edu.pjwstk.repository.camera.AndroidCameraRepository;
 import pl.edu.pjwstk.repository.file.AndroidFileRepository;
+import pl.edu.pjwstk.repository.recognize.GoogleVisionNamesForObjectsRepository;
 
 @Module
 public class RepositoriesModule {
@@ -23,4 +25,9 @@ public class RepositoriesModule {
         return fileRepository;
     }
 
+    @Provides
+    @Singleton
+    NamesForObjectInImageRepository provideNamesForObjectInImageRepository(GoogleVisionNamesForObjectsRepository getNamesRepository) {
+        return getNamesRepository;
+    }
 }

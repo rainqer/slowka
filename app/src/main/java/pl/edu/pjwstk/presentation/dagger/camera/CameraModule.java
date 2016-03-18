@@ -17,27 +17,5 @@ public class CameraModule {
                 cameraActivityModel
         );
     }
-//
-//    @CameraActivityScope
-//    @Provides
-//    CameraActivityModel provideCameraActivityModel(LaunchCameraUseCase launchCameraUseCase) {
-//
-//        return new CameraActivityModel(
-//                launchCameraUseCase
-//        );
-//    }
 
-//    @CameraActivityScope
-//    @Provides
-//    CameraAdapter provideCameraAdapter() {
-//
-//        return new CameraAdapter();
-//    }
-//
-//    @CameraActivityScope
-//    @Provides
-//    LaunchCameraUseCase provideLaunchCameraUseCase(CameraRepository cameraRepository) {
-//
-//        return new LaunchCameraUseCase(cameraRepository);
-//    }
 }

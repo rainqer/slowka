@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.widget.FrameLayout
 import butterknife.bindView
-import pl.edu.pjwstk.presenter.ActivityPresenter
+import pl.edu.pjwstk.presentation.presenter.ActivityPresenter
 import pl.edu.pjwstk.R
 import pl.edu.pjwstk.presentation.dagger.HasComponent
 import pl.edu.pjwstk.presentation.dagger.camera.CameraActivityComponent

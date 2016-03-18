@@ -13,6 +13,7 @@ public class RecognizeImageActivityComponentAssembler {
     public static RecognizeImageActivityComponent assemble(Application application) {
         return DaggerRecognizeImageActivityComponent.builder()
                 .applicationComponent(Components.from(application))
+                .recognizeImageModule(new RecognizeImageModule())
                 .build();
     }
 }

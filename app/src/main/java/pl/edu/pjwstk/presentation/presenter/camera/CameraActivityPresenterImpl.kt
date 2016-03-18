@@ -3,36 +3,30 @@ package pl.edu.pjwstk.presentation.presenter.camera
 import android.Manifest
 import android.app.Activity
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
 import android.view.SurfaceHolder
-import android.widget.Toast
 import pl.edu.pjwstk.presentation.model.camera.CameraActivityModel
 import pl.edu.pjwstk.presentation.ui.camera.CameraActivityView
-import java.io.File
+import pl.edu.pjwstk.presentation.ui.recognize.RecognizeImageActivity
 
 class CameraActivityPresenterImpl constructor(val cameraActivityModel: CameraActivityModel)
-        : CameraActivityPresenter {
+        : CameraActivityPresenter() {
 
     private val CAMERA_REQUEST_PERMISSION: Int = 123;
-    private lateinit var cameraActivityView: CameraActivityView
-    private lateinit var activity: Activity
+    private val WRITE_TO_SD_CARD_REQUEST_PERMISSION: Int = 124;
 
     override fun attach(activityView: CameraActivityView,
                         activity: Activity,
                         savedInstanceState: Bundle?) {
-        this.cameraActivityView = activityView
-        this.activity = activity
-        cameraActivityView.setupCameraPreviewRatio(Ratio.FOUR_TO_THREE)
+        super.attach(activityView, activity, savedInstanceState)
+        presentedView.setupCameraPreviewRatio(Ratio.FOUR_TO_THREE)
     }
 
     override fun resume() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB
-                && ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED) {
-            activity.requestPermissions(arrayOf(Manifest.permission.CAMERA), CAMERA_REQUEST_PERMISSION)
-        } else {
+        if (permissionGranted(Manifest.permission.CAMERA)) {
             startCameraComponents()
+        } else {
+            presentedActivity.requestPermissions(arrayOf(Manifest.permission.CAMERA), CAMERA_REQUEST_PERMISSION)
         }
     }
 
@@ -49,23 +43,31 @@ class CameraActivityPresenterImpl constructor(val cameraActivityModel: CameraAct
     }
 
     override fun cameraButtonClicked() {
-        cameraActivityModel.saveCurrentCameraFrameToFile()
+        if (permissionGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            proceedToRecogniseScreenWithFileSaved()
+        } else {
+            presentedActivity.requestPermissions(arrayOf(Manifest.permission.CAMERA), WRITE_TO_SD_CARD_REQUEST_PERMISSION)
+        }
     }
 
-    override fun onCameraFramedSaved(file: File) {
-        Toast.makeText(activity, file.absolutePath, Toast.LENGTH_LONG).show()
+    private fun proceedToRecogniseScreenWithFileSaved() {
+        cameraActivityModel.saveCurrentCameraFrameToFile().subscribe { file ->
+            startActivity(RecognizeImageActivity.createIntent(presentedActivity, file))
+        }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray) {
-        if (requestCode == CAMERA_REQUEST_PERMISSION) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (requestCode == CAMERA_REQUEST_PERMISSION) {
                 startCameraComponents()
+            } else if (requestCode == WRITE_TO_SD_CARD_REQUEST_PERMISSION){
+                proceedToRecogniseScreenWithFileSaved()
             }
         }
     }
 
     private fun startCameraComponents() {
         cameraActivityModel.startProcessingPreview(this)
-        cameraActivityView.setupSurfaceForCameraAndUnblock()
+        presentedView.setupSurfaceForCameraAndUnblock()
     }
 }

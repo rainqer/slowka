@@ -7,7 +7,9 @@ import pl.edu.pjwstk.domain.hardware.LaunchCameraUseCase
 import pl.edu.pjwstk.domain.hardware.StopCameraUseCase
 import pl.edu.pjwstk.presentation.dagger.camera.CameraActivityScope
 import pl.edu.pjwstk.presentation.presenter.camera.CameraActivityPresenterImpl
+import rx.Observable
 import rx.schedulers.Schedulers
+import java.io.File
 import javax.inject.Inject
 
 @CameraActivityScope
@@ -36,9 +38,7 @@ class CameraActivityModel @Inject constructor(
         launchCameraUseCase.performAsync()
     }
 
-    fun saveCurrentCameraFrameToFile() {
-        saveCurrentCameraFrameUseCase.performAndObserve(Schedulers.io()).subscribe { file ->
-            cameraActivityPresenter.onCameraFramedSaved(file)
-        }
+    fun saveCurrentCameraFrameToFile() : Observable<File> {
+        return saveCurrentCameraFrameUseCase.performAndObserve(Schedulers.io())
     }
 }

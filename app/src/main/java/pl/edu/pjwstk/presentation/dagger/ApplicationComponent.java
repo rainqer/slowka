@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import pl.edu.pjwstk.domain.file.FileRepository;
 import pl.edu.pjwstk.domain.hardware.CameraRepository;
+import pl.edu.pjwstk.domain.information.NamesForObjectInImageRepository;
 
 @Singleton
 @Component(
@@ -17,4 +18,5 @@ public interface ApplicationComponent {
         Context providesContext();
         CameraRepository providesCameraRepository();
         FileRepository providesFileRepository();
+        NamesForObjectInImageRepository providesNamesForObjectInImageRepository();
 }
