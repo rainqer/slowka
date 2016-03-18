@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.presenter
+package pl.edu.pjwstk.presentation.presenter
 
 import android.app.Activity
 import android.os.Bundle

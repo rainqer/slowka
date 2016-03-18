@@ -9,9 +9,9 @@ import pl.edu.pjwstk.R
 import pl.edu.pjwstk.presentation.dagger.HasComponent
 import pl.edu.pjwstk.presentation.dagger.recognize.RecognizeImageActivityComponent
 import pl.edu.pjwstk.presentation.dagger.recognize.RecognizeImageActivityComponentAssembler
-import pl.edu.pjwstk.presentation.presenter.ActivityPresenter
 import pl.edu.pjwstk.presentation.presenter.recognize.RecognizeImageActivityPresenter
 import pl.edu.pjwstk.presentation.ui.SlowkaActivity
+import pl.edu.pjwstk.presenter.ActivityPresenter
 import java.io.File
 import javax.inject.Inject
 
@@ -30,13 +30,8 @@ class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(), Rec
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        extractInfoFromIntent()
         setContentViewWithToolbar(R.layout.activity_recognizeimage)
         setDaggerComponent(RecognizeImageActivityComponentAssembler.assemble(application))
-    }
-
-    private fun extractInfoFromIntent() {
-        file = File(intent.getStringExtra(FILE_NAME_KEY))
     }
 
     private fun setDaggerComponent(component: RecognizeImageActivityComponent) {

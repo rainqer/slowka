@@ -1,7 +1,7 @@
 package pl.edu.pjwstk.presentation.presenter.camera
 
 import android.view.SurfaceHolder
-import pl.edu.pjwstk.presenter.ActivityPresenter
+import pl.edu.pjwstk.presentation.presenter.ActivityPresenter
 import pl.edu.pjwstk.presentation.ui.camera.CameraActivityView
 import java.io.File
 
