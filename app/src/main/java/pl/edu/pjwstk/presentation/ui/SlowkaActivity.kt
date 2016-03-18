@@ -12,7 +12,7 @@ import butterknife.bindView
 import pl.edu.pjwstk.presentation.presenter.ActivityPresenter
 import pl.edu.pjwstk.R
 
-abstract class SlowkaActivity <T>: AppCompatActivity() {
+abstract class SlowkaActivity <T : Any>: AppCompatActivity() {
 
     protected val toolbar: Toolbar by bindView(R.id.toolbar)
     protected abstract val activityPresenter: ActivityPresenter<T>
