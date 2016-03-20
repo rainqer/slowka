@@ -1,5 +1,6 @@
 package pl.edu.pjwstk.presentation.presenter
 
+import android.annotation.TargetApi
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -26,8 +27,22 @@ abstract class  ActivityPresenter <T : Any>{
     abstract fun resume()
     abstract fun pause()
 
-    protected fun permissionGranted(permission: String) = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB
-            && ContextCompat.checkSelfPermission(activity, permission) == PackageManager.PERMISSION_GRANTED)
+    @TargetApi(Build.VERSION_CODES.M)
+    protected fun permissionGranted(permission: String) =
+            userCanDenyPermissionForThisVersion() && userGrantedPermission(permission)
+
+    @TargetApi(Build.VERSION_CODES.M)
+    protected fun requestPermission(permission: String, requestCode: Int) {
+        if (userCanDenyPermissionForThisVersion()) {
+            activity.requestPermissions(arrayOf(permission), requestCode)
+        }
+    }
+
+    private fun userCanDenyPermissionForThisVersion() =
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+
+    private fun userGrantedPermission(permission: String) =
+            ContextCompat.checkSelfPermission(activity, permission) == PackageManager.PERMISSION_GRANTED
 
     protected fun startActivity(intent : Intent) {
         activity.startActivity(intent)

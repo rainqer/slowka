@@ -26,7 +26,7 @@ class CameraActivityPresenterImpl constructor(val cameraActivityModel: CameraAct
         if (permissionGranted(Manifest.permission.CAMERA)) {
             startCameraComponents()
         } else {
-            presentedActivity.requestPermissions(arrayOf(Manifest.permission.CAMERA), CAMERA_REQUEST_PERMISSION)
+            requestPermission(Manifest.permission.CAMERA, CAMERA_REQUEST_PERMISSION)
         }
     }
 
@@ -46,7 +46,7 @@ class CameraActivityPresenterImpl constructor(val cameraActivityModel: CameraAct
         if (permissionGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             proceedToRecogniseScreenWithFileSaved()
         } else {
-            presentedActivity.requestPermissions(arrayOf(Manifest.permission.CAMERA), WRITE_TO_SD_CARD_REQUEST_PERMISSION)
+            requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, WRITE_TO_SD_CARD_REQUEST_PERMISSION)
         }
     }
 
