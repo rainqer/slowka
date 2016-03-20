@@ -25,7 +25,7 @@ class RecognizeImageActivityPresenterImpl constructor(
     }
 
     override fun resume() {
-        recognizeImageActivityModel.recognizeObjectInImage(file)
+        recognizeImageActivityModel.recognizeObjectInImage(file).subscribe()
     }
 
     override fun pause() {

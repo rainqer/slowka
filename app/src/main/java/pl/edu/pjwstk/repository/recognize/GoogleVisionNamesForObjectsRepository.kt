@@ -1,5 +1,9 @@
 package pl.edu.pjwstk.repository.recognize
 
+import com.google.api.client.extensions.android.http.AndroidHttp
+import com.google.api.client.json.gson.GsonFactory
+import com.google.api.services.vision.v1.Vision
+import com.google.api.services.vision.v1.VisionRequestInitializer
 import pl.edu.pjwstk.BuildConfig
 import pl.edu.pjwstk.domain.information.NamesForObjectInImageRepository
 import pl.edu.pjwstk.repository.recognize.dto.GoogleVisionApiRequest
@@ -15,31 +19,19 @@ class GoogleVisionNamesForObjectsRepository @Inject constructor(
 ) : NamesForObjectInImageRepository {
 
     override fun getNamesFor(file: File): Array<String> {
-        val response = getGoogleVisionApi().annotateImage(buildRequest(file));
+        // TODO
+        //https://github.com/GoogleCloudPlatform/cloud-vision/tree/master/android/CloudVision/app
         return arrayOf("aaa")
     }
 
-    private fun buildRequest(file: File): Array<out GoogleVisionApiRequest> {
-        val request = GoogleVisionApiRequest()
-        val image = Image()
-        image.content = file.absolutePath
-        request.image = image
-        return arrayOf(request)
+    private fun a() {
+        val httpTransport = AndroidHttp.newCompatibleTransport();
+        val jsonFactory = GsonFactory.getDefaultInstance();
+
+        val builder = Vision.Builder(httpTransport, jsonFactory, null);
+        builder.setVisionRequestInitializer(VisionRequestInitializer(CLOUD_VISION_API_KEY));
+        Vision vision = builder.build();
     }
 
-    fun getGoogleVisionApi() : GoogleVisionApiService {
-        val restAdapter = RestAdapter.Builder()
-                .setEndpoint(GOOGLE_VISION_API_ENDPOINT)
-                .setErrorHandler(errorHandler)
-                .build()
 
-        if (BuildConfig.DEBUG) {
-            restAdapter.logLevel = RestAdapter.LogLevel.FULL
-        }
-        return restAdapter.create(GoogleVisionApiService::class.java)
-    }
-
-    companion object {
-        final val GOOGLE_VISION_API_ENDPOINT = "https://vision.googleapis.com/v1/"
-    }
 }
