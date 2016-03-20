@@ -1,6 +1,7 @@
 package pl.edu.pjwstk.presentation.dagger;
 
 import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import pl.edu.pjwstk.domain.file.FileRepository;
@@ -8,7 +9,7 @@ import pl.edu.pjwstk.domain.hardware.CameraRepository;
 import pl.edu.pjwstk.domain.information.NamesForObjectInImageRepository;
 import pl.edu.pjwstk.repository.camera.AndroidCameraRepository;
 import pl.edu.pjwstk.repository.file.AndroidFileRepository;
-import pl.edu.pjwstk.repository.recognize.GoogleVisionNamesForObjectsRepository;
+import pl.edu.pjwstk.repository.recognize.MockNamesForObjectsRepository;
 
 @Module
 public class RepositoriesModule {
@@ -27,7 +28,7 @@ public class RepositoriesModule {
 
     @Provides
     @Singleton
-    NamesForObjectInImageRepository provideNamesForObjectInImageRepository(GoogleVisionNamesForObjectsRepository getNamesRepository) {
+    NamesForObjectInImageRepository provideNamesForObjectInImageRepository(MockNamesForObjectsRepository getNamesRepository) {
         return getNamesRepository;
     }
 }

@@ -48,6 +48,14 @@ dependencies {
     compile appcompat
     compile dagger
     compile googleAnalytics
+    compile (googleApiClientAndroid) {
+        exclude module: 'httpclient'
+    }
+    compile (googleApiCLientGson) {
+        exclude module: 'httpclient'
+    }
+    compile googleVisionApi
+
     compile kotlin
     compile kotterknife
     compile retrofit

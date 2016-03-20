@@ -43,4 +43,9 @@ ext {
     rxjavaAsyncUtils = 'io.reactivex:rxjava-async-util:0.21.0'
     supportDesign = 'com.android.support:design:22.2.0'
     timber = 'com.jakewharton.timber:timber:2.7.1'
+
+// vision api
+    googleApiClientAndroid = 'com.google.api-client:google-api-client-android:1.20.0'
+    googleApiCLientGson = 'com.google.http-client:google-http-client-gson:1.20.0'
+    googleVisionApi = 'com.google.apis:google-api-services-vision:v1-rev2-1.21.0'
 }
