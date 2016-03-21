@@ -9,5 +9,4 @@ abstract class CameraActivityPresenter : ActivityPresenter<CameraActivityView>()
     abstract fun cameraSurfaceReady(holder: SurfaceHolder)
     abstract fun cameraSurfaceRefresh()
     abstract fun cameraButtonClicked()
-    abstract fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray)
 }

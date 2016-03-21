@@ -53,6 +53,13 @@ abstract class SlowkaActivity <T : Any>: AppCompatActivity() {
         activityPresenter.pause()
     }
 
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                            permissions: Array<String>,
+                                            grantResults: IntArray) {
+
+        activityPresenter.onRequestPermissionsResult(requestCode, grantResults)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item?.itemId == android.R.id.home) {
             onBackPressed()

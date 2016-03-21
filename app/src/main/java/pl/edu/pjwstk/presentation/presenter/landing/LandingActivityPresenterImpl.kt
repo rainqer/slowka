@@ -25,4 +25,7 @@ class LandingActivityPresenterImpl : LandingActivityPresenter() {
 
     override fun pause() {
     }
+
+    override fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray) {
+    }
 }

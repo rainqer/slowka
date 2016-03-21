@@ -26,6 +26,7 @@ abstract class  ActivityPresenter <T : Any>{
 
     abstract fun resume()
     abstract fun pause()
+    abstract fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray)
 
     @TargetApi(Build.VERSION_CODES.M)
     protected fun permissionGranted(permission: String) =

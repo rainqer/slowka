@@ -31,4 +31,7 @@ class RecognizeImageActivityPresenterImpl constructor(
     override fun pause() {
     }
 
+    override fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray) {
+    }
+
 }

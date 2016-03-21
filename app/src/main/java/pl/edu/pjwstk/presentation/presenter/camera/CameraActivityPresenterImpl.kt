@@ -59,7 +59,7 @@ class CameraActivityPresenterImpl constructor(val cameraActivityModel: CameraAct
     override fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray) {
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             if (requestCode == CAMERA_REQUEST_PERMISSION) {
-                startCameraComponents()
+                // NO OP
             } else if (requestCode == WRITE_TO_SD_CARD_REQUEST_PERMISSION){
                 proceedToRecogniseScreenWithFileSaved()
             }

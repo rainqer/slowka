@@ -78,13 +78,6 @@ class CameraActivity : SlowkaActivity<CameraActivityView>(), CameraActivityView 
         cameraView = null
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int,
-                                            permissions: Array<String>,
-                                            grantResults: IntArray) {
-
-        presenter.onRequestPermissionsResult(requestCode, grantResults)
-    }
-
     companion object {
         fun createIntent(context: Context): Intent {
             return Intent(context, CameraActivity::class.java)
