@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="pl.edu.pjwstk.presentation.ui.landing.LandingActivity">
+    tools:context=".presentation.ui.landing.LandingActivity">
 
     <include layout="@layout/application_toolbar"/>
 

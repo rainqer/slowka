@@ -6,11 +6,11 @@ public class SlowkaApplication extends BaseApplication {
 
     @Override
     protected void provideLogging() {
-        Timber.plant(new Timber.HollowTree());
+        Timber.plant(new Timber.DebugTree());
     }
 
 //    @Override
 //    protected void provideCrashlytics() {
-//        Fabric.with(this, new Crashlytics());
+//        Do not provide crashlytics in debug mode
 //    }
 }
