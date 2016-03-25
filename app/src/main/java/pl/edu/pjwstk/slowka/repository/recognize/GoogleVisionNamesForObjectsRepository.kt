@@ -11,6 +11,7 @@ import com.google.api.services.vision.v1.model.BatchAnnotateImagesRequest
 import com.google.api.services.vision.v1.model.Feature
 import com.google.api.services.vision.v1.model.Image
 import pl.edu.pjwstk.slowka.domain.information.NamesForObjectInImageRepository
+import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
 import java.io.ByteArrayOutputStream
 import java.io.File
 import javax.inject.Inject
@@ -32,10 +33,10 @@ class GoogleVisionNamesForObjectsRepository @Inject constructor() : NamesForObje
         val httpTransport = AndroidHttp.newCompatibleTransport()
         val jsonFactory = GsonFactory.getDefaultInstance()
 
-        val builder = Vision.Builder(httpTransport, jsonFactory, null);
+        val builder = Vision.Builder(httpTransport, jsonFactory, null)
         builder.setVisionRequestInitializer(VisionRequestInitializer(DEBUG_VISION_API_KEY))
         val vision = builder.build();
-        val batchAnnotateImagesRequest = BatchAnnotateImagesRequest();
+        val batchAnnotateImagesRequest = BatchAnnotateImagesRequest()
         batchAnnotateImagesRequest.requests = arrayListOf(getAnotateImageRequest(file))
 
         val annotateRequest = vision.images().annotate(batchAnnotateImagesRequest)
@@ -44,7 +45,7 @@ class GoogleVisionNamesForObjectsRepository @Inject constructor() : NamesForObje
     }
 
     private fun getAnotateImageRequest(file: File): AnnotateImageRequest {
-        val annotateImageRequest = AnnotateImageRequest();
+        val annotateImageRequest = AnnotateImageRequest()
 
         // Add the image
         val base64EncodedImage = Image();
@@ -53,21 +54,19 @@ class GoogleVisionNamesForObjectsRepository @Inject constructor() : NamesForObje
         val byteArrayOutputStream = ByteArrayOutputStream();
 
 
-        val options = BitmapFactory.Options();
-        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        val bitmap = BitmapFactory.decodeFile(file.absolutePath, options);
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream);
-        val imageBytes = byteArrayOutputStream.toByteArray();
+        val bitmap = BitmapDecoder(file).decode()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream)
+        val imageBytes = byteArrayOutputStream.toByteArray()
 
         // Base64 encode the JPEG
-        base64EncodedImage.encodeContent(imageBytes);
-        annotateImageRequest.setImage(base64EncodedImage);
+        base64EncodedImage.encodeContent(imageBytes)
+        annotateImageRequest.setImage(base64EncodedImage)
 
         // add the features we want
 
-        val labelDetection = Feature();
-        labelDetection.setType("LABEL_DETECTION");
-        labelDetection.setMaxResults(10);
+        val labelDetection = Feature()
+        labelDetection.setType("LABEL_DETECTION")
+        labelDetection.setMaxResults(10)
         annotateImageRequest.setFeatures(arrayListOf(labelDetection))
         return annotateImageRequest
     }

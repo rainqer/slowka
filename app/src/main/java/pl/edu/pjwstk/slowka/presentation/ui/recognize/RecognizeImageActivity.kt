@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -31,7 +32,7 @@ class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(), Rec
     private val imageEditableAnnotation: EditText by bindView(R.id.annotationForImageContent)
 
     private val image: ImageView by bindView(R.id.image)
-    private val progressBar: ProgressBar by bindView(R.id.progressBar)
+    private val progressBar: View by bindView(R.id.progressBar)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentViewWithToolbar(R.layout.activity_recognizeimage)

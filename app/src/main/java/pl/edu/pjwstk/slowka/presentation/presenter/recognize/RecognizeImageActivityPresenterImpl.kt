@@ -2,6 +2,7 @@ package pl.edu.pjwstk.slowka.presentation.presenter.recognize
 
 import android.app.Activity
 import android.os.Bundle
+import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
 import pl.edu.pjwstk.slowka.presentation.model.recognize.RecognizeImageModel
 import pl.edu.pjwstk.slowka.presentation.ui.recognize.RecognizeImageActivity
 import pl.edu.pjwstk.slowka.presentation.ui.recognize.RecognizeImageActivityView
@@ -25,6 +26,7 @@ class RecognizeImageActivityPresenterImpl constructor(
     }
 
     override fun resume() {
+        presentedView.setImage(BitmapDecoder(file).decode())
         recognizeImageActivityModel.recognizeObjectInImage(file).subscribe { annotationsForTheImage ->
             presentedView.showAnnotationForRecognizedImage(annotationsForTheImage[0])
         }
