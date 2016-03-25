@@ -49,6 +49,7 @@ android {
 dependencies {
 
     compile appcompat
+    compile crooper
     compile dagger
     compile googleAnalytics
     compile (googleApiClientAndroid) {

@@ -12,6 +12,7 @@ public class LandingActivityComponentAssembler {
     public static LandingActivityComponent assemble(Application application) {
         return DaggerLandingActivityComponent.builder()
                 .applicationComponent(Components.from(application))
+                .landingModule(new LandingModule())
                 .build();
     }
 }

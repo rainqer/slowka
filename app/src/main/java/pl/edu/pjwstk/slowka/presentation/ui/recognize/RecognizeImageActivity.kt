@@ -5,10 +5,8 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.ProgressBar
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.HasComponent
@@ -20,7 +18,8 @@ import pl.edu.pjwstk.slowka.presentation.ui.SlowkaActivity
 import java.io.File
 import javax.inject.Inject
 
-class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(), RecognizeImageActivityView,
+class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(),
+        RecognizeImageActivityView,
         HasComponent<RecognizeImageActivityComponent?> {
 
     @Inject
