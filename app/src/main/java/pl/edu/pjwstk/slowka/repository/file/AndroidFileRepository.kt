@@ -18,6 +18,6 @@ class AndroidFileRepository : FileRepository {
     }
 
     override fun saveBitmapToFile(bitmap: Bitmap, destinationFile: File): File {
-        return BitmapToFileSavingProcess(bitmap, destinationFile.absolutePath).save()
+        return BitmapToFileSavingProcess(bitmap, destinationFile.name).save()
     }
 }
