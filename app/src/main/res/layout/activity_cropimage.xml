@@ -9,7 +9,8 @@
     <com.edmodo.cropper.CropImageView
         android:id="@+id/croppImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
