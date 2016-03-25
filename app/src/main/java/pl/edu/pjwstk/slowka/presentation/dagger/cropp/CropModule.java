@@ -2,6 +2,7 @@ package pl.edu.pjwstk.slowka.presentation.dagger.cropp;
 
 import dagger.Module;
 import dagger.Provides;
+import pl.edu.pjwstk.slowka.domain.file.SaveBitmapUseCase;
 import pl.edu.pjwstk.slowka.presentation.presenter.cropp.CropImageActivityPresenter;
 import pl.edu.pjwstk.slowka.presentation.presenter.cropp.CropImageActivityPresenterImpl;
 
@@ -10,8 +11,8 @@ public class CropModule {
 
     @CropImageActivityScope
     @Provides
-    CropImageActivityPresenter provideCroppImageActivityPresenter() {
+    CropImageActivityPresenter provideCroppImageActivityPresenter(SaveBitmapUseCase saveBitmapUseCase) {
 
-        return new CropImageActivityPresenterImpl();
+        return new CropImageActivityPresenterImpl(saveBitmapUseCase);
     }
 }

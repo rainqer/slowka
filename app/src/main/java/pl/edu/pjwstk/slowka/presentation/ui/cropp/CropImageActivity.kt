@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.widget.Button
 import butterknife.bindView
 import com.edmodo.cropper.CropImageView
-import kotlinx.android.synthetic.main.activity_cropimage.*
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.HasComponent
 import pl.edu.pjwstk.slowka.presentation.dagger.cropp.CropImageActivityComponent
@@ -15,7 +14,6 @@ import pl.edu.pjwstk.slowka.presentation.dagger.cropp.CropImageActivityComponent
 import pl.edu.pjwstk.slowka.presentation.presenter.ActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.presenter.cropp.CropImageActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.ui.SlowkaActivity
-import pl.edu.pjwstk.slowka.presentation.ui.recognize.RecognizeImageActivity
 import java.io.File
 import javax.inject.Inject
 
@@ -47,7 +45,7 @@ class CropImageActivity : SlowkaActivity<CropImageActivityView>(),
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         attachPresenter(this, this, savedInstanceState)
-        fab.setOnClickListener { view ->
+        cropButton.setOnClickListener {
             presenter.cropButtonClicked(cropImageView.croppedImage)
         }
     }
@@ -59,8 +57,8 @@ class CropImageActivity : SlowkaActivity<CropImageActivityView>(),
     companion object {
         final val FILE_NAME_KEY : String = "fileKey"
         fun createIntent(context: Context, file : File): Intent {
-            return Intent(context, RecognizeImageActivity::class.java)
-                    .putExtra(RecognizeImageActivity.Companion.FILE_NAME_KEY, file.absolutePath)
+            return Intent(context, CropImageActivity::class.java)
+                    .putExtra(CropImageActivity.Companion.FILE_NAME_KEY, file.absolutePath)
         }
     }
 }

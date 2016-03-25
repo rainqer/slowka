@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import pl.edu.pjwstk.slowka.domain.file.SaveBitmapUseCase
 import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
+import pl.edu.pjwstk.slowka.presentation.ui.cropp.CropImageActivity
 import pl.edu.pjwstk.slowka.presentation.ui.cropp.CropImageActivityView
 import pl.edu.pjwstk.slowka.presentation.ui.recognize.RecognizeImageActivity
 import rx.schedulers.Schedulers
@@ -24,7 +25,7 @@ class CropImageActivityPresenterImpl constructor (
     }
 
     private fun extractInfoFromIntent() {
-        fileWithBitmap = File(presentedActivity.intent.getStringExtra(RecognizeImageActivity.FILE_NAME_KEY))
+        fileWithBitmap = File(presentedActivity.intent.getStringExtra(CropImageActivity.FILE_NAME_KEY))
     }
 
     override fun cropButtonClicked(croppedImage: Bitmap) {
