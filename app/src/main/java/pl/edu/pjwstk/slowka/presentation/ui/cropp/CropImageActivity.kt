@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.widget.Button
+import android.support.design.widget.FloatingActionButton
 import butterknife.bindView
 import com.edmodo.cropper.CropImageView
 import pl.edu.pjwstk.slowka.R
@@ -29,11 +29,11 @@ class CropImageActivity : SlowkaActivity<CropImageActivityView>(),
         get() = presenter
 
     private val cropImageView : CropImageView by bindView(R.id.croppImage)
-    private val cropButton : Button by bindView(R.id.fab)
+    private val cropButton : FloatingActionButton by bindView(R.id.fab)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentViewWithToolbar(R.layout.activity_recognizeimage)
+        setContentViewWithToolbar(R.layout.activity_cropimage)
         setDaggerComponent(CropImageActivityComponentAssembler.assemble(application))
     }
 

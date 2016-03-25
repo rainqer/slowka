@@ -32,11 +32,19 @@ abstract class FileSavingProcess <T: Any> constructor (fileName: String) {
     }
 
     private fun prepareImageFile(imageFileFolder: File): File {
-        val imageFile = File(imageFileFolder, fileName + EXTENSION)
+        val imageFile = File(imageFileFolder, getFileName())
         if (imageFile.exists()) {
             imageFile.delete()
         }
         return imageFile
+    }
+
+    private fun getFileName() : String {
+        return if (fileName.endsWith(EXTENSION)) {
+            fileName
+        } else {
+            fileName + EXTENSION
+        }
     }
 
     private fun saveToFile(dataOfType: T, imageFile: File): File {
