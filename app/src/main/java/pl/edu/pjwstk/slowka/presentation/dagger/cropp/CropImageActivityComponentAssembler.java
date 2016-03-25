@@ -4,14 +4,14 @@ import android.app.Application;
 
 import pl.edu.pjwstk.slowka.presentation.dagger.Components;
 
-public class CroppImageActivityComponentAssembler {
+public class CropImageActivityComponentAssembler {
 
-    private CroppImageActivityComponentAssembler() {
+    private CropImageActivityComponentAssembler() {
         throw new AssertionError("No instances.");
     }
 
-    public static CroppImageActivityComponent assemble(Application application) {
-        return DaggerCroppImageActivityComponent.builder()
+    public static CropImageActivityComponent assemble(Application application) {
+        return DaggerCropImageActivityComponent.builder()
                 .applicationComponent(Components.from(application))
                 .build();
     }

@@ -32,6 +32,7 @@ class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(),
 
     private val image: ImageView by bindView(R.id.image)
     private val progressBar: View by bindView(R.id.progressBar)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentViewWithToolbar(R.layout.activity_recognizeimage)

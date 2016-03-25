@@ -19,7 +19,7 @@ class SaveCameraFrameUseCase : UseCase<File> {
     constructor(fileRepository: FileRepository, mediaScannerUpdater: MediaScannerUpdater, cameraFrame: CameraFrame?) {
         this.mediaScannerUpdater = mediaScannerUpdater
         this.fileRepository = fileRepository
-        this.cameraFrame = cameraFrame;
+        this.cameraFrame = cameraFrame
     }
 
     fun cameraFrame(cameraFrame: CameraFrame) : SaveCameraFrameUseCase {
@@ -31,7 +31,7 @@ class SaveCameraFrameUseCase : UseCase<File> {
             throw AssertionError("Camera Frame not specified")
         }
         val file = fileRepository.saveImageToFile(cameraFrame)
-        mediaScannerUpdater.update(file);
+        mediaScannerUpdater.update(file)
         return file
     }
 }

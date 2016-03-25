@@ -1,28 +1,26 @@
 package pl.edu.pjwstk.slowka.repository.file
 
-import android.graphics.*
 import android.os.Environment
+import timber.log.Timber
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import timber.log.Timber
 
-class ImageFileSavingProcess (data: ByteArray, fileName: String, sizeRect: Rect) {
-    private val data: ByteArray
+abstract class FileSavingProcess <T: Any> constructor (fileName: String) {
+
     private val fileName: String
-    private val sizeRect: Rect
 
     init {
-        this.data = checkNotNull(data)
         this.fileName = checkNotNull(fileName)
-        this.sizeRect = checkNotNull(sizeRect)
     }
 
-    fun save(): File {
-        val img = YuvImage(data, ImageFormat.NV21, sizeRect.width(), sizeRect.height(), null);
+    abstract protected fun flushDataIntoFile(dataOfType: T, out: FileOutputStream)
+    abstract protected fun finally(dataOfType: T)
+
+    fun save(dataOfType: T): File {
         val imageFileFolder = prepareImageFolder()
         val imageFile = prepareImageFile(imageFileFolder)
-        return saveToFile(img, imageFile)
+        return saveToFile(dataOfType, imageFile)
     }
 
     private fun prepareImageFolder(): File {
@@ -41,48 +39,24 @@ class ImageFileSavingProcess (data: ByteArray, fileName: String, sizeRect: Rect)
         return imageFile
     }
 
-    private fun saveToFileAndRecycleBitmap(bitmap: Bitmap, imageFile: File): File {
+    private fun saveToFile(dataOfType: T, imageFile: File): File {
         var resultFile: File = imageFile
         var out: FileOutputStream? = null
         try {
             out = FileOutputStream(imageFile)
-            flushBitmapToOutputStream(bitmap, out)
+            flushDataIntoFile(dataOfType, out)
         } finally {
-            bitmap.recycle()
+            finally(dataOfType)
             tryClosingOutputStream(out)
         }
         return resultFile
-    }
-
-    private fun saveToFile(yuvImage: YuvImage, imageFile: File): File {
-        var resultFile: File = imageFile
-        var out: FileOutputStream? = null
-        try {
-            out = FileOutputStream(imageFile)
-            flushYuvToOutputStream(yuvImage, out)
-        } finally {
-            tryClosingOutputStream(out)
-        }
-        return resultFile
-    }
-
-    @Throws(IOException::class)
-    private fun flushBitmapToOutputStream(bitmap: Bitmap, out: FileOutputStream) {
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
-        out.flush()
-    }
-
-    @Throws(IOException::class)
-    private fun flushYuvToOutputStream(yuvImage: YuvImage, out: FileOutputStream) {
-        yuvImage.compressToJpeg(sizeRect, 100, out)
-        out.flush()
     }
 
     private fun tryClosingOutputStream(out: FileOutputStream?) {
         try {
             out?.close()
         } catch (exception: IOException) {
-            Timber.e(exception, ImageFileSavingProcess.Companion.TAG)
+            Timber.e(exception, FileSavingProcess.Companion.TAG)
         }
     }
 

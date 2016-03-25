@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.view.SurfaceHolder
 import pl.edu.pjwstk.slowka.presentation.model.camera.CameraActivityModel
 import pl.edu.pjwstk.slowka.presentation.ui.camera.CameraActivityView
-import pl.edu.pjwstk.slowka.presentation.ui.recognize.RecognizeImageActivity
+import pl.edu.pjwstk.slowka.presentation.ui.cropp.CropImageActivity
 
 class CameraActivityPresenterImpl constructor(val cameraActivityModel: CameraActivityModel)
         : CameraActivityPresenter() {
@@ -44,15 +44,15 @@ class CameraActivityPresenterImpl constructor(val cameraActivityModel: CameraAct
 
     override fun cameraButtonClicked() {
         if (permissionGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            proceedToRecogniseScreenWithFileSaved()
+            proceedToCropScreenWithFileSaved()
         } else {
             requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, WRITE_TO_SD_CARD_REQUEST_PERMISSION)
         }
     }
 
-    private fun proceedToRecogniseScreenWithFileSaved() {
+    private fun proceedToCropScreenWithFileSaved() {
         cameraActivityModel.saveCurrentCameraFrameToFile().subscribe { file ->
-            startActivity(RecognizeImageActivity.createIntent(presentedActivity, file))
+            startActivity(CropImageActivity.createIntent(presentedActivity, file))
         }
     }
 
@@ -61,7 +61,7 @@ class CameraActivityPresenterImpl constructor(val cameraActivityModel: CameraAct
             if (requestCode == CAMERA_REQUEST_PERMISSION) {
                 // NO OP
             } else if (requestCode == WRITE_TO_SD_CARD_REQUEST_PERMISSION){
-                proceedToRecogniseScreenWithFileSaved()
+                proceedToCropScreenWithFileSaved()
             }
         }
     }

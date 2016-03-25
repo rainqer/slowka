@@ -1,5 +1,6 @@
 package pl.edu.pjwstk.slowka.repository.file
 
+import android.graphics.Bitmap
 import pl.edu.pjwstk.slowka.domain.file.FileRepository
 import pl.edu.pjwstk.slowka.domain.hardware.CameraFrame
 import java.io.File
@@ -13,6 +14,10 @@ class AndroidFileRepository : FileRepository {
     constructor()
 
     override fun saveImageToFile(cameraFrame: CameraFrame) : File {
-        return ImageFileSavingProcess(cameraFrame.frame, "aaa", cameraFrame.dimensions).save()
+        return ByteArrayToFileSavingProcess(cameraFrame.frame, "aaa", cameraFrame.dimensions).save()
+    }
+
+    override fun saveBitmapToFile(bitmap: Bitmap, destinationFile: File): File {
+        return BitmapToFileSavingProcess(bitmap, destinationFile.absolutePath).save()
     }
 }

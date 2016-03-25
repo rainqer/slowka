@@ -8,7 +8,7 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 
-abstract class  ActivityPresenter <T : Any>{
+abstract class  ActivityPresenter <T : Any> {
 
     private lateinit var activityView: T
     protected val presentedView : T
