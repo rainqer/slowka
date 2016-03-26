@@ -2,6 +2,7 @@ package pl.edu.pjwstk.slowka.presentation.presenter.recognize
 
 import android.app.Activity
 import android.os.Bundle
+import pl.edu.pjwstk.slowka.domain.content.ImageObject
 import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
 import pl.edu.pjwstk.slowka.presentation.model.recognize.RecognizeImageModel
 import pl.edu.pjwstk.slowka.presentation.ui.recognize.RecognizeImageActivity
@@ -23,6 +24,10 @@ class RecognizeImageActivityPresenterImpl constructor(
 
     private fun extractInfoFromIntent() {
         file = File(presentedActivity.intent.getStringExtra(RecognizeImageActivity.Companion.FILE_NAME_KEY))
+    }
+
+    override fun confirmButtonClicked() {
+        recognizeImageActivityModel.storeReadyImageObject(ImageObject(file, presentedView.imageAnnotation))
     }
 
     override fun resume() {

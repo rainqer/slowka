@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
@@ -28,10 +29,14 @@ class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(),
     override var component: RecognizeImageActivityComponent? = null
     override val activityPresenter: ActivityPresenter<RecognizeImageActivityView>
         get() = presenter
-    private val imageEditableAnnotation: EditText by bindView(R.id.annotationForImageContent)
 
+    override val imageAnnotation: String
+        get() = imageEditableAnnotation.text.toString()
+
+    private val imageEditableAnnotation: EditText by bindView(R.id.annotationForImageContent)
     private val image: ImageView by bindView(R.id.image)
     private val progressBar: View by bindView(R.id.progressBar)
+    private val confirmButton: FloatingActionButton by bindView(R.id.fab)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +52,9 @@ class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(),
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         attachPresenter(this, this, savedInstanceState)
+        confirmButton.setOnClickListener {
+            presenter.confirmButtonClicked()
+        }
     }
 
     override fun showAnnotationForRecognizedImage(annotationForImage: String) {

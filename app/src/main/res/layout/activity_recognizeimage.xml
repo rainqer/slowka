@@ -21,6 +21,12 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"/>
 
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:src="@android:drawable/ic_menu_add"
+        style="@style/fab_style_slowka" />
+
     <FrameLayout
         android:id="@+id/progressBar"
         android:layout_width="match_parent"

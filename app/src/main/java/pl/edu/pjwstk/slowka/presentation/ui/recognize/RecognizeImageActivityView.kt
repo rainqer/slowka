@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 
 interface RecognizeImageActivityView {
 
+    val imageAnnotation: String
     open fun showAnnotationForRecognizedImage(annotationForImage: String)
     open fun setImage(bitmap: Bitmap)
 }
