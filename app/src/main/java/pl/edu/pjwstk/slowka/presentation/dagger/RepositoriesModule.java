@@ -4,10 +4,12 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import pl.edu.pjwstk.slowka.domain.content.ImageObjectRepository;
 import pl.edu.pjwstk.slowka.domain.file.FileRepository;
 import pl.edu.pjwstk.slowka.domain.hardware.CameraRepository;
 import pl.edu.pjwstk.slowka.domain.information.NamesForObjectInImageRepository;
 import pl.edu.pjwstk.slowka.repository.camera.AndroidCameraRepository;
+import pl.edu.pjwstk.slowka.repository.content.AndroidImageObjectRepository;
 import pl.edu.pjwstk.slowka.repository.file.AndroidFileRepository;
 import pl.edu.pjwstk.slowka.repository.recognize.MockNamesForObjectsRepository;
 
@@ -30,5 +32,11 @@ public class RepositoriesModule {
     @Singleton
     NamesForObjectInImageRepository provideNamesForObjectInImageRepository(MockNamesForObjectsRepository getNamesRepository) {
         return getNamesRepository;
+    }
+
+    @Provides
+    @Singleton
+    ImageObjectRepository provideImageObjectRepository(AndroidImageObjectRepository imageObjectRepository) {
+        return imageObjectRepository;
     }
 }

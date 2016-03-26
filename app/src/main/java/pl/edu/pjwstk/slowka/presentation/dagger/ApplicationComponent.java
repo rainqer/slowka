@@ -3,6 +3,7 @@ package pl.edu.pjwstk.slowka.presentation.dagger;
 import android.content.Context;
 import javax.inject.Singleton;
 import dagger.Component;
+import pl.edu.pjwstk.slowka.domain.content.ImageObjectRepository;
 import pl.edu.pjwstk.slowka.domain.file.FileRepository;
 import pl.edu.pjwstk.slowka.domain.hardware.CameraRepository;
 import pl.edu.pjwstk.slowka.domain.information.NamesForObjectInImageRepository;
@@ -15,8 +16,9 @@ import pl.edu.pjwstk.slowka.domain.information.NamesForObjectInImageRepository;
         }
 )
 public interface ApplicationComponent {
-        Context providesContext();
-        CameraRepository providesCameraRepository();
-        FileRepository providesFileRepository();
-        NamesForObjectInImageRepository providesNamesForObjectInImageRepository();
+    Context providesContext();
+    CameraRepository providesCameraRepository();
+    FileRepository providesFileRepository();
+    NamesForObjectInImageRepository providesNamesForObjectInImageRepository();
+    ImageObjectRepository providesImageObjectRepository();
 }

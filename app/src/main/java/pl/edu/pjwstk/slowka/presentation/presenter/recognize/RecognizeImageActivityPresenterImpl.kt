@@ -2,6 +2,7 @@ package pl.edu.pjwstk.slowka.presentation.presenter.recognize
 
 import android.app.Activity
 import android.os.Bundle
+import android.widget.Toast
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
 import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
 import pl.edu.pjwstk.slowka.presentation.model.recognize.RecognizeImageModel
@@ -27,7 +28,12 @@ class RecognizeImageActivityPresenterImpl constructor(
     }
 
     override fun confirmButtonClicked() {
-        recognizeImageActivityModel.storeReadyImageObject(ImageObject(file, presentedView.imageAnnotation))
+        recognizeImageActivityModel
+                .storeReadyImageObject(ImageObject(file, presentedView.imageAnnotation))
+                .subscribe { successful ->
+                    Toast.makeText(presentedActivity, if (successful) "SUCCESS" else "FAIL" , Toast.LENGTH_LONG)
+                    presentedActivity.finish()
+                }
     }
 
     override fun resume() {

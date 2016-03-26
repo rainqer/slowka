@@ -41,6 +41,7 @@ class CropImageActivityPresenterImpl constructor (
         cropActivityModel.overwriteBitmapInFile(presentedView.croppedImage, fileWithBitmap)
                 .subscribe { destinationFile ->
                     startActivity(RecognizeImageActivity.createIntent(presentedActivity, destinationFile))
+                    presentedActivity.finish()
                 }
     }
 

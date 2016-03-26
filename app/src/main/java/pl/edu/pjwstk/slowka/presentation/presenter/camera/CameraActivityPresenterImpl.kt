@@ -53,6 +53,7 @@ class CameraActivityPresenterImpl constructor(val cameraActivityModel: CameraAct
     private fun proceedToCropScreenWithFileSaved() {
         cameraActivityModel.saveCurrentCameraFrameToFile().subscribe { file ->
             startActivity(CropImageActivity.createIntent(presentedActivity, file))
+            presentedActivity.finish()
         }
     }
 

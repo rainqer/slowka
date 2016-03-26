@@ -5,12 +5,28 @@ import javax.inject.Inject
 
 class StoreImageObjectUseCase : UseCase<Boolean> {
 
-    @Inject
-    constructor() {
+    private val imageObjectRepository: ImageObjectRepository
+    private val imageObject: ImageObject?
 
+    @Inject
+    constructor(imageObjectRepository: ImageObjectRepository) : this (imageObjectRepository, null)
+
+    private constructor(imageObjectRepository: ImageObjectRepository,
+                        imageObject: ImageObject?) {
+
+        this.imageObjectRepository = imageObjectRepository
+        this.imageObject = imageObject
+    }
+
+    fun image(imageObject: ImageObject) : StoreImageObjectUseCase {
+        return StoreImageObjectUseCase(imageObjectRepository, imageObject)
     }
 
     override fun perform(): Boolean {
+        if (imageObject == null) {
+            throw AssertionError("Image Object not specified")
+        }
+        return imageObjectRepository.insert(imageObject)
     }
 
 }

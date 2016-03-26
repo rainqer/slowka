@@ -8,10 +8,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AndroidFileRepository : FileRepository {
-
-    @Inject
-    constructor()
+class AndroidFileRepository @Inject constructor() : FileRepository {
 
     override fun saveImageToFile(cameraFrame: CameraFrame) : File {
         return ByteArrayToFileSavingProcess(cameraFrame.frame, "aaa", cameraFrame.dimensions).save()

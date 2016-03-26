@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 @RecognizeImageActivityScope
 class RecognizeImageModel @Inject constructor(
-        private val getNamesForObjectInImageUseCase: GetNamesForObjectInImageUseCase
+        private val getNamesForObjectInImageUseCase: GetNamesForObjectInImageUseCase,
         private val storeImageObjectUseCase: StoreImageObjectUseCase
     ) {
 
@@ -19,7 +19,7 @@ class RecognizeImageModel @Inject constructor(
         return getNamesForObjectInImageUseCase.inImageFrom(file).performAndObserve(Schedulers.io())
     }
 
-    fun storeReadyImageObject(imageObject: ImageObject) {
-
+    fun storeReadyImageObject(imageObject: ImageObject) : Observable<Boolean> {
+        return storeImageObjectUseCase.image(imageObject).performAndObserve(Schedulers.io())
     }
 }

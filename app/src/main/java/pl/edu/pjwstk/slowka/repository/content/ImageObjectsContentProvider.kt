@@ -53,6 +53,6 @@ class ImageObjectsContentProvider : ContentProvider() {
 
     companion object {
         val ERROR = -1
-        final val URI = Uri.parse("content://pl.edu.pjwstk.slowka.repository.provider/imageobjects")
+        val URI = Uri.parse("content://pl.edu.pjwstk.slowka.repository.provider/imageobjects")
     }
 }
