@@ -2,7 +2,9 @@ package pl.edu.pjwstk.slowka.domain.file
 
 import pl.edu.pjwstk.slowka.domain.UseCase
 import pl.edu.pjwstk.slowka.domain.hardware.CameraFrame
+import pl.edu.pjwstk.slowka.presentation.ui.recognize.RecognizeImageActivity
 import pl.edu.pjwstk.slowka.repository.file.MediaScannerUpdater
+import rx.schedulers.Schedulers
 import java.io.File
 import javax.inject.Inject
 

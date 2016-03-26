@@ -3,16 +3,15 @@ package pl.edu.pjwstk.slowka.presentation.presenter.cropp
 import android.app.Activity
 import android.graphics.Bitmap
 import android.os.Bundle
-import pl.edu.pjwstk.slowka.domain.file.SaveBitmapUseCase
 import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
+import pl.edu.pjwstk.slowka.presentation.model.crop.CropActivityModel
 import pl.edu.pjwstk.slowka.presentation.ui.cropp.CropImageActivity
 import pl.edu.pjwstk.slowka.presentation.ui.cropp.CropImageActivityView
 import pl.edu.pjwstk.slowka.presentation.ui.recognize.RecognizeImageActivity
-import rx.schedulers.Schedulers
 import java.io.File
 
 class CropImageActivityPresenterImpl constructor (
-        private val saveFileCameraUseCase : SaveBitmapUseCase
+        private val cropActivityModel: CropActivityModel
     ) : CropImageActivityPresenter() {
 
     private lateinit var fileWithBitmap: File
@@ -29,10 +28,7 @@ class CropImageActivityPresenterImpl constructor (
     }
 
     override fun cropButtonClicked(croppedImage: Bitmap) {
-        saveFileCameraUseCase
-                .bitmap(croppedImage)
-                .toFile(fileWithBitmap)
-                .performAndObserve(Schedulers.computation())
+        cropActivityModel.overwriteBitmapInFile(croppedImage, fileWithBitmap)
                 .subscribe { destinationFile ->
                     startActivity(RecognizeImageActivity.createIntent(presentedActivity, destinationFile))
                 }
