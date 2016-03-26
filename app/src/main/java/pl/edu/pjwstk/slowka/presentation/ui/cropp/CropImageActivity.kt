@@ -23,10 +23,12 @@ class CropImageActivity : SlowkaActivity<CropImageActivityView>(),
 
     @Inject
     protected lateinit var presenter: CropImageActivityPresenter
-
     override var component: CropImageActivityComponent? = null
     override val activityPresenter: ActivityPresenter<CropImageActivityView>
         get() = presenter
+
+    override val croppedImage: Bitmap
+        get() = cropImageView.croppedImage
 
     private val cropImageView : CropImageView by bindView(R.id.croppImage)
     private val cropButton : FloatingActionButton by bindView(R.id.fab)
@@ -46,7 +48,7 @@ class CropImageActivity : SlowkaActivity<CropImageActivityView>(),
         super.onPostCreate(savedInstanceState)
         attachPresenter(this, this, savedInstanceState)
         cropButton.setOnClickListener {
-            presenter.cropButtonClicked(cropImageView.croppedImage)
+            presenter.cropButtonClicked()
         }
     }
 
