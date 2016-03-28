@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".presentation.ui.landing.LandingActivity">
-
-    <include layout="@layout/application_toolbar"/>
-
-    <include layout="@layout/content_landing" />
+    android:layout_height="match_parent">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
