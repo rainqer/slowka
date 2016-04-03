@@ -9,7 +9,7 @@ class ViewAllImageObjectsUseCase : UseCase<Cursor> {
     private val imageObjectRepository: ImageObjectRepository
 
     @Inject
-    private constructor(imageObjectRepository: ImageObjectRepository) {
+    constructor(imageObjectRepository: ImageObjectRepository) {
 
         this.imageObjectRepository = imageObjectRepository
     }

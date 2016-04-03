@@ -26,7 +26,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    kotlin_version = '1.0.1-1'
+    kotlin_version = '1.0.1-2'
 
     appcompat = 'com.android.support:appcompat-v7:23.0.1'
     butterknife = 'com.jakewharton:butterknife:7.0.1'
@@ -38,6 +38,7 @@ ext {
     kotlin = "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     kotterknife = 'com.jakewharton:kotterknife:0.1.0-SNAPSHOT'
     multidex = 'com.android.support:multidex:1.0.0'
+    picasso = 'com.squareup.picasso:picasso:2.5.2'
     retrofit = 'com.squareup.retrofit:retrofit:1.9.0'
     rxjava = 'io.reactivex:rxjava:1.0.15'
     rxjavaAndroid = 'io.reactivex:rxandroid:1.0.1'

@@ -62,6 +62,7 @@ dependencies {
 
     compile kotlin
     compile kotterknife
+    compile picasso
     compile retrofit
     compile rxjava
     compile rxjavaAndroid

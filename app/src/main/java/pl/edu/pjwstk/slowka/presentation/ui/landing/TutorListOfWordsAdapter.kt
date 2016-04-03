@@ -1,23 +1,26 @@
 package pl.edu.pjwstk.slowka.presentation.ui.landing
 
+import android.content.Context
+import android.database.Cursor
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.squareup.picasso.Picasso
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
 import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
+import skyfish.RecyclerViewCursorAdapter
 
-class TutorListOfWordsAdapter (private val listOfImageObjects : List<ImageObject>)
-    : RecyclerView.Adapter<TutorListOfWordsAdapter.TutorWordViewHolder>() {
+class TutorListOfWordsAdapter (private val context: Context, cursor: Cursor?)
+    : RecyclerViewCursorAdapter<TutorListOfWordsAdapter.TutorWordViewHolder>(cursor) {
 
-    override fun onBindViewHolder(holder: TutorWordViewHolder, position: Int) {
-        holder.itemAnnotation.text = listOfImageObjects.get(position).annotation
-        holder.itemImage.setImageBitmap(
-                BitmapDecoder(listOfImageObjects.get(position).imageFile).decode()
-        )
+    override fun onBindViewHolder(viewHolder: TutorWordViewHolder, cursor: Cursor) {
+        val imageObject = ImageObject(cursor)
+        viewHolder.itemAnnotation.text = imageObject.annotation
+        Picasso.with(context).load(imageObject.imageFile).into(viewHolder.itemImage)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TutorWordViewHolder {
@@ -25,10 +28,6 @@ class TutorListOfWordsAdapter (private val listOfImageObjects : List<ImageObject
                 .from(parent.context)
                 .inflate(R.layout.holder_tutor_list_item, parent, false)
         return TutorWordViewHolder(itemView)
-    }
-
-    override fun getItemCount(): Int {
-        return listOfImageObjects.size
     }
 
     class TutorWordViewHolder : RecyclerView.ViewHolder {

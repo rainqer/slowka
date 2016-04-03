@@ -18,7 +18,7 @@ class SaveCameraFrameUseCase : UseCase<File> {
     constructor(fileRepository: FileRepository, mediaScannerUpdater: MediaScannerUpdater)
         : this (fileRepository, mediaScannerUpdater, null)
 
-    constructor(fileRepository: FileRepository, mediaScannerUpdater: MediaScannerUpdater, cameraFrame: CameraFrame?) {
+    private constructor(fileRepository: FileRepository, mediaScannerUpdater: MediaScannerUpdater, cameraFrame: CameraFrame?) {
         this.mediaScannerUpdater = mediaScannerUpdater
         this.fileRepository = fileRepository
         this.cameraFrame = cameraFrame
