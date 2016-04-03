@@ -8,8 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
+import javax.inject.Inject
 
-class TutorWordsListFragment : Fragment() {
+class TutorWordsListFragment @Inject constructor() : Fragment() {
 
     val listOfWords : RecyclerView by bindView(R.id.wordsList)
 

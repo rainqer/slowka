@@ -9,8 +9,9 @@ import android.view.ViewGroup
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.ui.camera.CameraActivity
+import javax.inject.Inject
 
-class WordsCategoriesListFragment : Fragment() {
+class WordsCategoriesListFragment @Inject constructor() : Fragment() {
 
     val fab : FloatingActionButton by bindView(R.id.fab)
 
