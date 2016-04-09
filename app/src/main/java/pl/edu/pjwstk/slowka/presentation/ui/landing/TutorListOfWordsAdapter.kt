@@ -11,7 +11,6 @@ import android.widget.TextView
 import com.squareup.picasso.Picasso
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
-import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
 import skyfish.RecyclerViewCursorAdapter
 
 class TutorListOfWordsAdapter (private val context: Context, cursor: Cursor?)

@@ -25,7 +25,7 @@ class TutorWordsListFragment @Inject constructor() : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //move to presenter
+        //todo move to presenter
         ViewAllImageObjectsUseCase(AndroidImageObjectRepository(context))
                 .performAndObserve(Schedulers.io()).subscribe { cursor ->
 
