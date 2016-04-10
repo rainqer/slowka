@@ -16,10 +16,10 @@ class RecognizeImageActivityPresenterImpl constructor(
 
     private lateinit var file : File
 
-    override fun attach(activityView: RecognizeImageActivityView,
+    override fun attach(view: RecognizeImageActivityView,
                         activity: Activity,
                         savedInstanceState: Bundle?) {
-        super.attach(activityView, activity, savedInstanceState)
+        super.attach(view, activity, savedInstanceState)
         extractInfoFromIntent()
     }
 

@@ -8,19 +8,19 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 
-abstract class  ActivityPresenter <T : Any> {
+abstract class Presenter <T : Any> {
 
-    private lateinit var activityView: T
+    private lateinit var view: T
     protected val presentedView : T
-        get() = activityView
+        get() = view
     private lateinit var activity: Activity
     protected val presentedActivity : Activity
         get() = activity
 
-    open fun attach(activityView: T,
+    open fun attach(view: T,
                     activity: Activity,
                     savedInstanceState: Bundle?) {
-        this.activityView = activityView
+        this.view = view
         this.activity = activity
     }
 

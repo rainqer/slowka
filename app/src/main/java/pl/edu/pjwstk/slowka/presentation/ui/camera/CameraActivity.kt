@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.widget.FrameLayout
 import butterknife.bindView
-import pl.edu.pjwstk.slowka.presentation.presenter.ActivityPresenter
+import pl.edu.pjwstk.slowka.presentation.presenter.Presenter
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.HasComponent
 import pl.edu.pjwstk.slowka.presentation.dagger.camera.CameraActivityComponent
@@ -22,7 +22,7 @@ class CameraActivity : SlowkaActivity<CameraActivityView>(), CameraActivityView,
     @Inject
     protected lateinit var presenter: CameraActivityPresenter
     override var component: CameraActivityComponent? = null
-    override val activityPresenter: ActivityPresenter<CameraActivityView>
+    override val activityPresenter: Presenter<CameraActivityView>
         get() = presenter
 
     private val cameraContainer: FrameLayout by bindView(R.id.cameraContainer)

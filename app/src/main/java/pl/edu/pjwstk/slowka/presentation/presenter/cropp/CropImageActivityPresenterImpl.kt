@@ -18,10 +18,10 @@ class CropImageActivityPresenterImpl constructor (
     private val WRITE_TO_SD_CARD_REQUEST_PERMISSION: Int = 224;
     private lateinit var fileWithBitmap: File
 
-    override fun attach(activityView: CropImageActivityView,
+    override fun attach(view: CropImageActivityView,
                         activity: Activity,
                         savedInstanceState: Bundle?) {
-        super.attach(activityView, activity, savedInstanceState)
+        super.attach(view, activity, savedInstanceState)
         extractInfoFromIntent()
     }
 

@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.view.Menu
-import pl.edu.pjwstk.slowka.presentation.presenter.ActivityPresenter
+import pl.edu.pjwstk.slowka.presentation.presenter.Presenter
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.HasComponent
 import pl.edu.pjwstk.slowka.presentation.dagger.landing.LandingActivityComponent
@@ -20,7 +20,7 @@ class LandingActivity : SlowkaActivityWithDrawer<LandingActivityView>(),
     @Inject
     protected lateinit var presenter: LandingActivityPresenter
     override var component: LandingActivityComponent? = null
-    override val activityPresenter: ActivityPresenter<LandingActivityView>
+    override val activityPresenter: Presenter<LandingActivityView>
         get() = presenter
     override val drawerSelectionListener: NavigationView.OnNavigationItemSelectedListener
         get() = presenter

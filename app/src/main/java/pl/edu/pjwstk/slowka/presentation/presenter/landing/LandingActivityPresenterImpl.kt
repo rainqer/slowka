@@ -14,8 +14,8 @@ class LandingActivityPresenterImpl : LandingActivityPresenter() {
     private lateinit var landingActivityView: LandingActivityView
     private lateinit var activity: Activity
 
-    override fun attach(activityView: LandingActivityView, activity: Activity, savedInstanceState: Bundle?) {
-        this.landingActivityView = activityView
+    override fun attach(view: LandingActivityView, activity: Activity, savedInstanceState: Bundle?) {
+        this.landingActivityView = view
         this.activity = activity
     }
 

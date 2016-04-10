@@ -15,10 +15,10 @@ class CameraActivityPresenterImpl constructor(val cameraActivityModel: CameraAct
     private val CAMERA_REQUEST_PERMISSION: Int = 123;
     private val WRITE_TO_SD_CARD_REQUEST_PERMISSION: Int = 124;
 
-    override fun attach(activityView: CameraActivityView,
+    override fun attach(view: CameraActivityView,
                         activity: Activity,
                         savedInstanceState: Bundle?) {
-        super.attach(activityView, activity, savedInstanceState)
+        super.attach(view, activity, savedInstanceState)
         presentedView.setupCameraPreviewRatio(Ratio.FOUR_TO_THREE)
     }
 

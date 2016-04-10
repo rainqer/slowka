@@ -9,13 +9,13 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.WindowManager
 import butterknife.bindView
-import pl.edu.pjwstk.slowka.presentation.presenter.ActivityPresenter
+import pl.edu.pjwstk.slowka.presentation.presenter.Presenter
 import pl.edu.pjwstk.slowka.R
 
 abstract class SlowkaActivity <T : Any>: AppCompatActivity() {
 
     protected val toolbar: Toolbar by bindView(R.id.toolbar)
-    protected abstract val activityPresenter: ActivityPresenter<T>
+    protected abstract val activityPresenter: Presenter<T>
 
     internal fun setContentViewWithToolbar(layoutResID: Int) {
         super.setContentView(layoutResID)
