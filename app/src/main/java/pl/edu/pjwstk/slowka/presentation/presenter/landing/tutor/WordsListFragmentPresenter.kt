@@ -1,25 +1,28 @@
-package pl.edu.pjwstk.slowka.presentation.presenter.landing
+package pl.edu.pjwstk.slowka.presentation.presenter.landing.tutor
 
 import android.database.Cursor
 import android.support.v7.widget.LinearLayoutManager
-import pl.edu.pjwstk.slowka.domain.content.ViewAllImageObjectsUseCase
-import pl.edu.pjwstk.slowka.repository.content.AndroidImageObjectRepository
+import pl.edu.pjwstk.slowka.domain.UseCase
+import pl.edu.pjwstk.slowka.presentation.presenter.FragmentPresenter
+import pl.edu.pjwstk.slowka.presentation.presenter.landing.TutorListOfWordsAdapter
+import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorWordsListView
 import rx.Subscription
 import rx.schedulers.Schedulers
 import rx.subscriptions.Subscriptions
 
-class ILearnWordsListFragmentPresenterImpl : ILearnWordsListFragmentPresenter() {
+abstract class WordsListFragmentPresenter : FragmentPresenter<TutorWordsListView>() {
 
     private var adapter : TutorListOfWordsAdapter? = null
     private var refreshListSubscription : Subscription = Subscriptions.unsubscribed()
 
     override fun onViewCreated() {
         refreshListSubscription =
-                ViewAllImageObjectsUseCase(AndroidImageObjectRepository(presentedActivity))
-                        .performAndObserve(Schedulers.io()).subscribe { cursor ->
-                            buildListFromCursor(cursor)
-                        }
+                LoadImagesUseCase().performAndObserve(Schedulers.io()).subscribe { cursor ->
+                    buildListFromCursor(cursor)
+                }
     }
+
+    abstract internal fun LoadImagesUseCase() : UseCase<Cursor>;
 
     private fun buildListFromCursor(cursor: Cursor?) {
         presentedView.getListOfWords().setLayoutManager(LinearLayoutManager(presentedActivity))

@@ -3,7 +3,7 @@ package pl.edu.pjwstk.slowka.presentation.presenter.landing
 import android.support.v4.app.Fragment
 import android.view.MenuItem
 import pl.edu.pjwstk.slowka.R
-import pl.edu.pjwstk.slowka.presentation.ui.tutor.ILearnWordsListFragment
+import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.ILearnWordsListFragment
 import pl.edu.pjwstk.slowka.presentation.ui.landing.WordsCategoriesListFragment
 
 class LandingActivityPresenterImpl() : LandingActivityPresenter() {

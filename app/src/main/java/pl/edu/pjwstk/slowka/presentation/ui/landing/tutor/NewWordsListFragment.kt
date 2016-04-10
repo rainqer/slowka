@@ -1,17 +1,17 @@
-package pl.edu.pjwstk.slowka.presentation.ui.tutor
+package pl.edu.pjwstk.slowka.presentation.ui.landing.tutor
 
 import android.os.Bundle
 import android.view.View
 import pl.edu.pjwstk.slowka.presentation.dagger.Components
 import pl.edu.pjwstk.slowka.presentation.dagger.landing.LandingActivityComponent
 import pl.edu.pjwstk.slowka.presentation.presenter.FragmentPresenter
-import pl.edu.pjwstk.slowka.presentation.presenter.landing.ILearnWordsListFragmentPresenter
+import pl.edu.pjwstk.slowka.presentation.presenter.landing.tutor.NewWordsListFragmentPresenter
 import javax.inject.Inject
 
-class ILearnWordsListFragment constructor() : TutorWordsListFragment() {
+class NewWordsListFragment constructor() : TutorWordsListFragment() {
 
     @Inject
-    protected lateinit var presenter: ILearnWordsListFragmentPresenter
+    protected lateinit var presenter: NewWordsListFragmentPresenter
     override val fragmentPresenter: FragmentPresenter<TutorWordsListView>
         get() = presenter
 
@@ -22,8 +22,8 @@ class ILearnWordsListFragment constructor() : TutorWordsListFragment() {
     }
 
     companion object {
-        fun getInstance() : ILearnWordsListFragment {
-            return ILearnWordsListFragment()
+        fun getInstance() : NewWordsListFragment {
+            return NewWordsListFragment()
         }
     }
 }

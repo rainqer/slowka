@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.slowka.presentation.ui.tutor
+package pl.edu.pjwstk.slowka.presentation.ui.landing.tutor
 
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
-import pl.edu.pjwstk.slowka.presentation.dagger.Components
-import pl.edu.pjwstk.slowka.presentation.dagger.landing.LandingActivityComponent
 import pl.edu.pjwstk.slowka.presentation.ui.SlowkaFragment
 
 abstract class TutorWordsListFragment constructor() : SlowkaFragment<TutorWordsListView>(), TutorWordsListView {
