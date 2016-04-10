@@ -32,6 +32,11 @@ class TutorWordsListFragment @Inject constructor() : SlowkaFragment<TutorWordsLi
         return inflater?.inflate(R.layout.fragment_tutor_words_list, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        attachPresenter(this, activity, savedInstanceState)
+    }
+
     override fun getListOfWords(): RecyclerView {
         return listOfWordsWithAnnotations
     }

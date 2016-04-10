@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.slowka.presentation.ui.landing
+package pl.edu.pjwstk.slowka.presentation.presenter.landing
 
 import android.content.Context
 import android.database.Cursor

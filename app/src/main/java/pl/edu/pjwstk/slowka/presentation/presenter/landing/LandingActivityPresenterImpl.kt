@@ -6,7 +6,9 @@ import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.ui.landing.TutorWordsListFragment
 import pl.edu.pjwstk.slowka.presentation.ui.landing.WordsCategoriesListFragment
 
-class LandingActivityPresenterImpl : LandingActivityPresenter() {
+class LandingActivityPresenterImpl(
+        private val tutorWordsListFragment: TutorWordsListFragment
+    ) : LandingActivityPresenter() {
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
         presentedView.closeDrawer()
@@ -17,7 +19,7 @@ class LandingActivityPresenterImpl : LandingActivityPresenter() {
     private fun getFragmentToNavigateTo(menuItem: MenuItem): Fragment {
         return when (menuItem.itemId) {
             R.id.nav_landing -> WordsCategoriesListFragment()
-            R.id.nav_tutor -> TutorWordsListFragment()
+            R.id.nav_tutor -> tutorWordsListFragment
             else -> WordsCategoriesListFragment()
         }
     }

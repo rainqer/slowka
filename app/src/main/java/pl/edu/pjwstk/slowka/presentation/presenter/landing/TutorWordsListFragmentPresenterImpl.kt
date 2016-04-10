@@ -1,27 +1,35 @@
 package pl.edu.pjwstk.slowka.presentation.presenter.landing
 
+import android.database.Cursor
 import android.support.v7.widget.LinearLayoutManager
 import pl.edu.pjwstk.slowka.domain.content.ViewAllImageObjectsUseCase
-import pl.edu.pjwstk.slowka.presentation.ui.landing.TutorListOfWordsAdapter
 import pl.edu.pjwstk.slowka.repository.content.AndroidImageObjectRepository
+import rx.Subscription
 import rx.schedulers.Schedulers
+import rx.subscriptions.Subscriptions
 
 class TutorWordsListFragmentPresenterImpl : TutorWordsListFragmentPresenter() {
 
-    private lateinit var adapter : TutorListOfWordsAdapter
+    private var adapter : TutorListOfWordsAdapter? = null
+    private var refreshListSubscription : Subscription = Subscriptions.unsubscribed()
 
     override fun onViewCreated() {
-        ViewAllImageObjectsUseCase(AndroidImageObjectRepository(presentedActivity))
-                .performAndObserve(Schedulers.io()).subscribe { cursor ->
+        refreshListSubscription =
+                ViewAllImageObjectsUseCase(AndroidImageObjectRepository(presentedActivity))
+                        .performAndObserve(Schedulers.io()).subscribe { cursor ->
+                            buildListFromCursor(cursor)
+                        }
+    }
 
-                    presentedView.getListOfWords().setLayoutManager(LinearLayoutManager(presentedActivity))
-                    adapter = TutorListOfWordsAdapter(presentedActivity, cursor)
-                    presentedView.getListOfWords().setAdapter(adapter)
-                }
+    private fun buildListFromCursor(cursor: Cursor?) {
+        presentedView.getListOfWords().setLayoutManager(LinearLayoutManager(presentedActivity))
+        adapter = TutorListOfWordsAdapter(presentedActivity, cursor)
+        presentedView.getListOfWords().setAdapter(adapter)
     }
 
     override fun onDestroy() {
-        adapter.changeCursor(null)
+        refreshListSubscription.unsubscribe()
+        adapter?.changeCursor(null)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray) {
