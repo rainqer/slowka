@@ -7,18 +7,19 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AppCompatActivity
 
 abstract class Presenter <T : Any> {
 
     private lateinit var view: T
     protected val presentedView : T
         get() = view
-    private lateinit var activity: Activity
-    protected val presentedActivity : Activity
+    private lateinit var activity: AppCompatActivity
+    protected val presentedActivity : AppCompatActivity
         get() = activity
 
     open fun attach(view: T,
-                    activity: Activity,
+                    AppCompatActivity: Activity,
                     savedInstanceState: Bundle?) {
         this.view = view
         this.activity = activity

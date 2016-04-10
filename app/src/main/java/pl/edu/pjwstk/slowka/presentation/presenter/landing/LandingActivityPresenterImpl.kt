@@ -3,8 +3,8 @@ package pl.edu.pjwstk.slowka.presentation.presenter.landing
 import android.support.v4.app.Fragment
 import android.view.MenuItem
 import pl.edu.pjwstk.slowka.R
-import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.ILearnWordsListFragment
 import pl.edu.pjwstk.slowka.presentation.ui.landing.WordsCategoriesListFragment
+import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorFragment
 
 class LandingActivityPresenterImpl() : LandingActivityPresenter() {
 
@@ -17,7 +17,7 @@ class LandingActivityPresenterImpl() : LandingActivityPresenter() {
     private fun getFragmentToNavigateTo(menuItem: MenuItem): Fragment {
         return when (menuItem.itemId) {
             R.id.nav_landing -> WordsCategoriesListFragment()
-            R.id.nav_tutor -> ILearnWordsListFragment.getInstance()
+            R.id.nav_tutor -> TutorFragment.getInstance()
             else -> WordsCategoriesListFragment()
         }
     }

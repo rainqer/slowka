@@ -7,6 +7,8 @@ import pl.edu.pjwstk.slowka.presentation.presenter.landing.LandingActivityPresen
 import pl.edu.pjwstk.slowka.presentation.presenter.landing.tutor.IKnowWordsListFragmentPresenter;
 import pl.edu.pjwstk.slowka.presentation.presenter.landing.tutor.ILearnWordsListFragmentPresenter;
 import pl.edu.pjwstk.slowka.presentation.presenter.landing.tutor.NewWordsListFragmentPresenter;
+import pl.edu.pjwstk.slowka.presentation.presenter.landing.tutor.TutorFragmentPresenter;
+import pl.edu.pjwstk.slowka.presentation.presenter.landing.tutor.TutorFragmentPresenterImpl;
 
 @Module
 public class LandingModule {
@@ -16,6 +18,13 @@ public class LandingModule {
     LandingActivityPresenter provideLandingActivityPresenter() {
 
         return new LandingActivityPresenterImpl();
+    }
+
+    @LandingActivityScope
+    @Provides
+    TutorFragmentPresenter provideTutorFragmentPresenter() {
+
+        return new TutorFragmentPresenterImpl();
     }
 
     @LandingActivityScope

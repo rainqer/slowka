@@ -8,7 +8,7 @@ import pl.edu.pjwstk.slowka.presentation.presenter.FragmentPresenter
 import pl.edu.pjwstk.slowka.presentation.presenter.landing.tutor.IKnowWordsListFragmentPresenter
 import javax.inject.Inject
 
-class IKnowWordsListFragment constructor() : TutorWordsListFragment() {
+class IKnowWordsListFragment : TutorWordsListFragment() {
 
     @Inject
     protected lateinit var presenter: IKnowWordsListFragmentPresenter
