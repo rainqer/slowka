@@ -4,9 +4,8 @@ import dagger.Module;
 import dagger.Provides;
 import pl.edu.pjwstk.slowka.presentation.presenter.landing.LandingActivityPresenter;
 import pl.edu.pjwstk.slowka.presentation.presenter.landing.LandingActivityPresenterImpl;
-import pl.edu.pjwstk.slowka.presentation.presenter.landing.TutorWordsListFragmentPresenter;
-import pl.edu.pjwstk.slowka.presentation.presenter.landing.TutorWordsListFragmentPresenterImpl;
-import pl.edu.pjwstk.slowka.presentation.ui.landing.TutorWordsListFragment;
+import pl.edu.pjwstk.slowka.presentation.presenter.landing.ILearnWordsListFragmentPresenter;
+import pl.edu.pjwstk.slowka.presentation.presenter.landing.ILearnWordsListFragmentPresenterImpl;
 
 @Module
 public class LandingModule {
@@ -20,8 +19,8 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
-    TutorWordsListFragmentPresenter provideTutorWordsListFragmentPresenter() {
+    ILearnWordsListFragmentPresenter provideTutorWordsListFragmentPresenter() {
 
-        return new TutorWordsListFragmentPresenterImpl();
+        return new ILearnWordsListFragmentPresenterImpl();
     }
 }

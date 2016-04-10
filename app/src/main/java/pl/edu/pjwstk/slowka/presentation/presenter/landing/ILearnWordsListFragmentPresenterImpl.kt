@@ -8,7 +8,7 @@ import rx.Subscription
 import rx.schedulers.Schedulers
 import rx.subscriptions.Subscriptions
 
-class TutorWordsListFragmentPresenterImpl : TutorWordsListFragmentPresenter() {
+class ILearnWordsListFragmentPresenterImpl : ILearnWordsListFragmentPresenter() {
 
     private var adapter : TutorListOfWordsAdapter? = null
     private var refreshListSubscription : Subscription = Subscriptions.unsubscribed()

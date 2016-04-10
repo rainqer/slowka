@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.slowka.presentation.ui.landing
+package pl.edu.pjwstk.slowka.presentation.ui.tutor
 
 import android.support.v7.widget.RecyclerView
 

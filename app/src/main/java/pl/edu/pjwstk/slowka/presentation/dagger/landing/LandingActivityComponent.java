@@ -2,8 +2,8 @@ package pl.edu.pjwstk.slowka.presentation.dagger.landing;
 
 import dagger.Component;
 import pl.edu.pjwstk.slowka.presentation.dagger.ApplicationComponent;
+import pl.edu.pjwstk.slowka.presentation.ui.landing.ILearnWordsListFragment;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.LandingActivity;
-import pl.edu.pjwstk.slowka.presentation.ui.landing.TutorWordsListFragment;
 
 @LandingActivityScope
 @Component (
@@ -12,5 +12,5 @@ import pl.edu.pjwstk.slowka.presentation.ui.landing.TutorWordsListFragment;
 )
 public interface LandingActivityComponent {
         void inject(LandingActivity activity);
-        void inject(TutorWordsListFragment fragment);
+        void inject(ILearnWordsListFragment fragment);
 }
