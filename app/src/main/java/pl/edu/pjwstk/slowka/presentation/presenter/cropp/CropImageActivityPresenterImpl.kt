@@ -1,9 +1,9 @@
 package pl.edu.pjwstk.slowka.presentation.presenter.cropp
 
 import android.Manifest
-import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
 import pl.edu.pjwstk.slowka.presentation.model.crop.CropActivityModel
 import pl.edu.pjwstk.slowka.presentation.ui.cropp.CropImageActivity
@@ -19,7 +19,7 @@ class CropImageActivityPresenterImpl constructor (
     private lateinit var fileWithBitmap: File
 
     override fun attach(view: CropImageActivityView,
-                        activity: Activity,
+                        activity: FragmentActivity,
                         savedInstanceState: Bundle?) {
 
         super.attach(view, activity, savedInstanceState)

@@ -1,9 +1,9 @@
 package pl.edu.pjwstk.slowka.presentation.presenter.camera
 
 import android.Manifest
-import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import android.view.SurfaceHolder
 import pl.edu.pjwstk.slowka.presentation.model.camera.CameraActivityModel
 import pl.edu.pjwstk.slowka.presentation.ui.camera.CameraActivityView
@@ -16,7 +16,7 @@ class CameraActivityPresenterImpl constructor(val cameraActivityModel: CameraAct
     private val WRITE_TO_SD_CARD_REQUEST_PERMISSION: Int = 124;
 
     override fun attach(view: CameraActivityView,
-                        activity: Activity,
+                        activity: FragmentActivity,
                         savedInstanceState: Bundle?) {
 
         super.attach(view, activity, savedInstanceState)

@@ -1,25 +1,24 @@
 package pl.edu.pjwstk.slowka.presentation.presenter
 
 import android.annotation.TargetApi
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
 
 abstract class Presenter <T : Any> {
 
     private lateinit var view: T
     protected val presentedView : T
         get() = view
-    private lateinit var activity: AppCompatActivity
-    protected val presentedActivity : AppCompatActivity
+    private lateinit var activity: FragmentActivity
+    protected val presentedActivity : FragmentActivity
         get() = activity
 
     open fun attach(view: T,
-                    AppCompatActivity: Activity,
+                    activity: FragmentActivity,
                     savedInstanceState: Bundle?) {
         this.view = view
         this.activity = activity

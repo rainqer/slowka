@@ -1,8 +1,8 @@
 package pl.edu.pjwstk.slowka.presentation.ui
 
-import android.app.Activity
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.Toolbar
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
@@ -14,7 +14,7 @@ abstract class SlowkaFragment <T : Any>: Fragment() {
     protected abstract val fragmentPresenter: FragmentPresenter<T>
 
     internal fun attachPresenter(fragmentView: T,
-                                 activity: Activity,
+                                 activity: FragmentActivity,
                                  savedInstanceState: Bundle?) {
         fragmentPresenter.attach(fragmentView, activity, savedInstanceState)
         fragmentPresenter.onViewCreated()

@@ -1,7 +1,7 @@
 package pl.edu.pjwstk.slowka.presentation.presenter.recognize
 
-import android.app.Activity
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import android.widget.Toast
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
 import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
@@ -17,7 +17,7 @@ class RecognizeImageActivityPresenterImpl constructor(
     private lateinit var file : File
 
     override fun attach(view: RecognizeImageActivityView,
-                        activity: Activity,
+                        activity: FragmentActivity,
                         savedInstanceState: Bundle?) {
         super.attach(view, activity, savedInstanceState)
         extractInfoFromIntent()

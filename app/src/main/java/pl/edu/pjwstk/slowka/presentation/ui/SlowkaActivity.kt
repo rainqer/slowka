@@ -1,6 +1,5 @@
 package pl.edu.pjwstk.slowka.presentation.ui
 
-import android.app.Activity
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -38,7 +37,7 @@ abstract class SlowkaActivity <T : Any>: AppCompatActivity() {
     }
 
     internal fun attachPresenter(activityView: T,
-                                 activity: Activity,
+                                 activity: AppCompatActivity,
                                  savedInstanceState: Bundle?) {
         activityPresenter.attach(activityView, activity, savedInstanceState)
     }
