@@ -4,11 +4,11 @@ class TutorFragmentPresenterImpl : TutorFragmentPresenter() {
 
     override fun onViewCreated() {
         presentedView.getViewPager()
-                .setAdapter(TutorListsPagerAdapter(presentedActivity.supportFragmentManager))
+                .setAdapter(TutorListsPagerAdapter(presentedView.getChildFragmentManager()))
     }
 
     override fun onDestroy() {
-        presentedView.getViewPager().setAdapter(null)
+//        presentedView.getViewPager().setAdapter(null)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray) {

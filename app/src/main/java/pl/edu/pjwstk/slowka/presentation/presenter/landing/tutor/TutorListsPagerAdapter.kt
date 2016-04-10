@@ -14,9 +14,9 @@ class TutorListsPagerAdapter constructor(fragmentManager: FragmentManager)
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
-            1 -> ILearnWordsListFragment.getInstance()
-            2 -> IKnowWordsListFragment.getInstance()
-            3 -> NewWordsListFragment.getInstance()
+            0 -> ILearnWordsListFragment.getInstance()
+            1 -> IKnowWordsListFragment.getInstance()
+            2 -> NewWordsListFragment.getInstance()
             else -> ILearnWordsListFragment.getInstance()
         }
     }
