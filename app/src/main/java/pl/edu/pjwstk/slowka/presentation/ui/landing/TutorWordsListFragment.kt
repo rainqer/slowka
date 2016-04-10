@@ -37,4 +37,10 @@ class TutorWordsListFragment constructor() : SlowkaFragment<TutorWordsListView>(
     override fun getListOfWords(): RecyclerView {
         return listOfWordsWithAnnotations
     }
+
+    companion object {
+        fun getInstance() : TutorWordsListFragment {
+            return TutorWordsListFragment();
+        }
+    }
 }

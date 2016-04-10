@@ -17,7 +17,7 @@ class LandingActivityPresenterImpl() : LandingActivityPresenter() {
     private fun getFragmentToNavigateTo(menuItem: MenuItem): Fragment {
         return when (menuItem.itemId) {
             R.id.nav_landing -> WordsCategoriesListFragment()
-            R.id.nav_tutor -> TutorWordsListFragment()
+            R.id.nav_tutor -> TutorWordsListFragment.getInstance()
             else -> WordsCategoriesListFragment()
         }
     }
