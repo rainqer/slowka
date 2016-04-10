@@ -21,6 +21,7 @@ class CropImageActivityPresenterImpl constructor (
     override fun attach(view: CropImageActivityView,
                         activity: Activity,
                         savedInstanceState: Bundle?) {
+
         super.attach(view, activity, savedInstanceState)
         extractInfoFromIntent()
     }

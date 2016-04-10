@@ -10,33 +10,29 @@ import android.view.ViewGroup
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.domain.content.ViewAllImageObjectsUseCase
+import pl.edu.pjwstk.slowka.presentation.presenter.FragmentPresenter
+import pl.edu.pjwstk.slowka.presentation.presenter.landing.LandingActivityPresenter
+import pl.edu.pjwstk.slowka.presentation.presenter.landing.TutorWordsListFragmentPresenter
+import pl.edu.pjwstk.slowka.presentation.ui.SlowkaFragment
 import pl.edu.pjwstk.slowka.repository.content.AndroidImageObjectRepository
 import rx.schedulers.Schedulers
 import javax.inject.Inject
 
-class TutorWordsListFragment @Inject constructor() : Fragment() {
+class TutorWordsListFragment @Inject constructor() : SlowkaFragment<TutorWordsListView>(), TutorWordsListView {
 
-    private val listOfWords : RecyclerView by bindView(R.id.wordsList)
-    private lateinit var adapter : TutorListOfWordsAdapter
+    @Inject
+    protected lateinit var presenter: TutorWordsListFragmentPresenter
+
+    override val fragmentPresenter: FragmentPresenter<TutorWordsListView>
+        get() = presenter
+
+    val listOfWordsWithAnnotations : RecyclerView by bindView(R.id.wordsList)
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_tutor_words_list, container, false)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        //todo move to presenter
-        ViewAllImageObjectsUseCase(AndroidImageObjectRepository(context))
-                .performAndObserve(Schedulers.io()).subscribe { cursor ->
-
-            listOfWords.setLayoutManager(LinearLayoutManager(context))
-            adapter = TutorListOfWordsAdapter(context, cursor)
-            listOfWords.setAdapter(adapter)
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        adapter.changeCursor(null)
+    override fun getListOfWords(): RecyclerView {
+        return listOfWordsWithAnnotations
     }
 }

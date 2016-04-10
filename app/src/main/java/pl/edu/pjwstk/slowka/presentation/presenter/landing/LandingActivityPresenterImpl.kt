@@ -1,27 +1,16 @@
 package pl.edu.pjwstk.slowka.presentation.presenter.landing
 
-import android.app.Activity
-import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.MenuItem
 import pl.edu.pjwstk.slowka.R
-import pl.edu.pjwstk.slowka.presentation.ui.landing.LandingActivityView
 import pl.edu.pjwstk.slowka.presentation.ui.landing.TutorWordsListFragment
 import pl.edu.pjwstk.slowka.presentation.ui.landing.WordsCategoriesListFragment
 
 class LandingActivityPresenterImpl : LandingActivityPresenter() {
 
-    private lateinit var landingActivityView: LandingActivityView
-    private lateinit var activity: Activity
-
-    override fun attach(view: LandingActivityView, activity: Activity, savedInstanceState: Bundle?) {
-        this.landingActivityView = view
-        this.activity = activity
-    }
-
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
-        landingActivityView.closeDrawer()
-        landingActivityView.showFragment(getFragmentToNavigateTo(menuItem))
+        presentedView.closeDrawer()
+        presentedView.showFragment(getFragmentToNavigateTo(menuItem))
         return true;
     }
 

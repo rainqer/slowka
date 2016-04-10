@@ -18,6 +18,7 @@ class CameraActivityPresenterImpl constructor(val cameraActivityModel: CameraAct
     override fun attach(view: CameraActivityView,
                         activity: Activity,
                         savedInstanceState: Bundle?) {
+
         super.attach(view, activity, savedInstanceState)
         presentedView.setupCameraPreviewRatio(Ratio.FOUR_TO_THREE)
     }
