@@ -13,7 +13,7 @@ import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.HasComponent
 import pl.edu.pjwstk.slowka.presentation.dagger.recognize.RecognizeImageActivityComponent
 import pl.edu.pjwstk.slowka.presentation.dagger.recognize.RecognizeImageActivityComponentAssembler
-import pl.edu.pjwstk.slowka.presentation.presenter.Presenter
+import pl.edu.pjwstk.slowka.presentation.presenter.ActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.presenter.recognize.RecognizeImageActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.ui.SlowkaActivity
 import java.io.File
@@ -27,7 +27,7 @@ class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(),
     protected lateinit var presenter: RecognizeImageActivityPresenter
 
     override var component: RecognizeImageActivityComponent? = null
-    override val activityPresenter: Presenter<RecognizeImageActivityView>
+    override val activityPresenter: ActivityPresenter<RecognizeImageActivityView>
         get() = presenter
 
     override val imageAnnotation: String

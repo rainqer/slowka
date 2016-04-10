@@ -11,7 +11,7 @@ import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.HasComponent
 import pl.edu.pjwstk.slowka.presentation.dagger.cropp.CropImageActivityComponent
 import pl.edu.pjwstk.slowka.presentation.dagger.cropp.CropImageActivityComponentAssembler
-import pl.edu.pjwstk.slowka.presentation.presenter.Presenter
+import pl.edu.pjwstk.slowka.presentation.presenter.ActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.presenter.cropp.CropImageActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.ui.SlowkaActivity
 import java.io.File
@@ -24,7 +24,7 @@ class CropImageActivity : SlowkaActivity<CropImageActivityView>(),
     @Inject
     protected lateinit var presenter: CropImageActivityPresenter
     override var component: CropImageActivityComponent? = null
-    override val activityPresenter: Presenter<CropImageActivityView>
+    override val activityPresenter: ActivityPresenter<CropImageActivityView>
         get() = presenter
 
     override val croppedImage: Bitmap
