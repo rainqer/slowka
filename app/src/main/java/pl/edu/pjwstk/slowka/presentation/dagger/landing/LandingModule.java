@@ -13,9 +13,9 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
-    LandingActivityPresenter provideLandingActivityPresenter(TutorWordsListFragment tutorWordsListFragment) {
+    LandingActivityPresenter provideLandingActivityPresenter() {
 
-        return new LandingActivityPresenterImpl(tutorWordsListFragment);
+        return new LandingActivityPresenterImpl();
     }
 
     @LandingActivityScope
