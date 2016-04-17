@@ -30,7 +30,7 @@ abstract class WordsListFragmentPresenter : FragmentPresenter<TutorWordsListView
         presentedView.getListOfWords().setAdapter(adapter)
     }
 
-    override fun onDestroy() {
+    override fun onDestroyView() {
         refreshListSubscription.unsubscribe()
         adapter?.changeCursor(null)
     }

@@ -20,9 +20,9 @@ abstract class SlowkaFragment <T : Any>: Fragment() {
         fragmentPresenter.onViewCreated()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        fragmentPresenter.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        fragmentPresenter.onDestroyView()
     }
 
     override fun onRequestPermissionsResult(requestCode: Int,

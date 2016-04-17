@@ -12,7 +12,7 @@ class PreviewCameraUseCase : UseCase<Unit> {
     @Inject
     constructor(cameraRepository: CameraRepository) : this (cameraRepository, null)
 
-    constructor(cameraRepository: CameraRepository, holder: SurfaceHolder?) {
+    private constructor(cameraRepository: CameraRepository, holder: SurfaceHolder?) {
         this.cameraRepository = cameraRepository
         this.holder = holder;
     }

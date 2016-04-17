@@ -7,8 +7,8 @@ class TutorFragmentPresenterImpl : TutorFragmentPresenter() {
                 .setAdapter(TutorListsPagerAdapter(presentedView.getChildFragmentManager()))
     }
 
-    override fun onDestroy() {
-//        presentedView.getViewPager().setAdapter(null)
+    override fun onDestroyView() {
+        presentedView.getViewPager().setAdapter(null)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray) {
