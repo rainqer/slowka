@@ -37,6 +37,10 @@ public abstract class RecyclerViewCursorAdapter<VH extends RecyclerView.ViewHold
     private DataSetObserver mDataSetObserver;
 
 
+    public RecyclerViewCursorAdapter() {
+        this(null);
+    }
+
     public RecyclerViewCursorAdapter(Cursor cursor) {
         super();
         mCursor = cursor;

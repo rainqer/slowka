@@ -13,8 +13,8 @@ import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
 import skyfish.RecyclerViewCursorAdapter
 
-class TutorListOfWordsAdapter (private val context: Context, cursor: Cursor?)
-    : RecyclerViewCursorAdapter<TutorListOfWordsAdapter.TutorWordViewHolder>(cursor) {
+class TutorListOfWordsAdapter (private val context: Context)
+    : RecyclerViewCursorAdapter<TutorListOfWordsAdapter.TutorWordViewHolder>() {
 
     override fun onBindViewHolder(viewHolder: TutorWordViewHolder, cursor: Cursor) {
         val imageObject = ImageObject(cursor)

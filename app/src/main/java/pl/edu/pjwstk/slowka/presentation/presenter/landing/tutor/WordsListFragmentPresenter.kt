@@ -1,9 +1,11 @@
 package pl.edu.pjwstk.slowka.presentation.presenter.landing.tutor
 
 import android.database.Cursor
+import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import pl.edu.pjwstk.slowka.domain.UseCase
 import pl.edu.pjwstk.slowka.presentation.presenter.FragmentPresenter
+import android.support.v4.app.FragmentActivity
 import pl.edu.pjwstk.slowka.presentation.presenter.landing.TutorListOfWordsAdapter
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorWordsListView
 import rx.Subscription
@@ -22,12 +24,18 @@ abstract class WordsListFragmentPresenter : FragmentPresenter<TutorWordsListView
                 }
     }
 
+    override fun attach(view: TutorWordsListView, activity: FragmentActivity, savedInstanceState: Bundle?) {
+        super.attach(view, activity, savedInstanceState)
+        presentedView.getListOfWords().setLayoutManager(LinearLayoutManager(presentedActivity))
+        adapter = TutorListOfWordsAdapter(presentedActivity)
+        presentedView.getListOfWords().setAdapter(adapter)
+    }
+
     abstract internal fun LoadImagesUseCase() : UseCase<Cursor>;
 
     private fun buildListFromCursor(cursor: Cursor?) {
-        presentedView.getListOfWords().setLayoutManager(LinearLayoutManager(presentedActivity))
-        adapter = TutorListOfWordsAdapter(presentedActivity, cursor)
-        presentedView.getListOfWords().setAdapter(adapter)
+        adapter?.swapCursor(cursor)
+        presentedView.getListOfWords().invalidate()
     }
 
     override fun onDestroyView() {
