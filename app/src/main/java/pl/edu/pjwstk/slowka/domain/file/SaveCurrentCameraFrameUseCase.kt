@@ -10,7 +10,6 @@ class SaveCurrentCameraFrameUseCase : UseCase<File> {
     private val saveCameraFrameUseCase: SaveCameraFrameUseCase
     private val cameraRepository: CameraRepository
 
-    @Inject
     constructor(cameraRepository: CameraRepository, saveCameraFrameUseCase: SaveCameraFrameUseCase) {
         this.cameraRepository = cameraRepository
         this.saveCameraFrameUseCase = saveCameraFrameUseCase

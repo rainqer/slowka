@@ -1,14 +1,12 @@
 package pl.edu.pjwstk.slowka.domain.content
 
 import pl.edu.pjwstk.slowka.domain.UseCase
-import javax.inject.Inject
 
 class StoreImageObjectUseCase : UseCase<Boolean> {
 
     private val imageObjectRepository: ImageObjectRepository
     private val imageObject: ImageObject?
 
-    @Inject
     constructor(imageObjectRepository: ImageObjectRepository) : this (imageObjectRepository, null)
 
     private constructor(imageObjectRepository: ImageObjectRepository,

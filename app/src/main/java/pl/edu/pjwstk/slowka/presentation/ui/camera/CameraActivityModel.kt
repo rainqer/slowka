@@ -2,26 +2,22 @@ package pl.edu.pjwstk.slowka.presentation.ui.camera
 
 import android.view.SurfaceHolder
 import pl.edu.pjwstk.slowka.domain.file.SaveCurrentCameraFrameUseCase
-import pl.edu.pjwstk.slowka.domain.hardware.PreviewCameraUseCase
 import pl.edu.pjwstk.slowka.domain.hardware.LaunchCameraUseCase
+import pl.edu.pjwstk.slowka.domain.hardware.PreviewCameraUseCase
 import pl.edu.pjwstk.slowka.domain.hardware.StopCameraUseCase
-import pl.edu.pjwstk.slowka.presentation.ui.camera.dagger.CameraActivityScope
-import pl.edu.pjwstk.slowka.presentation.ui.camera.CameraActivityPresenterImpl
 import rx.Observable
 import rx.schedulers.Schedulers
 import java.io.File
-import javax.inject.Inject
 
-@CameraActivityScope
-class CameraActivityModel @Inject constructor(
-        val launchCameraUseCase: LaunchCameraUseCase,
-        val stopCameraUseCase: StopCameraUseCase,
-        val previewerCameraUseCase: PreviewCameraUseCase,
-        val saveCurrentCameraFrameUseCase: SaveCurrentCameraFrameUseCase) {
+class CameraActivityModel constructor(
+        private val launchCameraUseCase: LaunchCameraUseCase,
+        private val stopCameraUseCase: StopCameraUseCase,
+        private val previewerCameraUseCase: PreviewCameraUseCase,
+        private val saveCurrentCameraFrameUseCase: SaveCurrentCameraFrameUseCase) {
 
-    private lateinit var cameraActivityPresenter: CameraActivityPresenterImpl
+    private lateinit var cameraActivityPresenter: CameraActivityPresenter
 
-    fun startProcessingPreview(cameraActivityPresenter: CameraActivityPresenterImpl) {
+    fun startProcessingPreview(cameraActivityPresenter: CameraActivityPresenter) {
         this.cameraActivityPresenter = cameraActivityPresenter
         launchCameraUseCase.performAsync()
     }

@@ -5,6 +5,7 @@ import pl.edu.pjwstk.slowka.presentation.dagger.AndroidModule;
 import pl.edu.pjwstk.slowka.presentation.dagger.ApplicationComponent;
 import pl.edu.pjwstk.slowka.presentation.dagger.DaggerApplicationComponent;
 import pl.edu.pjwstk.slowka.presentation.dagger.RepositoriesModule;
+import pl.edu.pjwstk.slowka.presentation.dagger.UsecasesModule;
 
 public abstract class BaseApplication extends Application {
 
@@ -39,6 +40,7 @@ public abstract class BaseApplication extends Application {
             return DaggerApplicationComponent.builder()
                     .androidModule(new AndroidModule())
                     .repositoriesModule(new RepositoriesModule())
+                    .usecasesModule(new UsecasesModule())
                     .build();
         }
     }

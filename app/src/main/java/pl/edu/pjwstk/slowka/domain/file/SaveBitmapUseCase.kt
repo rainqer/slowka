@@ -14,7 +14,6 @@ class SaveBitmapUseCase : UseCase<File> {
     private val bitmap: Bitmap?
     private val destinationFile: File?
 
-    @Inject
     constructor(fileRepository: FileRepository,
                 mediaScannerUpdater: MediaScannerUpdater)
 

@@ -2,9 +2,10 @@ package pl.edu.pjwstk.slowka.presentation.ui.landing.dagger;
 
 import dagger.Module;
 import dagger.Provides;
+import pl.edu.pjwstk.slowka.domain.content.ViewAllImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.LandingActivityPresenter;
-import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_know.IKnowWordsListFragmentModel;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorFragmentPresenter;
+import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_know.IKnowWordsListFragmentModel;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_know.IKnowWordsListFragmentPresenter;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_learn.ILearnWordsListFragmentModel;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_learn.ILearnWordsListFragmentPresenter;
@@ -30,6 +31,13 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
+    ILearnWordsListFragmentModel provideILearnWordsListFragmentModel(ViewAllImageObjectsUseCase viewAllImageObjectsUseCase) {
+
+        return new ILearnWordsListFragmentModel(viewAllImageObjectsUseCase);
+    }
+
+    @LandingActivityScope
+    @Provides
     ILearnWordsListFragmentPresenter provideILearnWordsListFragmentPresenter(ILearnWordsListFragmentModel iLearnWordsListFragmentModel) {
 
         return new ILearnWordsListFragmentPresenter(iLearnWordsListFragmentModel);
@@ -37,9 +45,23 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
+    IKnowWordsListFragmentModel provideIKnowWordsListFragmentModel(ViewAllImageObjectsUseCase viewAllImageObjectsUseCase) {
+
+        return new IKnowWordsListFragmentModel(viewAllImageObjectsUseCase);
+    }
+
+    @LandingActivityScope
+    @Provides
     IKnowWordsListFragmentPresenter provideIKnowWordsListFragmentPresenter(IKnowWordsListFragmentModel iKnowWordsListFragmentModel) {
 
         return new IKnowWordsListFragmentPresenter(iKnowWordsListFragmentModel);
+    }
+
+    @LandingActivityScope
+    @Provides
+    NewWordsListFragmentModel provideNewWordsListFragmentModel(ViewAllImageObjectsUseCase viewAllImageObjectsUseCase) {
+
+        return new NewWordsListFragmentModel(viewAllImageObjectsUseCase);
     }
 
     @LandingActivityScope

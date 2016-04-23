@@ -2,14 +2,12 @@ package pl.edu.pjwstk.slowka.domain.hardware
 
 import android.view.SurfaceHolder
 import pl.edu.pjwstk.slowka.domain.UseCase
-import javax.inject.Inject
 
 class PreviewCameraUseCase : UseCase<Unit> {
 
     private val cameraRepository: CameraRepository
     private val holder: SurfaceHolder?
 
-    @Inject
     constructor(cameraRepository: CameraRepository) : this (cameraRepository, null)
 
     private constructor(cameraRepository: CameraRepository, holder: SurfaceHolder?) {

@@ -3,14 +3,11 @@ package pl.edu.pjwstk.slowka.presentation.ui.recognize
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
 import pl.edu.pjwstk.slowka.domain.information.GetNamesForObjectInImageUseCase
 import pl.edu.pjwstk.slowka.domain.content.StoreImageObjectUseCase
-import pl.edu.pjwstk.slowka.presentation.ui.recognize.dagger.RecognizeImageActivityScope
 import rx.Observable
 import rx.schedulers.Schedulers
 import java.io.File
-import javax.inject.Inject
 
-@RecognizeImageActivityScope
-class RecognizeImageModel @Inject constructor(
+class RecognizeImageModel constructor(
         private val getNamesForObjectInImageUseCase: GetNamesForObjectInImageUseCase,
         private val storeImageObjectUseCase: StoreImageObjectUseCase
     ) {

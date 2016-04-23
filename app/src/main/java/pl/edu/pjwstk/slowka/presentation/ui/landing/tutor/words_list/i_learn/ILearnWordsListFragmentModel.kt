@@ -5,10 +5,9 @@ import pl.edu.pjwstk.slowka.domain.content.ViewAllImageObjectsUseCase
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.WordsListFragmentModel
 import rx.Observable
 import rx.schedulers.Schedulers
-import javax.inject.Inject
 
 class ILearnWordsListFragmentModel
-    @Inject constructor(val viewAllImageObjectsUseCase: ViewAllImageObjectsUseCase)
+    constructor(val viewAllImageObjectsUseCase: ViewAllImageObjectsUseCase)
     : WordsListFragmentModel() {
 
     override fun getImages(): Observable<Cursor> {
