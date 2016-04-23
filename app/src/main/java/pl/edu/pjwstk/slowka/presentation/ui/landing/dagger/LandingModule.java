@@ -3,12 +3,10 @@ package pl.edu.pjwstk.slowka.presentation.ui.landing.dagger;
 import dagger.Module;
 import dagger.Provides;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.LandingActivityPresenter;
-import pl.edu.pjwstk.slowka.presentation.ui.landing.LandingActivityPresenterImpl;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.IKnowWordsListFragmentPresenter;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.ILearnWordsListFragmentPresenter;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.NewWordsListFragmentPresenter;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorFragmentPresenter;
-import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorFragmentPresenterImpl;
 
 @Module
 public class LandingModule {
@@ -17,14 +15,14 @@ public class LandingModule {
     @Provides
     LandingActivityPresenter provideLandingActivityPresenter() {
 
-        return new LandingActivityPresenterImpl();
+        return new LandingActivityPresenter();
     }
 
     @LandingActivityScope
     @Provides
     TutorFragmentPresenter provideTutorFragmentPresenter() {
 
-        return new TutorFragmentPresenterImpl();
+        return new TutorFragmentPresenter();
     }
 
     @LandingActivityScope

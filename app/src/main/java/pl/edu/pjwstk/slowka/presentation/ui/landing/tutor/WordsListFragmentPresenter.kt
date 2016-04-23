@@ -7,7 +7,6 @@ import pl.edu.pjwstk.slowka.domain.UseCase
 import pl.edu.pjwstk.slowka.presentation.ui.FragmentPresenter
 import android.support.v4.app.FragmentActivity
 import pl.edu.pjwstk.slowka.presentation.ui.landing.TutorListOfWordsAdapter
-import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorWordsListView
 import rx.Subscription
 import rx.schedulers.Schedulers
 import rx.subscriptions.Subscriptions
