@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.Toolbar
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
-import pl.edu.pjwstk.slowka.presentation.presenter.FragmentPresenter
+import pl.edu.pjwstk.slowka.presentation.ui.FragmentPresenter
 
 abstract class SlowkaFragment <T : Any>: Fragment() {
 

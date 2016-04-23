@@ -8,11 +8,11 @@ import android.widget.FrameLayout
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.HasComponent
-import pl.edu.pjwstk.slowka.presentation.dagger.camera.CameraActivityComponent
-import pl.edu.pjwstk.slowka.presentation.dagger.camera.CameraActivityComponentAssembler
-import pl.edu.pjwstk.slowka.presentation.presenter.ActivityPresenter
-import pl.edu.pjwstk.slowka.presentation.presenter.camera.CameraActivityPresenter
-import pl.edu.pjwstk.slowka.presentation.presenter.camera.Ratio
+import pl.edu.pjwstk.slowka.presentation.ui.camera.dagger.CameraActivityComponent
+import pl.edu.pjwstk.slowka.presentation.ui.camera.dagger.CameraActivityComponentAssembler
+import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
+import pl.edu.pjwstk.slowka.presentation.ui.camera.CameraActivityPresenter
+import pl.edu.pjwstk.slowka.presentation.ui.camera.Ratio
 import pl.edu.pjwstk.slowka.presentation.ui.SlowkaActivity
 import javax.inject.Inject
 
@@ -27,7 +27,7 @@ class CameraActivity : SlowkaActivity<CameraActivityView>(), CameraActivityView,
 
     private val cameraContainer: FrameLayout by bindView(R.id.cameraContainer)
     private val cameraButton: FloatingActionButton by bindView(R.id.fab)
-    private var cameraView: CameraView? = null;
+    private var cameraView: CameraPreviewView? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +69,7 @@ class CameraActivity : SlowkaActivity<CameraActivityView>(), CameraActivityView,
     }
 
     override fun setupSurfaceForCameraAndUnblock() {
-        cameraView = CameraView(this, presenter)
+        cameraView = CameraPreviewView(this, presenter)
         cameraContainer.addView(cameraView)
     }
 

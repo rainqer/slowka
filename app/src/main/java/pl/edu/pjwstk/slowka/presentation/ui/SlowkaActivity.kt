@@ -9,7 +9,7 @@ import android.view.MenuItem
 import android.view.WindowManager
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
-import pl.edu.pjwstk.slowka.presentation.presenter.ActivityPresenter
+import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
 
 abstract class SlowkaActivity <T : Any>: AppCompatActivity() {
 

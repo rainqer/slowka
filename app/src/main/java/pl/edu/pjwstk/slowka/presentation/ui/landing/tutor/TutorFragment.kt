@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.Components
-import pl.edu.pjwstk.slowka.presentation.dagger.landing.LandingActivityComponent
-import pl.edu.pjwstk.slowka.presentation.presenter.FragmentPresenter
-import pl.edu.pjwstk.slowka.presentation.presenter.landing.tutor.TutorFragmentPresenter
+import pl.edu.pjwstk.slowka.presentation.ui.landing.dagger.LandingActivityComponent
+import pl.edu.pjwstk.slowka.presentation.ui.FragmentPresenter
+import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorFragmentPresenter
 import pl.edu.pjwstk.slowka.presentation.ui.SlowkaFragment
 import javax.inject.Inject
 

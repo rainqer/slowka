@@ -6,10 +6,10 @@ import android.support.v4.app.Fragment
 import android.view.Menu
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.HasComponent
-import pl.edu.pjwstk.slowka.presentation.dagger.landing.LandingActivityComponent
-import pl.edu.pjwstk.slowka.presentation.dagger.landing.LandingActivityComponentAssembler
-import pl.edu.pjwstk.slowka.presentation.presenter.ActivityPresenter
-import pl.edu.pjwstk.slowka.presentation.presenter.landing.LandingActivityPresenter
+import pl.edu.pjwstk.slowka.presentation.ui.landing.dagger.LandingActivityComponent
+import pl.edu.pjwstk.slowka.presentation.ui.landing.dagger.LandingActivityComponentAssembler
+import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
+import pl.edu.pjwstk.slowka.presentation.ui.landing.LandingActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.ui.SlowkaActivityWithDrawer
 import javax.inject.Inject
 

@@ -11,10 +11,10 @@ import android.widget.ImageView
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.HasComponent
-import pl.edu.pjwstk.slowka.presentation.dagger.recognize.RecognizeImageActivityComponent
-import pl.edu.pjwstk.slowka.presentation.dagger.recognize.RecognizeImageActivityComponentAssembler
-import pl.edu.pjwstk.slowka.presentation.presenter.ActivityPresenter
-import pl.edu.pjwstk.slowka.presentation.presenter.recognize.RecognizeImageActivityPresenter
+import pl.edu.pjwstk.slowka.presentation.ui.recognize.dagger.RecognizeImageActivityComponent
+import pl.edu.pjwstk.slowka.presentation.ui.recognize.dagger.RecognizeImageActivityComponentAssembler
+import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
+import pl.edu.pjwstk.slowka.presentation.ui.recognize.RecognizeImageActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.ui.SlowkaActivity
 import java.io.File
 import javax.inject.Inject
@@ -74,7 +74,7 @@ class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(),
         final val FILE_NAME_KEY : String = "fileKey"
         fun createIntent(context: Context, file : File): Intent {
             return Intent(context, RecognizeImageActivity::class.java)
-                    .putExtra(RecognizeImageActivity.Companion.FILE_NAME_KEY, file.absolutePath)
+                    .putExtra(FILE_NAME_KEY, file.absolutePath)
         }
     }
 }

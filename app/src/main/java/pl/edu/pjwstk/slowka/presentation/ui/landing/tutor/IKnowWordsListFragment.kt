@@ -3,9 +3,9 @@ package pl.edu.pjwstk.slowka.presentation.ui.landing.tutor
 import android.os.Bundle
 import android.view.View
 import pl.edu.pjwstk.slowka.presentation.dagger.Components
-import pl.edu.pjwstk.slowka.presentation.dagger.landing.LandingActivityComponent
-import pl.edu.pjwstk.slowka.presentation.presenter.FragmentPresenter
-import pl.edu.pjwstk.slowka.presentation.presenter.landing.tutor.IKnowWordsListFragmentPresenter
+import pl.edu.pjwstk.slowka.presentation.ui.landing.dagger.LandingActivityComponent
+import pl.edu.pjwstk.slowka.presentation.ui.FragmentPresenter
+import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.IKnowWordsListFragmentPresenter
 import javax.inject.Inject
 
 class IKnowWordsListFragment : TutorWordsListFragment() {
