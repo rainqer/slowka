@@ -9,6 +9,7 @@ class SqlLiteHelper(context: Context)
 
     override fun onCreate(db: SQLiteDatabase) {
         ImageObjectsTable().create(db)
+        CategoriesTable().create(db)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {

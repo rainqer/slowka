@@ -5,9 +5,8 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.net.Uri
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
-import pl.edu.pjwstk.slowka.presentation.dagger.Components
 
-class ImageObjectsContentProvider : ContentProvider() {
+class CategoriesContentProvider : ContentProvider() {
 
     val TABLE_NAME = ImageObjectsTable.NAME
     lateinit var sqlLiteHelper: SqlLiteHelper
