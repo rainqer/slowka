@@ -19,5 +19,7 @@ class ImageObjectsTable : SqlTable {
         val COLUMN_NAME = "objectName"
         val COLUMN_IMAGE_URL = "imageUrl"
         val COLUMNS = arrayOf("_id", "objectName", "imageUrl")
+
+        val PATH = "imageObjects"
     }
 }

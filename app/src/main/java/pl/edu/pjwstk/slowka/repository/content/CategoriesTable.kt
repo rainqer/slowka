@@ -17,5 +17,7 @@ class CategoriesTable : SqlTable {
         val COLUMN_ID = "_id"
         val COLUMN_NAME = "categoryName"
         val COLUMNS = arrayOf("_id", "categoryName", "imageUrl")
+
+        val PATH = "categories"
     }
 }

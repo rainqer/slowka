@@ -12,7 +12,7 @@ import javax.inject.Singleton
 class AndroidImageObjectRepository : ImageObjectRepository {
 
     val contentResolver: ContentResolver
-    val IMAGE_OBJECT_PROVIDER_URI = ImageObjectsContentProvider.URI
+    val IMAGE_OBJECT_PROVIDER_URI = SlowkaContentProvider.IMAGE_OBJECT_URI
     val SINGLE_ROW_AFFECTED = 1
 
     @Inject
