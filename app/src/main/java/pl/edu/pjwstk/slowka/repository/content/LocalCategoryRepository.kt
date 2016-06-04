@@ -3,16 +3,18 @@ package pl.edu.pjwstk.slowka.repository.content
 import android.content.ContentResolver
 import android.content.Context
 import android.database.Cursor
+import pl.edu.pjwstk.slowka.domain.content.Category
+import pl.edu.pjwstk.slowka.domain.content.CategoryRepository
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
 import pl.edu.pjwstk.slowka.domain.content.ImageObjectRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AndroidImageObjectRepository : ImageObjectRepository {
+class LocalCategoryRepository : CategoryRepository {
 
     val contentResolver: ContentResolver
-    val IMAGE_OBJECT_PROVIDER_URI = SlowkaContentProvider.IMAGE_OBJECT_URI
+    val CATEGORY_PROVIDER_URI = SlowkaContentProvider.CATEGORY_URI
     val SINGLE_ROW_AFFECTED = 1
 
     @Inject
@@ -21,28 +23,28 @@ class AndroidImageObjectRepository : ImageObjectRepository {
     }
 
     override fun getAll(): Cursor {
-        return contentResolver.query(IMAGE_OBJECT_PROVIDER_URI, ImageObjectsTable.COLUMNS, null, arrayOf(), null)
+        return contentResolver.query(CATEGORY_PROVIDER_URI, CategoriesTable.COLUMNS, null, arrayOf(), null)
     }
 
-    override fun edit(id: String, imageObject: ImageObject): Boolean {
+    override fun edit(id: String, category: Category): Boolean {
         return contentResolver.update(
-                IMAGE_OBJECT_PROVIDER_URI,
-                imageObject.toContentValues(),
+                CATEGORY_PROVIDER_URI,
+                category.toContentValues(),
                 whereIdEquals(id),
                 null
         ) == SINGLE_ROW_AFFECTED
     }
 
-    override fun insert(imageObject: ImageObject): Boolean {
+    override fun insert(category: Category): Boolean {
         return contentResolver.insert(
-                IMAGE_OBJECT_PROVIDER_URI,
-                imageObject.toContentValues()
+                CATEGORY_PROVIDER_URI,
+                category.toContentValues()
         ) != null
     }
 
     override fun delete(id: String): Boolean {
         return contentResolver.delete(
-                IMAGE_OBJECT_PROVIDER_URI,
+                CATEGORY_PROVIDER_URI,
                 whereIdEquals(id),
                 null
         ) == SINGLE_ROW_AFFECTED

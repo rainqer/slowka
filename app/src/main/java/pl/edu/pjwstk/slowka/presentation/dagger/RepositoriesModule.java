@@ -9,7 +9,7 @@ import pl.edu.pjwstk.slowka.domain.file.FileRepository;
 import pl.edu.pjwstk.slowka.domain.hardware.CameraRepository;
 import pl.edu.pjwstk.slowka.domain.information.NamesForObjectInImageRepository;
 import pl.edu.pjwstk.slowka.repository.camera.AndroidCameraRepository;
-import pl.edu.pjwstk.slowka.repository.content.AndroidImageObjectRepository;
+import pl.edu.pjwstk.slowka.repository.content.LocalImageObjectRepository;
 import pl.edu.pjwstk.slowka.repository.file.AndroidFileRepository;
 import pl.edu.pjwstk.slowka.repository.recognize.MockNamesForObjectsRepository;
 
@@ -36,7 +36,7 @@ public class RepositoriesModule {
 
     @Provides
     @Singleton
-    ImageObjectRepository provideImageObjectRepository(AndroidImageObjectRepository imageObjectRepository) {
+    ImageObjectRepository provideImageObjectRepository(LocalImageObjectRepository imageObjectRepository) {
         return imageObjectRepository;
     }
 }

@@ -6,9 +6,6 @@ import android.widget.Toast
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
 import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
-import pl.edu.pjwstk.slowka.presentation.ui.recognize.RecognizeImageModel
-import pl.edu.pjwstk.slowka.presentation.ui.recognize.RecognizeImageActivity
-import pl.edu.pjwstk.slowka.presentation.ui.recognize.RecognizeImageActivityView
 import java.io.File
 
 class RecognizeImageActivityPresenter constructor(

@@ -8,7 +8,6 @@ class ViewAllImageObjectsUseCase : UseCase<Cursor> {
     private val imageObjectRepository: ImageObjectRepository
 
     constructor(imageObjectRepository: ImageObjectRepository) {
-
         this.imageObjectRepository = imageObjectRepository
     }
 

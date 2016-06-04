@@ -9,10 +9,10 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class CategoryRepository : ImageObjectRepository {
+class LocalImageObjectRepository : ImageObjectRepository {
 
     val contentResolver: ContentResolver
-    val CATEGORY_PROVIDER_URI = SlowkaContentProvider.CATEGORY_URI
+    val IMAGE_OBJECT_PROVIDER_URI = SlowkaContentProvider.IMAGE_OBJECT_URI
     val SINGLE_ROW_AFFECTED = 1
 
     @Inject
@@ -21,12 +21,12 @@ class CategoryRepository : ImageObjectRepository {
     }
 
     override fun getAll(): Cursor {
-        return contentResolver.query(CATEGORY_PROVIDER_URI, CategoriesTable.COLUMNS, null, arrayOf(), null)
+        return contentResolver.query(IMAGE_OBJECT_PROVIDER_URI, ImageObjectsTable.COLUMNS, null, arrayOf(), null)
     }
 
     override fun edit(id: String, imageObject: ImageObject): Boolean {
         return contentResolver.update(
-                CATEGORY_PROVIDER_URI,
+                IMAGE_OBJECT_PROVIDER_URI,
                 imageObject.toContentValues(),
                 whereIdEquals(id),
                 null
@@ -35,14 +35,14 @@ class CategoryRepository : ImageObjectRepository {
 
     override fun insert(imageObject: ImageObject): Boolean {
         return contentResolver.insert(
-                CATEGORY_PROVIDER_URI,
+                IMAGE_OBJECT_PROVIDER_URI,
                 imageObject.toContentValues()
         ) != null
     }
 
     override fun delete(id: String): Boolean {
         return contentResolver.delete(
-                CATEGORY_PROVIDER_URI,
+                IMAGE_OBJECT_PROVIDER_URI,
                 whereIdEquals(id),
                 null
         ) == SINGLE_ROW_AFFECTED

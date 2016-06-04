@@ -5,8 +5,8 @@ import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
+import pl.edu.pjwstk.slowka.domain.content.Category
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
-import pl.edu.pjwstk.slowka.presentation.dagger.Components
 
 class SlowkaContentProvider : ContentProvider() {
 
@@ -16,7 +16,6 @@ class SlowkaContentProvider : ContentProvider() {
         matcher.addURI(authority, ImageObjectsTable.PATH, imageObjectsProviderCode)
         matcher.addURI(authority, CategoriesTable.PATH, categoriesProviderCode)
     }
-
 
     override fun onCreate(): Boolean {
         sqlLiteHelper = SqlLiteHelper(context)
@@ -55,7 +54,8 @@ class SlowkaContentProvider : ContentProvider() {
 
     private fun getTableName(uri: Uri) : String {
         return when (getProviderCode(uri)) {
-            imageObjectsProviderCode -> ImageObjectsTable.NAME;
+            imageObjectsProviderCode -> ImageObjectsTable.NAME
+            categoriesProviderCode -> CategoriesTable.NAME
             else -> ImageObjectsTable.NAME
         }
     }
@@ -63,6 +63,7 @@ class SlowkaContentProvider : ContentProvider() {
     override fun getType(uri: Uri): String {
         return when (getProviderCode(uri)) {
             imageObjectsProviderCode -> ImageObject::class.java.toString()
+            categoriesProviderCode -> Category::class.java.toString()
             else -> ImageObject::class.java.toString()
         }
     }

@@ -26,7 +26,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    kotlin_version = '1.0.1-2'
+    kotlin_version = '1.0.2'
 
     appcompat = 'com.android.support:appcompat-v7:23.2.0'
     butterknife = 'com.jakewharton:butterknife:7.0.1'
