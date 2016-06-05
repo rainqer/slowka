@@ -6,8 +6,10 @@ import pl.edu.pjwstk.slowka.repository.content.CategoriesTable
 
 class Category {
 
-    val icon: Icon
     val name: String
+    private val icon: Icon
+    val iconRes : Int
+        get() = icon.drawableRes
 
     constructor(cursor: Cursor) {
         name = cursor.getString(cursor.getColumnIndexOrThrow(CategoriesTable.COLUMN_NAME))
