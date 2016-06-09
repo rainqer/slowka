@@ -29,4 +29,8 @@ class CategoryAdapter(context: Context, c: Cursor, autoRequery: Boolean)
         viewHolder.icon.setImageResource(category.iconRes)
         viewHolder.name.setText(category.name)
     }
+
+    fun getSelectedCategory() : Category {
+
+    }
 }

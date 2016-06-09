@@ -9,15 +9,13 @@ import android.view.View
 import android.widget.EditText
 import android.widget.GridView
 import android.widget.ImageView
-import android.widget.ListAdapter
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.HasComponent
+import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
+import pl.edu.pjwstk.slowka.presentation.ui.SlowkaActivity
 import pl.edu.pjwstk.slowka.presentation.ui.recognize.dagger.RecognizeImageActivityComponent
 import pl.edu.pjwstk.slowka.presentation.ui.recognize.dagger.RecognizeImageActivityComponentAssembler
-import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
-import pl.edu.pjwstk.slowka.presentation.ui.recognize.RecognizeImageActivityPresenter
-import pl.edu.pjwstk.slowka.presentation.ui.SlowkaActivity
 import java.io.File
 import javax.inject.Inject
 
@@ -40,6 +38,8 @@ class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(),
     private val categoryGrid: GridView by bindView(R.id.categoryGrid)
     private val progressBar: View by bindView(R.id.progressBar)
     private val confirmButton: FloatingActionButton by bindView(R.id.fab)
+
+    private var categoryAdapter : CategoryAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,8 +65,13 @@ class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(),
         hideProgressBar()
     }
 
-    override fun applyCategoryAdapter(categoryAdapter: ListAdapter) {
+    override fun applyCategoryAdapter(newCategoryAdapter: CategoryAdapter) {
+        categoryAdapter = newCategoryAdapter
         categoryGrid.setAdapter(categoryAdapter);
+    }
+
+    override fun getSelectedCategory(): String {
+        return categoryAdapter?.getSelectedCategory()
     }
 
     private fun hideProgressBar() {

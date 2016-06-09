@@ -9,6 +9,7 @@ class ImageObjectsTable : SqlTable {
                 .append(COLUMN_ID).append(" ").append("INTEGER").append(" PRIMARY KEY AUTOINCREMENT").append(", ")
                 .append(COLUMN_NAME).append(" ").append("TEXT").append(", ")
                 .append(COLUMN_IMAGE_URL).append(" ").append("TEXT")
+                .append(COLUMN_CATEGORY).append(" ").append("TEXT")
                 .append(")");
         database.execSQL(sqlCommand.toString())
     }
@@ -18,7 +19,8 @@ class ImageObjectsTable : SqlTable {
         val COLUMN_ID = "_id"
         val COLUMN_NAME = "objectName"
         val COLUMN_IMAGE_URL = "imageUrl"
-        val COLUMNS = arrayOf("_id", "objectName", "imageUrl")
+        val COLUMN_CATEGORY = "category"
+        val COLUMNS = arrayOf("_id", "objectName", "imageUrl", "category")
 
         val PATH = "imageObjects"
     }

@@ -28,7 +28,7 @@ class RecognizeImageActivityPresenter constructor(
 
     fun confirmButtonClicked() {
         recognizeImageActivityModel
-                .storeReadyImageObject(ImageObject(file, presentedView.imageAnnotation))
+                .storeReadyImageObject(buildImageObject())
                 .subscribe { successful ->
                     Toast.makeText(presentedActivity, if (successful) "SUCCESS" else "FAIL" , Toast.LENGTH_LONG).show()
                     presentedActivity.finish()
@@ -44,6 +44,9 @@ class RecognizeImageActivityPresenter constructor(
             presentedView.applyCategoryAdapter(CategoryAdapter(presentedActivity, cursor ,false))
         }
     }
+
+    private fun buildImageObject()
+            = ImageObject(file, presentedView.imageAnnotation, presentedView.getSelectedCategory())
 
     override fun pause() {
     }
