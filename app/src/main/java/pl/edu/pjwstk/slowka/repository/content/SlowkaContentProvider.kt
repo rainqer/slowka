@@ -13,8 +13,8 @@ class SlowkaContentProvider : ContentProvider() {
     lateinit var sqlLiteHelper: SqlLiteHelper
 
     init {
-        matcher.addURI(authority, ImageObjectsTable.PATH, imageObjectsProviderCode)
-        matcher.addURI(authority, CategoriesTable.PATH, categoriesProviderCode)
+        matcher.addURI(AUTHORITY, ImageObjectsTable.PATH, imageObjectsProviderCode)
+        matcher.addURI(AUTHORITY, CategoriesTable.PATH, categoriesProviderCode)
     }
 
     override fun onCreate(): Boolean {
@@ -74,12 +74,13 @@ class SlowkaContentProvider : ContentProvider() {
 
     companion object {
         val ERROR = -1
-        val authority = "content://pl.edu.pjwstk.slowka.repository.provider"
-        val IMAGE_OBJECT_URI = Uri.parse("$authority/${ImageObjectsTable.PATH}")
-        val CATEGORY_URI = Uri.parse("$authority/${CategoriesTable.PATH}")
+        private val AUTHORITY = "pl.edu.pjwstk.slowka.repository.provider"
+        private val CONTENT = Uri.parse("content://" + AUTHORITY)
+        private val matcher = UriMatcher(UriMatcher.NO_MATCH);
+        private val imageObjectsProviderCode = 1;
+        private val categoriesProviderCode = 2;
 
-        val matcher = UriMatcher(UriMatcher.NO_MATCH);
-        val imageObjectsProviderCode = 1;
-        val categoriesProviderCode = 2;
+        val IMAGE_OBJECT_URI = Uri.withAppendedPath(CONTENT, ImageObjectsTable.PATH);
+        val CATEGORY_URI = Uri.withAppendedPath(CONTENT, CategoriesTable.PATH)
     }
 }

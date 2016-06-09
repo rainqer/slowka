@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.GridView
 import android.widget.ImageView
+import android.widget.ListAdapter
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.HasComponent
@@ -57,12 +58,15 @@ class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(),
         confirmButton.setOnClickListener {
             presenter.confirmButtonClicked()
         }
-        categoryGrid.setAdapter(CategoryAdapter(this, c, false));
     }
 
     override fun showAnnotationForRecognizedImage(annotationForImage: String) {
         imageEditableAnnotation.setText(annotationForImage)
         hideProgressBar()
+    }
+
+    override fun applyCategoryAdapter(categoryAdapter: ListAdapter) {
+        categoryGrid.setAdapter(categoryAdapter);
     }
 
     private fun hideProgressBar() {

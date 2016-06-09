@@ -19,6 +19,7 @@ class RecognizeImageActivityPresenter constructor(
                         savedInstanceState: Bundle?) {
         super.attach(view, activity, savedInstanceState)
         extractInfoFromIntent()
+
     }
 
     private fun extractInfoFromIntent() {
@@ -29,7 +30,7 @@ class RecognizeImageActivityPresenter constructor(
         recognizeImageActivityModel
                 .storeReadyImageObject(ImageObject(file, presentedView.imageAnnotation))
                 .subscribe { successful ->
-                    Toast.makeText(presentedActivity, if (successful) "SUCCESS" else "FAIL" , Toast.LENGTH_LONG)
+                    Toast.makeText(presentedActivity, if (successful) "SUCCESS" else "FAIL" , Toast.LENGTH_LONG).show()
                     presentedActivity.finish()
                 }
     }
@@ -38,6 +39,9 @@ class RecognizeImageActivityPresenter constructor(
         presentedView.setImage(BitmapDecoder(file).decode())
         recognizeImageActivityModel.recognizeObjectInImage(file).subscribe { annotationsForTheImage ->
             presentedView.showAnnotationForRecognizedImage(annotationsForTheImage[0])
+        }
+        recognizeImageActivityModel.getAllCategories().subscribe() { cursor ->
+            presentedView.applyCategoryAdapter(CategoryAdapter(presentedActivity, cursor ,false))
         }
     }
 

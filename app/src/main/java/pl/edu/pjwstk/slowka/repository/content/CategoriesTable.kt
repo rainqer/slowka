@@ -8,7 +8,7 @@ class CategoriesTable : SqlTable {
         val sqlCommand = StringBuilder("CREATE TABLE ").append(NAME).append(" (")
                 .append(COLUMN_ID).append(" ").append("INTEGER").append(" PRIMARY KEY AUTOINCREMENT").append(", ")
                 .append(COLUMN_NAME).append(" ").append("TEXT").append(", ")
-                .append(COLUMN_ICON).append(" ").append("INTEGER").append(", ")
+                .append(COLUMN_ICON).append(" ").append("INTEGER")
                 .append(")");
         database.execSQL(sqlCommand.toString())
     }

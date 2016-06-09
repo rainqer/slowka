@@ -4,11 +4,13 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import pl.edu.pjwstk.slowka.domain.content.CategoryRepository;
 import pl.edu.pjwstk.slowka.domain.content.ImageObjectRepository;
 import pl.edu.pjwstk.slowka.domain.file.FileRepository;
 import pl.edu.pjwstk.slowka.domain.hardware.CameraRepository;
 import pl.edu.pjwstk.slowka.domain.information.NamesForObjectInImageRepository;
 import pl.edu.pjwstk.slowka.repository.camera.AndroidCameraRepository;
+import pl.edu.pjwstk.slowka.repository.content.LocalCategoryRepository;
 import pl.edu.pjwstk.slowka.repository.content.LocalImageObjectRepository;
 import pl.edu.pjwstk.slowka.repository.file.AndroidFileRepository;
 import pl.edu.pjwstk.slowka.repository.recognize.MockNamesForObjectsRepository;
@@ -38,5 +40,11 @@ public class RepositoriesModule {
     @Singleton
     ImageObjectRepository provideImageObjectRepository(LocalImageObjectRepository imageObjectRepository) {
         return imageObjectRepository;
+    }
+
+    @Provides
+    @Singleton
+    CategoryRepository provideCategoryRepository(LocalCategoryRepository categoryRepository) {
+        return categoryRepository;
     }
 }
