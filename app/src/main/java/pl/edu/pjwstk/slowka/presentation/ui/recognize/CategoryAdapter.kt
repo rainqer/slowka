@@ -13,17 +13,20 @@ class CategoryAdapter(context: Context, c: Cursor, autoRequery: Boolean)
     : CursorAdapter(context, c, autoRequery) {
 
     override fun newView(context: Context, cursor: Cursor, viewGroup: ViewGroup): View {
-        val view = LayoutInflater.from(context).inflate(R.layout.adapteritem_category_grid, viewGroup)
+        val view = LayoutInflater.from(context).inflate(R.layout.adapteritem_category_grid, viewGroup, false)
         view.tag = CategoryViewHolder(view)
         applyData(view, cursor)
         return view
     }
 
-    private fun applyData(view: View, cursor: Cursor) {
-        
+    override fun bindView(view: View, context: Context, cursor: Cursor) {
+        applyData(view, cursor)
     }
 
-    override fun bindView(view: View, context: Context, cursor: Cursor) {
-        Category(cursor)
+    private fun applyData(view: View, cursor: Cursor) {
+        val viewHolder = view.tag as CategoryViewHolder
+        val category = Category(cursor)
+        viewHolder.icon.setImageResource(category.iconRes)
+        viewHolder.name.setText(category.name)
     }
 }

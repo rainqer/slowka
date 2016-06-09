@@ -8,10 +8,12 @@ enum class Icon (@DrawableRes val drawableRes : Int) {
     SCHOOL(R.drawable.ic_grocery_black);
 
     companion object {
+        public val HOME_ORDINAL = 0
+        public val SCHOOL_ORDINAL = 1
         fun fromOrdinal(ordinal: Int): Icon {
             return when (ordinal) {
-                0 -> HOME
-                1 -> SCHOOL
+                HOME_ORDINAL -> HOME
+                SCHOOL_ORDINAL -> SCHOOL
                 else -> HOME
             }
         }
