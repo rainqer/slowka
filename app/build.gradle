@@ -50,6 +50,7 @@ dependencies {
 
     compile appcompat
     compile crooper
+    compile cardView
     compile dagger
     compile googleAnalytics
     compile (googleApiClientAndroid) {

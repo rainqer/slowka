@@ -7,6 +7,7 @@ import pl.edu.pjwstk.slowka.presentation.ui.FragmentPresenter
 import android.support.v4.app.FragmentActivity
 import pl.edu.pjwstk.slowka.presentation.ui.landing.TutorListOfWordsAdapter
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorWordsListView
+import pl.edu.pjwstk.slowka.presentation.view.VerticalMarginDecoration
 import rx.Subscription
 import rx.subscriptions.Subscriptions
 
@@ -26,6 +27,7 @@ open class WordsListFragmentPresenter (private val wordsListFragmentModel : Word
     override fun attach(view: TutorWordsListView, activity: FragmentActivity, savedInstanceState: Bundle?) {
         super.attach(view, activity, savedInstanceState)
         presentedView.getListOfWords().setLayoutManager(LinearLayoutManager(presentedActivity))
+        presentedView.getListOfWords().addItemDecoration(VerticalMarginDecoration())
         adapter = TutorListOfWordsAdapter(presentedActivity)
         presentedView.getListOfWords().setAdapter(adapter)
     }
