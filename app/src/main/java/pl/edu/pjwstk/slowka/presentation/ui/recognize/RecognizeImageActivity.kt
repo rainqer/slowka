@@ -71,7 +71,7 @@ class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(),
     }
 
     override fun getSelectedCategory(): String {
-        return categoryAdapter?.getSelectedCategory()
+        return categoryAdapter!!.getSelectedCategory().name
     }
 
     private fun hideProgressBar() {

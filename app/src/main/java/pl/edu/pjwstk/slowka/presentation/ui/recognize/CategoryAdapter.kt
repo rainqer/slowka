@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.CursorAdapter
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.domain.content.Category
+import pl.edu.pjwstk.slowka.domain.content.Icon
 
 class CategoryAdapter(context: Context, c: Cursor, autoRequery: Boolean)
     : CursorAdapter(context, c, autoRequery) {
@@ -31,6 +32,7 @@ class CategoryAdapter(context: Context, c: Cursor, autoRequery: Boolean)
     }
 
     fun getSelectedCategory() : Category {
-
+        //TODO extract category
+        return Category("AA", Icon.HOME)
     }
 }
