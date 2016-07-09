@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.CursorAdapter
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.domain.content.Category
-import pl.edu.pjwstk.slowka.domain.content.Icon
 
 class CategoryAdapter(context: Context, c: Cursor, autoRequery: Boolean)
     : CursorAdapter(context, c, autoRequery) {
@@ -29,10 +28,13 @@ class CategoryAdapter(context: Context, c: Cursor, autoRequery: Boolean)
         val category = Category(cursor)
         viewHolder.icon.setImageResource(category.iconRes)
         viewHolder.name.setText(category.name)
+        viewHolder.chosenIndicator.visibility = if (cursor.position == selected) View.VISIBLE else View.GONE
     }
 
     fun getSelectedCategory() : Category {
-        //TODO extract category
-        return Category("AA", Icon.HOME)
+        cursor.moveToPosition(selected)
+        return Category(cursor)
     }
+
+    var selected: Int = 0
 }

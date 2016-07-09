@@ -68,6 +68,10 @@ class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(),
     override fun applyCategoryAdapter(newCategoryAdapter: CategoryAdapter) {
         categoryAdapter = newCategoryAdapter
         categoryGrid.setAdapter(categoryAdapter);
+        categoryGrid.setOnItemClickListener { adapterView, view, position, l ->
+            categoryAdapter?.selected = position
+            categoryAdapter?.notifyDataSetChanged()
+        }
     }
 
     override fun getSelectedCategory(): String {
