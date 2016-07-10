@@ -12,5 +12,5 @@ class RandomColorGenerator {
         return Color.argb(255, randomColorPart(rnd), randomColorPart(rnd), randomColorPart(rnd))
     }
 
-    private fun randomColorPart(rnd: Random) = rnd.nextInt(128) + 64
+    private fun randomColorPart(rnd: Random) = rnd.nextInt(128) + 128
 }
