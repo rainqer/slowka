@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.MenuItem
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
-import pl.edu.pjwstk.slowka.presentation.ui.landing.WordsCategoriesListFragment
+import pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories.WordsCategoriesListFragment
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorFragment
 
 class LandingActivityPresenter() : ActivityPresenter<LandingActivityView>(),

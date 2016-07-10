@@ -2,8 +2,11 @@ package pl.edu.pjwstk.slowka.presentation.ui.landing.dagger;
 
 import dagger.Module;
 import dagger.Provides;
+import pl.edu.pjwstk.slowka.domain.content.ViewAllCategoriesUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.LandingActivityPresenter;
+import pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories.WordsCategoriesModel;
+import pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories.WordsCategoriesPresenter;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorFragmentPresenter;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_know.IKnowWordsListFragmentModel;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_know.IKnowWordsListFragmentPresenter;
@@ -69,5 +72,19 @@ public class LandingModule {
     NewWordsListFragmentPresenter provideNewWordsListFragmentPresenter(NewWordsListFragmentModel newWordsListFragmentModel) {
 
         return new NewWordsListFragmentPresenter(newWordsListFragmentModel);
+    }
+
+    @LandingActivityScope
+    @Provides
+    WordsCategoriesPresenter provideWordsCategoriesPresenter(WordsCategoriesModel wordsCategoriesModel) {
+
+        return new WordsCategoriesPresenter(wordsCategoriesModel);
+    }
+
+    @LandingActivityScope
+    @Provides
+    WordsCategoriesModel provideWordsCategoriesModel(ViewAllCategoriesUseCase viewAllCategoriesUseCase) {
+
+        return new WordsCategoriesModel(viewAllCategoriesUseCase);
     }
 }

@@ -11,6 +11,7 @@ import pl.edu.pjwstk.slowka.presentation.ui.landing.dagger.LandingActivityCompon
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.ui.landing.LandingActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.ui.SlowkaActivityWithDrawer
+import pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories.WordsCategoriesListFragment
 import javax.inject.Inject
 
 class LandingActivity : SlowkaActivityWithDrawer<LandingActivityView>(),
