@@ -28,7 +28,6 @@ class MainGridCategoryAdapter(context: Context, c: Cursor, autoRequery: Boolean)
     private fun applyData(view: View, cursor: Cursor) {
         val viewHolder = view.tag as MainGridCategoryViewHolder
         val category = Category(cursor)
-        viewHolder.icon.setImageResource(category.iconRes)
-        viewHolder.name.setText(category.name)
+        viewHolder.showCategory(category)
     }
 }

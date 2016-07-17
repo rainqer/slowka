@@ -42,6 +42,10 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".presentation.ui.single_category.SingleCategoryActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.ui.landing.LandingActivity" />
+
         <provider
             android:name=".repository.content.SlowkaContentProvider"
             android:authorities="pl.edu.pjwstk.slowka.repository.provider"/>
