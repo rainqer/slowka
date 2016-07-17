@@ -24,7 +24,7 @@ class ViewCategoryImageObjectsUseCase : UseCase<Cursor> {
         if (categoryId == null) {
             throw IllegalStateException("you must specify the categoryId")
         }
-        return imageObjectRepository.getAll()
+        return imageObjectRepository.getImagesInCategory(categoryId)
     }
 
 }

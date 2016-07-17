@@ -8,6 +8,7 @@ import pl.edu.pjwstk.slowka.domain.content.StoreCategoryUseCase;
 import pl.edu.pjwstk.slowka.domain.content.StoreImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllCategoriesUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllImageObjectsUseCase;
+import pl.edu.pjwstk.slowka.domain.content.ViewCategoryImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.file.FileRepository;
 import pl.edu.pjwstk.slowka.domain.file.SaveBitmapUseCase;
 import pl.edu.pjwstk.slowka.domain.file.SaveCameraFrameUseCase;
@@ -32,6 +33,11 @@ public class UsecasesModule {
     @Provides
     ViewAllImageObjectsUseCase providesViewAllImageObjectsUseCase(ImageObjectRepository imageObjectRepository) {
         return new ViewAllImageObjectsUseCase(imageObjectRepository);
+    }
+
+    @Provides
+    ViewCategoryImageObjectsUseCase providesViewCategoryImageObjectsUseCase(ImageObjectRepository imageObjectRepository) {
+        return new ViewCategoryImageObjectsUseCase(imageObjectRepository);
     }
 
     @Provides
