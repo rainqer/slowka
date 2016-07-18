@@ -19,21 +19,21 @@ class SingleCategoryActivityPresenter(private val singleCategoryWordsListModel: 
     override fun attach(view: SingleCategoryActivityView, activity: FragmentActivity, savedInstanceState: Bundle?) {
         super.attach(view, activity, savedInstanceState)
         adapter = TutorListOfWordsAdapter(presentedActivity)
-        presentedView.getListOfWords().setAdapter(adapter)
+        presentedView.getListOfWords().adapter = adapter
 
+    }
+
+    override fun resume() {
+        Toast.makeText(presentedActivity, "${presentedActivity.intent.getStringExtra(CATEGORY_NAME_KEY)}", Toast.LENGTH_LONG).show()
+        refreshListSubscription =
+                singleCategoryWordsListModel.getImages(presentedActivity.intent.getStringExtra(CATEGORY_NAME_KEY)).subscribe {
+                    cursor -> buildListFromCursor(cursor)
+                }
     }
 
     private fun buildListFromCursor(cursor: Cursor?) {
         adapter?.swapCursor(cursor)
         presentedView.getListOfWords().invalidate()
-    }
-
-    override fun resume() {
-        Toast.makeText(presentedActivity, "${presentedActivity.intent.getIntExtra(CATEGORY_ID_KEY, -1)}", Toast.LENGTH_LONG).show()
-        refreshListSubscription =
-                singleCategoryWordsListModel.getImages(presentedActivity.intent.getIntExtra(CATEGORY_ID_KEY, -1)).subscribe { cursor ->
-                    buildListFromCursor(cursor)
-                }
     }
 
     override fun pause() {
@@ -44,6 +44,6 @@ class SingleCategoryActivityPresenter(private val singleCategoryWordsListModel: 
     }
 
     companion object {
-        val CATEGORY_ID_KEY = "categoryIdKey"
+        val CATEGORY_NAME_KEY = "categoryNameKey"
     }
 }

@@ -46,9 +46,9 @@ class SingleCategoryActivity : SlowkaActivity<SingleCategoryActivityView>(),
     }
 
     companion object {
-        fun getIntent(context: Context, categoryId: Int): Intent {
+        fun getIntent(context: Context, categoryName: String): Intent {
             return Intent(context, SingleCategoryActivity::class.java)
-                    .putExtra(SingleCategoryActivityPresenter.CATEGORY_ID_KEY, categoryId)
+                    .putExtra(SingleCategoryActivityPresenter.CATEGORY_NAME_KEY, categoryName)
         }
     }
 }

@@ -11,31 +11,26 @@ class MainGridCategoryViewHolder {
 
     private val icon: ImageView
     private val name: TextView
-    private var shownCategoryId: Int
+    private var shownCategoryName: String? = null
 
     constructor(view: View) {
         icon = view.findViewById(R.id.adapterItem_category_icon) as ImageView
         name = view.findViewById(R.id.adapterItem_category_name) as TextView
-        shownCategoryId = ILLEGAL_CATEGORY_ID
         view.setOnClickListener {
             view -> launchSingleCategoryActivity(view)
         }
     }
 
     private fun launchSingleCategoryActivity(view: View) {
-        if (shownCategoryId == ILLEGAL_CATEGORY_ID) {
-            throw IllegalStateException("Trying to show category which does not exist")
-        }
-        view.context.startActivity(SingleCategoryActivity.getIntent(view.context, shownCategoryId))
+        view.context.startActivity(SingleCategoryActivity.getIntent(view.context, getCategoryOrThrow()))
     }
+
+    private fun getCategoryOrThrow() =
+            shownCategoryName ?: throw IllegalStateException("Trying to show category which does not exist")
 
     fun showCategory(category: Category) {
         icon.setImageResource(category.iconRes)
         name.text = category.name
-        shownCategoryId = category.id
-    }
-
-    companion object {
-        private val ILLEGAL_CATEGORY_ID = -1
+        shownCategoryName = category.name
     }
 }

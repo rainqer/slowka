@@ -8,7 +8,7 @@ import rx.schedulers.Schedulers
 class SingleCategoryWordsListModel
     constructor(val viewCategoryImageObjectsUseCase: ViewCategoryImageObjectsUseCase) {
 
-    fun getImages(categoryId: Int): Observable<Cursor> {
-        return viewCategoryImageObjectsUseCase.category(categoryId).performAndObserve(Schedulers.io())
+    fun getImages(categoryName: String): Observable<Cursor> {
+        return viewCategoryImageObjectsUseCase.category(categoryName).performAndObserve(Schedulers.io())
     }
 }

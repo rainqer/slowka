@@ -24,11 +24,11 @@ class LocalImageObjectRepository : ImageObjectRepository {
         return contentResolver.query(IMAGE_OBJECT_PROVIDER_URI, ImageObjectsTable.COLUMNS, null, arrayOf(), null)
     }
 
-    override fun getImagesInCategory(categoryId: Int): Cursor {
+    override fun getImagesInCategory(categoryName: String): Cursor {
         return contentResolver.query(
                 IMAGE_OBJECT_PROVIDER_URI,
                 ImageObjectsTable.COLUMNS,
-                "${ImageObjectsTable.COLUMN_CATEGORY}=$categoryId",
+                "${ImageObjectsTable.COLUMN_CATEGORY}=\"$categoryName\"",
                 arrayOf(),
                 null
         )
