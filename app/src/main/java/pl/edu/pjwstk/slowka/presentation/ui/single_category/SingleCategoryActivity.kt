@@ -3,6 +3,7 @@ package pl.edu.pjwstk.slowka.presentation.ui.single_category
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
@@ -29,6 +30,7 @@ class SingleCategoryActivity : SlowkaActivity<SingleCategoryActivityView>(),
         super.onCreate(savedInstanceState)
         setContentViewWithToolbar(R.layout.activity_category_words_list)
         setDaggerComponent(SingleCategoryActivityComponentAssembler.assemble(application))
+        getListOfWords().layoutManager = LinearLayoutManager(this)
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {

@@ -12,7 +12,6 @@ import rx.subscriptions.Subscriptions
 class SingleCategoryActivityPresenter(private val singleCategoryWordsListModel: SingleCategoryWordsListModel)
     : ActivityPresenter<SingleCategoryActivityView>() {
 
-
     private var adapter : TutorListOfWordsAdapter? = null
     private var refreshListSubscription : Subscription = Subscriptions.unsubscribed()
 
@@ -20,7 +19,6 @@ class SingleCategoryActivityPresenter(private val singleCategoryWordsListModel: 
         super.attach(view, activity, savedInstanceState)
         adapter = TutorListOfWordsAdapter(presentedActivity)
         presentedView.getListOfWords().adapter = adapter
-
     }
 
     override fun resume() {
@@ -37,6 +35,7 @@ class SingleCategoryActivityPresenter(private val singleCategoryWordsListModel: 
     }
 
     override fun pause() {
+        adapter?.changeCursor(null)
         refreshListSubscription.unsubscribe()
     }
 

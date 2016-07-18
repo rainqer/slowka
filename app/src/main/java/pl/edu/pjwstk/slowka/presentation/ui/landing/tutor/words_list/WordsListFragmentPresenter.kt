@@ -15,17 +15,17 @@ open class WordsListFragmentPresenter (private val wordsListFragmentModel : Word
     private var adapter : TutorListOfWordsAdapter? = null
     private var refreshListSubscription : Subscription = Subscriptions.unsubscribed()
 
+    override fun attach(view: TutorWordsListView, activity: FragmentActivity, savedInstanceState: Bundle?) {
+        super.attach(view, activity, savedInstanceState)
+        adapter = TutorListOfWordsAdapter(presentedActivity)
+        presentedView.getListOfWords().adapter = adapter
+    }
+
     override fun onViewCreated() {
         refreshListSubscription =
                 wordsListFragmentModel.getImages().subscribe { cursor ->
                     buildListFromCursor(cursor)
                 }
-    }
-
-    override fun attach(view: TutorWordsListView, activity: FragmentActivity, savedInstanceState: Bundle?) {
-        super.attach(view, activity, savedInstanceState)
-        adapter = TutorListOfWordsAdapter(presentedActivity)
-        presentedView.getListOfWords().setAdapter(adapter)
     }
 
     private fun buildListFromCursor(cursor: Cursor?) {
