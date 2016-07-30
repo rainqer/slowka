@@ -23,22 +23,32 @@ class LocalImageObjectRepository : ImageObjectRepository {
     override fun getAll(): Cursor {
         return contentResolver.query(IMAGE_OBJECT_PROVIDER_URI, ImageObjectsTable.COLUMNS, null, arrayOf(), null)
     }
-
-    override fun get(objectId: Int): Cursor {
+    override fun getAllPending(): Cursor {
         return contentResolver.query(
                 IMAGE_OBJECT_PROVIDER_URI,
                 ImageObjectsTable.COLUMNS,
-                "${ImageObjectsTable.COLUMN_ID}=\"$objectId\"",
+                "${ImageObjectsTable.COLUMN_ACCEPTED}='0'",
                 arrayOf(),
                 null
         )
     }
 
-    override fun getImagesInCategory(categoryName: String): Cursor {
+    override fun get(objectId: Int): Cursor {
         return contentResolver.query(
                 IMAGE_OBJECT_PROVIDER_URI,
                 ImageObjectsTable.COLUMNS,
-                "${ImageObjectsTable.COLUMN_CATEGORY}=\"$categoryName\"",
+                "${ImageObjectsTable.COLUMN_ID}='$objectId'",
+                arrayOf(),
+                null
+        )
+    }
+
+    override fun getAcceptedImagesInCategory(categoryName: String): Cursor {
+        val c1 = getAll()
+        return contentResolver.query(
+                IMAGE_OBJECT_PROVIDER_URI,
+                ImageObjectsTable.COLUMNS,
+                "${ImageObjectsTable.COLUMN_CATEGORY}='$categoryName' AND ${ImageObjectsTable.COLUMN_ACCEPTED}='1'",
                 arrayOf(),
                 null
         )

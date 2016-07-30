@@ -24,7 +24,7 @@ class SingleCategoryActivityPresenter(private val singleCategoryWordsListModel: 
     override fun resume() {
         Toast.makeText(presentedActivity, "${presentedActivity.intent.getStringExtra(CATEGORY_NAME_KEY)}", Toast.LENGTH_LONG).show()
         refreshListSubscription =
-                singleCategoryWordsListModel.getImages(presentedActivity.intent.getStringExtra(CATEGORY_NAME_KEY)).subscribe {
+                singleCategoryWordsListModel.getReadyImages(presentedActivity.intent.getStringExtra(CATEGORY_NAME_KEY)).subscribe {
                     cursor -> buildListFromCursor(cursor)
                 }
     }

@@ -5,8 +5,9 @@ import android.database.Cursor
 interface ImageObjectRepository {
 
     fun getAll(): Cursor
+    fun getAllPending(): Cursor
     fun get(objectId: Int): Cursor
-    fun getImagesInCategory(categoryName: String): Cursor
+    fun getAcceptedImagesInCategory(categoryName: String): Cursor
     fun edit(id: String, imageObject: ImageObject) : Boolean
     fun insert(imageObject: ImageObject) : Boolean
     fun delete(id: String) : Boolean

@@ -14,10 +14,10 @@ class TutorListsPagerAdapter constructor(fragmentManager: FragmentManager)
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
-            0 -> ILearnWordsListFragment.getInstance()
-            1 -> IKnowWordsListFragment.getInstance()
-            2 -> NewWordsListFragment.getInstance()
-            else -> ILearnWordsListFragment.getInstance()
+            0 -> NewWordsListFragment.getInstance()
+            1 -> ILearnWordsListFragment.getInstance()
+            2 -> IKnowWordsListFragment.getInstance()
+            else -> throw IllegalArgumentException("could not view fragment for position $position")
         }
     }
 

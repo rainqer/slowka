@@ -26,6 +26,11 @@ class NewWordsListFragment : TutorWordsListFragment() {
         attachPresenter(this, activity, savedInstanceState)
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.resume()
+    }
+
     companion object {
         fun getInstance() : NewWordsListFragment {
             return NewWordsListFragment()

@@ -2,7 +2,7 @@ package pl.edu.pjwstk.slowka.presentation.ui.single_category.dagger;
 
 import dagger.Module;
 import dagger.Provides;
-import pl.edu.pjwstk.slowka.domain.content.ViewCategoryImageObjectsUseCase;
+import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedCategoryImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.presentation.ui.single_category.SingleCategoryActivityPresenter;
 import pl.edu.pjwstk.slowka.presentation.ui.single_category.SingleCategoryWordsListModel;
 
@@ -12,17 +12,16 @@ public class SingleCategoryModule {
     @SingleCategoryActivityScope
     @Provides
     SingleCategoryActivityPresenter provideSingleCategoryActivityPresenter(
-            SingleCategoryWordsListModel singleCategoryWordsListModel) {
-
+            SingleCategoryWordsListModel singleCategoryWordsListModel
+    ) {
         return new SingleCategoryActivityPresenter(singleCategoryWordsListModel);
     }
 
     @SingleCategoryActivityScope
     @Provides
     SingleCategoryWordsListModel provideSingleCategoryWordsListModel(
-            ViewCategoryImageObjectsUseCase viewCategoryImageObjectsUseCase
+            ViewAcceptedCategoryImageObjectsUseCase viewAcceptedCategoryImageObjectsUseCase
     ) {
-
-        return new SingleCategoryWordsListModel(viewCategoryImageObjectsUseCase);
+        return new SingleCategoryWordsListModel(viewAcceptedCategoryImageObjectsUseCase);
     }
 }

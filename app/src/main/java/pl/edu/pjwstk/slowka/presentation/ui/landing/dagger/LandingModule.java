@@ -4,6 +4,7 @@ import dagger.Module;
 import dagger.Provides;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllCategoriesUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllImageObjectsUseCase;
+import pl.edu.pjwstk.slowka.domain.content.ViewAllPendingImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.LandingActivityPresenter;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories.WordsCategoriesModel;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories.WordsCategoriesPresenter;
@@ -62,9 +63,9 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
-    NewWordsListFragmentModel provideNewWordsListFragmentModel(ViewAllImageObjectsUseCase viewAllImageObjectsUseCase) {
+    NewWordsListFragmentModel provideNewWordsListFragmentModel(ViewAllPendingImageObjectsUseCase viewAllPendingImageObjectsUseCase) {
 
-        return new NewWordsListFragmentModel(viewAllImageObjectsUseCase);
+        return new NewWordsListFragmentModel(viewAllPendingImageObjectsUseCase);
     }
 
     @LandingActivityScope

@@ -22,6 +22,14 @@ open class WordsListFragmentPresenter (private val wordsListFragmentModel : Word
     }
 
     override fun onViewCreated() {
+        refresh()
+    }
+
+    fun resume() {
+        refresh();
+    }
+
+    private fun refresh() {
         refreshListSubscription =
                 wordsListFragmentModel.getImages().subscribe { cursor ->
                     buildListFromCursor(cursor)

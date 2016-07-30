@@ -25,6 +25,7 @@ class AdminImageDetailsModel constructor(
     fun updateImageObject(imageObjectId: Int, imageAnnotation: String, selectedCategory: String): Observable<Boolean> {
         return getImageObjectUseCase.id(imageObjectId).performAndObserve(Schedulers.io())
         .map { imageObject -> ImageObject(imageObject.imageFile, imageAnnotation, selectedCategory) }
+        .map { imageObject -> imageObject.accepted() }
         .map { imageObject ->
             updateImageObjectUseCase
                     .id(imageObjectId)
