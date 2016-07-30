@@ -3,9 +3,11 @@ package pl.edu.pjwstk.slowka.presentation.dagger;
 import dagger.Module;
 import dagger.Provides;
 import pl.edu.pjwstk.slowka.domain.content.CategoryRepository;
+import pl.edu.pjwstk.slowka.domain.content.GetImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ImageObjectRepository;
 import pl.edu.pjwstk.slowka.domain.content.StoreCategoryUseCase;
 import pl.edu.pjwstk.slowka.domain.content.StoreImageObjectUseCase;
+import pl.edu.pjwstk.slowka.domain.content.UpdateImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllCategoriesUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewCategoryImageObjectsUseCase;
@@ -33,6 +35,16 @@ public class UsecasesModule {
     @Provides
     ViewAllImageObjectsUseCase providesViewAllImageObjectsUseCase(ImageObjectRepository imageObjectRepository) {
         return new ViewAllImageObjectsUseCase(imageObjectRepository);
+    }
+
+    @Provides
+    GetImageObjectUseCase providesGetImageObjectUseCase(ImageObjectRepository imageObjectRepository) {
+        return new GetImageObjectUseCase(imageObjectRepository);
+    }
+
+    @Provides
+    UpdateImageObjectUseCase providesUpdateImageObjectUseCase(ImageObjectRepository imageObjectRepository) {
+        return new UpdateImageObjectUseCase(imageObjectRepository);
     }
 
     @Provides

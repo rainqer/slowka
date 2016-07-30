@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.slowka.presentation.ui.recognize
+package pl.edu.pjwstk.slowka.presentation.ui.admin_image_details
 
 import android.content.Context
 import android.database.Cursor
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.CursorAdapter
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.domain.content.Category
+import pl.edu.pjwstk.slowka.presentation.ui.admin_image_details.CategoryViewHolder
 
 class CategoryAdapter(context: Context, c: Cursor, autoRequery: Boolean)
     : CursorAdapter(context, c, autoRequery) {

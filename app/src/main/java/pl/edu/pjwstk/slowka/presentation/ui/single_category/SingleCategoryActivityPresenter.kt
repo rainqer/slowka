@@ -12,12 +12,12 @@ import rx.subscriptions.Subscriptions
 class SingleCategoryActivityPresenter(private val singleCategoryWordsListModel: SingleCategoryWordsListModel)
     : ActivityPresenter<SingleCategoryActivityView>() {
 
-    private var adapter : TutorListOfWordsAdapter? = null
+    private var adapter : SingleCategoryListOfWordsAdapter? = null
     private var refreshListSubscription : Subscription = Subscriptions.unsubscribed()
 
     override fun attach(view: SingleCategoryActivityView, activity: FragmentActivity, savedInstanceState: Bundle?) {
         super.attach(view, activity, savedInstanceState)
-        adapter = TutorListOfWordsAdapter(presentedActivity)
+        adapter = SingleCategoryListOfWordsAdapter(presentedActivity)
         presentedView.getListOfWords().adapter = adapter
     }
 

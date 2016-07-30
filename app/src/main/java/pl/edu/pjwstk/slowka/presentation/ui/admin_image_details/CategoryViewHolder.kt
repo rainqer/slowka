@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.slowka.presentation.ui.recognize
+package pl.edu.pjwstk.slowka.presentation.ui.admin_image_details
 
 import android.view.View
 import android.widget.ImageView

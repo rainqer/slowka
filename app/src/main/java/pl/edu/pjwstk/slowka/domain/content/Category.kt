@@ -33,5 +33,11 @@ class Category {
 
     companion object {
         val CATEGORY_NOT_FROM_DATABASE_ID = -1
+        val HOME = "home"
+        val SPORT = "Sport"
+        val WEATHER = "Weather"
+        val PEOPLE = "People"
+        val HOLIDAY = "Holiday"
+        val GROCERY = "Grocery"
     }
 }

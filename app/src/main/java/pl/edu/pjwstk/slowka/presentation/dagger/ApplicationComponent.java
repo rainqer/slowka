@@ -5,8 +5,10 @@ import android.content.Context;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import pl.edu.pjwstk.slowka.domain.content.GetImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.StoreCategoryUseCase;
 import pl.edu.pjwstk.slowka.domain.content.StoreImageObjectUseCase;
+import pl.edu.pjwstk.slowka.domain.content.UpdateImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllCategoriesUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewCategoryImageObjectsUseCase;
@@ -32,6 +34,8 @@ public interface ApplicationComponent {
 
     StoreImageObjectUseCase providesStoreImageObjectUseCase();
     ViewAllImageObjectsUseCase providesViewAllImageObjectsUseCase();
+    GetImageObjectUseCase providesGetImageObjectUseCase();
+    UpdateImageObjectUseCase providesUpdateImageObjectUseCase();
     ViewCategoryImageObjectsUseCase providesViewCategoryImageObjectsUseCase();
     SaveBitmapUseCase providesSaveBitmapUseCase();
     SaveCameraFrameUseCase providesSaveCameraFrameUseCase();

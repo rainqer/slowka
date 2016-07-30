@@ -1,6 +1,9 @@
 package pl.edu.pjwstk.slowka.presentation;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.multidex.MultiDex;
+
 import pl.edu.pjwstk.slowka.presentation.dagger.AndroidModule;
 import pl.edu.pjwstk.slowka.presentation.dagger.ApplicationComponent;
 import pl.edu.pjwstk.slowka.presentation.dagger.DaggerApplicationComponent;
@@ -20,6 +23,13 @@ public abstract class BaseApplication extends Application {
         component = provideDependencyComponent();
         provideLogging();
         provideCrashlytics();
+    }
+
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 
     protected void provideCrashlytics() {

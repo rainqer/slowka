@@ -27,6 +27,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -43,6 +44,9 @@ android {
     }
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+    }
+    lintOptions {
+        abortOnError false
     }
 }
 
@@ -70,6 +74,7 @@ dependencies {
     compile rxjavaAsyncUtils
     compile supportDesign
     compile timber
+    compile 'com.android.support:multidex:1.0.0'
 
     // during compilation only
     apt daggerCompiler

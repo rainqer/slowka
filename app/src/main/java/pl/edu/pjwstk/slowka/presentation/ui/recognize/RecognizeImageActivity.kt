@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.view.View
 import android.widget.EditText
-import android.widget.GridView
 import android.widget.ImageView
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
@@ -35,11 +34,8 @@ class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(),
 
     private val imageEditableAnnotation: EditText by bindView(R.id.annotationForImageContent)
     private val image: ImageView by bindView(R.id.image)
-    private val categoryGrid: GridView by bindView(R.id.categoryGrid)
     private val progressBar: View by bindView(R.id.progressBar)
     private val confirmButton: FloatingActionButton by bindView(R.id.fab)
-
-    private var categoryAdapter : CategoryAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,19 +59,6 @@ class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(),
     override fun showAnnotationForRecognizedImage(annotationForImage: String) {
         imageEditableAnnotation.setText(annotationForImage)
         hideProgressBar()
-    }
-
-    override fun applyCategoryAdapter(newCategoryAdapter: CategoryAdapter) {
-        categoryAdapter = newCategoryAdapter
-        categoryGrid.setAdapter(categoryAdapter);
-        categoryGrid.setOnItemClickListener { adapterView, view, position, l ->
-            categoryAdapter?.selected = position
-            categoryAdapter?.notifyDataSetChanged()
-        }
-    }
-
-    override fun getSelectedCategory(): String {
-        return categoryAdapter!!.getSelectedCategory().name
     }
 
     private fun hideProgressBar() {

@@ -3,6 +3,7 @@ package pl.edu.pjwstk.slowka.presentation.ui.recognize
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.widget.Toast
+import pl.edu.pjwstk.slowka.domain.content.Category
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
 import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
@@ -40,13 +41,10 @@ class RecognizeImageActivityPresenter constructor(
         recognizeImageActivityModel.recognizeObjectInImage(file).subscribe { annotationsForTheImage ->
             presentedView.showAnnotationForRecognizedImage(annotationsForTheImage[0])
         }
-        recognizeImageActivityModel.getAllCategories().subscribe() { cursor ->
-            presentedView.applyCategoryAdapter(CategoryAdapter(presentedActivity, cursor ,false))
-        }
     }
 
     private fun buildImageObject()
-            = ImageObject(file, presentedView.imageAnnotation, presentedView.getSelectedCategory())
+            = ImageObject(file, presentedView.imageAnnotation, Category.HOME)
 
     override fun pause() {
     }
