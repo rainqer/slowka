@@ -5,15 +5,14 @@ import pl.edu.pjwstk.slowka.presentation.ui.FragmentPresenter
 class WordsCategoriesPresenter(private val wordsCategoriesModel: WordsCategoriesModel) : FragmentPresenter<WordsCategoriesView>() {
 
     override fun onViewCreated() {
-        wordsCategoriesModel.getAllCategories().subscribe() { cursor ->
-            presentedView.getMainCategoriesGrid()
-                    .setAdapter(MainGridCategoryAdapter(presentedActivity, cursor, false))
+        wordsCategoriesModel.getAllWords().subscribe() { listOfAllCategoriesWithImageObjectsCount ->
+            presentedView.getMainCategoriesList().adapter = MainGridCategoryAdapter(listOfAllCategoriesWithImageObjectsCount)
         }
 
     }
 
     override fun onDestroyView() {
-        presentedView.getMainCategoriesGrid().setAdapter(null)
+        presentedView.getMainCategoriesList().adapter = null
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray) {

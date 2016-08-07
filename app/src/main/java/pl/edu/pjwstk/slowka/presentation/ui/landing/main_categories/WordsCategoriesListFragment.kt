@@ -3,10 +3,10 @@ package pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridView
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.Components
@@ -22,7 +22,7 @@ class WordsCategoriesListFragment @Inject constructor() : SlowkaFragment<WordsCa
     protected lateinit var presenter: WordsCategoriesPresenter
 
     val fab : FloatingActionButton by bindView(R.id.fab)
-    val mainCategoryGrid : GridView by bindView(R.id.mainScreenCategoryGrid)
+    val mainCategoryList : RecyclerView by bindView(R.id.mainScreenCategoryWordsList)
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_user_categories_list, container, false)
@@ -33,12 +33,13 @@ class WordsCategoriesListFragment @Inject constructor() : SlowkaFragment<WordsCa
         fab.setOnClickListener {
             startActivity(CameraActivity.createIntent(activity))
         }
+        mainCategoryList.layoutManager = LinearLayoutManager(context)
         Components.from<LandingActivityComponent>(activity).inject(this)
         attachPresenter(this, activity, savedInstanceState)
     }
 
-    override fun getMainCategoriesGrid(): GridView {
-        return mainCategoryGrid
+    override fun getMainCategoriesList(): RecyclerView {
+        return mainCategoryList
     }
 
     override val fragmentPresenter: FragmentPresenter<WordsCategoriesView>

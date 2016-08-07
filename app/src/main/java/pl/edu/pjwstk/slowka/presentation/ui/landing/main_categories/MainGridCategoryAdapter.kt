@@ -1,33 +1,28 @@
 package pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories
 
-import android.content.Context
-import android.database.Cursor
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.CursorAdapter
 import pl.edu.pjwstk.slowka.R
-import pl.edu.pjwstk.slowka.domain.content.Category
-import pl.edu.pjwstk.slowka.presentation.view.RandomColorGenerator
+import pl.edu.pjwstk.slowka.domain.content.CategoryWithWords
 
-class MainGridCategoryAdapter(context: Context, c: Cursor, autoRequery: Boolean)
-    : CursorAdapter(context, c, autoRequery) {
+class MainGridCategoryAdapter(private val listOfAllCategoriesWithImageObjectsCount: List<CategoryWithWords>)
+    : RecyclerView.Adapter<MainListCategoryViewHolder>() {
 
-    override fun newView(context: Context, cursor: Cursor, viewGroup: ViewGroup): View {
-        val view = LayoutInflater.from(context).inflate(R.layout.adapteritem_main_category_grid, viewGroup, false)
-        view.tag = MainGridCategoryViewHolder(view)
-        applyData(view, cursor)
-        return view
+    override fun getItemCount(): Int {
+        return listOfAllCategoriesWithImageObjectsCount.size
     }
 
-    override fun bindView(view: View, context: Context, cursor: Cursor) {
-        view.setBackgroundColor(RandomColorGenerator().nextRandomColor())
-        applyData(view, cursor)
+    override fun onBindViewHolder(holder: MainListCategoryViewHolder, position: Int) {
+        applyData(holder, listOfAllCategoriesWithImageObjectsCount[position])
     }
 
-    private fun applyData(view: View, cursor: Cursor) {
-        val viewHolder = view.tag as MainGridCategoryViewHolder
-        val category = Category(cursor)
-        viewHolder.showCategory(category)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListCategoryViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.adapteritem_main_category_grid, parent, false)
+        return MainListCategoryViewHolder(view)
+    }
+
+    private fun applyData(viewHolder: MainListCategoryViewHolder, categoryWithWords: CategoryWithWords) {
+        viewHolder.showCategory(categoryWithWords.category, categoryWithWords.numberOfKnownWords, categoryWithWords.numberOfNotKnownWords)
     }
 }

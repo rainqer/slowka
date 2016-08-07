@@ -84,8 +84,9 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
-    WordsCategoriesModel provideWordsCategoriesModel(ViewAllCategoriesUseCase viewAllCategoriesUseCase) {
+    WordsCategoriesModel provideWordsCategoriesModel(ViewAllImageObjectsUseCase viewAllImageObjectsUseCase,
+                                                     ViewAllCategoriesUseCase viewAllCategoriesUseCase) {
 
-        return new WordsCategoriesModel(viewAllCategoriesUseCase);
+        return new WordsCategoriesModel(viewAllImageObjectsUseCase, viewAllCategoriesUseCase);
     }
 }

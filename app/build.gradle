@@ -69,6 +69,7 @@ dependencies {
     compile kotterknife
     compile picasso
     compile retrofit
+    compile roundCornerProgressBar
     compile rxjava
     compile rxjavaAndroid
     compile rxjavaAsyncUtils

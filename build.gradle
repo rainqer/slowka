@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.android.tools.build:gradle:2.2.0-alpha7'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.7'
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -26,7 +26,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    kotlin_version = '1.0.2'
+    kotlin_version = '1.0.2-1'
 
     appcompat = 'com.android.support:appcompat-v7:23.2.0'
     butterknife = 'com.jakewharton:butterknife:8.0.1'
@@ -41,6 +41,7 @@ ext {
     multidex = 'com.android.support:multidex:1.0.0'
     picasso = 'com.squareup.picasso:picasso:2.5.2'
     retrofit = 'com.squareup.retrofit:retrofit:1.9.0'
+    roundCornerProgressBar = 'com.akexorcist:RoundCornerProgressBar:2.0.3'
     rxjava = 'io.reactivex:rxjava:1.0.15'
     rxjavaAndroid = 'io.reactivex:rxandroid:1.0.1'
     rxjavaAsyncUtils = 'io.reactivex:rxjava-async-util:0.21.0'

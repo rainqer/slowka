@@ -31,6 +31,9 @@ class SingleCategoryActivity : SlowkaActivity<SingleCategoryActivityView>(),
         setContentViewWithToolbar(R.layout.activity_category_words_list)
         setDaggerComponent(SingleCategoryActivityComponentAssembler.assemble(application))
         getListOfWords().layoutManager = LinearLayoutManager(this)
+        supportActionBar?.setDisplayShowHomeEnabled(true);
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        toolbar.title = intent.getStringExtra(SingleCategoryActivityPresenter.CATEGORY_NAME_KEY)
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
