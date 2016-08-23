@@ -22,7 +22,7 @@ class ILearnWordsListFragment : TutorWordsListFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getListOfWords().setLayoutManager(LinearLayoutManager(context))
+        getListOfWords().layoutManager = LinearLayoutManager(context)
         getListOfWords().addItemDecoration(VerticalMarginDecoration())
         Components.from<LandingActivityComponent>(activity).inject(this)
         attachPresenter(this, activity, savedInstanceState)
