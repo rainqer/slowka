@@ -9,4 +9,10 @@
 
     <!--Image recognizing screen-->
     <string name="image_content_editable_annotation_hint">Name the object in the picture</string>
+
+    <!--Admin -->
+    <string name="admin_new_words">New</string>
+    <string name="admin_learning_words">I learn</string>
+    <string name="admin_learnt_words">I know</string>
+
 </resources>

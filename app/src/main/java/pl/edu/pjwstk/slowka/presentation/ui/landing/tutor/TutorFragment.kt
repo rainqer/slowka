@@ -1,8 +1,8 @@
 package pl.edu.pjwstk.slowka.presentation.ui.landing.tutor
 
 import android.os.Bundle
+import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +11,6 @@ import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.Components
 import pl.edu.pjwstk.slowka.presentation.ui.landing.dagger.LandingActivityComponent
 import pl.edu.pjwstk.slowka.presentation.ui.FragmentPresenter
-import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorFragmentPresenter
 import pl.edu.pjwstk.slowka.presentation.ui.SlowkaFragment
 import javax.inject.Inject
 
@@ -23,6 +22,7 @@ class TutorFragment : SlowkaFragment<TutorFragmentView>(), TutorFragmentView {
         get() = presenter
 
     val viewPagerOfTutorWordsLists: ViewPager by bindView(R.id.pager)
+    val tabs: TabLayout by bindView(R.id.wordsListPagerTabs)
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_tutor, container, false)
@@ -36,6 +36,10 @@ class TutorFragment : SlowkaFragment<TutorFragmentView>(), TutorFragmentView {
 
     override fun getViewPager(): ViewPager {
         return viewPagerOfTutorWordsLists
+    }
+
+    override fun getWordsListTabs(): TabLayout {
+        return tabs
     }
 
     companion object {

@@ -1,8 +1,10 @@
 package pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_know
 
 import android.os.Bundle
+import android.support.annotation.StringRes
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.Components
 import pl.edu.pjwstk.slowka.presentation.ui.landing.dagger.LandingActivityComponent
 import pl.edu.pjwstk.slowka.presentation.ui.FragmentPresenter
@@ -30,5 +32,6 @@ class IKnowWordsListFragment : TutorWordsListFragment() {
         fun getInstance() : IKnowWordsListFragment {
             return IKnowWordsListFragment()
         }
+        @StringRes val titleRes: Int = R.string.admin_learnt_words
     }
 }
