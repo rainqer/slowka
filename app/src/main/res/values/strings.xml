@@ -15,5 +15,6 @@
     <string name="admin_learning_words">I learn</string>
     <string name="admin_learnt_words">I know</string>
     <string name="play">play</string>
+    <string name="edit">edit</string>
 
 </resources>

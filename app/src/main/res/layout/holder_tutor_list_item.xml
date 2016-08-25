@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    card_view:cardCornerRadius="4dp"
+    custom:cardCornerRadius="4dp"
     android:layout_margin="5dp">
 
 
@@ -31,17 +31,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_above="@+id/playButton"
+                android:layout_above="@+id/buttons"
                 android:gravity="center"/>
 
-            <com.dd.processbutton.iml.ActionProcessButton
-                android:id="@+id/playButton"
+            <LinearLayout
+                android:id="@+id/buttons"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:text="@string/play"
-                android:drawableStart="@drawable/ic_play_black"
-                android:drawableLeft="@drawable/ic_play_black"/>
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true">
+
+                <com.dd.processbutton.iml.ActionProcessButton
+                    android:id="@+id/editButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/edit"
+                    custom:pb_colorNormal="@color/orange"
+                    custom:pb_colorPressed="@color/orange_dark"
+                    android:drawableStart="@drawable/ic_edit_black"
+                    android:drawableLeft="@drawable/ic_edit_black"/>
+
+                <com.dd.processbutton.iml.ActionProcessButton
+                    android:id="@+id/playButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/play"
+                    custom:pb_colorNormal="@color/blue_light"
+                    custom:pb_colorPressed="@color/blue"
+                    android:drawableStart="@drawable/ic_play_black"
+                    android:drawableLeft="@drawable/ic_play_black"/>
+
+            </LinearLayout>
 
         </RelativeLayout>
 
