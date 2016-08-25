@@ -20,7 +20,6 @@ class SingleCategoryListOfWordsAdapter (private val context: Context)
     override fun onBindViewHolder(viewHolder: SingleCategoryWordViewHolder, cursor: Cursor) {
         val imageObject = ImageObject(cursor)
         viewHolder.itemAnnotation.text = imageObject.annotation
-        viewHolder.itemCategory.text = imageObject.categoryName
         Picasso.with(context).load(imageObject.imageFile).into(viewHolder.itemImage)
     }
 
@@ -33,12 +32,10 @@ class SingleCategoryListOfWordsAdapter (private val context: Context)
 
     class SingleCategoryWordViewHolder : RecyclerView.ViewHolder {
         val itemAnnotation: TextView
-        val itemCategory: TextView
         val itemImage: ImageView
 
         constructor(view : View) : super(view) {
             itemAnnotation = view.findViewById(R.id.itemName) as TextView
-            itemCategory = view.findViewById(R.id.categoryName) as TextView
             itemImage = view.findViewById(R.id.itemImage) as ImageView
         }
     }
