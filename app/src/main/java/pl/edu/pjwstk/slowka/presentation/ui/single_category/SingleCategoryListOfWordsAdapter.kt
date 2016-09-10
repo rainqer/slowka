@@ -24,7 +24,7 @@ class SingleCategoryListOfWordsAdapter (private val context: Context)
     init {
         speech = TextToSpeech(context, { initStatus -> })
         speech.language = Locale("pl")
-        speech.setSpeechRate(0.7f)
+        speech.setSpeechRate(0.8f)
     }
 
     override fun onBindViewHolder(viewHolder: SingleCategoryWordViewHolder, cursor: Cursor) {
