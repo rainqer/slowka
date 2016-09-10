@@ -9,15 +9,14 @@ import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorWordsListView
 import rx.Subscription
 import rx.subscriptions.Subscriptions
 
-open class WordsListFragmentPresenter (private val wordsListFragmentModel : WordsListFragmentModel)
+open class WordsListFragmentPresenter (private val wordsListFragmentModel : WordsListFragmentModel,
+                                       private val adapter : TutorListOfWordsAdapter)
     : FragmentPresenter<TutorWordsListView>() {
 
-    private var adapter : TutorListOfWordsAdapter? = null
     private var refreshListSubscription : Subscription = Subscriptions.unsubscribed()
 
     override fun attach(view: TutorWordsListView, activity: FragmentActivity, savedInstanceState: Bundle?) {
         super.attach(view, activity, savedInstanceState)
-        adapter = TutorListOfWordsAdapter(presentedActivity)
         presentedView.getListOfWords().adapter = adapter
     }
 
@@ -37,13 +36,13 @@ open class WordsListFragmentPresenter (private val wordsListFragmentModel : Word
     }
 
     private fun buildListFromCursor(cursor: Cursor?) {
-        adapter?.swapCursor(cursor)
+        adapter.swapCursor(cursor)
         presentedView.getListOfWords().invalidate()
     }
 
     override fun onDestroyView() {
         refreshListSubscription.unsubscribe()
-        adapter?.changeCursor(null)
+        adapter.changeCursor(null)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray) {

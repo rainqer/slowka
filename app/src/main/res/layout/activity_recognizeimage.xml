@@ -24,6 +24,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
+            <pl.edu.pjwstk.slowka.presentation.view.ExpandedGridView
+                android:id="@+id/categoryGrid"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numColumns="2"/>
+
             <EditText
                 android:id="@+id/annotationForImageContent"
                 android:layout_alignParentBottom="true"
@@ -31,13 +38,6 @@
                 android:hint="@string/image_content_editable_annotation_hint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
-            <pl.edu.pjwstk.slowka.presentation.view.ExpandedGridView
-                android:id="@+id/categoryGrid"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:numColumns="2"/>
 
         </LinearLayout>
 

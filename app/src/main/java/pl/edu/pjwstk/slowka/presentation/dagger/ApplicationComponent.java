@@ -21,6 +21,7 @@ import pl.edu.pjwstk.slowka.domain.hardware.LaunchCameraUseCase;
 import pl.edu.pjwstk.slowka.domain.hardware.PreviewCameraUseCase;
 import pl.edu.pjwstk.slowka.domain.hardware.StopCameraUseCase;
 import pl.edu.pjwstk.slowka.domain.information.GetNamesForObjectInImageUseCase;
+import pl.edu.pjwstk.slowka.presentation.speech.Speaker;
 
 @Singleton
 @Component(
@@ -32,6 +33,7 @@ import pl.edu.pjwstk.slowka.domain.information.GetNamesForObjectInImageUseCase;
 )
 public interface ApplicationComponent {
     Context providesContext();
+    Speaker providesSpeaker();
 
     StoreImageObjectUseCase providesStoreImageObjectUseCase();
     ViewAllImageObjectsUseCase providesViewAllImageObjectsUseCase();

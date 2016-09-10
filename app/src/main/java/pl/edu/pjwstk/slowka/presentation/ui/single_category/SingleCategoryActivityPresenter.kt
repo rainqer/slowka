@@ -5,19 +5,17 @@ import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.widget.Toast
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
-import pl.edu.pjwstk.slowka.presentation.ui.landing.TutorListOfWordsAdapter
 import rx.Subscription
 import rx.subscriptions.Subscriptions
 
-class SingleCategoryActivityPresenter(private val singleCategoryWordsListModel: SingleCategoryWordsListModel)
+class SingleCategoryActivityPresenter(private val singleCategoryWordsListModel: SingleCategoryWordsListModel,
+                                      private val adapter: SingleCategoryListOfWordsAdapter)
     : ActivityPresenter<SingleCategoryActivityView>() {
 
-    private var adapter : SingleCategoryListOfWordsAdapter? = null
     private var refreshListSubscription : Subscription = Subscriptions.unsubscribed()
 
     override fun attach(view: SingleCategoryActivityView, activity: FragmentActivity, savedInstanceState: Bundle?) {
         super.attach(view, activity, savedInstanceState)
-        adapter = SingleCategoryListOfWordsAdapter(presentedActivity)
         presentedView.getListOfWords().adapter = adapter
     }
 
@@ -30,12 +28,12 @@ class SingleCategoryActivityPresenter(private val singleCategoryWordsListModel: 
     }
 
     private fun buildListFromCursor(cursor: Cursor?) {
-        adapter?.swapCursor(cursor)
+        adapter.swapCursor(cursor)
         presentedView.getListOfWords().invalidate()
     }
 
     override fun pause() {
-        adapter?.changeCursor(null)
+        adapter.changeCursor(null)
         refreshListSubscription.unsubscribe()
     }
 

@@ -6,6 +6,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import pl.edu.pjwstk.slowka.presentation.SlowkaApplication;
+import pl.edu.pjwstk.slowka.presentation.speech.Speaker;
 
 @Module
 public class AndroidModule {
@@ -20,5 +21,11 @@ public class AndroidModule {
     @Singleton
     Context provideContext() {
         return provideApplication();
+    }
+
+    @Provides
+    @Singleton
+    Speaker provideSpeaker(Context context) {
+        return new Speaker(context);
     }
 }

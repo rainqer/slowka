@@ -5,7 +5,10 @@ import dagger.Provides;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllCategoriesUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllPendingImageObjectsUseCase;
+import pl.edu.pjwstk.slowka.presentation.speech.Speaker;
+import pl.edu.pjwstk.slowka.presentation.ui.landing.LandingActivity;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.LandingActivityPresenter;
+import pl.edu.pjwstk.slowka.presentation.ui.landing.TutorListOfWordsAdapter;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories.WordsCategoriesModel;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories.WordsCategoriesPresenter;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorFragmentPresenter;
@@ -18,6 +21,12 @@ import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_new.NewWo
 
 @Module
 public class LandingModule {
+
+    private LandingActivity landingActivity;
+
+    public LandingModule(LandingActivity landingActivity) {
+        this.landingActivity = landingActivity;
+    }
 
     @LandingActivityScope
     @Provides
@@ -42,9 +51,11 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
-    ILearnWordsListFragmentPresenter provideILearnWordsListFragmentPresenter(ILearnWordsListFragmentModel iLearnWordsListFragmentModel) {
+    ILearnWordsListFragmentPresenter provideILearnWordsListFragmentPresenter(
+            ILearnWordsListFragmentModel iLearnWordsListFragmentModel,
+            TutorListOfWordsAdapter tutorListOfWordsAdapter) {
 
-        return new ILearnWordsListFragmentPresenter(iLearnWordsListFragmentModel);
+        return new ILearnWordsListFragmentPresenter(iLearnWordsListFragmentModel, tutorListOfWordsAdapter);
     }
 
     @LandingActivityScope
@@ -56,9 +67,11 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
-    IKnowWordsListFragmentPresenter provideIKnowWordsListFragmentPresenter(IKnowWordsListFragmentModel iKnowWordsListFragmentModel) {
+    IKnowWordsListFragmentPresenter provideIKnowWordsListFragmentPresenter(
+            IKnowWordsListFragmentModel iKnowWordsListFragmentModel,
+            TutorListOfWordsAdapter tutorListOfWordsAdapter) {
 
-        return new IKnowWordsListFragmentPresenter(iKnowWordsListFragmentModel);
+        return new IKnowWordsListFragmentPresenter(iKnowWordsListFragmentModel, tutorListOfWordsAdapter);
     }
 
     @LandingActivityScope
@@ -70,9 +83,11 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
-    NewWordsListFragmentPresenter provideNewWordsListFragmentPresenter(NewWordsListFragmentModel newWordsListFragmentModel) {
+    NewWordsListFragmentPresenter provideNewWordsListFragmentPresenter(
+            NewWordsListFragmentModel newWordsListFragmentModel,
+            TutorListOfWordsAdapter tutorListOfWordsAdapter) {
 
-        return new NewWordsListFragmentPresenter(newWordsListFragmentModel);
+        return new NewWordsListFragmentPresenter(newWordsListFragmentModel, tutorListOfWordsAdapter);
     }
 
     @LandingActivityScope
@@ -89,4 +104,10 @@ public class LandingModule {
 
         return new WordsCategoriesModel(viewAllImageObjectsUseCase, viewAllCategoriesUseCase);
     }
+
+    @Provides
+    TutorListOfWordsAdapter providesTutorListOfWordsAdapter(Speaker speaker) {
+        return new TutorListOfWordsAdapter(landingActivity, speaker);
+    }
+
 }

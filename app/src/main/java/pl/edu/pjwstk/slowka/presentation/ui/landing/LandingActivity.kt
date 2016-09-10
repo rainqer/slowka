@@ -29,7 +29,7 @@ class LandingActivity : SlowkaActivityWithDrawer<LandingActivityView>(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentViewWithToolbarAndDrawerNavigation(R.layout.activity_landing)
-        setDaggerComponent(LandingActivityComponentAssembler.assemble(application))
+        setDaggerComponent(LandingActivityComponentAssembler.assemble(application, this))
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {

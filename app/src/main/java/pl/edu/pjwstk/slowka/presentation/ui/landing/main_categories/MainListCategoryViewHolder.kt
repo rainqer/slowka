@@ -45,7 +45,7 @@ class MainListCategoryViewHolder : RecyclerView.ViewHolder {
         icon.setImageResource(category.iconRes)
         name.text = category.name
         progress.max = totalNumberOfWords.toFloat()
-        progress.progress = 1f
+        progress.progress = numberOfKnownWords.toFloat()
         numberOfWords.text = "$numberOfKnownWords/$totalNumberOfWords"
         shownCategoryName = category.name
     }
