@@ -64,7 +64,6 @@ dependencies {
         exclude module: 'httpclient'
     }
     compile googleVisionApi
-
     compile kotlin
     compile kotterknife
     compile picasso
