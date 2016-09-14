@@ -44,7 +44,6 @@ class LocalImageObjectRepository : ImageObjectRepository {
     }
 
     override fun getAcceptedImagesInCategory(categoryName: String): Cursor {
-        val c1 = getAll()
         return contentResolver.query(
                 IMAGE_OBJECT_PROVIDER_URI,
                 ImageObjectsTable.COLUMNS,

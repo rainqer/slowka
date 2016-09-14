@@ -6,6 +6,7 @@ import android.view.MenuItem
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories.WordsCategoriesListFragment
+import pl.edu.pjwstk.slowka.presentation.ui.landing.tests.SelectTestsFragment
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorFragment
 
 class LandingActivityPresenter() : ActivityPresenter<LandingActivityView>(),
@@ -20,6 +21,7 @@ class LandingActivityPresenter() : ActivityPresenter<LandingActivityView>(),
     private fun getFragmentToNavigateTo(menuItem: MenuItem): Fragment {
         return when (menuItem.itemId) {
             R.id.nav_landing -> WordsCategoriesListFragment()
+            R.id.nav_tests -> SelectTestsFragment.getInstance()
             R.id.nav_tutor -> TutorFragment.getInstance()
             else -> WordsCategoriesListFragment()
         }

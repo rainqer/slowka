@@ -5,6 +5,7 @@ import android.content.Context;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import pl.edu.pjwstk.slowka.domain.content.CountImageObjectsWithCategoriesUseCase;
 import pl.edu.pjwstk.slowka.domain.content.GetImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.StoreCategoryUseCase;
 import pl.edu.pjwstk.slowka.domain.content.StoreImageObjectUseCase;
@@ -51,4 +52,5 @@ public interface ApplicationComponent {
     GetNamesForObjectInImageUseCase providesGetNamesForObjectInImageUseCase();
     ViewAllCategoriesUseCase providesViewAllCategoriesUseCase();
     StoreCategoryUseCase providesStoreCategoryUseCase();
+    CountImageObjectsWithCategoriesUseCase providesCountImageObjectsWithCategoriesUseCase();
 }

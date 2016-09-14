@@ -22,6 +22,7 @@ abstract class UseCase<T> {
         .subscribeOn(scheduler)
         .observeOn(AndroidSchedulers.mainThread())
     }
+
     fun performWithoutRedirection() : Observable<T> {
         return Observable.fromCallable {
             perform()

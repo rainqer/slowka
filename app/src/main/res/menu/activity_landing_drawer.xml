@@ -8,6 +8,11 @@
             android:title="Landing Activity" />
 
         <item
+            android:id="@+id/nav_tests"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Tests Activity" />
+
+        <item
             android:id="@+id/nav_tutor"
             android:icon="@drawable/ic_menu_share"
             android:title="Admin Activity" />

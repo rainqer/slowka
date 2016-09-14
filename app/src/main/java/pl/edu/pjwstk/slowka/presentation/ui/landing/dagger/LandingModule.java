@@ -2,7 +2,7 @@ package pl.edu.pjwstk.slowka.presentation.ui.landing.dagger;
 
 import dagger.Module;
 import dagger.Provides;
-import pl.edu.pjwstk.slowka.domain.content.ViewAllCategoriesUseCase;
+import pl.edu.pjwstk.slowka.domain.content.CountImageObjectsWithCategoriesUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllPendingImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.presentation.speech.Speaker;
@@ -11,6 +11,8 @@ import pl.edu.pjwstk.slowka.presentation.ui.landing.LandingActivityPresenter;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.TutorListOfWordsAdapter;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories.WordsCategoriesModel;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories.WordsCategoriesPresenter;
+import pl.edu.pjwstk.slowka.presentation.ui.landing.tests.SelectTestsModel;
+import pl.edu.pjwstk.slowka.presentation.ui.landing.tests.SelectTestsFragmentPresenter;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorFragmentPresenter;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_know.IKnowWordsListFragmentModel;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_know.IKnowWordsListFragmentPresenter;
@@ -99,15 +101,26 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
-    WordsCategoriesModel provideWordsCategoriesModel(ViewAllImageObjectsUseCase viewAllImageObjectsUseCase,
-                                                     ViewAllCategoriesUseCase viewAllCategoriesUseCase) {
+    WordsCategoriesModel provideWordsCategoriesModel(CountImageObjectsWithCategoriesUseCase countImageObjectsWithCategoriesUseCase) {
 
-        return new WordsCategoriesModel(viewAllImageObjectsUseCase, viewAllCategoriesUseCase);
+        return new WordsCategoriesModel(countImageObjectsWithCategoriesUseCase);
     }
 
     @Provides
     TutorListOfWordsAdapter providesTutorListOfWordsAdapter(Speaker speaker) {
         return new TutorListOfWordsAdapter(landingActivity, speaker);
+    }
+
+    @LandingActivityScope
+    @Provides
+    SelectTestsFragmentPresenter providesSelectTestsFragmentPresenter(SelectTestsModel selectTestsModel) {
+        return new SelectTestsFragmentPresenter(selectTestsModel);
+    }
+
+    @LandingActivityScope
+    @Provides
+    SelectTestsModel providesAvailableTestsModel(CountImageObjectsWithCategoriesUseCase countImageObjectsWithCategoriesUseCase) {
+        return new SelectTestsModel(countImageObjectsWithCategoriesUseCase);
     }
 
 }
