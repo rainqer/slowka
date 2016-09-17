@@ -6,7 +6,8 @@ import android.view.ViewGroup
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.domain.content.CategoryWithWords
 
-class AvailableTestsAdapter(private val listOfAllCategoriesWithImageObjectsCount: List<CategoryWithWords>)
+class AvailableTestsAdapter(private val onCategoryForTestSelectedListener: OnCategoryForTestSelectedListener,
+                            private val listOfAllCategoriesWithImageObjectsCount: List<CategoryWithWords>)
     : RecyclerView.Adapter<AvailableTestViewHolder>() {
 
     override fun getItemCount(): Int {
@@ -19,7 +20,7 @@ class AvailableTestsAdapter(private val listOfAllCategoriesWithImageObjectsCount
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AvailableTestViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.adapteritem_main_category_grid, parent, false)
-        return AvailableTestViewHolder(view)
+        return AvailableTestViewHolder(view, onCategoryForTestSelectedListener)
     }
 
     private fun applyData(viewHolder: AvailableTestViewHolder, categoryWithWords: CategoryWithWords) {

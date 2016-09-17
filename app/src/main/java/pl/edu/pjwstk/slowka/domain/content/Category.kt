@@ -3,8 +3,9 @@ package pl.edu.pjwstk.slowka.domain.content
 import android.content.ContentValues
 import android.database.Cursor
 import pl.edu.pjwstk.slowka.repository.content.CategoriesTable
+import java.io.Serializable
 
-class Category {
+class Category: Serializable {
 
     val name: String
     val id: Int

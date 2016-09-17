@@ -5,6 +5,7 @@ import dagger.Provides;
 import pl.edu.pjwstk.slowka.domain.content.CountImageObjectsWithCategoriesUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllPendingImageObjectsUseCase;
+import pl.edu.pjwstk.slowka.domain.test.UserStartsTestForCategoryUseCase;
 import pl.edu.pjwstk.slowka.presentation.speech.Speaker;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.LandingActivity;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.LandingActivityPresenter;
@@ -119,8 +120,11 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
-    SelectTestsModel providesAvailableTestsModel(CountImageObjectsWithCategoriesUseCase countImageObjectsWithCategoriesUseCase) {
-        return new SelectTestsModel(countImageObjectsWithCategoriesUseCase);
+    SelectTestsModel providesAvailableTestsModel(CountImageObjectsWithCategoriesUseCase countImageObjectsWithCategoriesUseCase,
+                                                 UserStartsTestForCategoryUseCase userStartsTestForCategoryUseCase) {
+        return new SelectTestsModel(
+                countImageObjectsWithCategoriesUseCase,
+                userStartsTestForCategoryUseCase
+        );
     }
-
 }

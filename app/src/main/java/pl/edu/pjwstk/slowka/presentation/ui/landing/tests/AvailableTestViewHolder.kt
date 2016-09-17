@@ -8,6 +8,7 @@ import android.widget.TextView
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.domain.content.Category
+import pl.edu.pjwstk.slowka.presentation.ui.tests.TestSingleImageActivity
 import pl.edu.pjwstk.slowka.presentation.view.RandomColorGenerator
 
 class AvailableTestViewHolder : RecyclerView.ViewHolder {
@@ -17,9 +18,10 @@ class AvailableTestViewHolder : RecyclerView.ViewHolder {
     private val name: TextView
     private val progress: RoundCornerProgressBar
     private val numberOfWords: TextView
+    private val onCategoryForTestSelectedListener: OnCategoryForTestSelectedListener
     private var shownCategoryName: String? = null
 
-    constructor(view: View) : super(view) {
+    constructor(view: View, onCategoryForTestSelectedListener: OnCategoryForTestSelectedListener) : super(view) {
         background = view.findViewById(R.id.background)
         icon = view.findViewById(R.id.adapterItem_category_icon) as ImageView
         name = view.findViewById(R.id.adapterItem_category_name) as TextView
@@ -27,8 +29,7 @@ class AvailableTestViewHolder : RecyclerView.ViewHolder {
         numberOfWords = view.findViewById(R.id.adapterItem_number_of_words) as TextView
         icon.setColorFilter(ContextCompat.getColor(view.context, android.R.color.black));
         background.setBackgroundColor(RandomColorGenerator().nextRandomColor())
-        view.setOnClickListener { view ->
-        }
+        this.onCategoryForTestSelectedListener = onCategoryForTestSelectedListener
     }
 
     fun showCategory(category: Category, numberOfKnownWords: Int, numberOfUnknownWords : Int) {
@@ -39,5 +40,8 @@ class AvailableTestViewHolder : RecyclerView.ViewHolder {
         progress.progress = numberOfKnownWords.toFloat()
         numberOfWords.text = "$numberOfKnownWords/$totalNumberOfWords"
         shownCategoryName = category.name
+        itemView.setOnClickListener { view ->
+            onCategoryForTestSelectedListener.onCategoryForTestSelected(category)
+        }
     }
 }
