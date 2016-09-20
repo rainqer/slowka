@@ -27,8 +27,7 @@ abstract class Presenter <T : Any> {
     abstract fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray)
 
     @TargetApi(Build.VERSION_CODES.M)
-    protected fun permissionGranted(permission: String) =
-            userCanDenyPermissionForThisVersion() && userGrantedPermission(permission)
+    protected fun permissionGranted(permission: String) = userGrantedPermission(permission)
 
     @TargetApi(Build.VERSION_CODES.M)
     protected fun requestPermission(permission: String, requestCode: Int) {

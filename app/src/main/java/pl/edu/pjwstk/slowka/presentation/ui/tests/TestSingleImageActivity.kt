@@ -33,7 +33,7 @@ class TestSingleImageActivity : SlowkaActivity<TestSingleImageActivityView>(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentViewWithToolbar(R.layout.activity_recognizeimage)
+        setContentViewWithToolbar(R.layout.activity_testsingleimage)
         setDaggerComponent(TestSingleImageActivityComponentAssembler.assemble(application))
     }
 

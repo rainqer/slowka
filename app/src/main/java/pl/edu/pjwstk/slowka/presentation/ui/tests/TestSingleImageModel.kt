@@ -13,7 +13,10 @@ class TestSingleImageModel constructor(private val userViewNextTestImageUseCase:
         return userViewNextTestImageUseCase.performAndObserve(AndroidSchedulers.mainThread())
     }
 
-    fun uploadUserAnswer(answer: String): Observable<Boolean> {
-        return userUploadsAnswerUseCase.answer(answer).performAndObserve(AndroidSchedulers.mainThread())
+    fun uploadUserAnswer(answer: String, imageObject: ImageObject?): Observable<Boolean> {
+        return userUploadsAnswerUseCase
+                .answer(answer)
+                .imageObject(imageObject)
+                .performAndObserve(AndroidSchedulers.mainThread())
     }
 }

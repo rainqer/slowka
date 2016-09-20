@@ -49,6 +49,11 @@
         <activity android:name=".presentation.ui.admin_image_details.AdminImageDetailsActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".presentation.ui.landing.LandingActivity"/>
+
+        <activity android:name=".presentation.ui.tests.TestSingleImageActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.ui.landing.LandingActivity"/>
+
         <provider
             android:name=".repository.content.SlowkaContentProvider"
             android:authorities="pl.edu.pjwstk.slowka.repository.provider"/>

@@ -56,7 +56,7 @@ public class RepositoriesModule {
 
     @Provides
     @Singleton
-    TestRepository provideTestRepository() {
-        return new LocalMemoryTestRepository();
+    TestRepository provideTestRepository(ImageObjectRepository imageObjectRepository) {
+        return new LocalMemoryTestRepository(imageObjectRepository);
     }
 }

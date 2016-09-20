@@ -49,4 +49,18 @@ class ImageObject {
         contentValues.put(ImageObjectsTable.COLUMN_ACCEPTED, if(accepted) 1 else 0)
         return contentValues
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (other == null) return false
+        if (other !is ImageObject) return false
+        return haveMatchingObjectIds(other) || haveTheSameOtherFields(other)
+    }
+
+    private fun haveMatchingObjectIds(other: ImageObject) = objectId != null && other.objectId != null && objectId == other.objectId
+
+    private fun haveTheSameOtherFields(other: ImageObject): Boolean {
+        return imageFile.equals(other.imageFile)
+                && annotation.equals(other.annotation)
+                && categoryName.equals(other.categoryName)
+    }
 }
