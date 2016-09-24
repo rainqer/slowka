@@ -35,11 +35,10 @@ class TestSingleImageActivityPresenter constructor(
         recognizeImageActivityModel
                 .uploadUserAnswer(presentedView.getAnswer(), testedImageObject)
                 .subscribe { finished ->
-            if (finished) {
-                presentedActivity.finish()
-            } else {
+            if (!finished) {
                 startActivity(TestSingleImageActivity.createIntent(presentedActivity))
             }
+            presentedActivity.finish()
         }
     }
 
