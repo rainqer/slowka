@@ -13,6 +13,7 @@ import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
 import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
+import pl.edu.pjwstk.slowka.domain.tools.Galery
 import pl.edu.pjwstk.slowka.presentation.dagger.HasComponent
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.ui.SlowkaActivity
@@ -66,7 +67,7 @@ class AdminImageDetailsActivity : SlowkaActivity<AdminImageDetailsActivityView>(
 
     override fun showImageObject(imageObject: ImageObject) {
         imageEditableAnnotation.setText(imageObject.annotation)
-        image.setImageBitmap(BitmapDecoder(imageObject.imageFile).decode())
+        image.setImageBitmap(Galery(this).getScaledDownImage(imageObject.imageFile))
         hideProgressBar()
     }
 

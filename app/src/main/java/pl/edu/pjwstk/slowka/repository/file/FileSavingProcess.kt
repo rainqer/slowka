@@ -15,7 +15,7 @@ abstract class FileSavingProcess <T: Any> constructor (fileName: String) {
     }
 
     abstract protected fun flushDataIntoFile(dataOfType: T, out: FileOutputStream)
-    abstract protected fun finally(dataOfType: T)
+    abstract protected fun finally(dataOfType: T, imageFile: File)
 
     fun save(dataOfType: T): File {
         val imageFileFolder = prepareImageFolder()
@@ -54,7 +54,7 @@ abstract class FileSavingProcess <T: Any> constructor (fileName: String) {
             out = FileOutputStream(imageFile)
             flushDataIntoFile(dataOfType, out)
         } finally {
-            finally(dataOfType)
+            finally(dataOfType, imageFile)
             tryClosingOutputStream(out)
         }
         return resultFile

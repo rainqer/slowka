@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
 import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
+import pl.edu.pjwstk.slowka.domain.tools.Galery
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
 
 class TestSingleImageActivityPresenter constructor(
@@ -21,7 +22,7 @@ class TestSingleImageActivityPresenter constructor(
     override fun resume() {
         recognizeImageActivityModel.getNextTestImageObject().subscribe { imageObject ->
             testedImageObject = imageObject
-            presentedView.showImage(BitmapDecoder(imageObject.imageFile).decode())
+            presentedView.showImage(Galery(presentedActivity).getScaledDownImage(imageObject.imageFile))
         }
     }
 

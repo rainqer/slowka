@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
+import pl.edu.pjwstk.slowka.domain.tools.Galery
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.ui.crop.CropActivityModel
 import pl.edu.pjwstk.slowka.presentation.ui.crop.CropImageActivity
@@ -48,7 +49,7 @@ class CropImageActivityPresenter constructor (
     }
 
     override fun resume() {
-        presentedView.showImage(BitmapDecoder(fileWithBitmap).decode())
+        presentedView.showImage(Galery(presentedActivity).getScaledDownImage(fileWithBitmap))
     }
 
     override fun pause() {

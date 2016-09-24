@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentActivity
 import android.widget.Toast
 import pl.edu.pjwstk.slowka.domain.content.Category
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
-import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
+import pl.edu.pjwstk.slowka.domain.tools.Galery
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
 import java.io.File
 
@@ -37,7 +37,7 @@ class RecognizeImageActivityPresenter constructor(
     }
 
     override fun resume() {
-        presentedView.setImage(BitmapDecoder(file).decode())
+        presentedView.setImage(Galery(presentedActivity).getScaledDownImage(file))
         recognizeImageActivityModel.recognizeObjectInImage(file).subscribe { annotationsForTheImage ->
             presentedView.showAnnotationForRecognizedImage(annotationsForTheImage[0])
         }

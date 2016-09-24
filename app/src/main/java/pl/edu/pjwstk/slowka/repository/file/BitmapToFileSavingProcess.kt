@@ -25,7 +25,7 @@ class BitmapToFileSavingProcess(bitmap: Bitmap, fileName: String) : FileSavingPr
         out.flush()
     }
 
-    override fun finally(dataOfType: Bitmap) {
+    override fun finally(dataOfType: Bitmap, imageFile: File) {
         bitmap.recycle()
     }
 }
