@@ -39,7 +39,9 @@ class CountImageObjectsWithCategoriesUseCase (
         if (cursorOfImageObjects.moveToFirst()) {
             do {
                 val imageObject = ImageObject(cursorOfImageObjects)
-                mapOfCategoriesWithWords[imageObject.categoryName]?.incNotKnown()
+                if (imageObject.accepted) {
+                    mapOfCategoriesWithWords[imageObject.categoryName]?.incNotKnown()
+                }
             } while (cursorOfImageObjects.moveToNext())
         }
         return mapOfCategoriesWithWords.values.toList()
