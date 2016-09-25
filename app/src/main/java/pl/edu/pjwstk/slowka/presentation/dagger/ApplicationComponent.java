@@ -22,6 +22,7 @@ import pl.edu.pjwstk.slowka.domain.hardware.LaunchCameraUseCase;
 import pl.edu.pjwstk.slowka.domain.hardware.PreviewCameraUseCase;
 import pl.edu.pjwstk.slowka.domain.hardware.StopCameraUseCase;
 import pl.edu.pjwstk.slowka.domain.information.GetNamesForObjectInImageUseCase;
+import pl.edu.pjwstk.slowka.domain.test.UserCompletesTestUseCase;
 import pl.edu.pjwstk.slowka.domain.test.UserStartsTestForCategoryUseCase;
 import pl.edu.pjwstk.slowka.domain.test.UserUploadsCurrentTestImageAnswerUseCase;
 import pl.edu.pjwstk.slowka.domain.test.UserViewNextTestImageUseCase;
@@ -59,4 +60,5 @@ public interface ApplicationComponent {
     UserViewNextTestImageUseCase providesUserViewNextTestImageUseCase();
     UserUploadsCurrentTestImageAnswerUseCase providesUserUploadsCurrentTestImageAnswerUseCase();
     UserStartsTestForCategoryUseCase providesUserStartsTestForCategoryUseCase();
+    UserCompletesTestUseCase providesUserCompletesTestUseCase();
 }

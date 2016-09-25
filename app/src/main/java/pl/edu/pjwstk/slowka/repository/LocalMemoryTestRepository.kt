@@ -4,6 +4,7 @@ import pl.edu.pjwstk.slowka.domain.content.Category
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
 import pl.edu.pjwstk.slowka.domain.content.ImageObjectRepository
 import pl.edu.pjwstk.slowka.domain.test.TestRepository
+import pl.edu.pjwstk.slowka.domain.test.TestResult
 
 class LocalMemoryTestRepository(private val imageObjectRepository: ImageObjectRepository) : TestRepository {
 
@@ -31,5 +32,27 @@ class LocalMemoryTestRepository(private val imageObjectRepository: ImageObjectRe
 
     override fun getNextImageFromCurrentTest(): ImageObject {
         return imageObjects[0]
+    }
+
+    override fun finishCurrentTest(): TestResult {
+        var correctAnswers = 0
+        var incorrectAnswers = 0
+        val testResults = countResults(correctAnswers, incorrectAnswers)
+        imageObjects.clear()
+        imageObjectsWithAnswers.clear()
+        return testResults
+    }
+
+    private fun countResults(correctAnswers: Int, incorrectAnswers: Int): TestResult {
+        var correctAnswers1 = correctAnswers
+        var incorrectAnswers1 = incorrectAnswers
+        for ((imageObject, answer) in imageObjectsWithAnswers) {
+            if (imageObject.annotation == answer) {
+                ++correctAnswers1
+            } else {
+                ++incorrectAnswers1
+            }
+        }
+        return TestResult(correctAnswers1, incorrectAnswers1)
     }
 }

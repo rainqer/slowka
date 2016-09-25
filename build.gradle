@@ -18,6 +18,9 @@ allprojects {
         maven {
             url "https://oss.sonatype.org/content/repositories/snapshots"
         }
+        maven {
+            url "https://jitpack.io"
+        }
     }
 }
 
@@ -30,6 +33,7 @@ ext {
 
     appcompat = 'com.android.support:appcompat-v7:23.2.0'
     butterknife = 'com.jakewharton:butterknife:8.0.1'
+    cirleProgressView = 'com.github.jakob-grabner:Circle-Progress-View:v1.2.4'
     crooper = 'com.edmodo:cropper:1.0.1'
     cardView = 'com.android.support:cardview-v7:23.2.0'
     dagger = 'com.google.dagger:dagger:2.0'

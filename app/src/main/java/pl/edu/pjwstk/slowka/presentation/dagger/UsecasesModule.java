@@ -25,6 +25,7 @@ import pl.edu.pjwstk.slowka.domain.hardware.StopCameraUseCase;
 import pl.edu.pjwstk.slowka.domain.information.GetNamesForObjectInImageUseCase;
 import pl.edu.pjwstk.slowka.domain.information.NamesForObjectInImageRepository;
 import pl.edu.pjwstk.slowka.domain.test.TestRepository;
+import pl.edu.pjwstk.slowka.domain.test.UserCompletesTestUseCase;
 import pl.edu.pjwstk.slowka.domain.test.UserStartsTestForCategoryUseCase;
 import pl.edu.pjwstk.slowka.domain.test.UserUploadsCurrentTestImageAnswerUseCase;
 import pl.edu.pjwstk.slowka.domain.test.UserViewNextTestImageUseCase;
@@ -134,5 +135,10 @@ public class UsecasesModule {
     @Provides
     UserStartsTestForCategoryUseCase providesUserStartsTestForCategoryUseCase(TestRepository testRepository) {
         return new UserStartsTestForCategoryUseCase(testRepository);
+    }
+
+    @Provides
+    UserCompletesTestUseCase providesUserCompletesTestUseCase(TestRepository testRepository) {
+        return new UserCompletesTestUseCase(testRepository);
     }
 }

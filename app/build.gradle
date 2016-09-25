@@ -53,6 +53,7 @@ android {
 dependencies {
 
     compile appcompat
+    compile cirleProgressView
     compile crooper
     compile cardView
     compile dagger

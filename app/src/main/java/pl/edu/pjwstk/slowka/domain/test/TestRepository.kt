@@ -8,4 +8,5 @@ interface TestRepository {
     fun startNewTestForImages(ids: Array<Long>)
     fun uploadAnswerForImage(imageObject: ImageObject, answer: String): Boolean
     fun getNextImageFromCurrentTest(): ImageObject
+    fun finishCurrentTest(): TestResult
 }

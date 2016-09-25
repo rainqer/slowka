@@ -3,9 +3,9 @@ package pl.edu.pjwstk.slowka.presentation.ui.tests
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
-import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
 import pl.edu.pjwstk.slowka.domain.tools.Galery
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
+import pl.edu.pjwstk.slowka.presentation.ui.complete_tests.CompleteTestActivity
 
 class TestSingleImageActivityPresenter constructor(
         val recognizeImageActivityModel: TestSingleImageModel
@@ -36,11 +36,12 @@ class TestSingleImageActivityPresenter constructor(
         recognizeImageActivityModel
                 .uploadUserAnswer(presentedView.getAnswer(), testedImageObject)
                 .subscribe { finished ->
-            if (!finished) {
-                startActivity(TestSingleImageActivity.createIntent(presentedActivity))
-            }
-            presentedActivity.finish()
-        }
+                    startActivity(
+                            if (finished) CompleteTestActivity.createIntent(presentedActivity)
+                            else TestSingleImageActivity.createIntent(presentedActivity)
+                    )
+                    presentedActivity.finish()
+                }
     }
 
     companion object {
