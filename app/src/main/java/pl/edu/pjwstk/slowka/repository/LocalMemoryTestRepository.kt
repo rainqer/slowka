@@ -35,24 +35,23 @@ class LocalMemoryTestRepository(private val imageObjectRepository: ImageObjectRe
     }
 
     override fun finishCurrentTest(): TestResult {
-        var correctAnswers = 0
-        var incorrectAnswers = 0
-        val testResults = countResults(correctAnswers, incorrectAnswers)
+        val testResults = countResultsAndMarkCorrectAsKnown()
         imageObjects.clear()
         imageObjectsWithAnswers.clear()
         return testResults
     }
 
-    private fun countResults(correctAnswers: Int, incorrectAnswers: Int): TestResult {
-        var correctAnswers1 = correctAnswers
-        var incorrectAnswers1 = incorrectAnswers
+    private fun countResultsAndMarkCorrectAsKnown(): TestResult {
+        var correctAnswers = 0
+        var incorrectAnswers = 0
         for ((imageObject, answer) in imageObjectsWithAnswers) {
             if (imageObject.annotation == answer) {
-                ++correctAnswers1
+                imageObjectRepository.markAsKnown(imageObject.objectId?:throw IllegalStateException("this object has no id"))
+                ++correctAnswers
             } else {
-                ++incorrectAnswers1
+                ++incorrectAnswers
             }
         }
-        return TestResult(correctAnswers1, incorrectAnswers1)
+        return TestResult(correctAnswers, incorrectAnswers)
     }
 }

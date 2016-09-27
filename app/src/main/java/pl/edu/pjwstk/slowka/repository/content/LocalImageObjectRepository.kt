@@ -77,5 +77,26 @@ class LocalImageObjectRepository : ImageObjectRepository {
         ) == SINGLE_ROW_AFFECTED
     }
 
-    private fun whereIdEquals(id: String) = ImageObjectsTable.COLUMN_ID + "=" + id
+    override fun markAsKnown(id: Int): Boolean {
+        val cursor = get(id)
+        if (cursor.moveToFirst()) {
+            val imageObjectToBeMarkedAsKnown = ImageObject(cursor)
+            cursor.close()
+            return markObjectAsKnown(id, imageObjectToBeMarkedAsKnown) == SINGLE_ROW_AFFECTED
+        }
+        cursor.close()
+        return false
+    }
+
+    private fun LocalImageObjectRepository.markObjectAsKnown(id: Int, imageObjectToBeMarkedAsKnown: ImageObject): Int {
+        return contentResolver.update(
+                IMAGE_OBJECT_PROVIDER_URI,
+                imageObjectToBeMarkedAsKnown.known().toContentValues(),
+                whereIdEquals(id),
+                null
+        )
+    }
+
+    private fun whereIdEquals(id: String) = ImageObjectsTable.COLUMN_ID + "=$id"
+    private fun whereIdEquals(id: Int) = ImageObjectsTable.COLUMN_ID + "=$id"
 }
