@@ -3,7 +3,7 @@ package pl.edu.pjwstk.slowka.presentation.dagger;
 import dagger.Module;
 import dagger.Provides;
 import pl.edu.pjwstk.slowka.domain.content.CategoryRepository;
-import pl.edu.pjwstk.slowka.domain.content.CountImageObjectsWithCategoriesUseCase;
+import pl.edu.pjwstk.slowka.domain.content.CountAllImageObjectsWithCategoriesUseCase;
 import pl.edu.pjwstk.slowka.domain.content.GetImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ImageObjectRepository;
 import pl.edu.pjwstk.slowka.domain.content.StoreCategoryUseCase;
@@ -127,11 +127,11 @@ public class UsecasesModule {
     }
 
     @Provides
-    CountImageObjectsWithCategoriesUseCase providesCountImageObjectsWithCategoriesUseCase(
+    CountAllImageObjectsWithCategoriesUseCase providesCountImageObjectsWithCategoriesUseCase(
             ViewAllImageObjectsUseCase viewAllImageObjectsUseCase,
             ViewAllCategoriesUseCase viewAllCategoriesUseCase
     ) {
-        return new CountImageObjectsWithCategoriesUseCase(viewAllImageObjectsUseCase, viewAllCategoriesUseCase);
+        return new CountAllImageObjectsWithCategoriesUseCase(viewAllImageObjectsUseCase, viewAllCategoriesUseCase);
     }
 
     @Provides

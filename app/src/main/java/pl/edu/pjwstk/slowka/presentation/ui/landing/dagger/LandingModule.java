@@ -2,9 +2,8 @@ package pl.edu.pjwstk.slowka.presentation.ui.landing.dagger;
 
 import dagger.Module;
 import dagger.Provides;
-import pl.edu.pjwstk.slowka.domain.content.CountImageObjectsWithCategoriesUseCase;
+import pl.edu.pjwstk.slowka.domain.content.CountAllImageObjectsWithCategoriesUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedUnknownImageObjectsUseCase;
-import pl.edu.pjwstk.slowka.domain.content.ViewAllImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllPendingImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewKnownImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.test.UserStartsTestForCategoryUseCase;
@@ -104,9 +103,9 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
-    WordsCategoriesModel provideWordsCategoriesModel(CountImageObjectsWithCategoriesUseCase countImageObjectsWithCategoriesUseCase) {
+    WordsCategoriesModel provideWordsCategoriesModel(CountAllImageObjectsWithCategoriesUseCase countAllImageObjectsWithCategoriesUseCase) {
 
-        return new WordsCategoriesModel(countImageObjectsWithCategoriesUseCase);
+        return new WordsCategoriesModel(countAllImageObjectsWithCategoriesUseCase);
     }
 
     @Provides
@@ -122,10 +121,10 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
-    SelectTestsModel providesAvailableTestsModel(CountImageObjectsWithCategoriesUseCase countImageObjectsWithCategoriesUseCase,
+    SelectTestsModel providesAvailableTestsModel(CountAllImageObjectsWithCategoriesUseCase countAllImageObjectsWithCategoriesUseCase,
                                                  UserStartsTestForCategoryUseCase userStartsTestForCategoryUseCase) {
         return new SelectTestsModel(
-                countImageObjectsWithCategoriesUseCase,
+                countAllImageObjectsWithCategoriesUseCase,
                 userStartsTestForCategoryUseCase
         );
     }

@@ -8,6 +8,9 @@ class SelectTestsFragmentPresenter (private val availableTestsModel: SelectTests
     : FragmentPresenter<SelectTestsFragmentView>(), OnCategoryForTestSelectedListener {
 
     override fun onViewCreated() {
+    }
+
+    fun resume() {
         availableTestsModel.getAllWords().subscribe { listOfCategoriesWithWordsCount ->
             presentedView.getAvailableTestsView().adapter = AvailableTestsAdapter(this, listOfCategoriesWithWordsCount)
         }

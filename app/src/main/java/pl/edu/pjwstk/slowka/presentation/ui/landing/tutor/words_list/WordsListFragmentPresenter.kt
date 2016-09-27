@@ -25,7 +25,7 @@ open class WordsListFragmentPresenter (private val wordsListFragmentModel : Word
     }
 
     fun resume() {
-        refresh();
+        refresh()
     }
 
     private fun refresh() {

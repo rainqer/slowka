@@ -5,7 +5,7 @@ import pl.edu.pjwstk.slowka.domain.AgregatingUseCase
 import rx.Observable
 import rx.functions.Func2
 
-class CountImageObjectsWithCategoriesUseCase (
+class CountAllImageObjectsWithCategoriesUseCase(
         private val viewAllImageObjectsUseCase: ViewAllImageObjectsUseCase,
         private val viewAllImageCategoriesUseCase: ViewAllCategoriesUseCase
 ) : AgregatingUseCase<List<CategoryWithWords>>() {
@@ -40,7 +40,11 @@ class CountImageObjectsWithCategoriesUseCase (
             do {
                 val imageObject = ImageObject(cursorOfImageObjects)
                 if (imageObject.accepted) {
-                    mapOfCategoriesWithWords[imageObject.categoryName]?.incNotKnown()
+                    if (imageObject.known) {
+                        mapOfCategoriesWithWords[imageObject.categoryName]?.incKnown()
+                    } else {
+                        mapOfCategoriesWithWords[imageObject.categoryName]?.incNotKnown()
+                    }
                 }
             } while (cursorOfImageObjects.moveToNext())
         }
