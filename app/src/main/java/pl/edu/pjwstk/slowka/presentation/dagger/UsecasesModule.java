@@ -10,9 +10,11 @@ import pl.edu.pjwstk.slowka.domain.content.StoreCategoryUseCase;
 import pl.edu.pjwstk.slowka.domain.content.StoreImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.UpdateImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedCategoryImageObjectsUseCase;
+import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedUnknownImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllCategoriesUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllPendingImageObjectsUseCase;
+import pl.edu.pjwstk.slowka.domain.content.ViewKnownImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.file.FileRepository;
 import pl.edu.pjwstk.slowka.domain.file.SaveBitmapUseCase;
 import pl.edu.pjwstk.slowka.domain.file.SaveCameraFrameUseCase;
@@ -47,6 +49,16 @@ public class UsecasesModule {
     @Provides
     ViewAllPendingImageObjectsUseCase providesViewAllPendingImageObjectsUseCase(ImageObjectRepository imageObjectRepository) {
         return new ViewAllPendingImageObjectsUseCase(imageObjectRepository);
+    }
+
+    @Provides
+    ViewKnownImageObjectsUseCase providesViewKnownImageObjectsUseCase(ImageObjectRepository imageObjectRepository) {
+        return new ViewKnownImageObjectsUseCase(imageObjectRepository);
+    }
+
+    @Provides
+    ViewAcceptedUnknownImageObjectsUseCase providesViewAcceptedUnknownImageObjectsUseCase(ImageObjectRepository imageObjectRepository) {
+        return new ViewAcceptedUnknownImageObjectsUseCase(imageObjectRepository);
     }
 
     @Provides

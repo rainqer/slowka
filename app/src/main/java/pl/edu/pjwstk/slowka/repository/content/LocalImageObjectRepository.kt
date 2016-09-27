@@ -23,11 +23,32 @@ class LocalImageObjectRepository : ImageObjectRepository {
     override fun getAll(): Cursor {
         return contentResolver.query(IMAGE_OBJECT_PROVIDER_URI, ImageObjectsTable.COLUMNS, null, arrayOf(), null)
     }
+
     override fun getAllPending(): Cursor {
         return contentResolver.query(
                 IMAGE_OBJECT_PROVIDER_URI,
                 ImageObjectsTable.COLUMNS,
                 "${ImageObjectsTable.COLUMN_ACCEPTED}='0'",
+                arrayOf(),
+                null
+        )
+    }
+
+    override fun getAllKnown(): Cursor {
+        return contentResolver.query(
+                IMAGE_OBJECT_PROVIDER_URI,
+                ImageObjectsTable.COLUMNS,
+                "${ImageObjectsTable.COLUMN_KNOWN}='1'",
+                arrayOf(),
+                null
+        )
+    }
+
+    override fun getAllAcceptedUnknown(): Cursor {
+        return contentResolver.query(
+                IMAGE_OBJECT_PROVIDER_URI,
+                ImageObjectsTable.COLUMNS,
+                "${ImageObjectsTable.COLUMN_ACCEPTED}='1' AND ${ImageObjectsTable.COLUMN_KNOWN}='0'",
                 arrayOf(),
                 null
         )

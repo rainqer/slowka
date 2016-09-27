@@ -3,8 +3,10 @@ package pl.edu.pjwstk.slowka.presentation.ui.landing.dagger;
 import dagger.Module;
 import dagger.Provides;
 import pl.edu.pjwstk.slowka.domain.content.CountImageObjectsWithCategoriesUseCase;
+import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedUnknownImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllPendingImageObjectsUseCase;
+import pl.edu.pjwstk.slowka.domain.content.ViewKnownImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.test.UserStartsTestForCategoryUseCase;
 import pl.edu.pjwstk.slowka.presentation.speech.Speaker;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.LandingActivity;
@@ -47,9 +49,9 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
-    ILearnWordsListFragmentModel provideILearnWordsListFragmentModel(ViewAllImageObjectsUseCase viewAllImageObjectsUseCase) {
+    ILearnWordsListFragmentModel provideILearnWordsListFragmentModel(ViewAcceptedUnknownImageObjectsUseCase viewAcceptedUnknownImageObjectsUseCase) {
 
-        return new ILearnWordsListFragmentModel(viewAllImageObjectsUseCase);
+        return new ILearnWordsListFragmentModel(viewAcceptedUnknownImageObjectsUseCase);
     }
 
     @LandingActivityScope
@@ -63,9 +65,9 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
-    IKnowWordsListFragmentModel provideIKnowWordsListFragmentModel(ViewAllImageObjectsUseCase viewAllImageObjectsUseCase) {
+    IKnowWordsListFragmentModel provideIKnowWordsListFragmentModel(ViewKnownImageObjectsUseCase viewKnownImageObjectsUseCase) {
 
-        return new IKnowWordsListFragmentModel(viewAllImageObjectsUseCase);
+        return new IKnowWordsListFragmentModel(viewKnownImageObjectsUseCase);
     }
 
     @LandingActivityScope

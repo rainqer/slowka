@@ -46,7 +46,7 @@ class ImageObject {
     }
 
     fun known() : ImageObject {
-        return ImageObject(imageFile, annotation, categoryName, accepted, known)
+        return ImageObject(imageFile, annotation, categoryName, accepted, true)
     }
 
     fun toContentValues(): ContentValues {
