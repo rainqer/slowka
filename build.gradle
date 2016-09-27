@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.android.tools.build:gradle:2.2.0'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.7'
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -29,7 +29,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    kotlin_version = '1.0.3'
+    kotlin_version = '1.0.4'
 
     appcompat = 'com.android.support:appcompat-v7:23.2.0'
     butterknife = 'com.jakewharton:butterknife:8.0.1'

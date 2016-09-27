@@ -19,12 +19,12 @@ apply plugin: 'idea'
 
 android {
     compileSdkVersion 'Google Inc.:Google APIs:23'
-    buildToolsVersion "23.0.3"
+    buildToolsVersion "24.0.2"
 
     defaultConfig {
         applicationId "pl.edu.pjwstk.slowka"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -76,7 +76,7 @@ dependencies {
     compile rxjavaAsyncUtils
     compile supportDesign
     compile timber
-    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.android.support:multidex:1.0.1'
 
     // during compilation only
     apt daggerCompiler
