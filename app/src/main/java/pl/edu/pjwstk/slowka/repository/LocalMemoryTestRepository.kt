@@ -11,12 +11,16 @@ class LocalMemoryTestRepository(private val imageObjectRepository: ImageObjectRe
     private var imageObjects: MutableList<ImageObject> = mutableListOf()
     private var imageObjectsWithAnswers: MutableList<Pair<ImageObject, String>> = mutableListOf()
 
-    override fun startNewTestForCategory(category: Category) {
+    override fun startNewTestForCategory(category: Category): Boolean {
         imageObjects.clear()
         val allImagesFromCategoryCursor = imageObjectRepository.getAcceptedImagesInCategory(category.name)
         while(allImagesFromCategoryCursor.moveToNext()) {
-            imageObjects.add(ImageObject(allImagesFromCategoryCursor))
+            val imageObject = ImageObject(allImagesFromCategoryCursor)
+            if (!imageObject.known) {
+                imageObjects.add(imageObject)
+            }
         }
+        return imageObjects.isNotEmpty()
     }
 
     override fun startNewTestForImages(ids: Array<Long>) {

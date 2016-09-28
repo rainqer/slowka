@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.Components
@@ -39,6 +40,10 @@ class SelectTestsFragment : SlowkaFragment<SelectTestsFragmentView>(), SelectTes
 
     override fun getAvailableTestsView(): RecyclerView {
         return allAvailableTestsView
+    }
+
+    override fun showDidntStartTest() {
+        Toast.makeText(activity, getString(R.string.didntShowTest), Toast.LENGTH_LONG).show()
     }
 
     companion object {

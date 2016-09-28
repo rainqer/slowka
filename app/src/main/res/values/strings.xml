@@ -18,4 +18,7 @@
     <string name="edit">edit</string>
     <string name="testAnswer">Enter answer</string>
 
+    <!--test-->
+    <string name="didntShowTest">You know all these words</string>
+
 </resources>

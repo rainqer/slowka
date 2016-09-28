@@ -14,7 +14,7 @@ class SelectTestsModel(private val countAllImageObjectsWithCategoriesUseCase: Co
         return countAllImageObjectsWithCategoriesUseCase.perform()
     }
 
-    fun startTestForCategory(category: Category): Observable<Unit> {
+    fun startTestForCategory(category: Category): Observable<Boolean> {
         return userStartsTestForCategoryUseCase.category(category).performAndObserve(AndroidSchedulers.mainThread())
     }
 }

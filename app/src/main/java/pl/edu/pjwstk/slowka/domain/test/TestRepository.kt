@@ -4,7 +4,7 @@ import pl.edu.pjwstk.slowka.domain.content.Category
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
 
 interface TestRepository {
-    fun startNewTestForCategory(category: Category)
+    fun startNewTestForCategory(category: Category): Boolean
     fun startNewTestForImages(ids: Array<Long>)
     fun uploadAnswerForImage(imageObject: ImageObject, answer: String): Boolean
     fun getNextImageFromCurrentTest(): ImageObject

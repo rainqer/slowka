@@ -24,8 +24,12 @@ class SelectTestsFragmentPresenter (private val availableTestsModel: SelectTests
     }
 
     override fun onCategoryForTestSelected(category: Category) {
-        availableTestsModel.startTestForCategory(category).subscribe {
-            presentedActivity.startActivity(TestSingleImageActivity.createIntent(presentedActivity))
+        availableTestsModel.startTestForCategory(category).subscribe { couldStart ->
+            if (couldStart) {
+                presentedActivity.startActivity(TestSingleImageActivity.createIntent(presentedActivity))
+            } else {
+                presentedView.showDidntStartTest()
+            }
         }
     }
 }

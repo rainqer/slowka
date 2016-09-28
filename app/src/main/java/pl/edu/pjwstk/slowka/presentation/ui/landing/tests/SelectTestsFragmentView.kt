@@ -4,4 +4,5 @@ import android.support.v7.widget.RecyclerView
 
 interface SelectTestsFragmentView {
     fun getAvailableTestsView() : RecyclerView
+    fun showDidntStartTest()
 }
