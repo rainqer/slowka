@@ -1,9 +1,9 @@
 package pl.edu.pjwstk.slowka.presentation.ui.single_category
 
-import android.database.Cursor
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.widget.Toast
+import pl.edu.pjwstk.slowka.domain.content.ImageObject
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
 import rx.Subscription
 import rx.subscriptions.Subscriptions
@@ -23,17 +23,17 @@ class SingleCategoryActivityPresenter(private val singleCategoryWordsListModel: 
         Toast.makeText(presentedActivity, "${presentedActivity.intent.getStringExtra(CATEGORY_NAME_KEY)}", Toast.LENGTH_LONG).show()
         refreshListSubscription =
                 singleCategoryWordsListModel.getReadyImages(presentedActivity.intent.getStringExtra(CATEGORY_NAME_KEY)).subscribe {
-                    cursor -> buildListFromCursor(cursor)
+                    imageObjects -> buildListFromCursor(imageObjects)
                 }
     }
 
-    private fun buildListFromCursor(cursor: Cursor?) {
-        adapter.swapCursor(cursor)
+    private fun buildListFromCursor(imageObjects: List<ImageObject>) {
+        adapter.setData(imageObjects)
         presentedView.getListOfWords().invalidate()
     }
 
     override fun pause() {
-        adapter.changeCursor(null)
+        adapter.setData(emptyList<ImageObject>())
         refreshListSubscription.unsubscribe()
     }
 
