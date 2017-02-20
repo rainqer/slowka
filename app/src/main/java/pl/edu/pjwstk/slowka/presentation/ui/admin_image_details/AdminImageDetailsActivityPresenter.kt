@@ -2,12 +2,9 @@ package pl.edu.pjwstk.slowka.presentation.ui.admin_image_details
 
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
+import android.support.v4.widget.SimpleCursorAdapter
 import android.widget.Toast
-import pl.edu.pjwstk.slowka.domain.content.ImageObject
-import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
-import pl.edu.pjwstk.slowka.presentation.ui.admin_image_details.CategoryAdapter
-import java.io.File
 
 class AdminImageDetailsActivityPresenter constructor(
         val recognizeImageActivityModel: AdminImageDetailsModel
@@ -41,7 +38,11 @@ class AdminImageDetailsActivityPresenter constructor(
             presentedView.showImageObject(imageObject)
         }
         recognizeImageActivityModel.getAllCategories().subscribe() { cursor ->
-            presentedView.applyCategoryAdapter(CategoryAdapter(presentedActivity, cursor, false))
+            val adapterCols=arrayOf("categoryName");
+            val adapterRowViews= intArrayOf(android.R.id.text1);
+            val cursorAdapter = SimpleCursorAdapter(presentedActivity, android.R.layout.simple_spinner_item, cursor, adapterCols, adapterRowViews, 0)
+            cursorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            presentedView.applyCategoryAdapter(cursorAdapter)
         }
     }
 

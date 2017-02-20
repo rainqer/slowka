@@ -1,7 +1,6 @@
 package pl.edu.pjwstk.slowka.presentation.ui.recognize
 
 import android.graphics.Bitmap
-import pl.edu.pjwstk.slowka.presentation.ui.admin_image_details.CategoryAdapter
 
 interface RecognizeImageActivityView {
 

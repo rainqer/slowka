@@ -24,12 +24,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
-            <pl.edu.pjwstk.slowka.presentation.view.ExpandedGridView
-                android:id="@+id/categoryGrid"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:numColumns="2"/>
+            <Spinner
+                android:id="@+id/categorySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <EditText
                 android:id="@+id/annotationForImageContent"
@@ -37,7 +35,8 @@
                 android:gravity="center"
                 android:hint="@string/image_content_editable_annotation_hint"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="100dp"/>
 
         </LinearLayout>
 
@@ -46,7 +45,8 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:src="@android:drawable/ic_menu_add"
-        style="@style/fab_style_slowka" />
+        style="@style/fab_style_slowka"
+        android:layout_gravity="bottom|end"/>
 
     <FrameLayout
         android:id="@+id/progressBar"

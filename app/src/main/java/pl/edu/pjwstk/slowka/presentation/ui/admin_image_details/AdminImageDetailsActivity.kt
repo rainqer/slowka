@@ -2,26 +2,24 @@ package pl.edu.pjwstk.slowka.presentation.ui.admin_image_details
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
+import android.database.Cursor
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
+import android.support.v4.widget.CursorAdapter
 import android.view.View
 import android.widget.EditText
 import android.widget.GridView
 import android.widget.ImageView
+import android.widget.Spinner
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
-import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
 import pl.edu.pjwstk.slowka.domain.tools.Galery
 import pl.edu.pjwstk.slowka.presentation.dagger.HasComponent
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.ui.SlowkaActivity
 import pl.edu.pjwstk.slowka.presentation.ui.admin_image_details.dagger.AdminImageDetailsActivityComponent
 import pl.edu.pjwstk.slowka.presentation.ui.admin_image_details.dagger.AdminImageDetailsActivityComponentAssembler
-import pl.edu.pjwstk.slowka.presentation.ui.recognize.dagger.RecognizeImageActivityComponent
-import pl.edu.pjwstk.slowka.presentation.ui.recognize.dagger.RecognizeImageActivityComponentAssembler
-import java.io.File
 import javax.inject.Inject
 
 class AdminImageDetailsActivity : SlowkaActivity<AdminImageDetailsActivityView>(),
@@ -40,11 +38,9 @@ class AdminImageDetailsActivity : SlowkaActivity<AdminImageDetailsActivityView>(
 
     private val imageEditableAnnotation: EditText by bindView(R.id.annotationForImageContent)
     private val image: ImageView by bindView(R.id.image)
-    private val categoryGrid: GridView by bindView(R.id.categoryGrid)
+    private val categorySpinner: Spinner by bindView(R.id.categorySpinner)
     private val progressBar: View by bindView(R.id.progressBar)
     private val confirmButton: FloatingActionButton by bindView(R.id.fab)
-
-    private var categoryAdapter : CategoryAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,17 +67,12 @@ class AdminImageDetailsActivity : SlowkaActivity<AdminImageDetailsActivityView>(
         hideProgressBar()
     }
 
-    override fun applyCategoryAdapter(newCategoryAdapter: CategoryAdapter) {
-        categoryAdapter = newCategoryAdapter
-        categoryGrid.setAdapter(categoryAdapter);
-        categoryGrid.setOnItemClickListener { adapterView, view, position, l ->
-            categoryAdapter?.selected = position
-            categoryAdapter?.notifyDataSetChanged()
-        }
+    override fun applyCategoryAdapter(cursorAdapter: CursorAdapter) {
+        categorySpinner.adapter = cursorAdapter
     }
 
     override fun getSelectedCategory(): String {
-        return categoryAdapter!!.getSelectedCategory().name
+        return (categorySpinner.selectedItem  as Cursor).getString(1)
     }
 
     private fun hideProgressBar() {
