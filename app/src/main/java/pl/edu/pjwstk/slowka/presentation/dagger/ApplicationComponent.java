@@ -10,7 +10,6 @@ import pl.edu.pjwstk.slowka.domain.content.GetImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.StoreCategoryUseCase;
 import pl.edu.pjwstk.slowka.domain.content.StoreImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.UpdateImageObjectUseCase;
-import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedCategoryConvertedImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedCategoryImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedUnknownImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllCategoriesUseCase;
@@ -51,7 +50,6 @@ public interface ApplicationComponent {
     GetImageObjectUseCase providesGetImageObjectUseCase();
     UpdateImageObjectUseCase providesUpdateImageObjectUseCase();
     ViewAcceptedCategoryImageObjectsUseCase providesViewAcceptedCategoryImageObjectsUseCase();
-    ViewAcceptedCategoryConvertedImageObjectsUseCase providesViewAcceptedCategoryConvertedImageObjectsUseCase();
     SaveBitmapUseCase providesSaveBitmapUseCase();
     SaveCameraFrameUseCase providesSaveCameraFrameUseCase();
     SaveCurrentCameraFrameUseCase providesSaveCurrentCameraFrameUseCase();

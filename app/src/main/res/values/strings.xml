@@ -10,10 +10,6 @@
     <!--Image recognizing screen-->
     <string name="image_content_editable_annotation_hint">Name the object in the picture</string>
 
-    <!--Words screen-->
-    <string name="words_list_known">Known words</string>
-    <string name="words_list_unknown">I am learning</string>
-
     <!--Admin -->
     <string name="admin_new_words">New</string>
     <string name="admin_learning_words">I learn</string>

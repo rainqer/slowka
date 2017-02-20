@@ -9,7 +9,6 @@ import pl.edu.pjwstk.slowka.domain.content.ImageObjectRepository;
 import pl.edu.pjwstk.slowka.domain.content.StoreCategoryUseCase;
 import pl.edu.pjwstk.slowka.domain.content.StoreImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.UpdateImageObjectUseCase;
-import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedCategoryConvertedImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedCategoryImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedUnknownImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllCategoriesUseCase;
@@ -75,11 +74,6 @@ public class UsecasesModule {
     @Provides
     ViewAcceptedCategoryImageObjectsUseCase providesViewAcceptedCategoryImageObjectsUseCase(ImageObjectRepository imageObjectRepository) {
         return new ViewAcceptedCategoryImageObjectsUseCase(imageObjectRepository);
-    }
-
-    @Provides
-    ViewAcceptedCategoryConvertedImageObjectsUseCase providesViewAcceptedCategoryConvertedImageObjectsUseCase(ImageObjectRepository imageObjectRepository) {
-        return new ViewAcceptedCategoryConvertedImageObjectsUseCase(imageObjectRepository);
     }
 
     @Provides

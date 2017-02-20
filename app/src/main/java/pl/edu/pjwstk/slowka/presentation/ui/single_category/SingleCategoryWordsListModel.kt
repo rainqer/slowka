@@ -1,14 +1,14 @@
 package pl.edu.pjwstk.slowka.presentation.ui.single_category
 
-import pl.edu.pjwstk.slowka.domain.content.ImageObject
-import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedCategoryConvertedImageObjectsUseCase
+import android.database.Cursor
+import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedCategoryImageObjectsUseCase
 import rx.Observable
 import rx.schedulers.Schedulers
 
 class SingleCategoryWordsListModel
-    constructor(val viewAcceptedCategoryConvertedImageObjectsUseCase: ViewAcceptedCategoryConvertedImageObjectsUseCase) {
+    constructor(val viewAcceptedCategoryImageObjectsUseCase: ViewAcceptedCategoryImageObjectsUseCase) {
 
-    fun getReadyImages(categoryName: String): Observable<List<ImageObject>> {
-        return viewAcceptedCategoryConvertedImageObjectsUseCase.category(categoryName).performAndObserve(Schedulers.io())
+    fun getReadyImages(categoryName: String): Observable<Cursor> {
+        return viewAcceptedCategoryImageObjectsUseCase.category(categoryName).performAndObserve(Schedulers.io())
     }
 }
