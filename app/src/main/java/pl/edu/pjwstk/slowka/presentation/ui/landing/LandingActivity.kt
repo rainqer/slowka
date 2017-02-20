@@ -29,6 +29,7 @@ class LandingActivity : SlowkaActivityWithDrawer<LandingActivityView>(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentViewWithToolbarAndDrawerNavigation(R.layout.activity_landing)
+        navigationView.menu.getItem(0).setChecked(true);
         setDaggerComponent(LandingActivityComponentAssembler.assemble(application, this))
     }
 
@@ -47,11 +48,6 @@ class LandingActivity : SlowkaActivityWithDrawer<LandingActivityView>(),
         supportFragmentManager.beginTransaction()
                 .replace(R.id.content, fragment)
                 .commit()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.landing, menu)
-        return true
     }
 
     override fun closeDrawer() {

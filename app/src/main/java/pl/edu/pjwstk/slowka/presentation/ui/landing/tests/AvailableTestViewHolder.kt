@@ -8,8 +8,6 @@ import android.widget.TextView
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.domain.content.Category
-import pl.edu.pjwstk.slowka.presentation.ui.tests.TestSingleImageActivity
-import pl.edu.pjwstk.slowka.presentation.view.RandomColorGenerator
 
 class AvailableTestViewHolder : RecyclerView.ViewHolder {
 
@@ -28,7 +26,6 @@ class AvailableTestViewHolder : RecyclerView.ViewHolder {
         progress = view.findViewById(R.id.adapterItem_progress) as RoundCornerProgressBar
         numberOfWords = view.findViewById(R.id.adapterItem_number_of_words) as TextView
         icon.setColorFilter(ContextCompat.getColor(view.context, android.R.color.black));
-        background.setBackgroundColor(RandomColorGenerator().nextRandomColor())
         this.onCategoryForTestSelectedListener = onCategoryForTestSelectedListener
     }
 
@@ -43,5 +40,6 @@ class AvailableTestViewHolder : RecyclerView.ViewHolder {
         itemView.setOnClickListener { view ->
             onCategoryForTestSelectedListener.onCategoryForTestSelected(category)
         }
+        background.setBackgroundColor(ContextCompat.getColor(background.context, category.color))
     }
 }

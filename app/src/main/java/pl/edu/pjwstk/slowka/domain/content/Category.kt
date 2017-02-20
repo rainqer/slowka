@@ -2,6 +2,8 @@ package pl.edu.pjwstk.slowka.domain.content
 
 import android.content.ContentValues
 import android.database.Cursor
+import android.support.annotation.ColorRes
+import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.repository.content.CategoriesTable
 import java.io.Serializable
 
@@ -32,13 +34,24 @@ class Category: Serializable {
         return contentValues
     }
 
+    val color: Int
+        get() = when (this.name) {
+            HOME -> R.color.color1
+            SPORT -> R.color.color2
+            WEATHER -> R.color.color3
+            PEOPLE -> R.color.color4
+            HOLIDAY -> R.color.color5
+            GROCERY -> R.color.color6
+            else -> R.color.color6
+    }
+
     companion object {
         val CATEGORY_NOT_FROM_DATABASE_ID = -1
-        val HOME = "home"
+        val HOME = "Dom"
         val SPORT = "Sport"
-        val WEATHER = "Weather"
-        val PEOPLE = "People"
-        val HOLIDAY = "Holiday"
-        val GROCERY = "Grocery"
+        val WEATHER = "Pogoda"
+        val PEOPLE = "Ludzie"
+        val HOLIDAY = "Wakacje"
+        val GROCERY = "Zakupy"
     }
 }

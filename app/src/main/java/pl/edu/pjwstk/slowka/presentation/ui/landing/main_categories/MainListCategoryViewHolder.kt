@@ -9,7 +9,6 @@ import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.domain.content.Category
 import pl.edu.pjwstk.slowka.presentation.ui.single_category.SingleCategoryActivity
-import pl.edu.pjwstk.slowka.presentation.view.RandomColorGenerator
 
 class MainListCategoryViewHolder : RecyclerView.ViewHolder {
 
@@ -27,7 +26,6 @@ class MainListCategoryViewHolder : RecyclerView.ViewHolder {
         progress = view.findViewById(R.id.adapterItem_progress) as RoundCornerProgressBar
         numberOfWords = view.findViewById(R.id.adapterItem_number_of_words) as TextView
         icon.setColorFilter(ContextCompat.getColor(view.context, android.R.color.black));
-        background.setBackgroundColor(RandomColorGenerator().nextRandomColor())
         view.setOnClickListener {
             view -> launchSingleCategoryActivity(view)
         }
@@ -48,5 +46,6 @@ class MainListCategoryViewHolder : RecyclerView.ViewHolder {
         progress.progress = numberOfKnownWords.toFloat()
         numberOfWords.text = "$numberOfKnownWords/$totalNumberOfWords"
         shownCategoryName = category.name
+        background.setBackgroundColor(ContextCompat.getColor(background.context, category.color))
     }
 }
