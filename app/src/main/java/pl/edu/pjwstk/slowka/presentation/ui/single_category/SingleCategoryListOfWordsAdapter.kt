@@ -65,6 +65,15 @@ class SingleCategoryListOfWordsAdapter (private val context: Context,
         )
     }
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SingleCategoryWordViewHolder {
+        val itemView = LayoutInflater
+                .from(parent.context)
+                .inflate(R.layout.holder_single_category_list_item, parent, false)
+        return SingleCategoryWordViewHolder(itemView)
+    }
+
+
+
     class SingleCategoryWordViewHolder : RecyclerView.ViewHolder {
         val itemAnnotation: TextView
         val itemImage: ImageView
