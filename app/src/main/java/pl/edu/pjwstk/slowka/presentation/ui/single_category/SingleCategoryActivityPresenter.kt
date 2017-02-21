@@ -1,33 +1,18 @@
 package pl.edu.pjwstk.slowka.presentation.ui.single_category
 
-import android.database.Cursor
-import android.os.Bundle
-import android.support.v4.app.FragmentActivity
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
+import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.SingleCategoryListOfWordsAdapter
 import rx.Subscription
 import rx.subscriptions.Subscriptions
 
-class SingleCategoryActivityPresenter(private val singleCategoryWordsListModel: SingleCategoryWordsListModel,
-                                      private val adapter: SingleCategoryListOfWordsAdapter)
+class SingleCategoryActivityPresenter(private val adapter: SingleCategoryListOfWordsAdapter)
     : ActivityPresenter<SingleCategoryActivityView>() {
 
     private var refreshListSubscription : Subscription = Subscriptions.unsubscribed()
 
-    override fun attach(view: SingleCategoryActivityView, activity: FragmentActivity, savedInstanceState: Bundle?) {
-        super.attach(view, activity, savedInstanceState)
-        presentedView.getListOfWords().adapter = adapter
-    }
-
     override fun resume() {
-        refreshListSubscription =
-                singleCategoryWordsListModel.getReadyImages(presentedActivity.intent.getStringExtra(CATEGORY_NAME_KEY)).subscribe {
-                    cursor -> buildListFromCursor(cursor)
-                }
-    }
-
-    private fun buildListFromCursor(cursor: Cursor?) {
-        adapter.swapCursor(cursor)
-        presentedView.getListOfWords().invalidate()
+        presentedView.getViewPager().adapter = SingleCategoryListsPagerAdapter(presentedView.getSupportFragmentManager(), presentedActivity)
+        presentedView.getWordsListTabs().setupWithViewPager(presentedView.getViewPager())
     }
 
     override fun pause() {

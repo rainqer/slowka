@@ -6,8 +6,9 @@ import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedCategoryImageObjectsUseCa
 import pl.edu.pjwstk.slowka.presentation.speech.Speaker;
 import pl.edu.pjwstk.slowka.presentation.ui.single_category.SingleCategoryActivity;
 import pl.edu.pjwstk.slowka.presentation.ui.single_category.SingleCategoryActivityPresenter;
-import pl.edu.pjwstk.slowka.presentation.ui.single_category.SingleCategoryListOfWordsAdapter;
-import pl.edu.pjwstk.slowka.presentation.ui.single_category.SingleCategoryWordsListModel;
+import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.SingleCategoryListOfWordsAdapter;
+import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.known.SingleCategoryKnownWordsFragmentModel;
+import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.known.SingleCategoryKnownWordsFragmentPresenter;
 
 @Module
 class SingleCategoryModule {
@@ -21,10 +22,9 @@ class SingleCategoryModule {
     @SingleCategoryActivityScope
     @Provides
     SingleCategoryActivityPresenter provideSingleCategoryActivityPresenter(
-            SingleCategoryWordsListModel singleCategoryWordsListModel,
             SingleCategoryListOfWordsAdapter singleCategoryListOfWordsAdapter
     ) {
-        return new SingleCategoryActivityPresenter(singleCategoryWordsListModel, singleCategoryListOfWordsAdapter);
+        return new SingleCategoryActivityPresenter(singleCategoryListOfWordsAdapter);
     }
 
     @SingleCategoryActivityScope
@@ -35,9 +35,16 @@ class SingleCategoryModule {
 
     @SingleCategoryActivityScope
     @Provides
-    SingleCategoryWordsListModel provideSingleCategoryWordsListModel(
-            ViewAcceptedCategoryImageObjectsUseCase viewAcceptedCategoryImageObjectsUseCase
-    ) {
-        return new SingleCategoryWordsListModel(viewAcceptedCategoryImageObjectsUseCase);
+    SingleCategoryKnownWordsFragmentModel providesSingleCategoryKnownWordsFragmentModel(
+            ViewAcceptedCategoryImageObjectsUseCase viewAcceptedCategoryImageObjectsUseCase) {
+        return new SingleCategoryKnownWordsFragmentModel(viewAcceptedCategoryImageObjectsUseCase);
+    }
+
+    @SingleCategoryActivityScope
+    @Provides
+    SingleCategoryKnownWordsFragmentPresenter providesSingleCategoryKnownWordsFragmentPresenter(
+            SingleCategoryKnownWordsFragmentModel singleCategoryKnownWordsFragmentModel,
+            SingleCategoryListOfWordsAdapter singleCategoryListOfWordsAdapter) {
+        return new SingleCategoryKnownWordsFragmentPresenter(singleCategoryKnownWordsFragmentModel, singleCategoryListOfWordsAdapter);
     }
 }

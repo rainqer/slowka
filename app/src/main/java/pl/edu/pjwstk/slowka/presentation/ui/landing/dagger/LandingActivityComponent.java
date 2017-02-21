@@ -9,6 +9,7 @@ import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorFragment;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_know.IKnowWordsListFragment;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_learn.ILearnWordsListFragment;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_new.NewWordsListFragment;
+import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.known.SingleCategoryKnownWordsFragment;
 
 @LandingActivityScope
 @Component (
