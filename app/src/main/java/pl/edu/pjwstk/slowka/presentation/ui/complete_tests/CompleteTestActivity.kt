@@ -40,7 +40,7 @@ class CompleteTestActivity : SlowkaActivity<CompleteTestActivityView>(),
     }
 
     override fun setResults(correct: Int, incorrect: Int) {
-        progressView.setValueAnimated(0f, correct / (correct+incorrect) * 100f, 1500)
+        progressView.setValueAnimated(0f, correct.toFloat() / (correct+incorrect) * 100f, 1500)
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {

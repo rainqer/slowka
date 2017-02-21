@@ -15,7 +15,7 @@ class CompleteTestActivityPresenter constructor(
     }
 
     override fun resume() {
-        completeTestModel.completeCurrentTest().subscribe { testResult->
+        completeTestModel.completeCurrentTest().subscribe { testResult ->
             presentedView.setResults(testResult.correctAnswers, testResult.incorrectAnswers)
         }
     }
