@@ -13,7 +13,7 @@ class LocalMemoryTestRepository(private val imageObjectRepository: ImageObjectRe
 
     override fun startNewTestForCategory(category: Category): Boolean {
         imageObjects.clear()
-        val allImagesFromCategoryCursor = imageObjectRepository.getAcceptedImagesInCategory(category.name)
+        val allImagesFromCategoryCursor = imageObjectRepository.getAcceptedImagesInCategory(category.name, false)
         while(allImagesFromCategoryCursor.moveToNext()) {
             val imageObject = ImageObject(allImagesFromCategoryCursor)
             if (!imageObject.known) {

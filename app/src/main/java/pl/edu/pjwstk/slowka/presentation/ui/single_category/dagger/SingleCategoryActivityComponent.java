@@ -2,16 +2,9 @@ package pl.edu.pjwstk.slowka.presentation.ui.single_category.dagger;
 
 import dagger.Component;
 import pl.edu.pjwstk.slowka.presentation.dagger.ApplicationComponent;
-import pl.edu.pjwstk.slowka.presentation.ui.landing.LandingActivity;
-import pl.edu.pjwstk.slowka.presentation.ui.landing.dagger.LandingActivityScope;
-import pl.edu.pjwstk.slowka.presentation.ui.landing.dagger.LandingModule;
-import pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories.WordsCategoriesListFragment;
-import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorFragment;
-import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_know.IKnowWordsListFragment;
-import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_learn.ILearnWordsListFragment;
-import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_new.NewWordsListFragment;
 import pl.edu.pjwstk.slowka.presentation.ui.single_category.SingleCategoryActivity;
 import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.known.SingleCategoryKnownWordsFragment;
+import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.learning.SingleCategoryLearningWordsFragment;
 
 @SingleCategoryActivityScope
 @Component (
@@ -21,4 +14,5 @@ import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.known.Sin
 public interface SingleCategoryActivityComponent {
         void inject(SingleCategoryActivity activity);
         void inject(SingleCategoryKnownWordsFragment fragment);
+        void inject(SingleCategoryLearningWordsFragment fragment);
 }

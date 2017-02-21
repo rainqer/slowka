@@ -24,10 +24,6 @@ open class SingleCategoryWordsListFragmentPresenter (private val wordsListFragme
         refresh()
     }
 
-    fun resume() {
-        refresh()
-    }
-
     private fun refresh() {
         refreshListSubscription =
                 wordsListFragmentModel

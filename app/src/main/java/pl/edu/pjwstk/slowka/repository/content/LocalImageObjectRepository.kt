@@ -74,6 +74,17 @@ class LocalImageObjectRepository : ImageObjectRepository {
         )
     }
 
+    override fun getAcceptedImagesInCategory(categoryName: String, known: Boolean): Cursor {
+        val queryForKnown = if (known) 1 else 0
+        return contentResolver.query(
+                IMAGE_OBJECT_PROVIDER_URI,
+                ImageObjectsTable.COLUMNS,
+                "${ImageObjectsTable.COLUMN_CATEGORY}='$categoryName' AND ${ImageObjectsTable.COLUMN_ACCEPTED}='1' AND ${ImageObjectsTable.COLUMN_KNOWN}='$queryForKnown'",
+                arrayOf(),
+                null
+        )
+    }
+
     override fun edit(id: String, imageObject: ImageObject): Boolean {
         return contentResolver.update(
                 IMAGE_OBJECT_PROVIDER_URI,

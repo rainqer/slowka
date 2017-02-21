@@ -3,7 +3,7 @@ package pl.edu.pjwstk.slowka.domain.content
 import android.database.Cursor
 import pl.edu.pjwstk.slowka.domain.UseCase
 
-class ViewAcceptedCategoryImageObjectsUseCase : UseCase<Cursor> {
+class ViewAcceptedCategoryImagesObjectsUseCase : UseCase<Cursor> {
 
     private val imageObjectRepository: ImageObjectRepository
     private val categoryName: String?
@@ -16,8 +16,8 @@ class ViewAcceptedCategoryImageObjectsUseCase : UseCase<Cursor> {
         this.categoryName = categoryName
     }
 
-    fun category(categoryName: String) : ViewAcceptedCategoryImageObjectsUseCase {
-        return ViewAcceptedCategoryImageObjectsUseCase(imageObjectRepository, categoryName)
+    fun category(categoryName: String) : ViewAcceptedCategoryImagesObjectsUseCase {
+        return ViewAcceptedCategoryImagesObjectsUseCase(imageObjectRepository, categoryName)
     }
 
     override fun perform(): Cursor {

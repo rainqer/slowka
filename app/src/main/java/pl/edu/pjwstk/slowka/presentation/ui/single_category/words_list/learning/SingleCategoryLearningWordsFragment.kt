@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.known
+package pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.learning
 
 import android.os.Bundle
 import android.support.annotation.StringRes
@@ -7,17 +7,16 @@ import android.view.View
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.Components
 import pl.edu.pjwstk.slowka.presentation.ui.FragmentPresenter
-import pl.edu.pjwstk.slowka.presentation.ui.landing.dagger.LandingActivityComponent
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorWordsListFragment
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorWordsListView
 import pl.edu.pjwstk.slowka.presentation.ui.single_category.dagger.SingleCategoryActivityComponent
 import pl.edu.pjwstk.slowka.presentation.view.VerticalMarginDecoration
 import javax.inject.Inject
 
-class SingleCategoryKnownWordsFragment : TutorWordsListFragment() {
+class SingleCategoryLearningWordsFragment : TutorWordsListFragment() {
 
     @Inject
-    protected lateinit var presenter: SingleCategoryKnownWordsFragmentPresenter
+    protected lateinit var presenter: SingleCategoryLearningWordsFragmentPresenter
     override val fragmentPresenter: FragmentPresenter<TutorWordsListView>
         get() = presenter
 
@@ -30,8 +29,8 @@ class SingleCategoryKnownWordsFragment : TutorWordsListFragment() {
     }
 
     companion object {
-        fun getInstance() : SingleCategoryKnownWordsFragment {
-            return SingleCategoryKnownWordsFragment()
+        fun getInstance() : SingleCategoryLearningWordsFragment {
+            return SingleCategoryLearningWordsFragment()
         }
 
         @StringRes val titleRes: Int = R.string.admin_learning_words

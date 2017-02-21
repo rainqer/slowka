@@ -6,8 +6,8 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_know.IKnowWordsListFragment
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_learn.ILearnWordsListFragment
-import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_new.NewWordsListFragment
 import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.known.SingleCategoryKnownWordsFragment
+import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.learning.SingleCategoryLearningWordsFragment
 
 class SingleCategoryListsPagerAdapter constructor(fragmentManager: FragmentManager, context: Context)
     : FragmentStatePagerAdapter(fragmentManager) {
@@ -24,7 +24,7 @@ class SingleCategoryListsPagerAdapter constructor(fragmentManager: FragmentManag
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> SingleCategoryKnownWordsFragment.getInstance()
-            1 -> SingleCategoryKnownWordsFragment.getInstance()
+            1 -> SingleCategoryLearningWordsFragment.getInstance()
             else -> throw IllegalArgumentException("could not view fragment for position $position")
         }
     }

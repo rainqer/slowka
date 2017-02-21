@@ -1,11 +1,10 @@
 package pl.edu.pjwstk.slowka.presentation.ui.single_category
 
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
-import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.SingleCategoryListOfWordsAdapter
 import rx.Subscription
 import rx.subscriptions.Subscriptions
 
-class SingleCategoryActivityPresenter(private val adapter: SingleCategoryListOfWordsAdapter)
+class SingleCategoryActivityPresenter()
     : ActivityPresenter<SingleCategoryActivityView>() {
 
     private var refreshListSubscription : Subscription = Subscriptions.unsubscribed()
@@ -16,7 +15,6 @@ class SingleCategoryActivityPresenter(private val adapter: SingleCategoryListOfW
     }
 
     override fun pause() {
-        adapter.changeCursor(null)
         refreshListSubscription.unsubscribe()
     }
 
