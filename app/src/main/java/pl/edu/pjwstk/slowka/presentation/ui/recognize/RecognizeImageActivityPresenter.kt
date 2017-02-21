@@ -31,7 +31,6 @@ class RecognizeImageActivityPresenter constructor(
         recognizeImageActivityModel
                 .storeReadyImageObject(buildImageObject())
                 .subscribe { successful ->
-                    Toast.makeText(presentedActivity, if (successful) "SUCCESS" else "FAIL" , Toast.LENGTH_LONG).show()
                     presentedActivity.finish()
                 }
     }

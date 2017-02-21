@@ -11,14 +11,18 @@
     <string name="image_content_editable_annotation_hint">Name the object in the picture</string>
 
     <!--Admin -->
-    <string name="admin_new_words">New</string>
-    <string name="admin_learning_words">I learn</string>
-    <string name="admin_learnt_words">I know</string>
-    <string name="play">play</string>
-    <string name="edit">edit</string>
-    <string name="testAnswer">Enter answer</string>
+    <string name="admin_new_words">Nowe</string>
+    <string name="admin_learning_words">Uczę się</string>
+    <string name="admin_learnt_words">Znam</string>
+    <string name="play">odtwórz</string>
+    <string name="edit">edytuj</string>
+    <string name="testAnswer">Wpisz odpowiedź</string>
 
     <!--test-->
-    <string name="didntShowTest">You know all these words</string>
+    <string name="didntShowTest">Znasz wszystkie słowa z tej kategorii</string>
+
+    <!--add new word-->
+    <string name="select_category">kategoria:</string>
+    <string name="name_the_item">nazwa:</string>
 
 </resources>

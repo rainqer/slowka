@@ -3,7 +3,6 @@ package pl.edu.pjwstk.slowka.presentation.ui.single_category
 import android.database.Cursor
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
-import android.widget.Toast
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
 import rx.Subscription
 import rx.subscriptions.Subscriptions

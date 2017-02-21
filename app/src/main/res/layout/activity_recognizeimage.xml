@@ -24,19 +24,55 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
-            <Spinner
-                android:id="@+id/categorySpinner"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <EditText
-                android:id="@+id/annotationForImageContent"
-                android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:hint="@string/image_content_editable_annotation_hint"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="100dp"/>
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="100dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/select_category"/>
+
+                    <Spinner
+                        android:id="@+id/categorySpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/name_the_item"/>
+
+                    <EditText
+                        android:id="@+id/annotationForImageContent"
+                        android:layout_alignParentBottom="true"
+                        android:lines="1"
+                        android:hint="@string/image_content_editable_annotation_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -44,7 +80,8 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:src="@android:drawable/ic_menu_add"
+        android:src="@drawable/ic_done_black_24dp"
+        android:tint="@android:color/white"
         style="@style/fab_style_slowka"
         android:layout_gravity="bottom|end"/>
 

@@ -2,9 +2,8 @@ package pl.edu.pjwstk.slowka.presentation.ui.admin_image_details
 
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
-import android.support.v4.widget.SimpleCursorAdapter
-import android.widget.Toast
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
+import pl.edu.pjwstk.slowka.presentation.view.SimpleCursorAdapterForCategoryWithIcon
 
 class AdminImageDetailsActivityPresenter constructor(
         val recognizeImageActivityModel: AdminImageDetailsModel
@@ -28,7 +27,6 @@ class AdminImageDetailsActivityPresenter constructor(
         recognizeImageActivityModel
                 .updateImageObject(imageObjectId, presentedView.imageAnnotation, presentedView.getSelectedCategory())
                 .subscribe { successful ->
-            Toast.makeText(presentedActivity, if (successful) "SUCCESS" else "FAIL" , Toast.LENGTH_LONG).show()
             presentedActivity.finish()
         }
     }
@@ -38,11 +36,7 @@ class AdminImageDetailsActivityPresenter constructor(
             presentedView.showImageObject(imageObject)
         }
         recognizeImageActivityModel.getAllCategories().subscribe() { cursor ->
-            val adapterCols=arrayOf("categoryName");
-            val adapterRowViews= intArrayOf(android.R.id.text1);
-            val cursorAdapter = SimpleCursorAdapter(presentedActivity, android.R.layout.simple_spinner_item, cursor, adapterCols, adapterRowViews, 0)
-            cursorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            presentedView.applyCategoryAdapter(cursorAdapter)
+            presentedView.applyCategoryAdapter(SimpleCursorAdapterForCategoryWithIcon(presentedActivity, cursor, 0))
         }
     }
 
