@@ -22,11 +22,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <EditText
-                android:id="@+id/answer"
+            <pl.edu.pjwstk.slowka.presentation.view.MinimumInputWithDisplay
+                android:id="@+id/keyboardWithDisplay"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/testAnswer"/>
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

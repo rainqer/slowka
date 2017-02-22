@@ -23,6 +23,7 @@ class TestSingleImageActivityPresenter constructor(
         recognizeImageActivityModel.getNextTestImageObject().subscribe { imageObject ->
             testedImageObject = imageObject
             presentedView.showImage(Galery(presentedActivity).getScaledDownImage(imageObject.imageFile))
+            presentedView.adjustKeyboard(imageObject.annotation)
         }
     }
 
