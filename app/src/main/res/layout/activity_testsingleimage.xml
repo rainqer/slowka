@@ -17,15 +17,25 @@
 
             <include layout="@layout/application_toolbar"/>
 
-            <ImageView
-                android:id="@+id/testImage"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
 
-            <pl.edu.pjwstk.slowka.presentation.view.MinimumInputWithDisplay
-                android:id="@+id/keyboardWithDisplay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <ImageView
+                    android:id="@+id/testImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"/>
+
+                <pl.edu.pjwstk.slowka.presentation.view.MinimumInputWithDisplay
+                    android:id="@+id/keyboardWithDisplay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
