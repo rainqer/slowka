@@ -49,7 +49,7 @@ class LocalMemoryTestRepository(private val imageObjectRepository: ImageObjectRe
         var correctAnswers = 0
         var incorrectAnswers = 0
         for ((imageObject, answer) in imageObjectsWithAnswers) {
-            if (imageObject.annotation == answer) {
+            if (imageObject.annotation.equals(answer, true)) {
                 imageObjectRepository.markAsKnown(imageObject.objectId?:throw IllegalStateException("this object has no id"))
                 ++correctAnswers
             } else {

@@ -51,7 +51,7 @@ class TestSingleImageActivity : SlowkaActivity<TestSingleImageActivityView>(),
     }
 
     override fun getAnswer(): String {
-        return "aa"
+        return keyboardWithDisplay.getUserInput()
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {

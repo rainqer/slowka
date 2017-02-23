@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import android.widget.TextView
 import pl.edu.pjwstk.slowka.R
+import java.util.*
 
 class MinimumInputWithDisplay : LinearLayout {
 
@@ -26,21 +27,36 @@ class MinimumInputWithDisplay : LinearLayout {
     }
 
     fun getUserInput() : String {
-        return display.text
+        return display.text.toString()
     }
 
     fun setShuffledLettersForWord(typeableWord: String) {
         keyboard.removeAllViews()
-        val addingLetter = selectLetterSize(typeableWord)
-        typeableWord.toList().forEach { letter ->
+        val shuffledUniqueLetters = extractUniqueLettersThenShuffle(typeableWord)
+        val addingLetter = selectLetterSize(shuffledUniqueLetters)
+        shuffledUniqueLetters.forEach { letter ->
             addingLetter(letter)
         }
     }
 
-    private fun selectLetterSize(typeableWord: String): (Char) -> Unit {
-        return if (typeableWord.length < 7) {
+    private fun extractUniqueLettersThenShuffle(typeableWord: String): List<Char> {
+        val uniqueLetters = mutableListOf<Char>()
+        typeableWord.toLowerCase().toList().forEach { letter ->
+            if (!uniqueLetters.contains(letter)) {
+                if (uniqueLetters.isEmpty()) {
+                    uniqueLetters.add(letter)
+                } else {
+                    uniqueLetters.add(Random().nextInt(uniqueLetters.size), letter)
+                }
+            }
+        }
+        return uniqueLetters
+    }
+
+    private fun selectLetterSize(lettersSet: List<Char>): (Char) -> Unit {
+        return if (lettersSet.size < 7) {
             addBigLetterButton()
-        } else if (typeableWord.length < 11) {
+        } else if (lettersSet.size < 11) {
             addMediumLetterButton()
         } else {
             addSmallLetterButton()
