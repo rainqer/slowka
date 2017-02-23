@@ -11,6 +11,7 @@ class MinimumInputWithDisplay : LinearLayout {
 
     private lateinit var display: TextView
     private lateinit var keyboard: LinearLayout
+    private lateinit var keyboard2: LinearLayout
 
     constructor(context: Context) : this(context, null)
 
@@ -24,6 +25,7 @@ class MinimumInputWithDisplay : LinearLayout {
         inflate(context, R.layout.minimum_input_with_display, this)
         display = findViewById(R.id.display) as TextView
         keyboard = findViewById(R.id.keyboard) as LinearLayout
+        keyboard2 = findViewById(R.id.keyboard2) as LinearLayout
     }
 
     fun getUserInput() : String {
@@ -39,6 +41,8 @@ class MinimumInputWithDisplay : LinearLayout {
         }
     }
 
+    private val backspace = '\u232b'
+
     private fun extractUniqueLettersThenShuffle(typeableWord: String): List<Char> {
         val uniqueLetters = mutableListOf<Char>()
         typeableWord.toLowerCase().toList().forEach { letter ->
@@ -50,21 +54,16 @@ class MinimumInputWithDisplay : LinearLayout {
                 }
             }
         }
+        uniqueLetters.add(uniqueLetters.size, backspace)
         return uniqueLetters
     }
 
     private fun selectLetterSize(lettersSet: List<Char>): (Char) -> Unit {
         return if (lettersSet.size < 7) {
             addBigLetterButton()
-        } else if (lettersSet.size < 11) {
-            addMediumLetterButton()
         } else {
-            addSmallLetterButton()
+            addMediumLetterButton()
         }
-    }
-
-    private fun addSmallLetterButton(): (Char) -> Unit {
-        return { letter -> adjustButtonThenInsert(letter, SmallLetterButton(context)) }
     }
 
     private fun addMediumLetterButton(): (Char) -> Unit {
@@ -77,9 +76,22 @@ class MinimumInputWithDisplay : LinearLayout {
 
     private fun adjustButtonThenInsert(letter: Char, letterButton: LetterButton) {
         letterButton.text = letter.toString()
-        letterButton.setOnClickListener { view ->
-            display.append((view as TextView).text)
+        if (letter == backspace) {
+            letterButton.setOnClickListener { view ->
+                val currentText = display.text
+                if (currentText.isNotEmpty()) {
+                    display.text = currentText.dropLast(1)
+                }
+            }
+        } else {
+            letterButton.setOnClickListener { view ->
+                display.append((view as TextView).text)
+            }
         }
-        keyboard.addView(letterButton, 0)
+        if (keyboard.childCount < 9) {
+            keyboard.addView(letterButton, keyboard.childCount)
+        } else {
+            keyboard2.addView(letterButton, keyboard2.childCount)
+        }
     }
 }

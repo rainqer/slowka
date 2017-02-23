@@ -23,8 +23,8 @@ class SingleCategoryListsPagerAdapter constructor(fragmentManager: FragmentManag
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
-            0 -> SingleCategoryKnownWordsFragment.getInstance()
-            1 -> SingleCategoryLearningWordsFragment.getInstance()
+            0 -> SingleCategoryLearningWordsFragment.getInstance()
+            1 -> SingleCategoryKnownWordsFragment.getInstance()
             else -> throw IllegalArgumentException("could not view fragment for position $position")
         }
     }
