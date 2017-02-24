@@ -7,6 +7,11 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_landing">LandingActivity</string>
 
+    <!--screen titles-->
+    <string name="learning_screen">Uczę się</string>
+    <string name="tests_screen">Testy</string>
+    <string name="admin_screen">Panel administratora</string>
+
     <!--Image recognizing screen-->
     <string name="image_content_editable_annotation_hint">Name the object in the picture</string>
 

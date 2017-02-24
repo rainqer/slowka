@@ -7,18 +7,17 @@ import android.view.View
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.Components
 import pl.edu.pjwstk.slowka.presentation.ui.FragmentPresenter
-import pl.edu.pjwstk.slowka.presentation.ui.landing.dagger.LandingActivityComponent
-import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorWordsListFragment
-import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorWordsListView
 import pl.edu.pjwstk.slowka.presentation.ui.single_category.dagger.SingleCategoryActivityComponent
+import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.SingleCategoryWordsListFragment
+import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.SingleCategoryWordsListView
 import pl.edu.pjwstk.slowka.presentation.view.VerticalMarginDecoration
 import javax.inject.Inject
 
-class SingleCategoryKnownWordsFragment : TutorWordsListFragment() {
+class SingleCategoryKnownWordsFragment : SingleCategoryWordsListFragment(), SingleCategoryWordsListView {
 
     @Inject
     protected lateinit var presenter: SingleCategoryKnownWordsFragmentPresenter
-    override val fragmentPresenter: FragmentPresenter<TutorWordsListView>
+    override val fragmentPresenter: FragmentPresenter<SingleCategoryWordsListView>
         get() = presenter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

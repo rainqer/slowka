@@ -1,6 +1,7 @@
 package pl.edu.pjwstk.slowka.presentation.ui.landing.tests
 
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +30,7 @@ class SelectTestsFragment : SlowkaFragment<SelectTestsFragmentView>(), SelectTes
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity).supportActionBar?.setTitle(R.string.tests_screen)
         Components.from<LandingActivityComponent>(activity).inject(this)
         attachPresenter(this, activity, savedInstanceState)
     }
