@@ -5,15 +5,17 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.text.TextUtils
 import android.view.MenuItem
 import android.view.WindowManager
+import android.widget.TextView
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
 
 abstract class SlowkaActivity <T : Any>: AppCompatActivity() {
 
-    protected val toolbar: Toolbar by bindView(R.id.toolbar)
+    val toolbar: Toolbar by bindView(R.id.toolbar)
     protected abstract val activityPresenter: ActivityPresenter<T>
 
     internal fun setContentViewWithToolbar(layoutResID: Int) {
@@ -24,7 +26,7 @@ abstract class SlowkaActivity <T : Any>: AppCompatActivity() {
 
     open internal fun setupToolbar() {
         setSupportActionBar(toolbar)
-//        supportActionBar.setIcon(R.drawable.)
+        supportActionBar?.setDisplayShowTitleEnabled(true);
         supportActionBar?.title = null
     }
 

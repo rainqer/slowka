@@ -4,20 +4,20 @@ import android.database.Cursor
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import pl.edu.pjwstk.slowka.presentation.ui.FragmentPresenter
-import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorWordsListView
 import pl.edu.pjwstk.slowka.presentation.ui.single_category.SingleCategoryActivityPresenter
 import rx.Subscription
 import rx.subscriptions.Subscriptions
 
 open class SingleCategoryWordsListFragmentPresenter (private val wordsListFragmentModel : SingleCategoryWordsListFragmentModel,
                                                      private val adapter : SingleCategoryListOfWordsAdapter)
-    : FragmentPresenter<TutorWordsListView>() {
+    : FragmentPresenter<SingleCategoryWordsListView>() {
 
     private var refreshListSubscription : Subscription = Subscriptions.unsubscribed()
 
-    override fun attach(view: TutorWordsListView, activity: FragmentActivity, savedInstanceState: Bundle?) {
+    override fun attach(view: SingleCategoryWordsListView, activity: FragmentActivity, savedInstanceState: Bundle?) {
         super.attach(view, activity, savedInstanceState)
         presentedView.getListOfWords().adapter = adapter
+        presentedView.setTitle(presentedActivity.intent.getStringExtra(SingleCategoryActivityPresenter.CATEGORY_NAME_KEY))
     }
 
     override fun onViewCreated() {

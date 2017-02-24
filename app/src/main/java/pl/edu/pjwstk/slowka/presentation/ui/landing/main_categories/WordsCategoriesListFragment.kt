@@ -2,6 +2,8 @@ package pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories
 
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
+import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -30,6 +32,7 @@ class WordsCategoriesListFragment @Inject constructor() : SlowkaFragment<WordsCa
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity).supportActionBar?.setTitle(R.string.learning_screen)
         fab.setOnClickListener {
             startActivity(CameraActivity.createIntent(activity))
         }
