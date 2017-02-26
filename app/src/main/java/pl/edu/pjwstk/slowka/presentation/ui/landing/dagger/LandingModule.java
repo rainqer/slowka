@@ -13,8 +13,8 @@ import pl.edu.pjwstk.slowka.presentation.ui.landing.LandingActivityPresenter;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.TutorListOfWordsAdapter;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories.WordsCategoriesModel;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories.WordsCategoriesPresenter;
-import pl.edu.pjwstk.slowka.presentation.ui.landing.tests.SelectTestsModel;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tests.SelectTestsFragmentPresenter;
+import pl.edu.pjwstk.slowka.presentation.ui.landing.tests.SelectTestsModel;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorFragmentPresenter;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_know.IKnowWordsListFragmentModel;
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.i_know.IKnowWordsListFragmentPresenter;
@@ -48,7 +48,8 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
-    ILearnWordsListFragmentModel provideILearnWordsListFragmentModel(ViewAcceptedUnknownImageObjectsUseCase viewAcceptedUnknownImageObjectsUseCase) {
+    ILearnWordsListFragmentModel provideILearnWordsListFragmentModel(
+            ViewAcceptedUnknownImageObjectsUseCase viewAcceptedUnknownImageObjectsUseCase) {
 
         return new ILearnWordsListFragmentModel(viewAcceptedUnknownImageObjectsUseCase);
     }
@@ -64,7 +65,8 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
-    IKnowWordsListFragmentModel provideIKnowWordsListFragmentModel(ViewKnownImageObjectsUseCase viewKnownImageObjectsUseCase) {
+    IKnowWordsListFragmentModel provideIKnowWordsListFragmentModel(
+            ViewKnownImageObjectsUseCase viewKnownImageObjectsUseCase) {
 
         return new IKnowWordsListFragmentModel(viewKnownImageObjectsUseCase);
     }
@@ -80,7 +82,8 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
-    NewWordsListFragmentModel provideNewWordsListFragmentModel(ViewAllPendingImageObjectsUseCase viewAllPendingImageObjectsUseCase) {
+    NewWordsListFragmentModel provideNewWordsListFragmentModel(
+            ViewAllPendingImageObjectsUseCase viewAllPendingImageObjectsUseCase) {
 
         return new NewWordsListFragmentModel(viewAllPendingImageObjectsUseCase);
     }

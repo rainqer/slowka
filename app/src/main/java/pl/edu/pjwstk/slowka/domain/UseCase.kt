@@ -12,7 +12,7 @@ abstract class UseCase<T> {
     fun performAsync() {
         Observable.fromCallable {
             perform()
-        }.subscribeOn(Schedulers.newThread()).subscribe()
+        }.subscribeOn(Schedulers.newThread()).subscribe({}, Throwable::printStackTrace)
     }
 
     fun performAndObserve(scheduler: Scheduler) : Observable<T> {

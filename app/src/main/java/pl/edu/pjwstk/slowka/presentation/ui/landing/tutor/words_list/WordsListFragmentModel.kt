@@ -4,6 +4,5 @@ import android.database.Cursor
 import rx.Observable
 
 abstract class WordsListFragmentModel () {
-
     abstract fun getImages(): Observable<Cursor>
 }

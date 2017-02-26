@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import pl.edu.pjwstk.slowka.domain.content.CountAllImageObjectsWithCategoriesUseCase;
 import pl.edu.pjwstk.slowka.domain.content.GetImageObjectUseCase;
+import pl.edu.pjwstk.slowka.domain.content.RestoreImageObjectToUnknownUseCase;
 import pl.edu.pjwstk.slowka.domain.content.StoreCategoryUseCase;
 import pl.edu.pjwstk.slowka.domain.content.StoreImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.UpdateImageObjectUseCase;
@@ -69,4 +70,5 @@ public interface ApplicationComponent {
     UserUploadsCurrentTestImageAnswerUseCase providesUserUploadsCurrentTestImageAnswerUseCase();
     UserStartsTestForCategoryUseCase providesUserStartsTestForCategoryUseCase();
     UserCompletesTestUseCase providesUserCompletesTestUseCase();
+    RestoreImageObjectToUnknownUseCase providesRestoreImageObjectToUnknownUseCase();
 }

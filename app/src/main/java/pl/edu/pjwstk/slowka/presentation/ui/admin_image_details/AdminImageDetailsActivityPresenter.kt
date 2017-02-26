@@ -2,6 +2,8 @@ package pl.edu.pjwstk.slowka.presentation.ui.admin_image_details
 
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
+import android.support.v7.app.AlertDialog
+import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.view.SimpleCursorAdapterForCategoryWithIcon
 
@@ -10,6 +12,7 @@ class AdminImageDetailsActivityPresenter constructor(
     ) : ActivityPresenter<AdminImageDetailsActivityView>() {
 
     private var imageObjectId : Int = -1
+    private var imageObjectAnnotation : String = ""
 
     override fun attach(view: AdminImageDetailsActivityView,
                         activity: FragmentActivity,
@@ -33,6 +36,7 @@ class AdminImageDetailsActivityPresenter constructor(
 
     override fun resume() {
         recognizeImageActivityModel.getImageObject(imageObjectId).subscribe { imageObject ->
+            imageObjectAnnotation = imageObject.annotation
             presentedView.showImageObject(imageObject)
         }
         recognizeImageActivityModel.getAllCategories().subscribe() { cursor ->
@@ -44,5 +48,15 @@ class AdminImageDetailsActivityPresenter constructor(
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray) {
+    }
+
+    fun restoreButtonClicked() {
+        AlertDialog.Builder(presentedActivity)
+                .setTitle(R.string.restore_dialog_title)
+                .setMessage(presentedActivity.getString(R.string.restore_dialog_message, imageObjectAnnotation))
+                .setPositiveButton(android.R.string.ok) { dialog, which ->
+                    recognizeImageActivityModel.restoreImageToLearning(imageObjectId)
+                }
+                .show()
     }
 }

@@ -6,12 +6,14 @@ import android.database.Cursor
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.widget.CursorAdapter
+import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.EditText
 import android.widget.GridView
 import android.widget.ImageView
 import android.widget.Spinner
 import butterknife.bindView
+import com.dd.processbutton.iml.ActionProcessButton
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
 import pl.edu.pjwstk.slowka.domain.tools.Galery
@@ -37,6 +39,7 @@ class AdminImageDetailsActivity : SlowkaActivity<AdminImageDetailsActivityView>(
         get() = imageEditableAnnotation.text.toString()
 
     private val imageEditableAnnotation: EditText by bindView(R.id.annotationForImageContent)
+    private val restoreButton: ActionProcessButton by bindView(R.id.restoreButton)
     private val image: ImageView by bindView(R.id.image)
     private val categorySpinner: Spinner by bindView(R.id.categorySpinner)
     private val progressBar: View by bindView(R.id.progressBar)
@@ -58,6 +61,9 @@ class AdminImageDetailsActivity : SlowkaActivity<AdminImageDetailsActivityView>(
         attachPresenter(this, this, savedInstanceState)
         confirmButton.setOnClickListener {
             presenter.confirmButtonClicked()
+        }
+        restoreButton.setOnClickListener {
+            presenter.restoreButtonClicked()
         }
     }
 

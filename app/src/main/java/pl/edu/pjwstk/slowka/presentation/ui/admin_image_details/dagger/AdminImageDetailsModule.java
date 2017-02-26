@@ -3,6 +3,7 @@ package pl.edu.pjwstk.slowka.presentation.ui.admin_image_details.dagger;
 import dagger.Module;
 import dagger.Provides;
 import pl.edu.pjwstk.slowka.domain.content.GetImageObjectUseCase;
+import pl.edu.pjwstk.slowka.domain.content.RestoreImageObjectToUnknownUseCase;
 import pl.edu.pjwstk.slowka.domain.content.StoreImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.UpdateImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllCategoriesUseCase;
@@ -17,12 +18,14 @@ public class AdminImageDetailsModule {
     AdminImageDetailsModel provideRecognizeImageModel(
             UpdateImageObjectUseCase updateImageObjectUseCase,
             ViewAllCategoriesUseCase viewAllCategoriesUseCase,
-            GetImageObjectUseCase getImageObjectUseCase) {
+            GetImageObjectUseCase getImageObjectUseCase,
+            RestoreImageObjectToUnknownUseCase restoreImageObjectToUnknownUseCase) {
 
         return new AdminImageDetailsModel(
                 updateImageObjectUseCase,
                 viewAllCategoriesUseCase,
-                getImageObjectUseCase
+                getImageObjectUseCase,
+                restoreImageObjectToUnknownUseCase
         );
     }
 

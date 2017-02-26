@@ -120,10 +120,30 @@ class LocalImageObjectRepository : ImageObjectRepository {
         return false
     }
 
-    private fun LocalImageObjectRepository.markObjectAsKnown(id: Int, imageObjectToBeMarkedAsKnown: ImageObject): Int {
+    override fun markAsUnknown(id: Int): Boolean {
+        val cursor = get(id)
+        if (cursor.moveToFirst()) {
+            val imageObjectToBeMarkedAsUnknown = ImageObject(cursor)
+            cursor.close()
+            return markObjectAsUnknown(id, imageObjectToBeMarkedAsUnknown) == SINGLE_ROW_AFFECTED
+        }
+        cursor.close()
+        return false
+    }
+
+    private fun markObjectAsKnown(id: Int, imageObjectToBeMarkedAsKnown: ImageObject): Int {
         return contentResolver.update(
                 IMAGE_OBJECT_PROVIDER_URI,
                 imageObjectToBeMarkedAsKnown.known().toContentValues(),
+                whereIdEquals(id),
+                null
+        )
+    }
+
+    private fun markObjectAsUnknown(id: Int, imageObjectToBeMarkedAsKnown: ImageObject): Int {
+        return contentResolver.update(
+                IMAGE_OBJECT_PROVIDER_URI,
+                imageObjectToBeMarkedAsKnown.unknown().toContentValues(),
                 whereIdEquals(id),
                 null
         )

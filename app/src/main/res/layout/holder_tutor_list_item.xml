@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/itemImage"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:scaleType="centerCrop"/>
 
         <RelativeLayout
@@ -44,10 +44,10 @@
                 <com.dd.processbutton.iml.ActionProcessButton
                     android:id="@+id/editButton"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:text="@string/edit"
-                    android:textSize="12dp"
+                    android:textSize="10dp"
                     android:lines="1"
                     custom:pb_colorNormal="@color/orange"
                     custom:pb_colorPressed="@color/orange_dark"
@@ -57,10 +57,10 @@
                 <com.dd.processbutton.iml.ActionProcessButton
                     android:id="@+id/playButton"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:text="@string/play"
-                    android:textSize="12dp"
+                    android:textSize="10dp"
                     android:lines="1"
                     custom:pb_colorNormal="@color/blue_light"
                     custom:pb_colorPressed="@color/blue"

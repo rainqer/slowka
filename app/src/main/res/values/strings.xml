@@ -16,6 +16,9 @@
     <string name="admin_learnt_words">Znam</string>
     <string name="play">odtwórz</string>
     <string name="edit">edytuj</string>
+    <string name="restore">przywróć do nauki</string>
+    <string name="restore_dialog_title">Przywracanie słowa</string>
+    <string name="restore_dialog_message">Czy chcialbyś aby słowo %s znalazło się w kolumnie \"Uczę się\"</string>
     <string name="testAnswer">Wpisz odpowiedź</string>
 
     <!--test-->
