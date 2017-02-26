@@ -85,11 +85,17 @@ class AdminImageDetailsActivity : SlowkaActivity<AdminImageDetailsActivityView>(
         progressBar.visibility = View.GONE
     }
 
+    override fun setRestoreButtonVisibility(shouldShowRestoreButton: Boolean) {
+        restoreButton.visibility = if (shouldShowRestoreButton) View.VISIBLE else View.GONE
+    }
+
     companion object {
-        final val IMAGE_OBJECT_NAME_KEY : String = "imageObjectNameKey"
-        fun createIntent(context: Context, id : Int): Intent {
+        val IMAGE_OBJECT_NAME_KEY : String = "imageObjectNameKey"
+        val SHOULD_SHOW_RESTORE_KEY : String = "shouldShowRestoreKey"
+        fun createIntent(context: Context, id : Int, boolean: Boolean): Intent {
             return Intent(context, AdminImageDetailsActivity::class.java)
                     .putExtra(IMAGE_OBJECT_NAME_KEY, id)
+                    .putExtra(SHOULD_SHOW_RESTORE_KEY, boolean)
         }
     }
 }

@@ -3,6 +3,7 @@ package pl.edu.pjwstk.slowka.presentation.ui.admin_image_details
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.support.v7.app.AlertDialog
+import android.widget.Button
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.view.SimpleCursorAdapterForCategoryWithIcon
@@ -12,6 +13,7 @@ class AdminImageDetailsActivityPresenter constructor(
     ) : ActivityPresenter<AdminImageDetailsActivityView>() {
 
     private var imageObjectId : Int = -1
+    private var shouldShowRestoreButton = false
     private var imageObjectAnnotation : String = ""
 
     override fun attach(view: AdminImageDetailsActivityView,
@@ -19,11 +21,14 @@ class AdminImageDetailsActivityPresenter constructor(
                         savedInstanceState: Bundle?) {
         super.attach(view, activity, savedInstanceState)
         extractInfoFromIntent()
+        presentedView.setRestoreButtonVisibility(shouldShowRestoreButton)
 
     }
 
     private fun extractInfoFromIntent() {
         imageObjectId = presentedActivity.intent.getIntExtra(AdminImageDetailsActivity.IMAGE_OBJECT_NAME_KEY, -1)
+        shouldShowRestoreButton = presentedActivity.intent
+                .getBooleanExtra(AdminImageDetailsActivity.SHOULD_SHOW_RESTORE_KEY, false)
     }
 
     fun confirmButtonClicked() {

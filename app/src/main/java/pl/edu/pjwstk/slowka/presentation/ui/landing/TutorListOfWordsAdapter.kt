@@ -22,6 +22,7 @@ class TutorListOfWordsAdapter (private val context: Context,
     : RecyclerViewCursorAdapter<TutorListOfWordsAdapter.TutorWordViewHolder>() {
 
     var adapterItemRestoreToLearningListener: AdapterItemRestoreToLearningListener? = null
+    var shouldShowRestoreButtonInDetails: Boolean = false
 
     override fun onBindViewHolder(viewHolder: TutorWordViewHolder, cursor: Cursor) {
         val imageObject = ImageObject(cursor)
@@ -48,7 +49,8 @@ class TutorListOfWordsAdapter (private val context: Context,
     }
 
     private fun startImageDetails(context: Context, imageObject: ImageObject) {
-        context.startActivity(AdminImageDetailsActivity.createIntent(context, imageObject.objectId!!))
+        context.startActivity(AdminImageDetailsActivity
+                .createIntent(context, imageObject.objectId!!, shouldShowRestoreButtonInDetails))
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TutorWordViewHolder {

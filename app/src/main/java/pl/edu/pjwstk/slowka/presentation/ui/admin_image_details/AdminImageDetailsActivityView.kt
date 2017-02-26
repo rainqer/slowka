@@ -9,4 +9,5 @@ interface AdminImageDetailsActivityView {
     fun applyCategoryAdapter(cursorAdapter: CursorAdapter)
     fun getSelectedCategory() : String
     fun showImageObject(imageObject: ImageObject)
+    fun setRestoreButtonVisibility(shouldShowRestoreButton: Boolean)
 }
