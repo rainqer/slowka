@@ -30,4 +30,9 @@
         <item name="android:elevation">@dimen/fab_elevation</item>
     </style>
 
+    <style name="NavigationDrawerStyle">
+        <item name="android:textSize">24dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
 </resources>
