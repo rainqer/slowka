@@ -32,6 +32,7 @@ class CameraActivity : SlowkaActivity<CameraActivityView>(), CameraActivityView,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentViewWithToolbar(R.layout.activity_words_camera_view)
+        toolbar.setTitle(R.string.camera_screen)
         setDaggerComponent(CameraActivityComponentAssembler.assemble(application))
     }
 
