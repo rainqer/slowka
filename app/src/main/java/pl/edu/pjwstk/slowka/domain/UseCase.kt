@@ -15,7 +15,7 @@ abstract class UseCase<T> {
         }.subscribeOn(Schedulers.newThread()).subscribe()
     }
 
-    fun performAndObserve(scheduler: Scheduler) : Observable<T> {
+    open fun performAndObserve(scheduler: Scheduler) : Observable<T> {
         return Observable.fromCallable {
             perform()
         }

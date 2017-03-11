@@ -37,7 +37,8 @@ import pl.edu.pjwstk.slowka.presentation.speech.Speaker;
         modules = {
                 AndroidModule.class,
                 RepositoriesModule.class,
-                UsecasesModule.class
+                UsecasesModule.class,
+                ServiceModule.class
         }
 )
 public interface ApplicationComponent {

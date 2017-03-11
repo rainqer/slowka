@@ -45,7 +45,9 @@ ext {
     multidex = 'com.android.support:multidex:1.0.0'
     picasso = 'com.squareup.picasso:picasso:2.5.2'
     processButton = 'com.github.dmytrodanylyk.android-process-button:library:1.0.4'
-    retrofit = 'com.squareup.retrofit:retrofit:1.9.0'
+    retrofit = 'com.squareup.retrofit2:retrofit:2.0.0'
+    retrofitConverterGson = "com.squareup.retrofit2:converter-gson:2.0.0"
+    retrofitRx = "com.squareup.retrofit2:adapter-rxjava:2.0.0"
     roundCornerProgressBar = 'com.akexorcist:RoundCornerProgressBar:2.0.3'
     rxjava = 'io.reactivex:rxjava:1.0.15'
     rxjavaAndroid = 'io.reactivex:rxandroid:1.0.1'

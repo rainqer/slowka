@@ -12,7 +12,7 @@ class RecognizeImageModel constructor(
         private val storeImageObjectUseCase: StoreImageObjectUseCase
     ) {
 
-    fun recognizeObjectInImage(file: File) : Observable<Array<String>> {
+    fun recognizeObjectInImage(file: File) : Observable<String> {
         return getNamesForObjectInImageUseCase.inImageFrom(file).performAndObserve(Schedulers.io())
     }
 

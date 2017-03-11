@@ -40,7 +40,7 @@ class RecognizeImageActivityPresenter constructor(
         presentedView.setImage(Galery(presentedActivity).getScaledDownImage(file))
         recognizeImageActivityModel.recognizeObjectInImage(file)
                 .subscribe (
-                        { annotationsForTheImage -> presentedView.showAnnotationForRecognizedImage(annotationsForTheImage[0])}
+                        { annotationForTheImage -> presentedView.showAnnotationForRecognizedImage(annotationForTheImage)}
                 )
     }
 

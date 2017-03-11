@@ -70,6 +70,8 @@ dependencies {
     compile picasso
     compile processButton
     compile retrofit
+    compile retrofitConverterGson
+    compile retrofitRx
     compile roundCornerProgressBar
     compile rxjava
     compile rxjavaAndroid

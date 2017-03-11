@@ -33,6 +33,7 @@ import pl.edu.pjwstk.slowka.domain.test.UserCompletesTestUseCase;
 import pl.edu.pjwstk.slowka.domain.test.UserStartsTestForCategoryUseCase;
 import pl.edu.pjwstk.slowka.domain.test.UserUploadsCurrentTestImageAnswerUseCase;
 import pl.edu.pjwstk.slowka.domain.test.UserViewNextTestImageUseCase;
+import pl.edu.pjwstk.slowka.domain.translate.TranslateRepository;
 import pl.edu.pjwstk.slowka.repository.file.MediaScannerUpdater;
 
 @Module
@@ -134,8 +135,10 @@ public class UsecasesModule {
     }
 
     @Provides
-    GetNamesForObjectInImageUseCase providesGetNamesForObjectInImageUseCase(NamesForObjectInImageRepository namesForObjectInImageRepository) {
-        return new GetNamesForObjectInImageUseCase(namesForObjectInImageRepository);
+    GetNamesForObjectInImageUseCase providesGetNamesForObjectInImageUseCase(
+            NamesForObjectInImageRepository namesForObjectInImageRepository,
+            TranslateRepository translateRepository) {
+        return new GetNamesForObjectInImageUseCase(namesForObjectInImageRepository, translateRepository);
     }
 
     @Provides
