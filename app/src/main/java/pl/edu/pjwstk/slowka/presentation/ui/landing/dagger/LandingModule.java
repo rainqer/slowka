@@ -3,6 +3,7 @@ package pl.edu.pjwstk.slowka.presentation.ui.landing.dagger;
 import dagger.Module;
 import dagger.Provides;
 import pl.edu.pjwstk.slowka.domain.content.CountAllImageObjectsWithCategoriesUseCase;
+import pl.edu.pjwstk.slowka.domain.content.GetRecentlyAddedWordUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedUnknownImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAllPendingImageObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewKnownImageObjectsUseCase;
@@ -103,9 +104,11 @@ public class LandingModule {
 
     @LandingActivityScope
     @Provides
-    WordsCategoriesModel provideWordsCategoriesModel(CountAllImageObjectsWithCategoriesUseCase countAllImageObjectsWithCategoriesUseCase) {
+    WordsCategoriesModel provideWordsCategoriesModel(
+            CountAllImageObjectsWithCategoriesUseCase countAllImageObjectsWithCategoriesUseCase,
+            GetRecentlyAddedWordUseCase getRecentlyAddedWordUseCase) {
 
-        return new WordsCategoriesModel(countAllImageObjectsWithCategoriesUseCase);
+        return new WordsCategoriesModel(countAllImageObjectsWithCategoriesUseCase, getRecentlyAddedWordUseCase);
     }
 
     @Provides

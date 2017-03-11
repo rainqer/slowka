@@ -18,4 +18,10 @@ class WordsCategoriesPresenter(private val wordsCategoriesModel: WordsCategories
     override fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray) {
         //NO OP
     }
+
+    fun resume() {
+        wordsCategoriesModel.getRecentWord()?.run {
+            presentedView.showInfoWordHasBeenAdded(this)
+        }
+    }
 }

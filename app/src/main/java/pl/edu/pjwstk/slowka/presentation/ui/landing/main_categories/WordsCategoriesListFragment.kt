@@ -2,6 +2,7 @@ package pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories
 
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
+import android.support.design.widget.Snackbar
 import android.support.v7.app.ActionBarActivity
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -45,6 +46,17 @@ class WordsCategoriesListFragment @Inject constructor() : SlowkaFragment<WordsCa
         return mainCategoryList
     }
 
+    override fun showInfoWordHasBeenAdded(recentlyAddedWord: String) {
+        Snackbar
+                .make(mainCategoryList, getString(R.string.word_has_been_added).format(recentlyAddedWord), Snackbar.LENGTH_INDEFINITE)
+                .show()
+    }
+
     override val fragmentPresenter: FragmentPresenter<WordsCategoriesView>
         get() = presenter
+
+    override fun onResume() {
+        super.onResume()
+        presenter.resume()
+    }
 }

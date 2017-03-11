@@ -6,6 +6,7 @@ import dagger.Module;
 import dagger.Provides;
 import pl.edu.pjwstk.slowka.domain.content.CategoryRepository;
 import pl.edu.pjwstk.slowka.domain.content.ImageObjectRepository;
+import pl.edu.pjwstk.slowka.domain.content.RecentlyAddedWordRepository;
 import pl.edu.pjwstk.slowka.domain.file.FileRepository;
 import pl.edu.pjwstk.slowka.domain.hardware.CameraRepository;
 import pl.edu.pjwstk.slowka.domain.information.NamesForObjectInImageRepository;
@@ -15,6 +16,7 @@ import pl.edu.pjwstk.slowka.repository.LocalMemoryTestRepository;
 import pl.edu.pjwstk.slowka.repository.camera.AndroidCameraRepository;
 import pl.edu.pjwstk.slowka.repository.content.LocalCategoryRepository;
 import pl.edu.pjwstk.slowka.repository.content.LocalImageObjectRepository;
+import pl.edu.pjwstk.slowka.repository.content.VolatileRecentlyAddedWordRepository;
 import pl.edu.pjwstk.slowka.repository.file.AndroidFileRepository;
 import pl.edu.pjwstk.slowka.repository.recognize.GoogleVisionNamesForObjectsRepository;
 import pl.edu.pjwstk.slowka.repository.translate.YandexService;
@@ -51,6 +53,12 @@ public class RepositoriesModule {
     @Singleton
     TranslateRepository providesYandexTranslateRepository(YandexService yandexService) {
         return new YandexTranslateRepository(yandexService);
+    }
+
+    @Provides
+    @Singleton
+    RecentlyAddedWordRepository providesRecentlyAddedWordRepository() {
+        return new VolatileRecentlyAddedWordRepository();
     }
 
     @Provides

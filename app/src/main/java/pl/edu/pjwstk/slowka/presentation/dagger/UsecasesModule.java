@@ -5,7 +5,9 @@ import dagger.Provides;
 import pl.edu.pjwstk.slowka.domain.content.CategoryRepository;
 import pl.edu.pjwstk.slowka.domain.content.CountAllImageObjectsWithCategoriesUseCase;
 import pl.edu.pjwstk.slowka.domain.content.GetImageObjectUseCase;
+import pl.edu.pjwstk.slowka.domain.content.GetRecentlyAddedWordUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ImageObjectRepository;
+import pl.edu.pjwstk.slowka.domain.content.RecentlyAddedWordRepository;
 import pl.edu.pjwstk.slowka.domain.content.StoreCategoryUseCase;
 import pl.edu.pjwstk.slowka.domain.content.StoreImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.UpdateImageObjectUseCase;
@@ -40,8 +42,9 @@ import pl.edu.pjwstk.slowka.repository.file.MediaScannerUpdater;
 public class UsecasesModule {
 
     @Provides
-    StoreImageObjectUseCase providesStoreImageObjectUseCase(ImageObjectRepository imageObjectRepository) {
-        return new StoreImageObjectUseCase(imageObjectRepository);
+    StoreImageObjectUseCase providesStoreImageObjectUseCase(ImageObjectRepository imageObjectRepository,
+                                                            RecentlyAddedWordRepository recentlyAddedWordRepository) {
+        return new StoreImageObjectUseCase(imageObjectRepository, recentlyAddedWordRepository);
     }
 
     @Provides
@@ -167,5 +170,10 @@ public class UsecasesModule {
     @Provides
     UserCompletesTestUseCase providesUserCompletesTestUseCase(TestRepository testRepository) {
         return new UserCompletesTestUseCase(testRepository);
+    }
+
+    @Provides
+    GetRecentlyAddedWordUseCase prividesGetRecentlyAddedWordUseCase(RecentlyAddedWordRepository recentlyAddedWordRepository) {
+        return new GetRecentlyAddedWordUseCase(recentlyAddedWordRepository);
     }
 }

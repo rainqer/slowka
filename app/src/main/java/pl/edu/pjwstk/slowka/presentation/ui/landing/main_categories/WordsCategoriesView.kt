@@ -4,4 +4,5 @@ import android.support.v7.widget.RecyclerView
 
 interface WordsCategoriesView {
     fun getMainCategoriesList(): RecyclerView
+    fun showInfoWordHasBeenAdded(s: String)
 }
