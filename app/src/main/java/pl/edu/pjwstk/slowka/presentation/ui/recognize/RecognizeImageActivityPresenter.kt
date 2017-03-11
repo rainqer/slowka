@@ -1,6 +1,7 @@
 package pl.edu.pjwstk.slowka.presentation.ui.recognize
 
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.app.FragmentActivity
 import android.widget.Toast
 import pl.edu.pjwstk.slowka.domain.content.Category
@@ -37,9 +38,10 @@ class RecognizeImageActivityPresenter constructor(
 
     override fun resume() {
         presentedView.setImage(Galery(presentedActivity).getScaledDownImage(file))
-        recognizeImageActivityModel.recognizeObjectInImage(file).subscribe { annotationsForTheImage ->
-            presentedView.showAnnotationForRecognizedImage(annotationsForTheImage[0])
-        }
+        recognizeImageActivityModel.recognizeObjectInImage(file)
+                .subscribe (
+                        { annotationsForTheImage -> presentedView.showAnnotationForRecognizedImage(annotationsForTheImage[0])}
+                )
     }
 
     private fun buildImageObject()

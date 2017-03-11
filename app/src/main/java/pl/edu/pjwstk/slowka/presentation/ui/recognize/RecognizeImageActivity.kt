@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
+import android.support.design.widget.Snackbar
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
@@ -64,6 +65,7 @@ class RecognizeImageActivity : SlowkaActivity<RecognizeImageActivityView>(),
     private fun hideProgressBar() {
         progressBar.visibility = View.GONE
     }
+
 
     override fun setImage(bitmap: Bitmap) {
         image.setImageBitmap(bitmap)

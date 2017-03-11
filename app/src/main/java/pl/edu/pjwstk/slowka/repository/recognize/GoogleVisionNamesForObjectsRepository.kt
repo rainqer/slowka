@@ -6,30 +6,29 @@ import com.google.api.client.extensions.android.http.AndroidHttp
 import com.google.api.client.json.gson.GsonFactory
 import com.google.api.services.vision.v1.Vision
 import com.google.api.services.vision.v1.VisionRequestInitializer
-import com.google.api.services.vision.v1.model.AnnotateImageRequest
-import com.google.api.services.vision.v1.model.BatchAnnotateImagesRequest
-import com.google.api.services.vision.v1.model.Feature
-import com.google.api.services.vision.v1.model.Image
+import com.google.api.services.vision.v1.model.*
 import pl.edu.pjwstk.slowka.domain.information.NamesForObjectInImageRepository
 import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
 import java.io.ByteArrayOutputStream
 import java.io.File
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class GoogleVisionNamesForObjectsRepository @Inject constructor() : NamesForObjectInImageRepository {
 
-    final val DEBUG_VISION_API_KEY = "AIzaSyBZTiseELC1bqRqLtHZb5ua6ZNYOnKMlTQ"
+//    final val DEBUG_VISION_API_KEY = "AIzaSyBZTiseELC1bqRqLtHZb5ua6ZNYOnKMlTQ" //android
+    final val DEBUG_VISION_API_KEY = "AIzaSyCMy1TSJvgaCZEWebTRqobkAhqfaY_J5bo" //none
 
     override fun getNamesFor(file: File): Array<String> {
         // TODO
+        // DONE
         //https://github.com/GoogleCloudPlatform/cloud-vision/tree/master/android/CloudVision/app
-        a(file)
-        return arrayOf("aaa")
+        return a(file)
     }
 
-    private fun a(file: File) {
+    private fun a(file: File): Array<String> {
         val httpTransport = AndroidHttp.newCompatibleTransport()
         val jsonFactory = GsonFactory.getDefaultInstance()
 
@@ -42,6 +41,15 @@ class GoogleVisionNamesForObjectsRepository @Inject constructor() : NamesForObje
         val annotateRequest = vision.images().annotate(batchAnnotateImagesRequest)
         annotateRequest.disableGZipContent = true
         val response = annotateRequest.execute()
+        return convertResponseToString(response)
+    }
+
+    private fun convertResponseToString(response: BatchAnnotateImagesResponse): Array<String> {
+        return response
+                .responses[0]
+                .labelAnnotations
+                .map { label -> label.description }
+                .toTypedArray()
     }
 
     private fun getAnotateImageRequest(file: File): AnnotateImageRequest {
