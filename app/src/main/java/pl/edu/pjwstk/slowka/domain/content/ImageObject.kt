@@ -49,6 +49,10 @@ class ImageObject {
         return ImageObject(imageFile, annotation, categoryName, accepted, true)
     }
 
+    fun unknown() : ImageObject {
+        return ImageObject(imageFile, annotation, categoryName, accepted, false)
+    }
+
     fun toContentValues(): ContentValues {
         val contentValues = ContentValues()
         contentValues.put(ImageObjectsTable.COLUMN_NAME, annotation)

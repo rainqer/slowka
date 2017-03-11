@@ -8,6 +8,8 @@
     <color name="progress_foreground">#90caf9</color>
     <color name="orange">#FFAB91</color>
     <color name="orange_dark">#FF8A65</color>
+    <color name="violet">#D1C4E9</color>
+    <color name="violet_dark">#9575CD</color>
     <color name="blue_light">#90CAF9</color>
     <color name="blue_very_light">#5590CAF9</color>
     <color name="blue">#64B5F6</color>

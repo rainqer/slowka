@@ -1,17 +1,15 @@
 package pl.edu.pjwstk.slowka.presentation.ui.admin_image_details
 
 import android.database.Cursor
-import pl.edu.pjwstk.slowka.domain.content.GetImageObjectUseCase
-import pl.edu.pjwstk.slowka.domain.content.ImageObject
-import pl.edu.pjwstk.slowka.domain.content.UpdateImageObjectUseCase
-import pl.edu.pjwstk.slowka.domain.content.ViewAllCategoriesUseCase
+import pl.edu.pjwstk.slowka.domain.content.*
 import rx.Observable
 import rx.schedulers.Schedulers
 
 class AdminImageDetailsModel constructor(
         private val updateImageObjectUseCase: UpdateImageObjectUseCase,
         private val getCategoriesUseCase: ViewAllCategoriesUseCase,
-        private val getImageObjectUseCase: GetImageObjectUseCase
+        private val getImageObjectUseCase: GetImageObjectUseCase,
+        private val restoreImageObjectToUnknownUseCase: RestoreImageObjectToUnknownUseCase
     ) {
 
     fun getAllCategories() :Observable<Cursor> {
@@ -32,5 +30,9 @@ class AdminImageDetailsModel constructor(
                     .imageObject(imageObject)
                     .perform()
         }
+    }
+
+    fun restoreImageToLearning(imageObjectId: Int) {
+        restoreImageObjectToUnknownUseCase.imageObjectId(imageObjectId).perform()
     }
 }

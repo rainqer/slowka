@@ -14,11 +14,15 @@ import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
 import pl.edu.pjwstk.slowka.presentation.speech.Speaker
 import pl.edu.pjwstk.slowka.presentation.ui.admin_image_details.AdminImageDetailsActivity
+import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.AdapterItemRestoreToLearningListener
 import skyfish.RecyclerViewCursorAdapter
 
 class TutorListOfWordsAdapter (private val context: Context,
                                private val speaker: Speaker)
     : RecyclerViewCursorAdapter<TutorListOfWordsAdapter.TutorWordViewHolder>() {
+
+    var adapterItemRestoreToLearningListener: AdapterItemRestoreToLearningListener? = null
+    var shouldShowRestoreButtonInDetails: Boolean = false
 
     override fun onBindViewHolder(viewHolder: TutorWordViewHolder, cursor: Cursor) {
         val imageObject = ImageObject(cursor)
@@ -45,7 +49,8 @@ class TutorListOfWordsAdapter (private val context: Context,
     }
 
     private fun startImageDetails(context: Context, imageObject: ImageObject) {
-        context.startActivity(AdminImageDetailsActivity.createIntent(context, imageObject.objectId!!))
+        context.startActivity(AdminImageDetailsActivity
+                .createIntent(context, imageObject.objectId!!, shouldShowRestoreButtonInDetails))
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TutorWordViewHolder {

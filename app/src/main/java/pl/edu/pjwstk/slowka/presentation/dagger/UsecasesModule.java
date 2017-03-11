@@ -8,6 +8,7 @@ import pl.edu.pjwstk.slowka.domain.content.GetImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.GetRecentlyAddedWordUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ImageObjectRepository;
 import pl.edu.pjwstk.slowka.domain.content.RecentlyAddedWordRepository;
+import pl.edu.pjwstk.slowka.domain.content.RestoreImageObjectToUnknownUseCase;
 import pl.edu.pjwstk.slowka.domain.content.StoreCategoryUseCase;
 import pl.edu.pjwstk.slowka.domain.content.StoreImageObjectUseCase;
 import pl.edu.pjwstk.slowka.domain.content.UpdateImageObjectUseCase;
@@ -175,5 +176,12 @@ public class UsecasesModule {
     @Provides
     GetRecentlyAddedWordUseCase prividesGetRecentlyAddedWordUseCase(RecentlyAddedWordRepository recentlyAddedWordRepository) {
         return new GetRecentlyAddedWordUseCase(recentlyAddedWordRepository);
+    }
+
+    @Provides
+    RestoreImageObjectToUnknownUseCase providesRestoreImageObjectToUnknownUseCase(
+            ImageObjectRepository imageObjectRepository
+    ) {
+        return new RestoreImageObjectToUnknownUseCase(imageObjectRepository);
     }
 }

@@ -2,7 +2,8 @@
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
 
 
     <ScrollView
@@ -71,6 +72,18 @@
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>
+
+                <com.dd.processbutton.iml.ActionProcessButton
+                    android:id="@+id/restoreButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/restore"
+                    android:textSize="12dp"
+                    android:lines="1"
+                    custom:pb_colorNormal="@color/violet"
+                    custom:pb_colorPressed="@color/violet_dark"
+                    android:drawableStart="@drawable/ic_replay_black_24dp"
+                    android:drawableLeft="@drawable/ic_replay_black_24dp"/>
 
             </LinearLayout>
 

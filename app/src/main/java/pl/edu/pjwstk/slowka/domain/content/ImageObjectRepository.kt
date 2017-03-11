@@ -15,4 +15,5 @@ interface ImageObjectRepository {
     fun insert(imageObject: ImageObject) : Boolean
     fun delete(id: String) : Boolean
     fun markAsKnown(id: Int) : Boolean
+    fun markAsUnknown(id: Int) : Boolean
 }

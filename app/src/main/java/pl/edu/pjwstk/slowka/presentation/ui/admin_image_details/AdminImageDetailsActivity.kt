@@ -6,12 +6,14 @@ import android.database.Cursor
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.widget.CursorAdapter
+import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.EditText
 import android.widget.GridView
 import android.widget.ImageView
 import android.widget.Spinner
 import butterknife.bindView
+import com.dd.processbutton.iml.ActionProcessButton
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.domain.content.ImageObject
 import pl.edu.pjwstk.slowka.domain.tools.Galery
@@ -37,6 +39,7 @@ class AdminImageDetailsActivity : SlowkaActivity<AdminImageDetailsActivityView>(
         get() = imageEditableAnnotation.text.toString()
 
     private val imageEditableAnnotation: EditText by bindView(R.id.annotationForImageContent)
+    private val restoreButton: ActionProcessButton by bindView(R.id.restoreButton)
     private val image: ImageView by bindView(R.id.image)
     private val categorySpinner: Spinner by bindView(R.id.categorySpinner)
     private val progressBar: View by bindView(R.id.progressBar)
@@ -59,6 +62,9 @@ class AdminImageDetailsActivity : SlowkaActivity<AdminImageDetailsActivityView>(
         confirmButton.setOnClickListener {
             presenter.confirmButtonClicked()
         }
+        restoreButton.setOnClickListener {
+            presenter.restoreButtonClicked()
+        }
     }
 
     override fun showImageObject(imageObject: ImageObject) {
@@ -79,11 +85,17 @@ class AdminImageDetailsActivity : SlowkaActivity<AdminImageDetailsActivityView>(
         progressBar.visibility = View.GONE
     }
 
+    override fun setRestoreButtonVisibility(shouldShowRestoreButton: Boolean) {
+        restoreButton.visibility = if (shouldShowRestoreButton) View.VISIBLE else View.GONE
+    }
+
     companion object {
-        final val IMAGE_OBJECT_NAME_KEY : String = "imageObjectNameKey"
-        fun createIntent(context: Context, id : Int): Intent {
+        val IMAGE_OBJECT_NAME_KEY : String = "imageObjectNameKey"
+        val SHOULD_SHOW_RESTORE_KEY : String = "shouldShowRestoreKey"
+        fun createIntent(context: Context, id : Int, boolean: Boolean): Intent {
             return Intent(context, AdminImageDetailsActivity::class.java)
                     .putExtra(IMAGE_OBJECT_NAME_KEY, id)
+                    .putExtra(SHOULD_SHOW_RESTORE_KEY, boolean)
         }
     }
 }

@@ -5,4 +5,9 @@ import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.WordsListFr
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.words_list.WordsListFragmentPresenter
 
 class IKnowWordsListFragmentPresenter(wordsListFragmentModel: WordsListFragmentModel, adapter: TutorListOfWordsAdapter)
-    : WordsListFragmentPresenter(wordsListFragmentModel, adapter)
+    : WordsListFragmentPresenter(wordsListFragmentModel, adapter) {
+
+    init {
+        adapter.shouldShowRestoreButtonInDetails = true
+    }
+}
