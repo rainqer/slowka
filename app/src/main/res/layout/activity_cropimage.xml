@@ -17,4 +17,18 @@
         android:src="@android:drawable/ic_menu_crop"
         style="@style/fab_style_slowka" />
 
+    <FrameLayout
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/progressBarBackground"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
+
 </RelativeLayout>

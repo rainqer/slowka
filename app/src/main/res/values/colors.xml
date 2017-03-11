@@ -11,6 +11,7 @@
     <color name="blue_light">#90CAF9</color>
     <color name="blue_very_light">#5590CAF9</color>
     <color name="blue">#64B5F6</color>
+    <color name="progressBarBackground">#66444444</color>
 
     <color name="color1">#B2DFDB</color>
     <color name="color2">#E1BEE7</color>

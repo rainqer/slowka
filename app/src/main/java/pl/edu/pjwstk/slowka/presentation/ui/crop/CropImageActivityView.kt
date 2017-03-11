@@ -5,4 +5,5 @@ import android.graphics.Bitmap
 interface CropImageActivityView {
     val croppedImage: Bitmap
     fun showImage (bitmap: Bitmap)
+    fun showProgressBar ()
 }

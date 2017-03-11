@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
+import android.view.View
 import butterknife.bindView
 import com.edmodo.cropper.CropImageView
 import pl.edu.pjwstk.slowka.R
@@ -31,6 +32,7 @@ class CropImageActivity : SlowkaActivity<CropImageActivityView>(),
 
     private val cropImageView : CropImageView by bindView(R.id.croppImage)
     private val cropButton : FloatingActionButton by bindView(R.id.fab)
+    private val progressBar: View by bindView(R.id.progressBar)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +55,10 @@ class CropImageActivity : SlowkaActivity<CropImageActivityView>(),
 
     override fun showImage(bitmap: Bitmap) {
         cropImageView.setImageBitmap(bitmap)
+    }
+
+    override fun showProgressBar() {
+        progressBar.visibility = View.VISIBLE
     }
 
     companion object {
