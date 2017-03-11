@@ -54,7 +54,7 @@ class WordsCategoriesListFragment @Inject constructor() : SlowkaFragment<WordsCa
     override fun showInfoWordHasBeenAdded(recentlyAddedWord: String) {
         Snackbar.make(fab, getSnackBarText(recentlyAddedWord), Snackbar.LENGTH_INDEFINITE).apply {
             setAction(android.R.string.ok) { dismiss() }
-            view.addOnAttachStateChangeListener( object: View.OnAttachStateChangeListener {
+            getView().addOnAttachStateChangeListener( object: View.OnAttachStateChangeListener {
                 override fun onViewAttachedToWindow(v: View ) {
                 }
 
