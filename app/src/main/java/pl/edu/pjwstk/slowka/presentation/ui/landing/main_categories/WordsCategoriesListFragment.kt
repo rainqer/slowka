@@ -1,15 +1,19 @@
 package pl.edu.pjwstk.slowka.presentation.ui.landing.main_categories
 
+import android.animation.TimeInterpolator
 import android.os.Bundle
+import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
 import android.support.v7.app.ActionBarActivity
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateDecelerateInterpolator
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.Components
@@ -25,6 +29,7 @@ class WordsCategoriesListFragment @Inject constructor() : SlowkaFragment<WordsCa
     protected lateinit var presenter: WordsCategoriesPresenter
 
     val fab : FloatingActionButton by bindView(R.id.fab)
+    val mainContainer : CoordinatorLayout by bindView(R.id.mainContainerForFab)
     val mainCategoryList : RecyclerView by bindView(R.id.mainScreenCategoryWordsList)
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -47,10 +52,21 @@ class WordsCategoriesListFragment @Inject constructor() : SlowkaFragment<WordsCa
     }
 
     override fun showInfoWordHasBeenAdded(recentlyAddedWord: String) {
-        Snackbar
-                .make(mainCategoryList, getString(R.string.word_has_been_added).format(recentlyAddedWord), Snackbar.LENGTH_INDEFINITE)
-                .show()
+        Snackbar.make(fab, getSnackBarText(recentlyAddedWord), Snackbar.LENGTH_INDEFINITE).apply {
+            setAction(android.R.string.ok) { dismiss() }
+            view.addOnAttachStateChangeListener( object: View.OnAttachStateChangeListener {
+                override fun onViewAttachedToWindow(v: View ) {
+                }
+
+                @Override
+                override fun onViewDetachedFromWindow(v: View) {
+                    fab.animate().translationY(0f).setInterpolator(AccelerateDecelerateInterpolator()).start();
+                }
+            });
+        }.show()
     }
+
+    private fun getSnackBarText(recentlyAddedWord: String) = Html.fromHtml(getString(R.string.word_has_been_added).format(recentlyAddedWord))
 
     override val fragmentPresenter: FragmentPresenter<WordsCategoriesView>
         get() = presenter
