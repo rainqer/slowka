@@ -59,7 +59,8 @@
 
         <provider
             android:name=".repository.content.SlowkaContentProvider"
-            android:authorities="pl.edu.pjwstk.slowka.repository.provider"/>
+            android:authorities="pl.edu.pjwstk.slowka.repository.provider"
+            android:exported="true"/>
 
     </application>
 
