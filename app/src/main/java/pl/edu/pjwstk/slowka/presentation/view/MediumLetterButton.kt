@@ -2,6 +2,7 @@ package pl.edu.pjwstk.slowka.presentation.view
 
 import android.content.Context
 import android.util.AttributeSet
+import pl.edu.pjwstk.slowka.R
 
 class MediumLetterButton : LetterButton {
 
@@ -15,7 +16,11 @@ class MediumLetterButton : LetterButton {
         return 22f
     }
 
-    override fun getPaddingSize(): Int {
-        return 30
+    override fun getSideSize(): Int {
+        return 40
+    }
+
+    override fun getBackgroundColor(): Int {
+        return R.color.colorAccent
     }
 }

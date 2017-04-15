@@ -5,48 +5,56 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
-        <LinearLayout
+        <include layout="@layout/application_toolbar"/>
+
+        <ImageView
+            android:id="@+id/testImage"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"/>
+
+        <pl.edu.pjwstk.slowka.presentation.view.MinimumInputWithDisplay
+            android:id="@+id/keyboardWithDisplay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginBottom="40dp"/>
 
-            <include layout="@layout/application_toolbar"/>
+    </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:layout_marginBottom="100dp"
-                android:gravity="center_vertical">
+    <ViewAnimator
+        android:id="@+id/animator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inAnimation="@android:anim/fade_in"
+        android:outAnimation="@android:anim/fade_out">
 
-                <ImageView
-                    android:id="@+id/testImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"/>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#01000000"/>
 
-                <pl.edu.pjwstk.slowka.presentation.view.MinimumInputWithDisplay
-                    android:id="@+id/keyboardWithDisplay"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+        <pl.edu.pjwstk.slowka.presentation.view.TestResultOverlay
+            android:id="@+id/testOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
 
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
-
+    </ViewAnimator>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:src="@drawable/ic_done_black_24dp"
         android:tint="@android:color/white"
-        style="@style/fab_style_slowka" />
+        style="@style/fab_style_slowka"
+        android:layout_gravity="top|end"/>
+
 
 </android.support.design.widget.CoordinatorLayout>

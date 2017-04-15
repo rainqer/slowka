@@ -2,10 +2,12 @@ package pl.edu.pjwstk.slowka.presentation.view
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.support.annotation.ColorRes
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewCompat
 import android.util.AttributeSet
 import android.util.TypedValue
+import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TextView
 import pl.edu.pjwstk.slowka.R
@@ -20,18 +22,23 @@ abstract class LetterButton : TextView {
         init()
     }
 
+    val scale = context.resources.displayMetrics.density
+
     private fun init() {
         setTextSize(TypedValue.COMPLEX_UNIT_SP, getFontSize())
-        val padding = getPaddingSize()
-        setPadding(padding, padding, padding, padding)
-        val newLayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-        newLayoutParams.setMargins(10, 0, 10, 0);
-        setBackgroundResource(R.color.colorAccent)
+        val size = getSizeInDp()
+//        setPadding(padding, padding, padding, padding)
+        val newLayoutParams = LinearLayout.LayoutParams(size, size)
+        newLayoutParams.setMargins(30, 0, 30, 0);
+        setBackgroundResource(getBackgroundColor())
+        gravity= Gravity.CENTER
         foreground = getSelectedItemDrawable()
         ViewCompat.setElevation(this, 10f)
         setTextColor(ContextCompat.getColor(context, android.R.color.white))
         layoutParams = newLayoutParams
     }
+
+    private fun getSizeInDp() = (getSideSize() * scale + 0.5).toInt()
 
     fun getSelectedItemDrawable(): Drawable {
         val attrs = intArrayOf(R.attr.selectableItemBackground)
@@ -42,5 +49,7 @@ abstract class LetterButton : TextView {
     }
 
     abstract fun getFontSize(): Float
-    abstract fun getPaddingSize(): Int
+    abstract fun getSideSize(): Int
+    @ColorRes
+    abstract fun getBackgroundColor(): Int
 }

@@ -33,6 +33,10 @@ class TestSingleImageActivityPresenter constructor(
     override fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray) {
     }
 
+    fun onOkayClicked() {
+        presentedView.showResult(testedImageObject?.annotation.equals(presentedView.getAnswer(), true))
+    }
+
     fun onNextClicked() {
         recognizeImageActivityModel
                 .uploadUserAnswer(presentedView.getAnswer(), testedImageObject)

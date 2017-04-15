@@ -2,8 +2,9 @@ package pl.edu.pjwstk.slowka.presentation.view
 
 import android.content.Context
 import android.util.AttributeSet
+import pl.edu.pjwstk.slowka.R
 
-class BigLetterButton : LetterButton {
+open class BigLetterButton : LetterButton {
 
     constructor(context: Context) : super(context)
 
@@ -15,8 +16,11 @@ class BigLetterButton : LetterButton {
         return 28f
     }
 
-    override fun getPaddingSize(): Int {
+    override fun getSideSize(): Int {
         return 50
     }
 
+    override fun getBackgroundColor(): Int {
+        return R.color.colorAccent
+    }
 }

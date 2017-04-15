@@ -5,7 +5,9 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
+import android.view.View
 import android.widget.ImageView
+import android.widget.ViewAnimator
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.HasComponent
@@ -14,6 +16,7 @@ import pl.edu.pjwstk.slowka.presentation.ui.SlowkaActivity
 import pl.edu.pjwstk.slowka.presentation.ui.tests.dagger.TestSingleImageActivityComponent
 import pl.edu.pjwstk.slowka.presentation.ui.tests.dagger.TestSingleImageActivityComponentAssembler
 import pl.edu.pjwstk.slowka.presentation.view.MinimumInputWithDisplay
+import pl.edu.pjwstk.slowka.presentation.view.TestResultOverlay
 import javax.inject.Inject
 
 class TestSingleImageActivity : SlowkaActivity<TestSingleImageActivityView>(),
@@ -26,6 +29,8 @@ class TestSingleImageActivity : SlowkaActivity<TestSingleImageActivityView>(),
     val testImageView: ImageView by bindView(R.id.testImage)
     val next: FloatingActionButton by bindView(R.id.fab)
     val keyboardWithDisplay: MinimumInputWithDisplay by bindView(R.id.keyboardWithDisplay)
+    val testOverlay: TestResultOverlay by bindView(R.id.testOverlay)
+    val animator: ViewAnimator by bindView(R.id.animator)
 
     override var component: TestSingleImageActivityComponent? = null
     override val activityPresenter: ActivityPresenter<TestSingleImageActivityView>
@@ -58,8 +63,20 @@ class TestSingleImageActivity : SlowkaActivity<TestSingleImageActivityView>(),
         super.onPostCreate(savedInstanceState)
         attachPresenter(this, this, savedInstanceState)
         next.setOnClickListener {
-            presenter.onNextClicked()
+            presenter.onOkayClicked()
         }
+        testOverlay.nextButton.setOnClickListener { presenter.onNextClicked() }
+        testOverlay.redoButton.setOnClickListener {
+            animator.displayedChild = 0
+            next.show()
+            keyboardWithDisplay.clear()
+        }
+    }
+
+    override fun showResult(result: Boolean) {
+        if (result) testOverlay.showOkay() else testOverlay.showNotOkay()
+        animator.displayedChild = 1
+        next.hide()
     }
 
     companion object {

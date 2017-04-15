@@ -14,6 +14,10 @@
 
             <include layout="@layout/application_toolbar"/>
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
             <at.grabner.circleprogress.CircleProgressView
                 android:id="@+id/progress"
                 android:layout_width="170dp"
@@ -26,7 +30,10 @@
                 CircleProgressView:cpv_rimColor="#CFCFCF"
                 CircleProgressView:cpv_rimWidth="16dp"
                 CircleProgressView:cpv_showUnit="true"
-                CircleProgressView:cpv_unit="%"/>
+                CircleProgressView:cpv_unit="%"
+                android:layout_gravity="center"/>
+
+            </FrameLayout>
 
         </LinearLayout>
 

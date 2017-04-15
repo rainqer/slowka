@@ -9,9 +9,12 @@ import java.util.*
 
 class MinimumInputWithDisplay : LinearLayout {
 
-    private lateinit var display: TextView
+    private lateinit var answerDisplay: TextView
     private lateinit var keyboard: LinearLayout
     private lateinit var keyboard2: LinearLayout
+    private lateinit var keyboard3: LinearLayout
+    private lateinit var keyboard4: LinearLayout
+    private lateinit var backSpaceKeyboard: LinearLayout
 
     constructor(context: Context) : this(context, null)
 
@@ -23,75 +26,81 @@ class MinimumInputWithDisplay : LinearLayout {
 
     private fun init() {
         inflate(context, R.layout.minimum_input_with_display, this)
-        display = findViewById(R.id.display) as TextView
+        answerDisplay = findViewById(R.id.display) as TextView
         keyboard = findViewById(R.id.keyboard) as LinearLayout
         keyboard2 = findViewById(R.id.keyboard2) as LinearLayout
+        keyboard3 = findViewById(R.id.keyboard3) as LinearLayout
+        keyboard4 = findViewById(R.id.keyboard4) as LinearLayout
+        backSpaceKeyboard = findViewById(R.id.backSpaceKeyboard) as LinearLayout
     }
 
     fun getUserInput() : String {
-        return display.text.toString()
+        return answerDisplay.text.toString()
     }
 
     fun setShuffledLettersForWord(typeableWord: String) {
         keyboard.removeAllViews()
         val shuffledUniqueLetters = extractUniqueLettersThenShuffle(typeableWord)
-        val addingLetter = selectLetterSize(shuffledUniqueLetters)
         shuffledUniqueLetters.forEach { letter ->
-            addingLetter(letter)
+            addingBigLetterButton(letter)
         }
+        addBackSpace()
     }
 
     private val backspace = '\u232b'
 
     private fun extractUniqueLettersThenShuffle(typeableWord: String): List<Char> {
-        val uniqueLetters = mutableListOf<Char>()
-        typeableWord.toLowerCase().toList().forEach { letter ->
-            if (!uniqueLetters.contains(letter)) {
-                if (uniqueLetters.isEmpty()) {
-                    uniqueLetters.add(letter)
-                } else {
-                    uniqueLetters.add(Random().nextInt(uniqueLetters.size), letter)
-                }
+        return mutableListOf<Char>().apply {
+            typeableWord
+                    .toLowerCase()
+                    .toList()
+                    .forEach { letter -> insertLetterInRandomSpace(this, letter) }
+        }
+    }
+
+    private fun insertLetterInRandomSpace(listOfCharacters: MutableList<Char>, letter: Char) {
+        if (!listOfCharacters.contains(letter)) {
+            if (listOfCharacters.isEmpty()) {
+                listOfCharacters.add(letter)
+            } else {
+                listOfCharacters.add(Random().nextInt(listOfCharacters.size), letter)
             }
         }
-        uniqueLetters.add(uniqueLetters.size, backspace)
-        return uniqueLetters
     }
 
-    private fun selectLetterSize(lettersSet: List<Char>): (Char) -> Unit {
-        return if (lettersSet.size < 7) {
-            addBigLetterButton()
-        } else {
-            addMediumLetterButton()
-        }
-    }
-
-    private fun addMediumLetterButton(): (Char) -> Unit {
-        return { letter -> adjustButtonThenInsert(letter, MediumLetterButton(context)) }
-    }
-
-    private fun addBigLetterButton(): (Char) -> Unit {
-        return { letter -> adjustButtonThenInsert(letter, BigLetterButton(context)) }
-    }
+    private val addingBigLetterButton: (Char) -> Unit
+            = { letter -> adjustButtonThenInsert(letter, BigLetterButton(context)) }
 
     private fun adjustButtonThenInsert(letter: Char, letterButton: LetterButton) {
         letterButton.text = letter.toString()
-        if (letter == backspace) {
-            letterButton.setOnClickListener { view ->
-                val currentText = display.text
+        letterButton.setOnClickListener { view ->
+            answerDisplay.append((view as TextView).text)
+        }
+        if (keyboard.childCount <= 3) {
+            keyboard.addView(letterButton, keyboard.childCount)
+        } else if (keyboard2.childCount <= 3) {
+            keyboard2.addView(letterButton, keyboard2.childCount)
+        } else if (keyboard3.childCount <= 3) {
+            keyboard3.addView(letterButton, keyboard3.childCount)
+        } else {
+            keyboard4.addView(letterButton, keyboard4.childCount)
+        }
+    }
+
+    private fun addBackSpace() {
+        val backspaceButton = BackSpaceButton(context).apply {
+            text = backspace.toString()
+            setOnClickListener { view ->
+                val currentText = answerDisplay.text
                 if (currentText.isNotEmpty()) {
-                    display.text = currentText.dropLast(1)
+                    answerDisplay.text = currentText.dropLast(1)
                 }
             }
-        } else {
-            letterButton.setOnClickListener { view ->
-                display.append((view as TextView).text)
-            }
         }
-        if (keyboard.childCount < 9) {
-            keyboard.addView(letterButton, keyboard.childCount)
-        } else {
-            keyboard2.addView(letterButton, keyboard2.childCount)
-        }
+        backSpaceKeyboard.addView(backspaceButton)
+    }
+
+    fun clear() {
+        answerDisplay.text = null
     }
 }
