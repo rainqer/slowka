@@ -5,17 +5,17 @@
         <item
             android:id="@+id/nav_landing"
             android:icon="@drawable/ic_import_contacts_black_24dp"
-            android:title="Nauka" />
+            android:title="@string/learning_screen" />
 
         <item
             android:id="@+id/nav_tests"
             android:icon="@drawable/ic_done_black_24dp"
-            android:title="Testy" />
+            android:title="@string/tests_screen" />
 
         <item
             android:id="@+id/nav_tutor"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Opiekun" />
+            android:title="@string/admin_screen" />
     </group>
 
 </menu>

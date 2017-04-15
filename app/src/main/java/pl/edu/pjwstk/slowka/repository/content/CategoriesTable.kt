@@ -18,11 +18,11 @@ class CategoriesTable : SqlTable {
 
     private fun insertPrimaryData(database: SQLiteDatabase) {
         database.insert(NAME, null, Category(Category.HOME, Icon.HOME).toContentValues())
-        database.insert(NAME, null, Category(Category.SPORT, Icon.SPORT).toContentValues())
-        database.insert(NAME, null, Category(Category.WEATHER, Icon.WEATHER).toContentValues())
+        database.insert(NAME, null, Category(Category.HOBBY, Icon.HOBBY).toContentValues())
+        database.insert(NAME, null, Category(Category.FOOD, Icon.FOOD).toContentValues())
         database.insert(NAME, null, Category(Category.PEOPLE, Icon.PEOPLE).toContentValues())
-        database.insert(NAME, null, Category(Category.HOLIDAY, Icon.HOLIDAY).toContentValues())
-        database.insert(NAME, null, Category(Category.GROCERY, Icon.GROCERY).toContentValues())
+        database.insert(NAME, null, Category(Category.ACTIVITIES, Icon.ACTIVITIES).toContentValues())
+        database.insert(NAME, null, Category(Category.OTHER, Icon.OTHER).toContentValues())
     }
 
     companion object {

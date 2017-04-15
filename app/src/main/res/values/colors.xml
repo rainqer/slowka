@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#2196f3</color>
     <color name="colorPrimaryDark">#1976d2</color>
-    <color name="colorAccent">#f44336</color>
+    <color name="colorAccent">#FFC107</color>
 
     <color name="progress_background">#e3f2fd</color>
     <color name="progress_foreground">#90caf9</color>
@@ -16,11 +16,11 @@
     <color name="progressBarBackground">#66444444</color>
 
     <color name="color1">#B2DFDB</color>
-    <color name="color2">#E1BEE7</color>
+    <color name="color2">#FFCDD2</color>
     <color name="color3">#DCEDC8</color>
-    <color name="color4">#FFCDD2</color>
-    <color name="color5">#B2EBF2</color>
-    <color name="color6">#C8E6C9</color>
+    <color name="color4">#B2EBF2</color>
+    <color name="color5">#C8E6C9</color>
+    <color name="color6">#E1BEE7</color>
 
 
 </resources>

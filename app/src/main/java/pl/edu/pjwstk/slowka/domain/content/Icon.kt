@@ -5,27 +5,27 @@ import pl.edu.pjwstk.slowka.R
 
 enum class Icon (@DrawableRes val drawableRes : Int) {
     HOME(R.drawable.ic_home_black),
-    SPORT(R.drawable.ic_sport_black),
-    WEATHER(R.drawable.ic_weather_black),
+    HOBBY(R.drawable.ic_golf),
+    FOOD(R.drawable.ic_spoon),
     PEOPLE(R.drawable.ic_face_black),
-    HOLIDAY(R.drawable.ic_holiday_black),
-    GROCERY(R.drawable.ic_grocery_black);
+    ACTIVITIES(R.drawable.ic_sport_black),
+    OTHER(R.drawable.ic_more_horiz);
 
     companion object {
         private val HOME_ORDINAL = 0
-        private val SPORT_ORDINAL = 1
-        private val WEATHER_ORDINAL = 2
+        private val HOBBY_ORDINAL = 1
+        private val FOOD_ORDINAL = 2
         private val PEOPLE_ORDINAL = 3
-        private val HOLIDAY_ORDINAL = 4
-        private val GROCERY_ORDINAL = 5
+        private val ACTIVITIES_ORDINAL = 4
+        private val OTHER_ORDINAL = 5
         fun fromOrdinal(ordinal: Int): Icon {
             return when (ordinal) {
                 HOME_ORDINAL -> HOME
-                SPORT_ORDINAL -> SPORT
-                WEATHER_ORDINAL -> WEATHER
+                HOBBY_ORDINAL -> HOBBY
+                FOOD_ORDINAL -> FOOD
                 PEOPLE_ORDINAL -> PEOPLE
-                HOLIDAY_ORDINAL -> HOLIDAY
-                GROCERY_ORDINAL -> GROCERY
+                ACTIVITIES_ORDINAL -> ACTIVITIES
+                OTHER_ORDINAL -> OTHER
                 else -> HOME
             }
         }

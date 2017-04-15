@@ -2,12 +2,15 @@ package pl.edu.pjwstk.slowka.presentation.ui.single_category.dagger;
 
 import dagger.Module;
 import dagger.Provides;
+import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedCategoryImagesObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedKnownCategoryImagesObjectsUseCase;
 import pl.edu.pjwstk.slowka.domain.content.ViewAcceptedLearningCategoryImagesObjectsUseCase;
 import pl.edu.pjwstk.slowka.presentation.speech.Speaker;
 import pl.edu.pjwstk.slowka.presentation.ui.single_category.SingleCategoryActivity;
 import pl.edu.pjwstk.slowka.presentation.ui.single_category.SingleCategoryActivityPresenter;
 import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.SingleCategoryListOfWordsAdapter;
+import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.all.SingleCategoryAcceptedWordsFragmentModel;
+import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.all.SingleCategoryAcceptedWordsFragmentPresenter;
 import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.known.SingleCategoryKnownWordsFragmentModel;
 import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.known.SingleCategoryKnownWordsFragmentPresenter;
 import pl.edu.pjwstk.slowka.presentation.ui.single_category.words_list.learning.SingleCategoryLearningWordsFragmentModel;
@@ -61,5 +64,20 @@ class SingleCategoryModule {
             SingleCategoryLearningWordsFragmentModel singleCategoryLearningWordsFragmentModel,
             SingleCategoryListOfWordsAdapter singleCategoryListOfWordsAdapter) {
         return new SingleCategoryLearningWordsFragmentPresenter(singleCategoryLearningWordsFragmentModel, singleCategoryListOfWordsAdapter);
+    }
+
+    @SingleCategoryActivityScope
+    @Provides
+    SingleCategoryAcceptedWordsFragmentModel providesSingleCategoryAcceptedWordsFragmentModel(
+            ViewAcceptedCategoryImagesObjectsUseCase viewAcceptedAcceptedCategoryImagesObjectsUseCase) {
+        return new SingleCategoryAcceptedWordsFragmentModel(viewAcceptedAcceptedCategoryImagesObjectsUseCase);
+    }
+
+    @SingleCategoryActivityScope
+    @Provides
+    SingleCategoryAcceptedWordsFragmentPresenter providesSingleCategoryAcceptedWordsFragmentPresenter(
+            SingleCategoryAcceptedWordsFragmentModel singleCategoryAcceptedWordsFragmentModel,
+            SingleCategoryListOfWordsAdapter singleCategoryListOfWordsAdapter) {
+        return new SingleCategoryAcceptedWordsFragmentPresenter(singleCategoryAcceptedWordsFragmentModel, singleCategoryListOfWordsAdapter);
     }
 }

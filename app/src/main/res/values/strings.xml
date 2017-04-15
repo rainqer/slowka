@@ -10,8 +10,8 @@
 
     <!--screen titles-->
     <string name="learning_screen">Uczę się</string>
-    <string name="tests_screen">Testy</string>
-    <string name="admin_screen">Opiekun</string>
+    <string name="tests_screen">Ćwiczenie</string>
+    <string name="admin_screen">Panel Nauczyciela</string>
     <string name="camera_screen">Zrób zdjęcie</string>
 
     <!--Image recognizing screen-->

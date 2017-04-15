@@ -37,21 +37,21 @@ class Category: Serializable {
     val color: Int
         get() = when (this.name) {
             HOME -> R.color.color1
-            SPORT -> R.color.color2
-            WEATHER -> R.color.color3
+            HOBBY -> R.color.color2
+            FOOD -> R.color.color3
             PEOPLE -> R.color.color4
-            HOLIDAY -> R.color.color5
-            GROCERY -> R.color.color6
+            ACTIVITIES -> R.color.color5
+            OTHER -> R.color.color6
             else -> R.color.color6
     }
 
     companion object {
         val CATEGORY_NOT_FROM_DATABASE_ID = -1
         val HOME = "Dom"
-        val SPORT = "Sport"
-        val WEATHER = "Pogoda"
+        val HOBBY = "Hobby"
+        val FOOD = "Jedzenie"
         val PEOPLE = "Ludzie"
-        val HOLIDAY = "Wakacje"
-        val GROCERY = "Zakupy"
+        val ACTIVITIES = "Czynności"
+        val OTHER = "Inne"
     }
 }

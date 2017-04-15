@@ -16,7 +16,7 @@ class Speaker(private val context: Context): UtteranceProgressListener() {
     init {
         speech = TextToSpeech(context, { initStatus -> })
         speech.language = Locale("pl")
-        speech.setSpeechRate(0.6f)
+        speech.setSpeechRate(0.9f)
     }
     fun speak(textToSpeak: String) {
         speak(textToSpeak, null, null)
