@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.TextView
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.Components
@@ -51,6 +52,8 @@ class WordsCategoriesListFragment @Inject constructor() : SlowkaFragment<WordsCa
 
     override fun showInfoWordHasBeenAdded(recentlyAddedWord: String) {
         Snackbar.make(fab, getSnackBarText(recentlyAddedWord), Snackbar.LENGTH_INDEFINITE).apply {
+            val text = view.findViewById(android.support.design.R.id.snackbar_text) as TextView
+            text.maxLines = 4
             setAction(android.R.string.ok) { dismiss() }
             getView().addOnAttachStateChangeListener( object: View.OnAttachStateChangeListener {
                 override fun onViewAttachedToWindow(v: View ) {

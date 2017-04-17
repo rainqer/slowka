@@ -6,7 +6,7 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_landing">LandingActivity</string>
-    <string name="word_has_been_added"><![CDATA[Słowo \"<font color=\'#EE0000\'>%s</font>\" zapisano w panelu <font color=\'#2196f3\'>Opiekuna</font> do czasu akceptacji]]></string>
+    <string name="word_has_been_added"><![CDATA[Słowo \"<font color=\'#FFB300\'>%s</font>\" czeka na akceptację w <font color=\'#FFB300\'>Panelu&nbsp;Nauczyciela</font>]]></string>
 
     <!--screen titles-->
     <string name="learning_screen">Uczę się</string>
