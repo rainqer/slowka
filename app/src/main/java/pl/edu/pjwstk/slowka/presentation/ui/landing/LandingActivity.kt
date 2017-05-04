@@ -3,6 +3,7 @@ package pl.edu.pjwstk.slowka.presentation.ui.landing
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
+import android.support.v4.view.GravityCompat
 import android.text.TextUtils
 import android.widget.TextView
 import pl.edu.pjwstk.slowka.R
@@ -46,8 +47,21 @@ class LandingActivity : SlowkaActivityWithDrawer<LandingActivityView>(),
 
     override fun showFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-                .replace(R.id.content, fragment)
+                .replace(R.id.content, fragment, "current")
                 .commit()
+    }
+
+    override fun onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            closeDrawer()
+        } else {
+            if (supportFragmentManager.findFragmentByTag("current") is WordsCategoriesListFragment) {
+                super.onBackPressed()
+            } else {
+                showFragment(WordsCategoriesListFragment())
+                navigationView.menu.getItem(0).isChecked = true;
+            }
+        }
     }
 
     override fun closeDrawer() {
