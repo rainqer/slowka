@@ -33,6 +33,14 @@ class IKnowWordsListFragment : TutorWordsListFragment() {
         presenter.resume()
     }
 
+    override fun showPlaceholder() {
+        placeholderKnow.visibility = View.VISIBLE
+    }
+
+    override fun hidePlaceholder() {
+        placeholderKnow.visibility = View.GONE
+    }
+
     companion object {
         fun getInstance() : IKnowWordsListFragment {
             return IKnowWordsListFragment()

@@ -19,4 +19,37 @@
         android:textSize="20dp"
         android:visibility="gone"/>
 
+    <TextView
+        android:id="@+id/placeholder_new_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/thumb_up"
+        android:text="@string/tutor_new_empty"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/placeholder_learn_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/camera_big"
+        android:text="@string/tutor_know_empty"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/placeholder_know_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/arrow_left_thick"
+        android:text="@string/tutor_learn_empty"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:visibility="gone"/>
+
 </RelativeLayout>

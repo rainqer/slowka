@@ -14,6 +14,9 @@ import pl.edu.pjwstk.slowka.presentation.ui.SlowkaFragment
 abstract class TutorWordsListFragment constructor() : SlowkaFragment<TutorWordsListView>(), TutorWordsListView {
 
     val listOfWordsWithAnnotations : RecyclerView by bindView(R.id.wordsList)
+    val placeholderNew : View by bindView(R.id.placeholder_new_empty)
+    val placeholderLearn : View by bindView(R.id.placeholder_learn_empty)
+    val placeholderKnow : View by bindView(R.id.placeholder_know_empty)
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_tutor_words_list, container, false)

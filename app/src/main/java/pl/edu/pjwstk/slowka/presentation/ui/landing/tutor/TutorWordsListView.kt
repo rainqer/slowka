@@ -4,4 +4,6 @@ import android.support.v7.widget.RecyclerView
 
 interface TutorWordsListView {
     fun getListOfWords() : RecyclerView
+    fun showPlaceholder()
+    fun hidePlaceholder()
 }

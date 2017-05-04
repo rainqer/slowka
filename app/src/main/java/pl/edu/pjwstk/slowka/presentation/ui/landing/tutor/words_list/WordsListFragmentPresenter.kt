@@ -36,6 +36,11 @@ open class WordsListFragmentPresenter (private val wordsListFragmentModel : Word
     }
 
     private fun buildListFromCursor(cursor: Cursor?) {
+        if (cursor?.count == 0) {
+            presentedView.showPlaceholder()
+        } else {
+            presentedView.hidePlaceholder()
+        }
         adapter.swapCursor(cursor)
         presentedView.getListOfWords().invalidate()
     }

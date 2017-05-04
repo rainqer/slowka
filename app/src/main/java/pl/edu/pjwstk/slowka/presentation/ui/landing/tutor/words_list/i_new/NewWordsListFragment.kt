@@ -33,6 +33,14 @@ class NewWordsListFragment : TutorWordsListFragment() {
         presenter.resume()
     }
 
+    override fun showPlaceholder() {
+        placeholderNew.visibility = View.VISIBLE
+    }
+
+    override fun hidePlaceholder() {
+        placeholderNew.visibility = View.GONE
+    }
+
     companion object {
         fun getInstance() : NewWordsListFragment {
             return NewWordsListFragment()

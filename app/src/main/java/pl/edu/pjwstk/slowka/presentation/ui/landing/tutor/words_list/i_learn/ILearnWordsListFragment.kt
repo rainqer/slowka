@@ -7,6 +7,7 @@ import android.view.View
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.Components
 import pl.edu.pjwstk.slowka.presentation.ui.FragmentPresenter
+import pl.edu.pjwstk.slowka.presentation.ui.camera.CameraActivity
 import pl.edu.pjwstk.slowka.presentation.ui.landing.dagger.LandingActivityComponent
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorWordsListFragment
 import pl.edu.pjwstk.slowka.presentation.ui.landing.tutor.TutorWordsListView
@@ -31,6 +32,15 @@ class ILearnWordsListFragment : TutorWordsListFragment() {
     override fun onResume() {
         super.onResume()
         presenter.resume()
+    }
+
+    override fun showPlaceholder() {
+        placeholderLearn.visibility = View.VISIBLE
+        placeholderLearn.setOnClickListener { startActivity(CameraActivity.createIntent(context)) }
+    }
+
+    override fun hidePlaceholder() {
+        placeholderLearn.visibility = View.GONE
     }
 
     companion object {

@@ -30,6 +30,9 @@
     <string name="restore_dialog_title">Przywracanie słowa</string>
     <string name="restore_dialog_message">Czy chcialbyś aby słowo %s znalazło się w kolumnie \"Uczę się\"</string>
     <string name="testAnswer">Wpisz odpowiedź</string>
+    <string name="tutor_new_empty">Wszystkie słowa zatwierdzone.\nSprawdź inne zakładki.</string>
+    <string name="tutor_learn_empty">Słownik zdaje się być pusty.\nChcesz dodać nowe słowo?</string>
+    <string name="tutor_know_empty">W tej zakładce ciągle nic nie ma.\nSprawdź pozostałe.</string>
 
     <!--test-->
     <string name="didntShowTest">Znasz wszystkie słowa z tej kategorii</string>
