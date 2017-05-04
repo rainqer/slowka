@@ -8,6 +8,9 @@
     <string name="title_activity_landing">LandingActivity</string>
     <string name="word_has_been_added"><![CDATA[Słowo \"<font color=\'#FFB300\'>%s</font>\" czeka na akceptację w <font color=\'#FFB300\'>Panelu&nbsp;Nauczyciela</font>]]></string>
 
+    <!--single category-->
+    <string name="category_empty">W tej kategorii nie ma jeszcze słów.\nChcesz dodać nowe?</string>
+
     <!--screen titles-->
     <string name="learning_screen">Uczę się</string>
     <string name="tests_screen">Ćwiczenie</string>

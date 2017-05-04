@@ -34,8 +34,12 @@ open class SingleCategoryWordsListFragmentPresenter (private val wordsListFragme
     }
 
     private fun buildListFromCursor(cursor: Cursor?) {
-        adapter.swapCursor(cursor)
-        presentedView.getListOfWords().invalidate()
+        if (cursor?.count == 0) {
+            presentedView.showPlaceHolder()
+        } else {
+            adapter.swapCursor(cursor)
+            presentedView.getListOfWords().invalidate()
+        }
     }
 
     override fun onDestroyView() {
