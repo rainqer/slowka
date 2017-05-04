@@ -22,6 +22,7 @@ import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.ui.SlowkaActivity
 import pl.edu.pjwstk.slowka.presentation.ui.admin_image_details.dagger.AdminImageDetailsActivityComponent
 import pl.edu.pjwstk.slowka.presentation.ui.admin_image_details.dagger.AdminImageDetailsActivityComponentAssembler
+import pl.edu.pjwstk.slowka.presentation.ui.single_category.SingleCategoryActivityPresenter
 import javax.inject.Inject
 
 class AdminImageDetailsActivity : SlowkaActivity<AdminImageDetailsActivityView>(),
@@ -49,6 +50,9 @@ class AdminImageDetailsActivity : SlowkaActivity<AdminImageDetailsActivityView>(
         super.onCreate(savedInstanceState)
         setContentViewWithToolbar(R.layout.activity_recognizeimage)
         setDaggerComponent(AdminImageDetailsActivityComponentAssembler.assemble(application))
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.title = getString(R.string.title)
     }
 
     private fun setDaggerComponent(component: AdminImageDetailsActivityComponent) {

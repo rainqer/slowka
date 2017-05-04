@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableTop="@drawable/arrow_left_thick"
-        android:text="@string/tutor_learn_empty"
+        android:text="@string/tutor_know_empty"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:textSize="20dp"

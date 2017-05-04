@@ -99,7 +99,7 @@
                     android:textSize="12dp"
                     android:lines="1"
                     custom:pb_colorNormal="@color/colorAccent"
-                    custom:pb_colorPressed="@color/colorAccentDark"
+                    custom:pb_colorPressed="@color/darkYellow"
                     android:drawableStart="@drawable/ic_replay_black_24dp"
                     android:drawableLeft="@drawable/ic_replay_black_24dp"/>
 

@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
-import android.view.View
 import android.widget.ImageView
 import android.widget.ViewAnimator
 import butterknife.bindView
@@ -40,6 +39,7 @@ class TestSingleImageActivity : SlowkaActivity<TestSingleImageActivityView>(),
         super.onCreate(savedInstanceState)
         setContentViewWithToolbar(R.layout.activity_testsingleimage)
         setDaggerComponent(TestSingleImageActivityComponentAssembler.assemble(application))
+        toolbar.title = getString(R.string.testTitle)
     }
 
     private fun setDaggerComponent(component: TestSingleImageActivityComponent) {
