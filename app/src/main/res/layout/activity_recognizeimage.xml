@@ -8,34 +8,49 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
             <include layout="@layout/application_toolbar"/>
 
-            <ImageView
-                android:id="@+id/image"
-                android:layout_below="@+id/toolbar"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"/>
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:src="@drawable/ic_done_black_24dp"
+                    android:tint="@android:color/white"
+                    style="@style/fab_style_slowka"
+                    android:layout_gravity="bottom|end"/>
+
+            </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
                 android:orientation="vertical"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="100dp">
+                android:layout_marginBottom="20dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
@@ -47,13 +62,15 @@
 
                     <Spinner
                         android:id="@+id/categorySpinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner_with_dropdown"/>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
@@ -68,8 +85,9 @@
                         android:layout_alignParentBottom="true"
                         android:lines="1"
                         android:hint="@string/image_content_editable_annotation_hint"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
 
                 </LinearLayout>
 
@@ -80,8 +98,8 @@
                     android:text="@string/restore"
                     android:textSize="12dp"
                     android:lines="1"
-                    custom:pb_colorNormal="@color/violet"
-                    custom:pb_colorPressed="@color/violet_dark"
+                    custom:pb_colorNormal="@color/colorAccent"
+                    custom:pb_colorPressed="@color/colorAccentDark"
                     android:drawableStart="@drawable/ic_replay_black_24dp"
                     android:drawableLeft="@drawable/ic_replay_black_24dp"/>
 
@@ -90,13 +108,6 @@
         </LinearLayout>
 
     </ScrollView>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:src="@drawable/ic_done_black_24dp"
-        android:tint="@android:color/white"
-        style="@style/fab_style_slowka"
-        android:layout_gravity="bottom|end"/>
 
     <FrameLayout
         android:id="@+id/progressBar"

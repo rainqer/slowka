@@ -15,7 +15,7 @@ class SimpleCursorAdapterForCategoryWithIcon(context: Context, cursor: Cursor, f
     : CursorAdapter(context, cursor, flags) {
 
     override fun newView(context: Context, cursor: Cursor, parent: ViewGroup): View? {
-        return LayoutInflater.from(context).inflate(R.layout.category_with_icon, parent, false);
+        return LayoutInflater.from(context).inflate(R.layout.category_with_icon, parent, false)
     }
 
     override fun bindView(view: View, context: Context, cursor: Cursor) {

@@ -14,7 +14,7 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:src="@android:drawable/ic_menu_crop"
+        android:src="@drawable/ic_done_black_24dp"
         style="@style/fab_style_slowka" />
 
     <FrameLayout
