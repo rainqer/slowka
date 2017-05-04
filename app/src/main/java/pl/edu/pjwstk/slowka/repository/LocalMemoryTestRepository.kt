@@ -5,6 +5,7 @@ import pl.edu.pjwstk.slowka.domain.content.ImageObject
 import pl.edu.pjwstk.slowka.domain.content.ImageObjectRepository
 import pl.edu.pjwstk.slowka.domain.test.TestRepository
 import pl.edu.pjwstk.slowka.domain.test.TestResult
+import java.util.*
 
 class LocalMemoryTestRepository(private val imageObjectRepository: ImageObjectRepository) : TestRepository {
 
@@ -13,14 +14,15 @@ class LocalMemoryTestRepository(private val imageObjectRepository: ImageObjectRe
 
     override fun startNewTestForCategory(category: Category): Boolean {
         imageObjects.clear()
-        val allImagesFromCategoryCursor = imageObjectRepository.getAcceptedImagesInCategory(category.name, false)
+        val allImagesFromCategoryCursor = imageObjectRepository.getAcceptedImagesInCategory(category.name)
         while(allImagesFromCategoryCursor.moveToNext()) {
-            val imageObject = ImageObject(allImagesFromCategoryCursor)
-            if (!imageObject.known) {
-                imageObjects.add(imageObject)
-            }
+            imageObjects.add(drawNextIndex(imageObjects.size), ImageObject(allImagesFromCategoryCursor))
         }
         return imageObjects.isNotEmpty()
+    }
+
+    private fun drawNextIndex(listSize: Int): Int {
+        return if (listSize == 0) 0 else Random().nextInt(listSize + 1)
     }
 
     override fun startNewTestForImages(ids: Array<Long>) {

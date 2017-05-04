@@ -32,7 +32,7 @@ class ImageObject {
     constructor(imageFile: File, annotation: String, categoryName: String)
     : this(imageFile, annotation, categoryName, false, false)
 
-    private constructor(imageFile: File, annotation: String, categoryName: String, accepted: Boolean, known: Boolean) {
+    constructor(imageFile: File, annotation: String, categoryName: String, accepted: Boolean, known: Boolean) {
         this.imageFile = imageFile
         this.annotation = annotation
         this.categoryName = categoryName
