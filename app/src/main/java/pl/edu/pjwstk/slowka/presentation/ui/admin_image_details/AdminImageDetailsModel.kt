@@ -25,6 +25,7 @@ class AdminImageDetailsModel constructor(
         .map { imageObject ->
             ImageObject(imageObject.imageFile, imageAnnotation, selectedCategory, imageObject.accepted, imageObject.known)
         }
+        .map { imageObject -> imageObject.accepted() }
         .map { imageObject ->
             updateImageObjectUseCase
                     .id(imageObjectId)
