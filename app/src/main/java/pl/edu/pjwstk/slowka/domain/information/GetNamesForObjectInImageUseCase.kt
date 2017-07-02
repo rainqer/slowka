@@ -43,10 +43,11 @@ class GetNamesForObjectInImageUseCase : UseCase<String> {
         return Observable
                 .fromCallable { perform() }
                 .subscribeOn(scheduler)
-                .flatMap { annotation ->
-                    translateRepository.translate(annotation)
-                }
-                .subscribeOn(scheduler)
+                // No recognition, no translation
+//                .flatMap { annotation ->
+//                    translateRepository.translate(annotation)
+//                }
+//                .subscribeOn(scheduler)
                 .observeOn(AndroidSchedulers.mainThread())
     }
 }
