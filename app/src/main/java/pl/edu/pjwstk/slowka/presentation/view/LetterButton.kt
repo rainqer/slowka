@@ -32,7 +32,9 @@ abstract class LetterButton : TextView {
         newLayoutParams.setMargins(30, 0, 30, 0);
         setBackgroundResource(getBackgroundColor())
         gravity= Gravity.CENTER
-        foreground = getSelectedItemDrawable()
+        try { //crashed on 5.1.1 with method not found
+            foreground = getSelectedItemDrawable()
+        } catch(e: Exception) { }
         ViewCompat.setElevation(this, 10f)
         setTextColor(ContextCompat.getColor(context, android.R.color.white))
         layoutParams = newLayoutParams

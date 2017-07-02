@@ -24,9 +24,9 @@ abstract class TutorWordsListFragment constructor() : SlowkaFragment<TutorWordsL
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Handler().postDelayed( {
+        if (activity != null) listOfWordsWithAnnotations.post {
             (activity as AppCompatActivity).supportActionBar?.setTitle(R.string.admin_screen)
-        }, 10);
+        }
     }
 
     override fun getListOfWords(): RecyclerView {
