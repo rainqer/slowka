@@ -34,7 +34,9 @@ class GetNamesForObjectInImageUseCase : UseCase<String> {
         if (file == null) {
             throw AssertionError("Preview must be performed on non null surface holder")
         }
-        return namesForObjectInImageRepository.getNamesFor(file)[0]
+        // Disabled google vision api
+//        return namesForObjectInImageRepository.getNamesFor(file)[0]
+        return ""
     }
 
     override fun performAndObserve(scheduler: Scheduler): Observable<String> {
