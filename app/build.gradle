@@ -22,7 +22,7 @@ android {
     buildToolsVersion "24.0.2"
 
     defaultConfig {
-        applicationId "pl.edu.pjwstk.slowka"
+        applicationId "pl.rhinoonabus.slowka"
         minSdkVersion 16
         targetSdkVersion 24
         versionCode 1
