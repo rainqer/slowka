@@ -18,7 +18,7 @@ import pl.edu.pjwstk.slowka.repository.content.LocalCategoryRepository;
 import pl.edu.pjwstk.slowka.repository.content.LocalImageObjectRepository;
 import pl.edu.pjwstk.slowka.repository.content.VolatileRecentlyAddedWordRepository;
 import pl.edu.pjwstk.slowka.repository.file.AndroidFileRepository;
-import pl.edu.pjwstk.slowka.repository.recognize.GoogleVisionNamesForObjectsRepository;
+import pl.edu.pjwstk.slowka.repository.recognize.MockNamesForObjectsRepository;
 import pl.edu.pjwstk.slowka.repository.translate.YandexService;
 import pl.edu.pjwstk.slowka.repository.translate.YandexTranslateRepository;
 
@@ -37,17 +37,17 @@ public class RepositoriesModule {
         return fileRepository;
     }
 
-//    @Provides
-//    @Singleton
-//    NamesForObjectInImageRepository provideNamesForObjectInImageRepository(MockNamesForObjectsRepository getNamesRepository) {
-//        return getNamesRepository;
-//    }
-
     @Provides
     @Singleton
-    NamesForObjectInImageRepository provideNamesForObjectInImageRepository(GoogleVisionNamesForObjectsRepository getNamesRepository) {
+    NamesForObjectInImageRepository provideNamesForObjectInImageRepository(MockNamesForObjectsRepository getNamesRepository) {
         return getNamesRepository;
     }
+
+//    @Provides
+//    @Singleton
+//    NamesForObjectInImageRepository provideNamesForObjectInImageRepository(GoogleVisionNamesForObjectsRepository getNamesRepository) {
+//        return getNamesRepository;
+//    }
 
     @Provides
     @Singleton

@@ -1,7 +1,6 @@
 package pl.edu.pjwstk.slowka.repository.recognize
 
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import com.google.api.client.extensions.android.http.AndroidHttp
 import com.google.api.client.json.gson.GsonFactory
 import com.google.api.services.vision.v1.Vision
@@ -11,7 +10,6 @@ import pl.edu.pjwstk.slowka.domain.information.NamesForObjectInImageRepository
 import pl.edu.pjwstk.slowka.domain.tools.BitmapDecoder
 import java.io.ByteArrayOutputStream
 import java.io.File
-import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -19,7 +17,7 @@ import javax.inject.Singleton
 class GoogleVisionNamesForObjectsRepository @Inject constructor() : NamesForObjectInImageRepository {
 
 //    final val DEBUG_VISION_API_KEY = "AIzaSyBZTiseELC1bqRqLtHZb5ua6ZNYOnKMlTQ" //android
-    final val DEBUG_VISION_API_KEY = "AIzaSyCMy1TSJvgaCZEWebTRqobkAhqfaY_J5bo" //none
+    final val DEBUG_VISION_API_KEY = "a" //none
 
     override fun getNamesFor(file: File): Array<String> {
         // TODO
