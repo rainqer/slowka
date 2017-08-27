@@ -2,6 +2,7 @@ package pl.edu.pjwstk.slowka.domain.content
 
 import android.content.ContentValues
 import android.database.Cursor
+import android.support.annotation.StringRes
 import pl.edu.pjwstk.slowka.repository.content.ImageObjectsTable
 import java.io.File
 
@@ -10,7 +11,7 @@ class ImageObject {
     val objectId: Int?
     val imageFile: File
     val annotation: String
-    val categoryName: String
+    @StringRes val categoryName: Int
     val accepted: Boolean
     val known: Boolean
 
@@ -18,7 +19,7 @@ class ImageObject {
         val objectId = cursor.getInt(cursor.getColumnIndexOrThrow(ImageObjectsTable.COLUMN_ID))
         val imageFilePath = cursor.getString(cursor.getColumnIndexOrThrow(ImageObjectsTable.COLUMN_IMAGE_URL))
         val annotation = cursor.getString(cursor.getColumnIndexOrThrow(ImageObjectsTable.COLUMN_NAME))
-        val categoryName = cursor.getString(cursor.getColumnIndexOrThrow(ImageObjectsTable.COLUMN_CATEGORY))
+        val categoryName = cursor.getInt(cursor.getColumnIndexOrThrow(ImageObjectsTable.COLUMN_CATEGORY))
         val accepted = cursor.getInt(cursor.getColumnIndexOrThrow(ImageObjectsTable.COLUMN_ACCEPTED))
         val known = cursor.getInt(cursor.getColumnIndexOrThrow(ImageObjectsTable.COLUMN_KNOWN))
         this.objectId = objectId
@@ -29,10 +30,10 @@ class ImageObject {
         this.known = known == 1
     }
 
-    constructor(imageFile: File, annotation: String, categoryName: String)
+    constructor(imageFile: File, annotation: String, @StringRes categoryName: Int)
     : this(imageFile, annotation, categoryName, false, false)
 
-    constructor(imageFile: File, annotation: String, categoryName: String, accepted: Boolean, known: Boolean) {
+    constructor(imageFile: File, annotation: String, @StringRes categoryName: Int, accepted: Boolean, known: Boolean) {
         this.imageFile = imageFile
         this.annotation = annotation
         this.categoryName = categoryName

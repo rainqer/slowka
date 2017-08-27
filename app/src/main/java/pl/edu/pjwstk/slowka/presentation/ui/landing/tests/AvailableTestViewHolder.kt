@@ -32,11 +32,11 @@ class AvailableTestViewHolder : RecyclerView.ViewHolder {
     fun showCategory(category: Category, numberOfKnownWords: Int, numberOfUnknownWords : Int) {
         val totalNumberOfWords = numberOfKnownWords + numberOfUnknownWords
         icon.setImageResource(category.iconRes)
-        name.text = category.name
+        name.text = itemView.context.getString(category.name)
         progress.max = totalNumberOfWords.toFloat()
         progress.progress = numberOfKnownWords.toFloat()
         numberOfWords.text = "$numberOfKnownWords/$totalNumberOfWords"
-        shownCategoryName = category.name
+        shownCategoryName = itemView.context.getString(category.name)
         itemView.setOnClickListener { view ->
             onCategoryForTestSelectedListener.onCategoryForTestSelected(category)
         }

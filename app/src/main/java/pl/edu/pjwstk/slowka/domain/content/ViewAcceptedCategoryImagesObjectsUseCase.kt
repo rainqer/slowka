@@ -6,17 +6,17 @@ import pl.edu.pjwstk.slowka.domain.UseCase
 class ViewAcceptedCategoryImagesObjectsUseCase : UseCase<Cursor> {
 
     private val imageObjectRepository: ImageObjectRepository
-    private val categoryName: String?
+    private val categoryName: Int?
 
     constructor(imageObjectRepository: ImageObjectRepository) : this(imageObjectRepository, null)
 
     private constructor(imageObjectRepository: ImageObjectRepository,
-                        categoryName: String?) {
+                        categoryName: Int?) {
         this.imageObjectRepository = imageObjectRepository
         this.categoryName = categoryName
     }
 
-    fun category(categoryName: String) : ViewAcceptedCategoryImagesObjectsUseCase {
+    fun category(categoryName: Int) : ViewAcceptedCategoryImagesObjectsUseCase {
         return ViewAcceptedCategoryImagesObjectsUseCase(imageObjectRepository, categoryName)
     }
 

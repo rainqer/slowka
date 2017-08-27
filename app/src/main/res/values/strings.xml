@@ -43,4 +43,12 @@
     <string name="select_category">category:</string>
     <string name="name_the_item">name:</string>
 
+    <!--categories-->
+    <string name="category_home">Home</string>
+    <string name="category_hobby">Hobby</string>
+    <string name="category_food">Food</string>
+    <string name="category_people">People</string>
+    <string name="category_activities">Activities</string>
+    <string name="category_other">Other</string>
+
 </resources>

@@ -10,7 +10,7 @@ class SingleCategoryAcceptedWordsFragmentModel
     constructor(val viewAcceptedCategoryImagesObjectsUseCase: ViewAcceptedCategoryImagesObjectsUseCase)
     : SingleCategoryWordsListFragmentModel() {
 
-    override fun getImages(categoryName: String): Observable<Cursor> {
+    override fun getImages(categoryName: Int): Observable<Cursor> {
         return viewAcceptedCategoryImagesObjectsUseCase
                 .category(categoryName)
                 .performAndObserve(Schedulers.io())

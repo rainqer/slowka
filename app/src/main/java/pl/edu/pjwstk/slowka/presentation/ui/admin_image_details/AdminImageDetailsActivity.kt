@@ -6,10 +6,8 @@ import android.database.Cursor
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.widget.CursorAdapter
-import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.EditText
-import android.widget.GridView
 import android.widget.ImageView
 import android.widget.Spinner
 import butterknife.bindView
@@ -22,7 +20,6 @@ import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
 import pl.edu.pjwstk.slowka.presentation.ui.SlowkaActivity
 import pl.edu.pjwstk.slowka.presentation.ui.admin_image_details.dagger.AdminImageDetailsActivityComponent
 import pl.edu.pjwstk.slowka.presentation.ui.admin_image_details.dagger.AdminImageDetailsActivityComponentAssembler
-import pl.edu.pjwstk.slowka.presentation.ui.single_category.SingleCategoryActivityPresenter
 import javax.inject.Inject
 
 class AdminImageDetailsActivity : SlowkaActivity<AdminImageDetailsActivityView>(),
@@ -81,8 +78,8 @@ class AdminImageDetailsActivity : SlowkaActivity<AdminImageDetailsActivityView>(
         categorySpinner.adapter = cursorAdapter
     }
 
-    override fun getSelectedCategory(): String {
-        return (categorySpinner.selectedItem  as Cursor).getString(1)
+    override fun getSelectedCategory(): Int {
+        return (categorySpinner.selectedItem  as Cursor).getInt(1)
     }
 
     private fun hideProgressBar() {

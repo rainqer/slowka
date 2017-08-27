@@ -23,6 +23,6 @@ class SimpleCursorAdapterForCategoryWithIcon(context: Context, cursor: Cursor, f
         val text = view.findViewById(R.id.text) as TextView;
         val category = Category(cursor)
         icon.setBackgroundResource(category.iconRes)
-        text.text = category.name
+        text.text = context.getString(category.name)
     }
 }

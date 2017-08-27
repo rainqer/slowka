@@ -64,22 +64,22 @@ class LocalImageObjectRepository : ImageObjectRepository {
         )
     }
 
-    override fun getAcceptedImagesInCategory(categoryName: String): Cursor {
+    override fun getAcceptedImagesInCategory(categoryNameRes: Int): Cursor {
         return contentResolver.query(
                 IMAGE_OBJECT_PROVIDER_URI,
                 ImageObjectsTable.COLUMNS,
-                "${ImageObjectsTable.COLUMN_CATEGORY}='$categoryName' AND ${ImageObjectsTable.COLUMN_ACCEPTED}='1'",
+                "${ImageObjectsTable.COLUMN_CATEGORY}='$categoryNameRes' AND ${ImageObjectsTable.COLUMN_ACCEPTED}='1'",
                 arrayOf(),
                 null
         )
     }
 
-    override fun getAcceptedImagesInCategory(categoryName: String, known: Boolean): Cursor {
+    override fun getAcceptedImagesInCategory(categoryNameRes: Int, known: Boolean): Cursor {
         val queryForKnown = if (known) 1 else 0
         return contentResolver.query(
                 IMAGE_OBJECT_PROVIDER_URI,
                 ImageObjectsTable.COLUMNS,
-                "${ImageObjectsTable.COLUMN_CATEGORY}='$categoryName' AND ${ImageObjectsTable.COLUMN_ACCEPTED}='1' AND ${ImageObjectsTable.COLUMN_KNOWN}='$queryForKnown'",
+                "${ImageObjectsTable.COLUMN_CATEGORY}='$categoryNameRes' AND ${ImageObjectsTable.COLUMN_ACCEPTED}='1' AND ${ImageObjectsTable.COLUMN_KNOWN}='$queryForKnown'",
                 arrayOf(),
                 null
         )

@@ -1,7 +1,11 @@
 package pl.edu.pjwstk.slowka.presentation.ui.admin_image_details
 
 import android.database.Cursor
-import pl.edu.pjwstk.slowka.domain.content.*
+import pl.edu.pjwstk.slowka.domain.content.GetImageObjectUseCase
+import pl.edu.pjwstk.slowka.domain.content.ImageObject
+import pl.edu.pjwstk.slowka.domain.content.RestoreImageObjectToUnknownUseCase
+import pl.edu.pjwstk.slowka.domain.content.UpdateImageObjectUseCase
+import pl.edu.pjwstk.slowka.domain.content.ViewAllCategoriesUseCase
 import rx.Observable
 import rx.schedulers.Schedulers
 
@@ -20,7 +24,7 @@ class AdminImageDetailsModel constructor(
         return getImageObjectUseCase.id(imageObjectId).performAndObserve(Schedulers.io())
     }
 
-    fun updateImageObject(imageObjectId: Int, imageAnnotation: String, selectedCategory: String): Observable<Boolean> {
+    fun updateImageObject(imageObjectId: Int, imageAnnotation: String, selectedCategory: Int): Observable<Boolean> {
         return getImageObjectUseCase.id(imageObjectId).performAndObserve(Schedulers.io())
         .map { imageObject ->
             ImageObject(imageObject.imageFile, imageAnnotation, selectedCategory, imageObject.accepted, imageObject.known)

@@ -17,7 +17,11 @@ open class SingleCategoryWordsListFragmentPresenter (private val wordsListFragme
     override fun attach(view: SingleCategoryWordsListView, activity: FragmentActivity, savedInstanceState: Bundle?) {
         super.attach(view, activity, savedInstanceState)
         presentedView.getListOfWords().adapter = adapter
-        presentedView.setTitle(presentedActivity.intent.getStringExtra(SingleCategoryActivityPresenter.CATEGORY_NAME_KEY))
+        presentedView.setTitle(
+                presentedActivity.getString(
+                        presentedActivity.intent.getIntExtra(SingleCategoryActivityPresenter.CATEGORY_NAME_KEY, -1)
+                )
+        )
     }
 
     override fun onViewCreated() {
@@ -27,7 +31,7 @@ open class SingleCategoryWordsListFragmentPresenter (private val wordsListFragme
     private fun refresh() {
         refreshListSubscription =
                 wordsListFragmentModel
-                        .getImages(presentedActivity.intent.getStringExtra(SingleCategoryActivityPresenter.CATEGORY_NAME_KEY))
+                        .getImages(presentedActivity.intent.getIntExtra(SingleCategoryActivityPresenter.CATEGORY_NAME_KEY, -1))
                         .subscribe { cursor ->
                             buildListFromCursor(cursor)
                         }

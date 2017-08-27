@@ -17,8 +17,8 @@ class CountAllImageObjectsWithCategoriesUseCase(
                 .zipWith (viewAllImageObjectsUseCase.performWithoutRedirection(), getImageObjectsCounter())
     }
 
-    private fun toMapOfCategoriesWithWords(cursor: Cursor): Map<String, CategoryWithWords> {
-        val mapOfCategoriesWithWords = mutableMapOf<String, CategoryWithWords>()
+    private fun toMapOfCategoriesWithWords(cursor: Cursor): Map<Int, CategoryWithWords> {
+        val mapOfCategoriesWithWords = mutableMapOf<Int, CategoryWithWords>()
         if (cursor.moveToFirst()) {
             do {
                 val categoryWithWords = CategoryWithWords(cursor)
@@ -28,11 +28,11 @@ class CountAllImageObjectsWithCategoriesUseCase(
         return mapOfCategoriesWithWords
     }
 
-    private fun getImageObjectsCounter(): Func2<Map<String, CategoryWithWords>, Cursor, List<CategoryWithWords>> {
+    private fun getImageObjectsCounter(): Func2<Map<Int, CategoryWithWords>, Cursor, List<CategoryWithWords>> {
         return Func2 { listOfCategoriesWithWords, cursorOfImageObjects -> countImageObjects(listOfCategoriesWithWords, cursorOfImageObjects) }
     }
 
-    private fun countImageObjects(mapOfCategoriesWithWords: Map<String, CategoryWithWords>,
+    private fun countImageObjects(mapOfCategoriesWithWords: Map<Int, CategoryWithWords>,
                                   cursorOfImageObjects: Cursor)
             : List<CategoryWithWords> {
 

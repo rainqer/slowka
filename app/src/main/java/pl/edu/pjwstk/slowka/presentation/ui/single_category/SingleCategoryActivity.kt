@@ -3,10 +3,9 @@ package pl.edu.pjwstk.slowka.presentation.ui.single_category
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.annotation.StringRes
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import butterknife.bindView
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.HasComponent
@@ -58,9 +57,9 @@ class SingleCategoryActivity : SlowkaActivity<SingleCategoryActivityView>(),
     }
 
     companion object {
-        fun getIntent(context: Context, categoryName: String): Intent {
+        fun getIntent(context: Context, @StringRes categoryNameRes: Int): Intent {
             return Intent(context, SingleCategoryActivity::class.java)
-                    .putExtra(SingleCategoryActivityPresenter.CATEGORY_NAME_KEY, categoryName)
+                    .putExtra(SingleCategoryActivityPresenter.CATEGORY_NAME_KEY, categoryNameRes)
         }
     }
 }

@@ -1,5 +1,6 @@
 package pl.edu.pjwstk.slowka.repository.content
 
+import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import pl.edu.pjwstk.slowka.domain.content.Category
 import pl.edu.pjwstk.slowka.domain.content.Icon
@@ -33,6 +34,5 @@ class CategoriesTable : SqlTable {
 
         val COLUMNS = arrayOf("_id", "categoryName", "categoryIcon")
         val PATH = "categories"
-
     }
 }

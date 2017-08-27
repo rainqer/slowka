@@ -7,7 +7,7 @@ interface AdminImageDetailsActivityView {
 
     val imageAnnotation: String
     fun applyCategoryAdapter(cursorAdapter: CursorAdapter)
-    fun getSelectedCategory() : String
+    fun getSelectedCategory() : Int
     fun showImageObject(imageObject: ImageObject)
     fun setRestoreButtonVisibility(shouldShowRestoreButton: Boolean)
 }

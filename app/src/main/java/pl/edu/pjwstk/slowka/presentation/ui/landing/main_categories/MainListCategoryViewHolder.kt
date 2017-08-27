@@ -17,7 +17,7 @@ class MainListCategoryViewHolder : RecyclerView.ViewHolder {
     private val name: TextView
     private val progress: RoundCornerProgressBar
     private val numberOfWords: TextView
-    private var shownCategoryName: String? = null
+    private var shownCategoryName: Int? = null
 
     constructor(view: View) : super(view) {
         background = view.findViewById(R.id.background)
@@ -41,7 +41,7 @@ class MainListCategoryViewHolder : RecyclerView.ViewHolder {
     fun showCategory(category: Category, numberOfKnownWords: Int, numberOfUnknownWords : Int) {
         val totalNumberOfWords = numberOfKnownWords + numberOfUnknownWords
         icon.setImageResource(category.iconRes)
-        name.text = category.name
+        name.text = itemView.context.getString(category.name)
         progress.max = totalNumberOfWords.toFloat()
         progress.progress = numberOfKnownWords.toFloat()
         numberOfWords.text = "$numberOfKnownWords/$totalNumberOfWords"

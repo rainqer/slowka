@@ -5,5 +5,5 @@ import rx.Observable
 
 abstract class SingleCategoryWordsListFragmentModel () {
 
-    abstract fun getImages(categoryName: String): Observable<Cursor>
+    abstract fun getImages(categoryName: Int): Observable<Cursor>
 }
