@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
-import android.text.TextUtils
-import android.widget.TextView
+import com.crashlytics.android.Crashlytics
+import com.crashlytics.android.answers.Answers
+import io.fabric.sdk.android.Fabric
+import pl.edu.pjwstk.slowka.BuildConfig
 import pl.edu.pjwstk.slowka.R
 import pl.edu.pjwstk.slowka.presentation.dagger.HasComponent
 import pl.edu.pjwstk.slowka.presentation.ui.ActivityPresenter
@@ -29,6 +31,8 @@ class LandingActivity : SlowkaActivityWithDrawer<LandingActivityView>(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (!BuildConfig.DEBUG) Fabric.with(this, Crashlytics())
+        if (!BuildConfig.DEBUG) Fabric.with(this, Answers())
         setContentViewWithToolbarAndDrawerNavigation(R.layout.activity_landing)
         navigationView.menu.getItem(0).isChecked = true;
         setDaggerComponent(LandingActivityComponentAssembler.assemble(application, this))

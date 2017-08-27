@@ -70,7 +70,7 @@ abstract class FileSavingProcess <T: Any> constructor (fileName: String) {
 
     companion object {
         private val TAG = "PhotoSavingProcess"
-        private val ID_SCANNER_FOLDER = "id-scanner"
+        private val ID_SCANNER_FOLDER = "dictionary"
         private val EXTENSION = ".jpg"
     }
 }

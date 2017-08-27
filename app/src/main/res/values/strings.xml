@@ -1,46 +1,46 @@
 <resources>
-    <string name="app_name">Słówka</string>
+    <string name="app_name">Aphasia Words</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_landing">LandingActivity</string>
-    <string name="word_has_been_added"><![CDATA[Słowo czeka na akceptację w <font color=\'#FFB300\'>Panelu&nbsp;Nauczyciela</font>]]></string>
+    <string name="word_has_been_added"><![CDATA[Word added to <font color=\'#FFB300\'>Teacher&#39;s&nbsp;Panel</font>]]></string>
 
     <!--single category-->
-    <string name="category_empty">W tej kategorii nie ma jeszcze słów.\nChcesz dodać nowe?</string>
+    <string name="category_empty">This category is empty.\nWould you like to add new words?</string>
 
     <!--screen titles-->
-    <string name="learning_screen">Uczę się</string>
-    <string name="tests_screen">Ćwiczenie</string>
-    <string name="admin_screen">Panel Nauczyciela</string>
-    <string name="camera_screen">Zrób zdjęcie</string>
+    <string name="learning_screen">Learning</string>
+    <string name="tests_screen">Practice</string>
+    <string name="admin_screen">Teacher\'s Panel</string>
+    <string name="camera_screen">Take a photo</string>
 
     <!--Image recognizing screen-->
-    <string name="image_content_editable_annotation_hint">Wpisz nazwę przedmiotu</string>
+    <string name="image_content_editable_annotation_hint">Name the photo</string>
 
     <!--Admin -->
-    <string name="admin_new_words">Nowe</string>
-    <string name="admin_learning_words">Uczę się</string>
-    <string name="admin_learnt_words">Znam</string>
-    <string name="play">odtwórz</string>
-    <string name="edit">edytuj</string>
-    <string name="restore">przywróć do nauki</string>
-    <string name="restore_dialog_title">Przywracanie słowa</string>
-    <string name="restore_dialog_message">Czy chcialbyś aby słowo %s znalazło się w kolumnie \"Uczę się\"</string>
-    <string name="tutor_new_empty">Wszystkie słowa zatwierdzone.\nSprawdź inne zakładki.</string>
-    <string name="tutor_learn_empty">Słownik zdaje się być pusty.\nChcesz dodać nowe słowo?</string>
-    <string name="tutor_know_empty">W tej zakładce ciągle nic nie ma.\nSprawdź pozostałe.</string>
-    <string name="title">Edycja</string>
+    <string name="admin_new_words">New</string>
+    <string name="admin_learning_words">Learning</string>
+    <string name="admin_learnt_words">Known</string>
+    <string name="play">play</string>
+    <string name="edit">edit</string>
+    <string name="restore">Restore to \"Learning\"</string>
+    <string name="restore_dialog_title">Restoring word</string>
+    <string name="restore_dialog_message">Would you like to restore word %s to the \"Learning\" column?</string>
+    <string name="tutor_new_empty">All words approved.\nCheck other tabs.</string>
+    <string name="tutor_learn_empty">Dictionary seems to be empty.\nWould you like to add a new word?</string>
+    <string name="tutor_know_empty">This tab is empty.\nCheck the other tabs.</string>
+    <string name="title">Edit</string>
 
     <!--test-->
-    <string name="didntShowTest">Znasz wszystkie słowa z tej kategorii</string>
-    <string name="testTitle">Co widzisz na zdjęciu</string>
-    <string name="testAnswer">Odpowiedź</string>
+    <string name="didntShowTest">You know all words in this category</string>
+    <string name="testTitle">What can you see in the photo?</string>
+    <string name="testAnswer">Answer</string>
 
     <!--add new word-->
-    <string name="select_category">kategoria:</string>
-    <string name="name_the_item">nazwa:</string>
+    <string name="select_category">category:</string>
+    <string name="name_the_item">name:</string>
 
 </resources>

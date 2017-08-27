@@ -10,6 +10,7 @@
         android:required="true" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".presentation.SlowkaApplication"
@@ -61,6 +62,10 @@
             android:name=".repository.content.SlowkaContentProvider"
             android:authorities="pl.edu.pjwstk.slowka.repository.provider"
             android:exported="true"/>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="a0b22b801eedb455ca0fb750d47482784763330e"/>
 
     </application>
 
